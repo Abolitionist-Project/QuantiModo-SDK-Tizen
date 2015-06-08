@@ -6,11 +6,13 @@
 #include "SamiConnector.h"
 #include "SamiConversionStep.h"
 #include "SamiCorrelation.h"
+#include "SamiJsonErrorResponse.h"
 #include "SamiMeasurement.h"
 #include "SamiMeasurementRange.h"
 #include "SamiMeasurementSource.h"
 #include "SamiPairs.h"
 #include "SamiPermission.h"
+#include "SamiPostCorrelation.h"
 #include "SamiUnit.h"
 #include "SamiUnitCategory.h"
 #include "SamiUser.h"
@@ -35,6 +37,9 @@ namespace Swagger {
     if(type.Equals(L"SamiCorrelation", true)) {
       return new SamiCorrelation();
     }
+    if(type.Equals(L"SamiJsonErrorResponse", true)) {
+      return new SamiJsonErrorResponse();
+    }
     if(type.Equals(L"SamiMeasurement", true)) {
       return new SamiMeasurement();
     }
@@ -49,6 +54,9 @@ namespace Swagger {
     }
     if(type.Equals(L"SamiPermission", true)) {
       return new SamiPermission();
+    }
+    if(type.Equals(L"SamiPostCorrelation", true)) {
+      return new SamiPostCorrelation();
     }
     if(type.Equals(L"SamiUnit", true)) {
       return new SamiUnit();

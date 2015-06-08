@@ -27,6 +27,7 @@ SamiMeasurement::init() {
     pTimestamp = null;
     pValue = null;
     pUnit = null;
+    pNote = null;
     
 }
 
@@ -56,6 +57,11 @@ SamiMeasurement::cleanup() {
         
         delete pUnit;
         pUnit = null;
+    }
+    if(pNote != null) {
+        
+        delete pNote;
+        pNote = null;
     }
     
 }
@@ -140,6 +146,15 @@ SamiMeasurement::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUnit, pUnitVal, L"String", L"String");
         }
         delete pUnitKey;
+        JsonString* pNoteKey = new JsonString(L"note");
+        IJsonValue* pNoteVal = null;
+        pJsonObject->GetValue(pNoteKey, pNoteVal);
+        if(pNoteVal != null) {
+            
+            pNote = new String();
+            jsonToValue(pNote, pNoteVal, L"String", L"String");
+        }
+        delete pNoteKey;
         
     }
 }
@@ -212,6 +227,10 @@ SamiMeasurement::asJsonObject() {
     pJsonObject->Add(pUnitKey, toJson(getPUnit(), "String", ""));
 
     
+    JsonString *pNoteKey = new JsonString(L"note");
+    pJsonObject->Add(pNoteKey, toJson(getPNote(), "String", ""));
+
+    
     return pJsonObject;
 }
 
@@ -258,6 +277,15 @@ SamiMeasurement::getPUnit() {
 void
 SamiMeasurement::setPUnit(String* pUnit) {
     this->pUnit = pUnit;
+}
+
+String*
+SamiMeasurement::getPNote() {
+    return pNote;
+}
+void
+SamiMeasurement::setPNote(String* pNote) {
+    this->pNote = pNote;
 }
 
 

@@ -5,8 +5,8 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
-#include "SamiVariable.h"
 using Tizen::Base::String;
+#include "SamiVariable.h"
 #include "SamiVariableCategory.h"
 #include "SamiVariableUserSettings.h"
 using Tizen::Base::Collection::IList;
@@ -21,6 +21,9 @@ public:
   SamiVariablesApi();
   virtual ~SamiVariablesApi();
 
+  
+  void 
+  correlationsPostWithCompletion(String* cause, String* effect, String* correlationcoefficient, String* vote, void(* handler)(SamiError*));
   
   void 
   publicVariablesGetWithCompletion( void(* handler)(SamiError*));
@@ -44,7 +47,7 @@ public:
   variablesSearchSearchGetWithCompletion(String* search, String* categoryName, String* source, Integer* limit, Integer* offset, void(* handler)(SamiError*));
   
   void 
-  variablesVariableNameGetWithCompletion(String* variableName, String* categoryName, void(* handler)(SamiError*));
+  variablesVariableNameGetWithCompletion(String* variableName, void(* handler)(SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

@@ -19,7 +19,7 @@ public:
 
   
   void 
-  pairsGetWithCompletion(String* cause, String* effect, String* duration, String* delay, String* startTime, String* endTime, String* causeSource, String* effectSource, String* causeUnit, String* effectUnit, void(* handler)(SamiError*));
+  pairsGetWithCompletion(String* cause, String* causeSource, String* causeUnit, String* delay, String* duration, String* effect, String* effectSource, String* effectUnit, String* endTime, String* startTime, void(* handler)(SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

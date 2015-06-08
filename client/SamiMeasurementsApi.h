@@ -26,13 +26,13 @@ public:
   measurementSourcesGetWithCompletion( void(* handler)(SamiError*));
   
   void 
-  measurementSourcesPostWithCompletion(IList* Measurements, void(* handler)(SamiError*));
+  measurementSourcesPostWithCompletion(IList* name, void(* handler)(SamiError*));
   
   void 
   measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void(* handler)(SamiError*));
   
   void 
-  measurementsV2PostWithCompletion(IList* Measurements, void(* handler)(SamiError*));
+  measurementsV2PostWithCompletion(IList* measurements, void(* handler)(SamiError*));
   
   void 
   measurementsRangeGetWithCompletion(String* sources, Integer* user, void(* handler)(SamiError*));

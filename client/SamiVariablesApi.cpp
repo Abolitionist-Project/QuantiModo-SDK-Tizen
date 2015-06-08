@@ -17,6 +17,59 @@ SamiVariablesApi::~SamiVariablesApi() {
 }
 
 void
+correlationsPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+  int code = pHttpResponse->GetHttpStatusCode();
+
+  if(code >= 200 && code < 300) {
+    handler(null, null);
+  }
+  else {
+    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    
+    handler(error, null);
+  }
+}
+
+void 
+SamiVariablesApi::correlationsPostWithCompletion(String* cause, String* effect, String* correlationcoefficient, String* vote, void(*success)(SamiError*)) {
+  client = new SamiApiClient();
+
+  client->success(&correlationsPostProcessor, (void(*)(void*, SamiError*))success);
+  HashMap* headerParams = new HashMap(SingleObjectDeleter);
+  headerParams->Construct();
+
+  
+
+  HashMap* queryParams = new HashMap(SingleObjectDeleter);
+  queryParams->Construct();
+
+  
+    queryParams->Add(new String("cause"), cause);
+  
+  
+    queryParams->Add(new String("effect"), effect);
+  
+  
+    queryParams->Add(new String("correlationcoefficient"), correlationcoefficient);
+  
+  
+    queryParams->Add(new String("vote"), vote);
+  
+  
+
+  String* mBody = null;
+
+  
+
+  String url(L"/correlations");
+
+  
+
+  client->execute(SamiVariablesApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
+  
+}
+
+void
 publicVariablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
@@ -383,7 +436,7 @@ variablesVariableNameGetProcessor(HttpResponse* pHttpResponse, void (* handler)(
 }
 
 void 
-SamiVariablesApi::variablesVariableNameGetWithCompletion(String* variableName, String* categoryName, void(*success)(SamiError*)) {
+SamiVariablesApi::variablesVariableNameGetWithCompletion(String* variableName, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&variablesVariableNameGetProcessor, (void(*)(void*, SamiError*))success);
@@ -395,9 +448,6 @@ SamiVariablesApi::variablesVariableNameGetWithCompletion(String* variableName, S
   HashMap* queryParams = new HashMap(SingleObjectDeleter);
   queryParams->Construct();
 
-  
-    queryParams->Add(new String("categoryName"), categoryName);
-  
   
 
   String* mBody = null;

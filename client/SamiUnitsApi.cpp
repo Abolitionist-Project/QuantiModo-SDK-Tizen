@@ -107,58 +107,5 @@ SamiUnitsApi::unitsGetWithCompletion(String* unitName, String* abbreviatedUnitNa
   
 }
 
-void
-unitsVariableGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
-  int code = pHttpResponse->GetHttpStatusCode();
-
-  if(code >= 200 && code < 300) {
-    handler(null, null);
-  }
-  else {
-    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
-    
-    handler(error, null);
-  }
-}
-
-void 
-SamiUnitsApi::unitsVariableGetWithCompletion(String* variable, String* unitName, String* cabbreviatedUnitName, String* categoryName, void(*success)(SamiError*)) {
-  client = new SamiApiClient();
-
-  client->success(&unitsVariableGetProcessor, (void(*)(void*, SamiError*))success);
-  HashMap* headerParams = new HashMap(SingleObjectDeleter);
-  headerParams->Construct();
-
-  
-
-  HashMap* queryParams = new HashMap(SingleObjectDeleter);
-  queryParams->Construct();
-
-  
-    queryParams->Add(new String("variable"), variable);
-  
-  
-    queryParams->Add(new String("unitName"), unitName);
-  
-  
-    queryParams->Add(new String("cabbreviatedUnitName"), cabbreviatedUnitName);
-  
-  
-    queryParams->Add(new String("categoryName"), categoryName);
-  
-  
-
-  String* mBody = null;
-
-  
-
-  String url(L"/unitsVariable");
-
-  
-
-  client->execute(SamiUnitsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
-}
-
 
 } /* namespace Swagger */

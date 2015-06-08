@@ -72,7 +72,7 @@ measurementSourcesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(vo
 }
 
 void 
-SamiMeasurementsApi::measurementSourcesPostWithCompletion(IList* Measurements, void(*success)(SamiError*)) {
+SamiMeasurementsApi::measurementSourcesPostWithCompletion(IList* name, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&measurementSourcesPostProcessor, (void(*)(void*, SamiError*))success);
@@ -90,11 +90,11 @@ SamiMeasurementsApi::measurementSourcesPostWithCompletion(IList* Measurements, v
 
   
   
-  if(Measurements != null) {
+  if(name != null) {
     mBody = new String("");
-    int sz = Measurements->GetCount();
+    int sz = name->GetCount();
     for(int i = 0; i < sz; i++) {
-      SamiObject * obj = (SamiObject*)Measurements->GetAt(i);
+      SamiObject * obj = (SamiObject*)name->GetAt(i);
       String json = obj->asJson();
       if(i > 0)
         mBody->Append(",");
@@ -189,7 +189,7 @@ measurementsV2PostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*,
 }
 
 void 
-SamiMeasurementsApi::measurementsV2PostWithCompletion(IList* Measurements, void(*success)(SamiError*)) {
+SamiMeasurementsApi::measurementsV2PostWithCompletion(IList* measurements, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&measurementsV2PostProcessor, (void(*)(void*, SamiError*))success);
@@ -207,11 +207,11 @@ SamiMeasurementsApi::measurementsV2PostWithCompletion(IList* Measurements, void(
 
   
   
-  if(Measurements != null) {
+  if(measurements != null) {
     mBody = new String("");
-    int sz = Measurements->GetCount();
+    int sz = measurements->GetCount();
     for(int i = 0; i < sz; i++) {
-      SamiObject * obj = (SamiObject*)Measurements->GetAt(i);
+      SamiObject * obj = (SamiObject*)measurements->GetAt(i);
       String json = obj->asJson();
       if(i > 0)
         mBody->Append(",");

@@ -31,7 +31,7 @@ pairsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError
 }
 
 void 
-SamiPairsApi::pairsGetWithCompletion(String* cause, String* effect, String* duration, String* delay, String* startTime, String* endTime, String* causeSource, String* effectSource, String* causeUnit, String* effectUnit, void(*success)(SamiError*)) {
+SamiPairsApi::pairsGetWithCompletion(String* cause, String* causeSource, String* causeUnit, String* delay, String* duration, String* effect, String* effectSource, String* effectUnit, String* endTime, String* startTime, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&pairsGetProcessor, (void(*)(void*, SamiError*))success);
@@ -47,31 +47,31 @@ SamiPairsApi::pairsGetWithCompletion(String* cause, String* effect, String* dura
     queryParams->Add(new String("cause"), cause);
   
   
-    queryParams->Add(new String("effect"), effect);
-  
-  
-    queryParams->Add(new String("duration"), duration);
-  
-  
-    queryParams->Add(new String("delay"), delay);
-  
-  
-    queryParams->Add(new String("startTime"), startTime);
-  
-  
-    queryParams->Add(new String("endTime"), endTime);
-  
-  
     queryParams->Add(new String("causeSource"), causeSource);
-  
-  
-    queryParams->Add(new String("effectSource"), effectSource);
   
   
     queryParams->Add(new String("causeUnit"), causeUnit);
   
   
+    queryParams->Add(new String("delay"), delay);
+  
+  
+    queryParams->Add(new String("duration"), duration);
+  
+  
+    queryParams->Add(new String("effect"), effect);
+  
+  
+    queryParams->Add(new String("effectSource"), effectSource);
+  
+  
     queryParams->Add(new String("effectUnit"), effectUnit);
+  
+  
+    queryParams->Add(new String("endTime"), endTime);
+  
+  
+    queryParams->Add(new String("startTime"), startTime);
   
   
 
