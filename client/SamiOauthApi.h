@@ -18,10 +18,10 @@ public:
 
   
   void 
-  oauth2AccesstokenGetWithCompletion(String* responseType, String* redirectUri, String* realm, String* clientId, String* scope, String* state, void(* handler)(SamiError*));
+  oauth2AccesstokenGetWithCompletion(String* clientId, String* clientSecret, String* grantType, String* responseType, String* scope, String* redirectUri, String* state, String* realm, void(* handler)(SamiError*));
   
   void 
-  oauth2AuthorizeGetWithCompletion(String* clientId, String* realm, String* redirectUri, String* responseType, String* scope, String* state, void(* handler)(SamiError*));
+  oauth2AuthorizeGetWithCompletion(String* clientId, String* clientSecret, String* responseType, String* scope, String* redirectUri, String* state, String* realm, void(* handler)(SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

@@ -7,6 +7,7 @@
 
 #include "SamiConnector.h"
 using Tizen::Base::String;
+using Tizen::Base::Boolean;
 
 using namespace Tizen::Net::Http;
 
@@ -25,7 +26,10 @@ public:
   connectorsConnectorConnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
   
   void 
-  connectorsConnectorConnectInstructionsGetWithCompletion(String* connector, void(* handler)(SamiError*));
+  connectorsConnectorConnectInstructionsGetWithCompletion(String* connector, String* url, IList* parameters, Boolean* usePopup, void(* handler)(SamiError*));
+  
+  void 
+  connectorsConnectorConnectParameterGetWithCompletion(String* connector, String* displayName, String* key, Boolean* usePopup, String* type, String* placeholder, String* defaultValue, void(* handler)(SamiError*));
   
   void 
   connectorsConnectorDisconnectGetWithCompletion(String* connector, void(* handler)(SamiError*));

@@ -74,17 +74,38 @@ publicVariablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*,
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiVariable* out = new SamiVariable();
+    jsonToValue(out, pJson, L"SamiVariable*", L"SamiVariable");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiVariablesApi::publicVariablesGetWithCompletion( void(*success)(SamiError*)) {
+SamiVariable* 
+SamiVariablesApi::publicVariablesGetWithCompletion( void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&publicVariablesGetProcessor, (void(*)(void*, SamiError*))success);
@@ -107,7 +128,7 @@ SamiVariablesApi::publicVariablesGetWithCompletion( void(*success)(SamiError*)) 
   
 
   client->execute(SamiVariablesApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 void
@@ -115,17 +136,38 @@ publicVariablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* han
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiVariable* out = new SamiVariable();
+    jsonToValue(out, pJson, L"SamiVariable*", L"SamiVariable");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, void(*success)(SamiError*)) {
+SamiVariable* 
+SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&publicVariablesSearchSearchGetProcessor, (void(*)(void*, SamiError*))success);
@@ -156,7 +198,7 @@ SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, S
   
 
   client->execute(SamiVariablesApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 void
@@ -164,17 +206,38 @@ variableCategoriesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(voi
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    IList* out = new ArrayList();
+    jsonToValue(out, pJson, L"IList*", L"SamiVariableCategory");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiVariablesApi::variableCategoriesGetWithCompletion( void(*success)(SamiError*)) {
+IList* 
+SamiVariablesApi::variableCategoriesGetWithCompletion( void (* success)(IList*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&variableCategoriesGetProcessor, (void(*)(void*, SamiError*))success);
@@ -197,7 +260,7 @@ SamiVariablesApi::variableCategoriesGetWithCompletion( void(*success)(SamiError*
   
 
   client->execute(SamiVariablesApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 void
@@ -215,7 +278,7 @@ variableUserSettingsPostProcessor(HttpResponse* pHttpResponse, void (* handler)(
 }
 
 void 
-SamiVariablesApi::variableUserSettingsPostWithCompletion(IList* sharingData, void(*success)(SamiError*)) {
+SamiVariablesApi::variableUserSettingsPostWithCompletion(SamiVariableUserSettings* sharingData, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&variableUserSettingsPostProcessor, (void(*)(void*, SamiError*))success);
@@ -233,20 +296,11 @@ SamiVariablesApi::variableUserSettingsPostWithCompletion(IList* sharingData, voi
 
   
   
+  
   if(sharingData != null) {
-    mBody = new String("");
-    int sz = sharingData->GetCount();
-    for(int i = 0; i < sz; i++) {
-      SamiObject * obj = (SamiObject*)sharingData->GetAt(i);
-      String json = obj->asJson();
-      if(i > 0)
-        mBody->Append(",");
-      mBody->Append(json);
-    }
-    mBody->Append("]");
+    mBody = new String(sharingData->asJson());
     headerParams->Add(new String("Content-Type"), new String("application/json"));
   }
-  
   
   
 
@@ -263,17 +317,38 @@ variablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiE
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiVariable* out = new SamiVariable();
+    jsonToValue(out, pJson, L"SamiVariable*", L"SamiVariable");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryName, void(*success)(SamiError*)) {
+SamiVariable* 
+SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryName, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&variablesGetProcessor, (void(*)(void*, SamiError*))success);
@@ -302,7 +377,7 @@ SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryNa
   
 
   client->execute(SamiVariablesApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 void
@@ -320,7 +395,7 @@ variablesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, Sami
 }
 
 void 
-SamiVariablesApi::variablesPostWithCompletion(IList* variableName, void(*success)(SamiError*)) {
+SamiVariablesApi::variablesPostWithCompletion(SamiVariablesNew* variableName, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&variablesPostProcessor, (void(*)(void*, SamiError*))success);
@@ -338,20 +413,11 @@ SamiVariablesApi::variablesPostWithCompletion(IList* variableName, void(*success
 
   
   
+  
   if(variableName != null) {
-    mBody = new String("");
-    int sz = variableName->GetCount();
-    for(int i = 0; i < sz; i++) {
-      SamiObject * obj = (SamiObject*)variableName->GetAt(i);
-      String json = obj->asJson();
-      if(i > 0)
-        mBody->Append(",");
-      mBody->Append(json);
-    }
-    mBody->Append("]");
+    mBody = new String(variableName->asJson());
     headerParams->Add(new String("Content-Type"), new String("application/json"));
   }
-  
   
   
 
@@ -368,17 +434,38 @@ variablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* handler)(
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    IList* out = new ArrayList();
+    jsonToValue(out, pJson, L"IList*", L"SamiVariable");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiVariablesApi::variablesSearchSearchGetWithCompletion(String* search, String* categoryName, String* source, Integer* limit, Integer* offset, void(*success)(SamiError*)) {
+IList* 
+SamiVariablesApi::variablesSearchSearchGetWithCompletion(String* search, String* categoryName, String* source, Integer* limit, Integer* offset, void (* success)(IList*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&variablesSearchSearchGetProcessor, (void(*)(void*, SamiError*))success);
@@ -418,7 +505,7 @@ SamiVariablesApi::variablesSearchSearchGetWithCompletion(String* search, String*
   
 
   client->execute(SamiVariablesApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 void
@@ -426,17 +513,38 @@ variablesVariableNameGetProcessor(HttpResponse* pHttpResponse, void (* handler)(
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiVariable* out = new SamiVariable();
+    jsonToValue(out, pJson, L"SamiVariable*", L"SamiVariable");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiVariablesApi::variablesVariableNameGetWithCompletion(String* variableName, void(*success)(SamiError*)) {
+SamiVariable* 
+SamiVariablesApi::variablesVariableNameGetWithCompletion(String* variableName, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&variablesVariableNameGetProcessor, (void(*)(void*, SamiError*))success);
@@ -464,7 +572,7 @@ SamiVariablesApi::variablesVariableNameGetWithCompletion(String* variableName, v
   
 
   client->execute(SamiVariablesApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 

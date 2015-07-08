@@ -9,8 +9,8 @@ using Tizen::Base::String;
 #include "SamiVariable.h"
 #include "SamiVariableCategory.h"
 #include "SamiVariableUserSettings.h"
-using Tizen::Base::Collection::IList;
 using Tizen::Base::Integer;
+#include "SamiVariablesNew.h"
 
 using namespace Tizen::Net::Http;
 
@@ -25,29 +25,29 @@ public:
   void 
   correlationsPostWithCompletion(String* cause, String* effect, String* correlationcoefficient, String* vote, void(* handler)(SamiError*));
   
-  void 
-  publicVariablesGetWithCompletion( void(* handler)(SamiError*));
+  SamiVariable* 
+  publicVariablesGetWithCompletion( void (* handler)(SamiVariable*, SamiError*));
+  
+  SamiVariable* 
+  publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, void (* handler)(SamiVariable*, SamiError*));
+  
+  IList* 
+  variableCategoriesGetWithCompletion( void (* handler)(IList*, SamiError*));
   
   void 
-  publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, void(* handler)(SamiError*));
+  variableUserSettingsPostWithCompletion(SamiVariableUserSettings* sharingData, void(* handler)(SamiError*));
+  
+  SamiVariable* 
+  variablesGetWithCompletion(Integer* userId, String* categoryName, void (* handler)(SamiVariable*, SamiError*));
   
   void 
-  variableCategoriesGetWithCompletion( void(* handler)(SamiError*));
+  variablesPostWithCompletion(SamiVariablesNew* variableName, void(* handler)(SamiError*));
   
-  void 
-  variableUserSettingsPostWithCompletion(IList* sharingData, void(* handler)(SamiError*));
+  IList* 
+  variablesSearchSearchGetWithCompletion(String* search, String* categoryName, String* source, Integer* limit, Integer* offset, void (* handler)(IList*, SamiError*));
   
-  void 
-  variablesGetWithCompletion(Integer* userId, String* categoryName, void(* handler)(SamiError*));
-  
-  void 
-  variablesPostWithCompletion(IList* variableName, void(* handler)(SamiError*));
-  
-  void 
-  variablesSearchSearchGetWithCompletion(String* search, String* categoryName, String* source, Integer* limit, Integer* offset, void(* handler)(SamiError*));
-  
-  void 
-  variablesVariableNameGetWithCompletion(String* variableName, void(* handler)(SamiError*));
+  SamiVariable* 
+  variablesVariableNameGetWithCompletion(String* variableName, void (* handler)(SamiVariable*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

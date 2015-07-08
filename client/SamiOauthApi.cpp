@@ -31,7 +31,7 @@ oauth2AccesstokenGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void
 }
 
 void 
-SamiOauthApi::oauth2AccesstokenGetWithCompletion(String* responseType, String* redirectUri, String* realm, String* clientId, String* scope, String* state, void(*success)(SamiError*)) {
+SamiOauthApi::oauth2AccesstokenGetWithCompletion(String* clientId, String* clientSecret, String* grantType, String* responseType, String* scope, String* redirectUri, String* state, String* realm, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&oauth2AccesstokenGetProcessor, (void(*)(void*, SamiError*))success);
@@ -44,22 +44,28 @@ SamiOauthApi::oauth2AccesstokenGetWithCompletion(String* responseType, String* r
   queryParams->Construct();
 
   
-    queryParams->Add(new String("response_type"), responseType);
-  
-  
-    queryParams->Add(new String("redirect_uri"), redirectUri);
-  
-  
-    queryParams->Add(new String("realm"), realm);
-  
-  
     queryParams->Add(new String("client_id"), clientId);
+  
+  
+    queryParams->Add(new String("client_secret"), clientSecret);
+  
+  
+    queryParams->Add(new String("grant_type"), grantType);
+  
+  
+    queryParams->Add(new String("response_type"), responseType);
   
   
     queryParams->Add(new String("scope"), scope);
   
   
+    queryParams->Add(new String("redirect_uri"), redirectUri);
+  
+  
     queryParams->Add(new String("state"), state);
+  
+  
+    queryParams->Add(new String("realm"), realm);
   
   
 
@@ -90,7 +96,7 @@ oauth2AuthorizeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*,
 }
 
 void 
-SamiOauthApi::oauth2AuthorizeGetWithCompletion(String* clientId, String* realm, String* redirectUri, String* responseType, String* scope, String* state, void(*success)(SamiError*)) {
+SamiOauthApi::oauth2AuthorizeGetWithCompletion(String* clientId, String* clientSecret, String* responseType, String* scope, String* redirectUri, String* state, String* realm, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&oauth2AuthorizeGetProcessor, (void(*)(void*, SamiError*))success);
@@ -106,10 +112,7 @@ SamiOauthApi::oauth2AuthorizeGetWithCompletion(String* clientId, String* realm, 
     queryParams->Add(new String("client_id"), clientId);
   
   
-    queryParams->Add(new String("realm"), realm);
-  
-  
-    queryParams->Add(new String("redirect_uri"), redirectUri);
+    queryParams->Add(new String("client_secret"), clientSecret);
   
   
     queryParams->Add(new String("response_type"), responseType);
@@ -118,7 +121,13 @@ SamiOauthApi::oauth2AuthorizeGetWithCompletion(String* clientId, String* realm, 
     queryParams->Add(new String("scope"), scope);
   
   
+    queryParams->Add(new String("redirect_uri"), redirectUri);
+  
+  
     queryParams->Add(new String("state"), state);
+  
+  
+    queryParams->Add(new String("realm"), realm);
   
   
 

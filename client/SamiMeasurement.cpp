@@ -27,7 +27,8 @@ SamiMeasurement::init() {
     pTimestamp = null;
     pValue = null;
     pUnit = null;
-    pNote = null;
+    pStoredValue = null;
+    pStoredUnit = null;
     
 }
 
@@ -58,10 +59,15 @@ SamiMeasurement::cleanup() {
         delete pUnit;
         pUnit = null;
     }
-    if(pNote != null) {
+    if(pStoredValue != null) {
         
-        delete pNote;
-        pNote = null;
+        delete pStoredValue;
+        pStoredValue = null;
+    }
+    if(pStoredUnit != null) {
+        
+        delete pStoredUnit;
+        pStoredUnit = null;
     }
     
 }
@@ -146,15 +152,24 @@ SamiMeasurement::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUnit, pUnitVal, L"String", L"String");
         }
         delete pUnitKey;
-        JsonString* pNoteKey = new JsonString(L"note");
-        IJsonValue* pNoteVal = null;
-        pJsonObject->GetValue(pNoteKey, pNoteVal);
-        if(pNoteVal != null) {
+        JsonString* pStoredValueKey = new JsonString(L"storedValue");
+        IJsonValue* pStoredValueVal = null;
+        pJsonObject->GetValue(pStoredValueKey, pStoredValueVal);
+        if(pStoredValueVal != null) {
             
-            pNote = new String();
-            jsonToValue(pNote, pNoteVal, L"String", L"String");
+            pStoredValue = new Double();
+            jsonToValue(pStoredValue, pStoredValueVal, L"Double", L"Double");
         }
-        delete pNoteKey;
+        delete pStoredValueKey;
+        JsonString* pStoredUnitKey = new JsonString(L"storedUnit");
+        IJsonValue* pStoredUnitVal = null;
+        pJsonObject->GetValue(pStoredUnitKey, pStoredUnitVal);
+        if(pStoredUnitVal != null) {
+            
+            pStoredUnit = new String();
+            jsonToValue(pStoredUnit, pStoredUnitVal, L"String", L"String");
+        }
+        delete pStoredUnitKey;
         
     }
 }
@@ -227,8 +242,12 @@ SamiMeasurement::asJsonObject() {
     pJsonObject->Add(pUnitKey, toJson(getPUnit(), "String", ""));
 
     
-    JsonString *pNoteKey = new JsonString(L"note");
-    pJsonObject->Add(pNoteKey, toJson(getPNote(), "String", ""));
+    JsonString *pStoredValueKey = new JsonString(L"storedValue");
+    pJsonObject->Add(pStoredValueKey, toJson(getPStoredValue(), "Double", ""));
+
+    
+    JsonString *pStoredUnitKey = new JsonString(L"storedUnit");
+    pJsonObject->Add(pStoredUnitKey, toJson(getPStoredUnit(), "String", ""));
 
     
     return pJsonObject;
@@ -279,13 +298,22 @@ SamiMeasurement::setPUnit(String* pUnit) {
     this->pUnit = pUnit;
 }
 
-String*
-SamiMeasurement::getPNote() {
-    return pNote;
+Double*
+SamiMeasurement::getPStoredValue() {
+    return pStoredValue;
 }
 void
-SamiMeasurement::setPNote(String* pNote) {
-    this->pNote = pNote;
+SamiMeasurement::setPStoredValue(Double* pStoredValue) {
+    this->pStoredValue = pStoredValue;
+}
+
+String*
+SamiMeasurement::getPStoredUnit() {
+    return pStoredUnit;
+}
+void
+SamiMeasurement::setPStoredUnit(String* pStoredUnit) {
+    this->pStoredUnit = pStoredUnit;
 }
 
 

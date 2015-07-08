@@ -7,6 +7,7 @@
 #include "SamiConversionStep.h"
 #include "SamiCorrelation.h"
 #include "SamiJsonErrorResponse.h"
+#include "SamiMeasurementSet.h"
 #include "SamiMeasurement.h"
 #include "SamiMeasurementRange.h"
 #include "SamiMeasurementSource.h"
@@ -21,9 +22,12 @@
 #include "SamiUserTokenFailedResponse.h"
 #include "SamiUserTokenRequestInnerUserField.h"
 #include "SamiUserTokenSuccessfulResponseInnerUserField.h"
+#include "SamiValueObject.h"
 #include "SamiVariable.h"
 #include "SamiVariableCategory.h"
 #include "SamiVariableUserSettings.h"
+#include "SamiVariableNew.h"
+#include "SamiVariablesNew.h"
 
 namespace Swagger {
   void*
@@ -39,6 +43,9 @@ namespace Swagger {
     }
     if(type.Equals(L"SamiJsonErrorResponse", true)) {
       return new SamiJsonErrorResponse();
+    }
+    if(type.Equals(L"SamiMeasurementSet", true)) {
+      return new SamiMeasurementSet();
     }
     if(type.Equals(L"SamiMeasurement", true)) {
       return new SamiMeasurement();
@@ -82,6 +89,9 @@ namespace Swagger {
     if(type.Equals(L"SamiUserTokenSuccessfulResponseInnerUserField", true)) {
       return new SamiUserTokenSuccessfulResponseInnerUserField();
     }
+    if(type.Equals(L"SamiValueObject", true)) {
+      return new SamiValueObject();
+    }
     if(type.Equals(L"SamiVariable", true)) {
       return new SamiVariable();
     }
@@ -90,6 +100,12 @@ namespace Swagger {
     }
     if(type.Equals(L"SamiVariableUserSettings", true)) {
       return new SamiVariableUserSettings();
+    }
+    if(type.Equals(L"SamiVariableNew", true)) {
+      return new SamiVariableNew();
+    }
+    if(type.Equals(L"SamiVariablesNew", true)) {
+      return new SamiVariablesNew();
     }
     
     if(type.Equals(L"String", true)) {
