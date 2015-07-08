@@ -139,7 +139,7 @@ connectorsConnectorConnectInstructionsGetProcessor(HttpResponse* pHttpResponse, 
 }
 
 void 
-SamiConnectorsApi::connectorsConnectorConnectInstructionsGetWithCompletion(String* connector, void(*success)(SamiError*)) {
+SamiConnectorsApi::connectorsConnectorConnectInstructionsGetWithCompletion(String* connector, String* url, IList* parameters, Boolean* usePopup, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&connectorsConnectorConnectInstructionsGetProcessor, (void(*)(void*, SamiError*))success);
@@ -152,12 +152,85 @@ SamiConnectorsApi::connectorsConnectorConnectInstructionsGetWithCompletion(Strin
   queryParams->Construct();
 
   
+    queryParams->Add(new String("url"), url);
+  
+  
+    queryParams->Add(new String("parameters"), parameters);
+  
+  
+    queryParams->Add(new String("usePopup"), usePopup);
+  
+  
 
   String* mBody = null;
 
   
 
   String url(L"/connectors/{connector}/connectInstructions");
+
+  
+  String s_connector(L"{");
+  s_connector.Append(L"connector");
+  s_connector.Append(L"}");
+  url.Replace(s_connector, stringify(connector, L"String*"));
+  
+
+  client->execute(SamiConnectorsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
+  
+}
+
+void
+connectorsConnectorConnectParameterGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+  int code = pHttpResponse->GetHttpStatusCode();
+
+  if(code >= 200 && code < 300) {
+    handler(null, null);
+  }
+  else {
+    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    
+    handler(error, null);
+  }
+}
+
+void 
+SamiConnectorsApi::connectorsConnectorConnectParameterGetWithCompletion(String* connector, String* displayName, String* key, Boolean* usePopup, String* type, String* placeholder, String* defaultValue, void(*success)(SamiError*)) {
+  client = new SamiApiClient();
+
+  client->success(&connectorsConnectorConnectParameterGetProcessor, (void(*)(void*, SamiError*))success);
+  HashMap* headerParams = new HashMap(SingleObjectDeleter);
+  headerParams->Construct();
+
+  
+
+  HashMap* queryParams = new HashMap(SingleObjectDeleter);
+  queryParams->Construct();
+
+  
+    queryParams->Add(new String("displayName"), displayName);
+  
+  
+    queryParams->Add(new String("key"), key);
+  
+  
+    queryParams->Add(new String("usePopup"), usePopup);
+  
+  
+    queryParams->Add(new String("type"), type);
+  
+  
+    queryParams->Add(new String("placeholder"), placeholder);
+  
+  
+    queryParams->Add(new String("defaultValue"), defaultValue);
+  
+  
+
+  String* mBody = null;
+
+  
+
+  String url(L"/connectors/{connector}/connectParameter");
 
   
   String s_connector(L"{");

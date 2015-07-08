@@ -7,6 +7,9 @@
 
 #include "SamiCorrelation.h"
 using Tizen::Base::String;
+#include "SamiJsonErrorResponse.h"
+#include "SamiPostCorrelation.h"
+using Tizen::Base::Integer;
 
 using namespace Tizen::Net::Http;
 
@@ -23,6 +26,27 @@ public:
   
   IList* 
   publicCorrelationsSearchSearchGetWithCompletion(String* search, String* effectOrCause, void (* handler)(IList*, SamiError*));
+  
+  void 
+  v1CorrelationsPostWithCompletion(SamiPostCorrelation* body, void(* handler)(SamiError*));
+  
+  IList* 
+  v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithCompletion(Integer* organizationId, Integer* userId, String* variableName, String* organizationToken, String* includePublic, void (* handler)(IList*, SamiError*));
+  
+  IList* 
+  v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithCompletion(Integer* organizationId, Integer* userId, String* variableName, String* organizationToken, String* includePublic, void (* handler)(IList*, SamiError*));
+  
+  IList* 
+  v1VariablesVariableNameCausesGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
+  
+  IList* 
+  v1VariablesVariableNameEffectsGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
+  
+  IList* 
+  v1VariablesVariableNamePublicCausesGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
+  
+  IList* 
+  v1VariablesVariableNamePublicEffectsGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

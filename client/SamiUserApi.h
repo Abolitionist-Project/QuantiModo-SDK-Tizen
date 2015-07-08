@@ -21,8 +21,8 @@ public:
   virtual ~SamiUserApi();
 
   
-  void 
-  userMeGetWithCompletion( void(* handler)(SamiError*));
+  SamiUser* 
+  userMeGetWithCompletion( void (* handler)(SamiUser*, SamiError*));
   
   SamiUserTokenSuccessfulResponse* 
   v1OrganizationsOrganizationIdUsersPostWithCompletion(Integer* organizationId, SamiUserTokenRequest* body, void (* handler)(SamiUserTokenSuccessfulResponse*, SamiError*));

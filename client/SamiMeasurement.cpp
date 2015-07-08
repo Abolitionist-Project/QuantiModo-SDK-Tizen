@@ -27,6 +27,8 @@ SamiMeasurement::init() {
     pTimestamp = null;
     pValue = null;
     pUnit = null;
+    pStoredValue = null;
+    pStoredUnit = null;
     
 }
 
@@ -56,6 +58,16 @@ SamiMeasurement::cleanup() {
         
         delete pUnit;
         pUnit = null;
+    }
+    if(pStoredValue != null) {
+        
+        delete pStoredValue;
+        pStoredValue = null;
+    }
+    if(pStoredUnit != null) {
+        
+        delete pStoredUnit;
+        pStoredUnit = null;
     }
     
 }
@@ -140,6 +152,24 @@ SamiMeasurement::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUnit, pUnitVal, L"String", L"String");
         }
         delete pUnitKey;
+        JsonString* pStoredValueKey = new JsonString(L"storedValue");
+        IJsonValue* pStoredValueVal = null;
+        pJsonObject->GetValue(pStoredValueKey, pStoredValueVal);
+        if(pStoredValueVal != null) {
+            
+            pStoredValue = new Double();
+            jsonToValue(pStoredValue, pStoredValueVal, L"Double", L"Double");
+        }
+        delete pStoredValueKey;
+        JsonString* pStoredUnitKey = new JsonString(L"storedUnit");
+        IJsonValue* pStoredUnitVal = null;
+        pJsonObject->GetValue(pStoredUnitKey, pStoredUnitVal);
+        if(pStoredUnitVal != null) {
+            
+            pStoredUnit = new String();
+            jsonToValue(pStoredUnit, pStoredUnitVal, L"String", L"String");
+        }
+        delete pStoredUnitKey;
         
     }
 }
@@ -212,6 +242,14 @@ SamiMeasurement::asJsonObject() {
     pJsonObject->Add(pUnitKey, toJson(getPUnit(), "String", ""));
 
     
+    JsonString *pStoredValueKey = new JsonString(L"storedValue");
+    pJsonObject->Add(pStoredValueKey, toJson(getPStoredValue(), "Double", ""));
+
+    
+    JsonString *pStoredUnitKey = new JsonString(L"storedUnit");
+    pJsonObject->Add(pStoredUnitKey, toJson(getPStoredUnit(), "String", ""));
+
+    
     return pJsonObject;
 }
 
@@ -258,6 +296,24 @@ SamiMeasurement::getPUnit() {
 void
 SamiMeasurement::setPUnit(String* pUnit) {
     this->pUnit = pUnit;
+}
+
+Double*
+SamiMeasurement::getPStoredValue() {
+    return pStoredValue;
+}
+void
+SamiMeasurement::setPStoredValue(Double* pStoredValue) {
+    this->pStoredValue = pStoredValue;
+}
+
+String*
+SamiMeasurement::getPStoredUnit() {
+    return pStoredUnit;
+}
+void
+SamiMeasurement::setPStoredUnit(String* pStoredUnit) {
+    this->pStoredUnit = pStoredUnit;
 }
 
 

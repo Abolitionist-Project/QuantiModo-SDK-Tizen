@@ -21,17 +21,38 @@ measurementSourcesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(voi
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiMeasurementSource* out = new SamiMeasurementSource();
+    jsonToValue(out, pJson, L"SamiMeasurementSource*", L"SamiMeasurementSource");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiMeasurementsApi::measurementSourcesGetWithCompletion( void(*success)(SamiError*)) {
+SamiMeasurementSource* 
+SamiMeasurementsApi::measurementSourcesGetWithCompletion( void (* success)(SamiMeasurementSource*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&measurementSourcesGetProcessor, (void(*)(void*, SamiError*))success);
@@ -54,7 +75,7 @@ SamiMeasurementsApi::measurementSourcesGetWithCompletion( void(*success)(SamiErr
   
 
   client->execute(SamiMeasurementsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 void
@@ -72,7 +93,7 @@ measurementSourcesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(vo
 }
 
 void 
-SamiMeasurementsApi::measurementSourcesPostWithCompletion(IList* Measurements, void(*success)(SamiError*)) {
+SamiMeasurementsApi::measurementSourcesPostWithCompletion(SamiMeasurementSource* name, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&measurementSourcesPostProcessor, (void(*)(void*, SamiError*))success);
@@ -90,20 +111,11 @@ SamiMeasurementsApi::measurementSourcesPostWithCompletion(IList* Measurements, v
 
   
   
-  if(Measurements != null) {
-    mBody = new String("");
-    int sz = Measurements->GetCount();
-    for(int i = 0; i < sz; i++) {
-      SamiObject * obj = (SamiObject*)Measurements->GetAt(i);
-      String json = obj->asJson();
-      if(i > 0)
-        mBody->Append(",");
-      mBody->Append(json);
-    }
-    mBody->Append("]");
+  
+  if(name != null) {
+    mBody = new String(name->asJson());
     headerParams->Add(new String("Content-Type"), new String("application/json"));
   }
-  
   
   
 
@@ -120,17 +132,38 @@ measurementsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, Sa
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiMeasurement* out = new SamiMeasurement();
+    jsonToValue(out, pJson, L"SamiMeasurement*", L"SamiMeasurement");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void(*success)(SamiError*)) {
+SamiMeasurement* 
+SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void (* success)(SamiMeasurement*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&measurementsGetProcessor, (void(*)(void*, SamiError*))success);
@@ -171,7 +204,7 @@ SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String*
   
 
   client->execute(SamiMeasurementsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 void
@@ -189,7 +222,7 @@ measurementsV2PostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*,
 }
 
 void 
-SamiMeasurementsApi::measurementsV2PostWithCompletion(IList* Measurements, void(*success)(SamiError*)) {
+SamiMeasurementsApi::measurementsV2PostWithCompletion(SamiMeasurementSet* measurements, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&measurementsV2PostProcessor, (void(*)(void*, SamiError*))success);
@@ -207,20 +240,11 @@ SamiMeasurementsApi::measurementsV2PostWithCompletion(IList* Measurements, void(
 
   
   
-  if(Measurements != null) {
-    mBody = new String("");
-    int sz = Measurements->GetCount();
-    for(int i = 0; i < sz; i++) {
-      SamiObject * obj = (SamiObject*)Measurements->GetAt(i);
-      String json = obj->asJson();
-      if(i > 0)
-        mBody->Append(",");
-      mBody->Append(json);
-    }
-    mBody->Append("]");
+  
+  if(measurements != null) {
+    mBody = new String(measurements->asJson());
     headerParams->Add(new String("Content-Type"), new String("application/json"));
   }
-  
   
   
 
@@ -237,17 +261,38 @@ measurementsRangeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiMeasurementRange* out = new SamiMeasurementRange();
+    jsonToValue(out, pJson, L"SamiMeasurementRange*", L"SamiMeasurementRange");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiMeasurementsApi::measurementsRangeGetWithCompletion(String* sources, Integer* user, void(*success)(SamiError*)) {
+SamiMeasurementRange* 
+SamiMeasurementsApi::measurementsRangeGetWithCompletion(String* sources, Integer* user, void (* success)(SamiMeasurementRange*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&measurementsRangeGetProcessor, (void(*)(void*, SamiError*))success);
@@ -276,7 +321,7 @@ SamiMeasurementsApi::measurementsRangeGetWithCompletion(String* sources, Integer
   
 
   client->execute(SamiMeasurementsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 

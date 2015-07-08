@@ -58,6 +58,12 @@ public:
     String* getPUnit();
     void setPUnit(String* pUnit);
     
+    Double* getPStoredValue();
+    void setPStoredValue(Double* pStoredValue);
+    
+    String* getPStoredUnit();
+    void setPStoredUnit(String* pStoredUnit);
+    
 
 private:
     String* pVariable;
@@ -65,6 +71,8 @@ private:
     Long* pTimestamp;
     Double* pValue;
     String* pUnit;
+    Double* pStoredValue;
+    String* pStoredUnit;
     
 };
 

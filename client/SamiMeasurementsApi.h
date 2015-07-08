@@ -6,10 +6,10 @@
 #include "SamiError.h"
 
 #include "SamiMeasurementSource.h"
-using Tizen::Base::Collection::IList;
 using Tizen::Base::Integer;
 using Tizen::Base::String;
 #include "SamiMeasurement.h"
+#include "SamiMeasurementSet.h"
 #include "SamiMeasurementRange.h"
 
 using namespace Tizen::Net::Http;
@@ -22,20 +22,20 @@ public:
   virtual ~SamiMeasurementsApi();
 
   
-  void 
-  measurementSourcesGetWithCompletion( void(* handler)(SamiError*));
+  SamiMeasurementSource* 
+  measurementSourcesGetWithCompletion( void (* handler)(SamiMeasurementSource*, SamiError*));
   
   void 
-  measurementSourcesPostWithCompletion(IList* Measurements, void(* handler)(SamiError*));
+  measurementSourcesPostWithCompletion(SamiMeasurementSource* name, void(* handler)(SamiError*));
+  
+  SamiMeasurement* 
+  measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void (* handler)(SamiMeasurement*, SamiError*));
   
   void 
-  measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void(* handler)(SamiError*));
+  measurementsV2PostWithCompletion(SamiMeasurementSet* measurements, void(* handler)(SamiError*));
   
-  void 
-  measurementsV2PostWithCompletion(IList* Measurements, void(* handler)(SamiError*));
-  
-  void 
-  measurementsRangeGetWithCompletion(String* sources, Integer* user, void(* handler)(SamiError*));
+  SamiMeasurementRange* 
+  measurementsRangeGetWithCompletion(String* sources, Integer* user, void (* handler)(SamiMeasurementRange*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

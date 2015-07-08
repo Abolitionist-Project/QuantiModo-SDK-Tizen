@@ -19,14 +19,11 @@ public:
   virtual ~SamiUnitsApi();
 
   
-  void 
-  unitCategoriesGetWithCompletion( void(* handler)(SamiError*));
+  SamiUnitCategory* 
+  unitCategoriesGetWithCompletion( void (* handler)(SamiUnitCategory*, SamiError*));
   
-  void 
-  unitsGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, void(* handler)(SamiError*));
-  
-  void 
-  unitsVariableGetWithCompletion(String* variable, String* unitName, String* cabbreviatedUnitName, String* categoryName, void(* handler)(SamiError*));
+  IList* 
+  unitsGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, void (* handler)(IList*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";
