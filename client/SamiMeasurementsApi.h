@@ -29,7 +29,7 @@ public:
   measurementSourcesPostWithCompletion(SamiMeasurementSource* name, void(* handler)(SamiError*));
   
   SamiMeasurement* 
-  measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void (* handler)(SamiMeasurement*, SamiError*));
+  measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiMeasurement*, SamiError*));
   
   void 
   measurementsV2PostWithCompletion(SamiMeasurementSet* measurements, void(* handler)(SamiError*));

@@ -3,6 +3,7 @@
 
 #include "SamiObject.h"
 
+#include "SamiCommonResponse.h"
 #include "SamiConnector.h"
 #include "SamiConversionStep.h"
 #include "SamiCorrelation.h"
@@ -32,6 +33,9 @@
 namespace Swagger {
   void*
   create(String type) {
+    if(type.Equals(L"SamiCommonResponse", true)) {
+      return new SamiCommonResponse();
+    }
     if(type.Equals(L"SamiConnector", true)) {
       return new SamiConnector();
     }

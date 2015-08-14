@@ -52,7 +52,7 @@ pairsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError
 }
 
 IList* 
-SamiPairsApi::pairsGetWithCompletion(String* cause, String* causeSource, String* causeUnit, String* delay, String* duration, String* effect, String* effectSource, String* effectUnit, String* endTime, String* startTime, void (* success)(IList*, SamiError*)) {
+SamiPairsApi::pairsGetWithCompletion(String* cause, String* effect, String* causeSource, String* causeUnit, String* delay, String* duration, String* effectSource, String* effectUnit, String* endTime, String* startTime, Integer* limit, Integer* offset, Integer* sort, void (* success)(IList*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&pairsGetProcessor, (void(*)(void*, SamiError*))success);
@@ -93,6 +93,15 @@ SamiPairsApi::pairsGetWithCompletion(String* cause, String* causeSource, String*
   
   
     queryParams->Add(new String("startTime"), startTime);
+  
+  
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
   
   
 

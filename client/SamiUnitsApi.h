@@ -25,6 +25,9 @@ public:
   IList* 
   unitsGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, void (* handler)(IList*, SamiError*));
   
+  IList* 
+  unitsVariableGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, String* variable, void (* handler)(IList*, SamiError*));
+  
   static String getBasePath() {
     return L"https://localhost/api";
   }

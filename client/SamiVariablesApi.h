@@ -7,9 +7,9 @@
 
 using Tizen::Base::String;
 #include "SamiVariable.h"
+using Tizen::Base::Integer;
 #include "SamiVariableCategory.h"
 #include "SamiVariableUserSettings.h"
-using Tizen::Base::Integer;
 #include "SamiVariablesNew.h"
 
 using namespace Tizen::Net::Http;
@@ -29,7 +29,7 @@ public:
   publicVariablesGetWithCompletion( void (* handler)(SamiVariable*, SamiError*));
   
   SamiVariable* 
-  publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, void (* handler)(SamiVariable*, SamiError*));
+  publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
   
   IList* 
   variableCategoriesGetWithCompletion( void (* handler)(IList*, SamiError*));
@@ -38,7 +38,7 @@ public:
   variableUserSettingsPostWithCompletion(SamiVariableUserSettings* sharingData, void(* handler)(SamiError*));
   
   SamiVariable* 
-  variablesGetWithCompletion(Integer* userId, String* categoryName, void (* handler)(SamiVariable*, SamiError*));
+  variablesGetWithCompletion(Integer* userId, String* category, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
   
   void 
   variablesPostWithCompletion(SamiVariablesNew* variableName, void(* handler)(SamiError*));

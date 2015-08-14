@@ -163,7 +163,7 @@ measurementsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, Sa
 }
 
 SamiMeasurement* 
-SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void (* success)(SamiMeasurement*, SamiError*)) {
+SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiMeasurement*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&measurementsGetProcessor, (void(*)(void*, SamiError*))success);
@@ -192,6 +192,15 @@ SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String*
   
   
     queryParams->Add(new String("groupingTimezone"), groupingTimezone);
+  
+  
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
   
   
 

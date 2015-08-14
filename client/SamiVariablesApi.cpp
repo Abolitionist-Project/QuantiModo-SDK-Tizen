@@ -167,7 +167,7 @@ publicVariablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* han
 }
 
 SamiVariable* 
-SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, void (* success)(SamiVariable*, SamiError*)) {
+SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&publicVariablesSearchSearchGetProcessor, (void(*)(void*, SamiError*))success);
@@ -181,6 +181,15 @@ SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, S
 
   
     queryParams->Add(new String("effectOrCause"), effectOrCause);
+  
+  
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
   
   
 
@@ -348,7 +357,7 @@ variablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiE
 }
 
 SamiVariable* 
-SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryName, void (* success)(SamiVariable*, SamiError*)) {
+SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* category, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&variablesGetProcessor, (void(*)(void*, SamiError*))success);
@@ -364,7 +373,16 @@ SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryNa
     queryParams->Add(new String("userId"), userId);
   
   
-    queryParams->Add(new String("categoryName"), categoryName);
+    queryParams->Add(new String("category"), category);
+  
+  
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
   
   
 

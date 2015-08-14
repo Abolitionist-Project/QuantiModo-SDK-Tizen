@@ -5,6 +5,7 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
+using Tizen::Base::Integer;
 #include "SamiPairs.h"
 using Tizen::Base::String;
 
@@ -19,7 +20,7 @@ public:
 
   
   IList* 
-  pairsGetWithCompletion(String* cause, String* causeSource, String* causeUnit, String* delay, String* duration, String* effect, String* effectSource, String* effectUnit, String* endTime, String* startTime, void (* handler)(IList*, SamiError*));
+  pairsGetWithCompletion(String* cause, String* effect, String* causeSource, String* causeUnit, String* delay, String* duration, String* effectSource, String* effectUnit, String* endTime, String* startTime, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

@@ -5,11 +5,13 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
+using Tizen::Base::Integer;
 #include "SamiCorrelation.h"
 using Tizen::Base::String;
 #include "SamiJsonErrorResponse.h"
 #include "SamiPostCorrelation.h"
-using Tizen::Base::Integer;
+#include "SamiCommonResponse.h"
+using Tizen::Base::Boolean;
 
 using namespace Tizen::Net::Http;
 
@@ -22,7 +24,7 @@ public:
 
   
   IList* 
-  correlationsGetWithCompletion(String* effect, String* cause, void (* handler)(IList*, SamiError*));
+  correlationsGetWithCompletion(String* effect, String* cause, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
   
   IList* 
   publicCorrelationsSearchSearchGetWithCompletion(String* search, String* effectOrCause, void (* handler)(IList*, SamiError*));
@@ -47,6 +49,12 @@ public:
   
   IList* 
   v1VariablesVariableNamePublicEffectsGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
+  
+  SamiCommonResponse* 
+  v1VotesPostWithCompletion(String* cause, String* effect, Boolean* vote, void (* handler)(SamiCommonResponse*, SamiError*));
+  
+  SamiCommonResponse* 
+  v1VotesDeletePostWithCompletion(String* cause, String* effect, void (* handler)(SamiCommonResponse*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";
