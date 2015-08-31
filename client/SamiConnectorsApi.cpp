@@ -17,7 +17,7 @@ SamiConnectorsApi::~SamiConnectorsApi() {
 }
 
 void
-connectorsListGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1ConnectorsListGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -52,10 +52,10 @@ connectorsListGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, 
 }
 
 IList* 
-SamiConnectorsApi::connectorsListGetWithCompletion( void (* success)(IList*, SamiError*)) {
+SamiConnectorsApi::v1ConnectorsListGetWithCompletion( void (* success)(IList*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&connectorsListGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1ConnectorsListGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -70,7 +70,7 @@ SamiConnectorsApi::connectorsListGetWithCompletion( void (* success)(IList*, Sam
 
   
 
-  String url(L"/connectors/list");
+  String url(L"/v1/connectors/list");
 
   
 
@@ -79,7 +79,7 @@ SamiConnectorsApi::connectorsListGetWithCompletion( void (* success)(IList*, Sam
 }
 
 void
-connectorsConnectorConnectGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1ConnectorsConnectorConnectGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -93,10 +93,10 @@ connectorsConnectorConnectGetProcessor(HttpResponse* pHttpResponse, void (* hand
 }
 
 void 
-SamiConnectorsApi::connectorsConnectorConnectGetWithCompletion(String* connector, void(*success)(SamiError*)) {
+SamiConnectorsApi::v1ConnectorsConnectorConnectGetWithCompletion(String* connector, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&connectorsConnectorConnectGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1ConnectorsConnectorConnectGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -111,7 +111,7 @@ SamiConnectorsApi::connectorsConnectorConnectGetWithCompletion(String* connector
 
   
 
-  String url(L"/connectors/{connector}/connect");
+  String url(L"/v1/connectors/{connector}/connect");
 
   
   String s_connector(L"{");
@@ -125,7 +125,7 @@ SamiConnectorsApi::connectorsConnectorConnectGetWithCompletion(String* connector
 }
 
 void
-connectorsConnectorConnectInstructionsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1ConnectorsConnectorDisconnectGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -139,10 +139,10 @@ connectorsConnectorConnectInstructionsGetProcessor(HttpResponse* pHttpResponse, 
 }
 
 void 
-SamiConnectorsApi::connectorsConnectorConnectInstructionsGetWithCompletion(String* connector, String* url, IList* parameters, Boolean* usePopup, void(*success)(SamiError*)) {
+SamiConnectorsApi::v1ConnectorsConnectorDisconnectGetWithCompletion(String* connector, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&connectorsConnectorConnectInstructionsGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1ConnectorsConnectorDisconnectGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -152,21 +152,12 @@ SamiConnectorsApi::connectorsConnectorConnectInstructionsGetWithCompletion(Strin
   queryParams->Construct();
 
   
-    queryParams->Add(new String("url"), url);
-  
-  
-    queryParams->Add(new String("parameters"), parameters);
-  
-  
-    queryParams->Add(new String("usePopup"), usePopup);
-  
-  
 
   String* mBody = null;
 
   
 
-  String url(L"/connectors/{connector}/connectInstructions");
+  String url(L"/v1/connectors/{connector}/disconnect");
 
   
   String s_connector(L"{");
@@ -180,24 +171,45 @@ SamiConnectorsApi::connectorsConnectorConnectInstructionsGetWithCompletion(Strin
 }
 
 void
-connectorsConnectorConnectParameterGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1ConnectorsConnectorInfoGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
-    handler(null, null);
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiConnectorInfo* out = new SamiConnectorInfo();
+    jsonToValue(out, pJson, L"SamiConnectorInfo*", L"SamiConnectorInfo");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
   }
   else {
     SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
     
-    handler(error, null);
   }
 }
 
-void 
-SamiConnectorsApi::connectorsConnectorConnectParameterGetWithCompletion(String* connector, String* displayName, String* key, Boolean* usePopup, String* type, String* placeholder, String* defaultValue, void(*success)(SamiError*)) {
+SamiConnectorInfo* 
+SamiConnectorsApi::v1ConnectorsConnectorInfoGetWithCompletion(String* connector, void (* success)(SamiConnectorInfo*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&connectorsConnectorConnectParameterGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1ConnectorsConnectorInfoGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -207,30 +219,12 @@ SamiConnectorsApi::connectorsConnectorConnectParameterGetWithCompletion(String* 
   queryParams->Construct();
 
   
-    queryParams->Add(new String("displayName"), displayName);
-  
-  
-    queryParams->Add(new String("key"), key);
-  
-  
-    queryParams->Add(new String("usePopup"), usePopup);
-  
-  
-    queryParams->Add(new String("type"), type);
-  
-  
-    queryParams->Add(new String("placeholder"), placeholder);
-  
-  
-    queryParams->Add(new String("defaultValue"), defaultValue);
-  
-  
 
   String* mBody = null;
 
   
 
-  String url(L"/connectors/{connector}/connectParameter");
+  String url(L"/v1/connectors/{connector}/info");
 
   
   String s_connector(L"{");
@@ -240,11 +234,11 @@ SamiConnectorsApi::connectorsConnectorConnectParameterGetWithCompletion(String* 
   
 
   client->execute(SamiConnectorsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
+  return null;
 }
 
 void
-connectorsConnectorDisconnectGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1ConnectorsConnectorUpdateGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -258,10 +252,10 @@ connectorsConnectorDisconnectGetProcessor(HttpResponse* pHttpResponse, void (* h
 }
 
 void 
-SamiConnectorsApi::connectorsConnectorDisconnectGetWithCompletion(String* connector, void(*success)(SamiError*)) {
+SamiConnectorsApi::v1ConnectorsConnectorUpdateGetWithCompletion(String* connector, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&connectorsConnectorDisconnectGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1ConnectorsConnectorUpdateGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -276,99 +270,7 @@ SamiConnectorsApi::connectorsConnectorDisconnectGetWithCompletion(String* connec
 
   
 
-  String url(L"/connectors/{connector}/disconnect");
-
-  
-  String s_connector(L"{");
-  s_connector.Append(L"connector");
-  s_connector.Append(L"}");
-  url.Replace(s_connector, stringify(connector, L"String*"));
-  
-
-  client->execute(SamiConnectorsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
-}
-
-void
-connectorsConnectorInfoGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
-  int code = pHttpResponse->GetHttpStatusCode();
-
-  if(code >= 200 && code < 300) {
-    handler(null, null);
-  }
-  else {
-    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
-    
-    handler(error, null);
-  }
-}
-
-void 
-SamiConnectorsApi::connectorsConnectorInfoGetWithCompletion(String* connector, void(*success)(SamiError*)) {
-  client = new SamiApiClient();
-
-  client->success(&connectorsConnectorInfoGetProcessor, (void(*)(void*, SamiError*))success);
-  HashMap* headerParams = new HashMap(SingleObjectDeleter);
-  headerParams->Construct();
-
-  
-
-  HashMap* queryParams = new HashMap(SingleObjectDeleter);
-  queryParams->Construct();
-
-  
-
-  String* mBody = null;
-
-  
-
-  String url(L"/connectors/{connector}/info");
-
-  
-  String s_connector(L"{");
-  s_connector.Append(L"connector");
-  s_connector.Append(L"}");
-  url.Replace(s_connector, stringify(connector, L"String*"));
-  
-
-  client->execute(SamiConnectorsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
-}
-
-void
-connectorsConnectorUpdateGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
-  int code = pHttpResponse->GetHttpStatusCode();
-
-  if(code >= 200 && code < 300) {
-    handler(null, null);
-  }
-  else {
-    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
-    
-    handler(error, null);
-  }
-}
-
-void 
-SamiConnectorsApi::connectorsConnectorUpdateGetWithCompletion(String* connector, void(*success)(SamiError*)) {
-  client = new SamiApiClient();
-
-  client->success(&connectorsConnectorUpdateGetProcessor, (void(*)(void*, SamiError*))success);
-  HashMap* headerParams = new HashMap(SingleObjectDeleter);
-  headerParams->Construct();
-
-  
-
-  HashMap* queryParams = new HashMap(SingleObjectDeleter);
-  queryParams->Construct();
-
-  
-
-  String* mBody = null;
-
-  
-
-  String url(L"/connectors/{connector}/update");
+  String url(L"/v1/connectors/{connector}/update");
 
   
   String s_connector(L"{");

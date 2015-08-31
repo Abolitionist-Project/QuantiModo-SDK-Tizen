@@ -61,8 +61,8 @@ public:
     Double* getPStoredValue();
     void setPStoredValue(Double* pStoredValue);
     
-    String* getPStoredUnit();
-    void setPStoredUnit(String* pStoredUnit);
+    String* getPStoredAbbreviatedUnitName();
+    void setPStoredAbbreviatedUnitName(String* pStoredAbbreviatedUnitName);
     
 
 private:
@@ -72,7 +72,7 @@ private:
     Double* pValue;
     String* pUnit;
     Double* pStoredValue;
-    String* pStoredUnit;
+    String* pStoredAbbreviatedUnitName;
     
 };
 

@@ -28,7 +28,7 @@ SamiMeasurement::init() {
     pValue = null;
     pUnit = null;
     pStoredValue = null;
-    pStoredUnit = null;
+    pStoredAbbreviatedUnitName = null;
     
 }
 
@@ -64,10 +64,10 @@ SamiMeasurement::cleanup() {
         delete pStoredValue;
         pStoredValue = null;
     }
-    if(pStoredUnit != null) {
+    if(pStoredAbbreviatedUnitName != null) {
         
-        delete pStoredUnit;
-        pStoredUnit = null;
+        delete pStoredAbbreviatedUnitName;
+        pStoredAbbreviatedUnitName = null;
     }
     
 }
@@ -161,15 +161,15 @@ SamiMeasurement::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pStoredValue, pStoredValueVal, L"Double", L"Double");
         }
         delete pStoredValueKey;
-        JsonString* pStoredUnitKey = new JsonString(L"storedUnit");
-        IJsonValue* pStoredUnitVal = null;
-        pJsonObject->GetValue(pStoredUnitKey, pStoredUnitVal);
-        if(pStoredUnitVal != null) {
+        JsonString* pStoredAbbreviatedUnitNameKey = new JsonString(L"storedAbbreviatedUnitName");
+        IJsonValue* pStoredAbbreviatedUnitNameVal = null;
+        pJsonObject->GetValue(pStoredAbbreviatedUnitNameKey, pStoredAbbreviatedUnitNameVal);
+        if(pStoredAbbreviatedUnitNameVal != null) {
             
-            pStoredUnit = new String();
-            jsonToValue(pStoredUnit, pStoredUnitVal, L"String", L"String");
+            pStoredAbbreviatedUnitName = new String();
+            jsonToValue(pStoredAbbreviatedUnitName, pStoredAbbreviatedUnitNameVal, L"String", L"String");
         }
-        delete pStoredUnitKey;
+        delete pStoredAbbreviatedUnitNameKey;
         
     }
 }
@@ -246,8 +246,8 @@ SamiMeasurement::asJsonObject() {
     pJsonObject->Add(pStoredValueKey, toJson(getPStoredValue(), "Double", ""));
 
     
-    JsonString *pStoredUnitKey = new JsonString(L"storedUnit");
-    pJsonObject->Add(pStoredUnitKey, toJson(getPStoredUnit(), "String", ""));
+    JsonString *pStoredAbbreviatedUnitNameKey = new JsonString(L"storedAbbreviatedUnitName");
+    pJsonObject->Add(pStoredAbbreviatedUnitNameKey, toJson(getPStoredAbbreviatedUnitName(), "String", ""));
 
     
     return pJsonObject;
@@ -308,12 +308,12 @@ SamiMeasurement::setPStoredValue(Double* pStoredValue) {
 }
 
 String*
-SamiMeasurement::getPStoredUnit() {
-    return pStoredUnit;
+SamiMeasurement::getPStoredAbbreviatedUnitName() {
+    return pStoredAbbreviatedUnitName;
 }
 void
-SamiMeasurement::setPStoredUnit(String* pStoredUnit) {
-    this->pStoredUnit = pStoredUnit;
+SamiMeasurement::setPStoredAbbreviatedUnitName(String* pStoredAbbreviatedUnitName) {
+    this->pStoredAbbreviatedUnitName = pStoredAbbreviatedUnitName;
 }
 
 

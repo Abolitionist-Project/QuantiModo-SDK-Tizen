@@ -5,6 +5,8 @@
 
 #include "SamiCommonResponse.h"
 #include "SamiConnector.h"
+#include "SamiConnectorInfo.h"
+#include "SamiConnectorInfoHistoryItem.h"
 #include "SamiConversionStep.h"
 #include "SamiCorrelation.h"
 #include "SamiJsonErrorResponse.h"
@@ -26,7 +28,7 @@
 #include "SamiValueObject.h"
 #include "SamiVariable.h"
 #include "SamiVariableCategory.h"
-#include "SamiVariableUserSettings.h"
+#include "SamiUserVariables.h"
 #include "SamiVariableNew.h"
 #include "SamiVariablesNew.h"
 
@@ -38,6 +40,12 @@ namespace Swagger {
     }
     if(type.Equals(L"SamiConnector", true)) {
       return new SamiConnector();
+    }
+    if(type.Equals(L"SamiConnectorInfo", true)) {
+      return new SamiConnectorInfo();
+    }
+    if(type.Equals(L"SamiConnectorInfoHistoryItem", true)) {
+      return new SamiConnectorInfoHistoryItem();
     }
     if(type.Equals(L"SamiConversionStep", true)) {
       return new SamiConversionStep();
@@ -102,8 +110,8 @@ namespace Swagger {
     if(type.Equals(L"SamiVariableCategory", true)) {
       return new SamiVariableCategory();
     }
-    if(type.Equals(L"SamiVariableUserSettings", true)) {
-      return new SamiVariableUserSettings();
+    if(type.Equals(L"SamiUserVariables", true)) {
+      return new SamiUserVariables();
     }
     if(type.Equals(L"SamiVariableNew", true)) {
       return new SamiVariableNew();

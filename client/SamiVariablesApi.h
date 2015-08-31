@@ -8,8 +8,8 @@
 using Tizen::Base::String;
 #include "SamiVariable.h"
 using Tizen::Base::Integer;
+#include "SamiUserVariables.h"
 #include "SamiVariableCategory.h"
-#include "SamiVariableUserSettings.h"
 #include "SamiVariablesNew.h"
 
 using namespace Tizen::Net::Http;
@@ -31,11 +31,11 @@ public:
   SamiVariable* 
   publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
   
+  void 
+  v1UserVariablesPostWithCompletion(SamiUserVariables* sharingData, void(* handler)(SamiError*));
+  
   IList* 
   variableCategoriesGetWithCompletion( void (* handler)(IList*, SamiError*));
-  
-  void 
-  variableUserSettingsPostWithCompletion(SamiVariableUserSettings* sharingData, void(* handler)(SamiError*));
   
   SamiVariable* 
   variablesGetWithCompletion(Integer* userId, String* category, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));

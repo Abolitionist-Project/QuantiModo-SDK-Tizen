@@ -88,7 +88,7 @@ SamiUserTokenSuccessfulResponse::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pCodeKey, pCodeVal);
         if(pCodeVal != null) {
             
-            pCode = new Integer();
+            pCode = null;
             jsonToValue(pCode, pCodeVal, L"Integer", L"Integer");
         }
         delete pCodeKey;

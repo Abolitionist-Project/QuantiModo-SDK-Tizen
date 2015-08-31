@@ -88,7 +88,7 @@ SamiCommonResponse::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pStatusKey, pStatusVal);
         if(pStatusVal != null) {
             
-            pStatus = new Integer();
+            pStatus = null;
             jsonToValue(pStatus, pStatusVal, L"Integer", L"Integer");
         }
         delete pStatusKey;

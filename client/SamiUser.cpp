@@ -112,7 +112,7 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pIdKey, pIdVal);
         if(pIdVal != null) {
             
-            pId = new Integer();
+            pId = null;
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
@@ -121,7 +121,7 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pWpIdKey, pWpIdVal);
         if(pWpIdVal != null) {
             
-            pWpId = new Integer();
+            pWpId = null;
             jsonToValue(pWpId, pWpIdVal, L"Integer", L"Integer");
         }
         delete pWpIdKey;

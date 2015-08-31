@@ -7,7 +7,7 @@
 
 #include "SamiConnector.h"
 using Tizen::Base::String;
-using Tizen::Base::Boolean;
+#include "SamiConnectorInfo.h"
 
 using namespace Tizen::Net::Http;
 
@@ -20,25 +20,19 @@ public:
 
   
   IList* 
-  connectorsListGetWithCompletion( void (* handler)(IList*, SamiError*));
+  v1ConnectorsListGetWithCompletion( void (* handler)(IList*, SamiError*));
   
   void 
-  connectorsConnectorConnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
+  v1ConnectorsConnectorConnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
   
   void 
-  connectorsConnectorConnectInstructionsGetWithCompletion(String* connector, String* url, IList* parameters, Boolean* usePopup, void(* handler)(SamiError*));
+  v1ConnectorsConnectorDisconnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
+  
+  SamiConnectorInfo* 
+  v1ConnectorsConnectorInfoGetWithCompletion(String* connector, void (* handler)(SamiConnectorInfo*, SamiError*));
   
   void 
-  connectorsConnectorConnectParameterGetWithCompletion(String* connector, String* displayName, String* key, Boolean* usePopup, String* type, String* placeholder, String* defaultValue, void(* handler)(SamiError*));
-  
-  void 
-  connectorsConnectorDisconnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
-  
-  void 
-  connectorsConnectorInfoGetWithCompletion(String* connector, void(* handler)(SamiError*));
-  
-  void 
-  connectorsConnectorUpdateGetWithCompletion(String* connector, void(* handler)(SamiError*));
+  v1ConnectorsConnectorUpdateGetWithCompletion(String* connector, void(* handler)(SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

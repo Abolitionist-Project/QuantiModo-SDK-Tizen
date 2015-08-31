@@ -67,8 +67,8 @@ public:
     Integer* getPLastUpdate();
     void setPLastUpdate(Integer* pLastUpdate);
     
-    Integer* getPLatestData();
-    void setPLatestData(Integer* pLatestData);
+    Integer* getPTotalMeasurementsInLastUpdate();
+    void setPTotalMeasurementsInLastUpdate(Integer* pTotalMeasurementsInLastUpdate);
     
     Boolean* getPNoDataYet();
     void setPNoDataYet(Boolean* pNoDataYet);
@@ -83,7 +83,7 @@ private:
     String* pConnected;
     String* pConnectInstructions;
     Integer* pLastUpdate;
-    Integer* pLatestData;
+    Integer* pTotalMeasurementsInLastUpdate;
     Boolean* pNoDataYet;
     
 };

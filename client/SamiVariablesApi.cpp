@@ -211,6 +211,55 @@ SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, S
 }
 
 void
+v1UserVariablesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+  int code = pHttpResponse->GetHttpStatusCode();
+
+  if(code >= 200 && code < 300) {
+    handler(null, null);
+  }
+  else {
+    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    
+    handler(error, null);
+  }
+}
+
+void 
+SamiVariablesApi::v1UserVariablesPostWithCompletion(SamiUserVariables* sharingData, void(*success)(SamiError*)) {
+  client = new SamiApiClient();
+
+  client->success(&v1UserVariablesPostProcessor, (void(*)(void*, SamiError*))success);
+  HashMap* headerParams = new HashMap(SingleObjectDeleter);
+  headerParams->Construct();
+
+  
+
+  HashMap* queryParams = new HashMap(SingleObjectDeleter);
+  queryParams->Construct();
+
+  
+
+  String* mBody = null;
+
+  
+  
+  
+  if(sharingData != null) {
+    mBody = new String(sharingData->asJson());
+    headerParams->Add(new String("Content-Type"), new String("application/json"));
+  }
+  
+  
+
+  String url(L"/v1/userVariables");
+
+  
+
+  client->execute(SamiVariablesApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
+  
+}
+
+void
 variableCategoriesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
@@ -270,55 +319,6 @@ SamiVariablesApi::variableCategoriesGetWithCompletion( void (* success)(IList*, 
 
   client->execute(SamiVariablesApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
   return null;
-}
-
-void
-variableUserSettingsPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
-  int code = pHttpResponse->GetHttpStatusCode();
-
-  if(code >= 200 && code < 300) {
-    handler(null, null);
-  }
-  else {
-    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
-    
-    handler(error, null);
-  }
-}
-
-void 
-SamiVariablesApi::variableUserSettingsPostWithCompletion(SamiVariableUserSettings* sharingData, void(*success)(SamiError*)) {
-  client = new SamiApiClient();
-
-  client->success(&variableUserSettingsPostProcessor, (void(*)(void*, SamiError*))success);
-  HashMap* headerParams = new HashMap(SingleObjectDeleter);
-  headerParams->Construct();
-
-  
-
-  HashMap* queryParams = new HashMap(SingleObjectDeleter);
-  queryParams->Construct();
-
-  
-
-  String* mBody = null;
-
-  
-  
-  
-  if(sharingData != null) {
-    mBody = new String(sharingData->asJson());
-    headerParams->Add(new String("Content-Type"), new String("application/json"));
-  }
-  
-  
-
-  String url(L"/variableUserSettings");
-
-  
-
-  client->execute(SamiVariablesApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
 }
 
 void

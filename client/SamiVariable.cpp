@@ -244,7 +244,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pIdKey, pIdVal);
         if(pIdVal != null) {
             
-            pId = new Integer();
+            pId = null;
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
@@ -352,7 +352,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pParentKey, pParentVal);
         if(pParentVal != null) {
             
-            pParent = new Integer();
+            pParent = null;
             jsonToValue(pParent, pParentVal, L"Integer", L"Integer");
         }
         delete pParentKey;
@@ -370,7 +370,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pOnsetDelayKey, pOnsetDelayVal);
         if(pOnsetDelayVal != null) {
             
-            pOnsetDelay = new Integer();
+            pOnsetDelay = null;
             jsonToValue(pOnsetDelay, pOnsetDelayVal, L"Integer", L"Integer");
         }
         delete pOnsetDelayKey;
@@ -379,7 +379,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pDurationOfActionKey, pDurationOfActionVal);
         if(pDurationOfActionVal != null) {
             
-            pDurationOfAction = new Integer();
+            pDurationOfAction = null;
             jsonToValue(pDurationOfAction, pDurationOfActionVal, L"Integer", L"Integer");
         }
         delete pDurationOfActionKey;
@@ -388,7 +388,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pEarliestMeasurementTimeKey, pEarliestMeasurementTimeVal);
         if(pEarliestMeasurementTimeVal != null) {
             
-            pEarliestMeasurementTime = new Integer();
+            pEarliestMeasurementTime = null;
             jsonToValue(pEarliestMeasurementTime, pEarliestMeasurementTimeVal, L"Integer", L"Integer");
         }
         delete pEarliestMeasurementTimeKey;
@@ -397,7 +397,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pLatestMeasurementTimeKey, pLatestMeasurementTimeVal);
         if(pLatestMeasurementTimeVal != null) {
             
-            pLatestMeasurementTime = new Integer();
+            pLatestMeasurementTime = null;
             jsonToValue(pLatestMeasurementTime, pLatestMeasurementTimeVal, L"Integer", L"Integer");
         }
         delete pLatestMeasurementTimeKey;
@@ -406,7 +406,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pUpdatedKey, pUpdatedVal);
         if(pUpdatedVal != null) {
             
-            pUpdated = new Integer();
+            pUpdated = null;
             jsonToValue(pUpdated, pUpdatedVal, L"Integer", L"Integer");
         }
         delete pUpdatedKey;
@@ -415,7 +415,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pCauseOnlyKey, pCauseOnlyVal);
         if(pCauseOnlyVal != null) {
             
-            pCauseOnly = new Integer();
+            pCauseOnly = null;
             jsonToValue(pCauseOnly, pCauseOnlyVal, L"Integer", L"Integer");
         }
         delete pCauseOnlyKey;
@@ -424,7 +424,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pNumberOfCorrelationsKey, pNumberOfCorrelationsVal);
         if(pNumberOfCorrelationsVal != null) {
             
-            pNumberOfCorrelations = new Integer();
+            pNumberOfCorrelations = null;
             jsonToValue(pNumberOfCorrelations, pNumberOfCorrelationsVal, L"Integer", L"Integer");
         }
         delete pNumberOfCorrelationsKey;
@@ -433,7 +433,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pOutcomeKey, pOutcomeVal);
         if(pOutcomeVal != null) {
             
-            pOutcome = new Integer();
+            pOutcome = null;
             jsonToValue(pOutcome, pOutcomeVal, L"Integer", L"Integer");
         }
         delete pOutcomeKey;
@@ -442,7 +442,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pMeasurementsAtLastAnalysisKey, pMeasurementsAtLastAnalysisVal);
         if(pMeasurementsAtLastAnalysisVal != null) {
             
-            pMeasurementsAtLastAnalysis = new Integer();
+            pMeasurementsAtLastAnalysis = null;
             jsonToValue(pMeasurementsAtLastAnalysis, pMeasurementsAtLastAnalysisVal, L"Integer", L"Integer");
         }
         delete pMeasurementsAtLastAnalysisKey;
@@ -451,7 +451,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pNumberOfMeasurementsKey, pNumberOfMeasurementsVal);
         if(pNumberOfMeasurementsVal != null) {
             
-            pNumberOfMeasurements = new Integer();
+            pNumberOfMeasurements = null;
             jsonToValue(pNumberOfMeasurements, pNumberOfMeasurementsVal, L"Integer", L"Integer");
         }
         delete pNumberOfMeasurementsKey;
@@ -460,7 +460,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pLastUnitKey, pLastUnitVal);
         if(pLastUnitVal != null) {
             
-            pLastUnit = new Integer();
+            pLastUnit = null;
             jsonToValue(pLastUnit, pLastUnitVal, L"Integer", L"Integer");
         }
         delete pLastUnitKey;
@@ -469,7 +469,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pLastValueKey, pLastValueVal);
         if(pLastValueVal != null) {
             
-            pLastValue = new Integer();
+            pLastValue = null;
             jsonToValue(pLastValue, pLastValueVal, L"Integer", L"Integer");
         }
         delete pLastValueKey;
@@ -478,7 +478,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pMostCommonValueKey, pMostCommonValueVal);
         if(pMostCommonValueVal != null) {
             
-            pMostCommonValue = new Integer();
+            pMostCommonValue = null;
             jsonToValue(pMostCommonValue, pMostCommonValueVal, L"Integer", L"Integer");
         }
         delete pMostCommonValueKey;
@@ -487,7 +487,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pMostCommonUnitKey, pMostCommonUnitVal);
         if(pMostCommonUnitVal != null) {
             
-            pMostCommonUnit = new Integer();
+            pMostCommonUnit = null;
             jsonToValue(pMostCommonUnit, pMostCommonUnitVal, L"Integer", L"Integer");
         }
         delete pMostCommonUnitKey;
@@ -496,7 +496,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pLastSourceKey, pLastSourceVal);
         if(pLastSourceVal != null) {
             
-            pLastSource = new Integer();
+            pLastSource = null;
             jsonToValue(pLastSource, pLastSourceVal, L"Integer", L"Integer");
         }
         delete pLastSourceKey;
