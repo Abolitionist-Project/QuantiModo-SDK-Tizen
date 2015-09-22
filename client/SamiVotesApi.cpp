@@ -1,4 +1,4 @@
-#include "SamiUserApi.h"
+#include "SamiVotesApi.h"
 
 #include "SamiHelpers.h"
 #include "SamiError.h"
@@ -8,24 +8,24 @@ using namespace Tizen::Base;
 namespace Swagger {
 
 
-SamiUserApi::SamiUserApi() {
+SamiVotesApi::SamiVotesApi() {
 
 }
 
-SamiUserApi::~SamiUserApi() {
+SamiVotesApi::~SamiVotesApi() {
 
 }
 
 void
-v1OrganizationsOrganizationIdUsersPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1VotesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
     ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
     IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
 
-    SamiUserTokenSuccessfulResponse* out = new SamiUserTokenSuccessfulResponse();
-    jsonToValue(out, pJson, L"SamiUserTokenSuccessfulResponse*", L"SamiUserTokenSuccessfulResponse");
+    SamiCommonResponse* out = new SamiCommonResponse();
+    jsonToValue(out, pJson, L"SamiCommonResponse*", L"SamiCommonResponse");
 
     if (pJson) {
       if (pJson->GetType() == JSON_TYPE_OBJECT) {
@@ -51,11 +51,11 @@ v1OrganizationsOrganizationIdUsersPostProcessor(HttpResponse* pHttpResponse, voi
   }
 }
 
-SamiUserTokenSuccessfulResponse* 
-SamiUserApi::v1OrganizationsOrganizationIdUsersPostWithCompletion(Integer* organizationId, SamiUserTokenRequest* body, void (* success)(SamiUserTokenSuccessfulResponse*, SamiError*)) {
+SamiCommonResponse* 
+SamiVotesApi::v1VotesPostWithCompletion(String* cause, String* effect, Long* correlation, Boolean* vote, void (* success)(SamiCommonResponse*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&v1OrganizationsOrganizationIdUsersPostProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1VotesPostProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -65,42 +65,41 @@ SamiUserApi::v1OrganizationsOrganizationIdUsersPostWithCompletion(Integer* organ
   queryParams->Construct();
 
   
+    queryParams->Add(new String("cause"), cause);
+  
+  
+    queryParams->Add(new String("effect"), effect);
+  
+  
+    queryParams->Add(new String("correlation"), correlation);
+  
+  
+    queryParams->Add(new String("vote"), vote);
+  
+  
 
   String* mBody = null;
 
   
-  
-  
-  if(body != null) {
-    mBody = new String(body->asJson());
-    headerParams->Add(new String("Content-Type"), new String("application/json"));
-  }
-  
-  
 
-  String url(L"/v1/organizations/{organizationId}/users");
+  String url(L"/v1/votes");
 
   
-  String s_organizationId(L"{");
-  s_organizationId.Append(L"organizationId");
-  s_organizationId.Append(L"}");
-  url.Replace(s_organizationId, stringify(organizationId, L"Integer*"));
-  
 
-  client->execute(SamiUserApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
+  client->execute(SamiVotesApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
   return null;
 }
 
 void
-v1UserMeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1VotesDeletePostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
     ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
     IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
 
-    SamiUser* out = new SamiUser();
-    jsonToValue(out, pJson, L"SamiUser*", L"SamiUser");
+    SamiCommonResponse* out = new SamiCommonResponse();
+    jsonToValue(out, pJson, L"SamiCommonResponse*", L"SamiCommonResponse");
 
     if (pJson) {
       if (pJson->GetType() == JSON_TYPE_OBJECT) {
@@ -126,11 +125,11 @@ v1UserMeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiEr
   }
 }
 
-SamiUser* 
-SamiUserApi::v1UserMeGetWithCompletion( void (* success)(SamiUser*, SamiError*)) {
+SamiCommonResponse* 
+SamiVotesApi::v1VotesDeletePostWithCompletion(String* cause, String* effect, void (* success)(SamiCommonResponse*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&v1UserMeGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1VotesDeletePostProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -140,16 +139,22 @@ SamiUserApi::v1UserMeGetWithCompletion( void (* success)(SamiUser*, SamiError*))
   queryParams->Construct();
 
   
+    queryParams->Add(new String("cause"), cause);
+  
+  
+    queryParams->Add(new String("effect"), effect);
+  
+  
 
   String* mBody = null;
 
   
 
-  String url(L"/v1/user/me");
+  String url(L"/v1/votes/delete");
 
   
 
-  client->execute(SamiUserApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
+  client->execute(SamiVotesApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
   return null;
 }
 

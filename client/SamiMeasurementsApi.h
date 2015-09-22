@@ -23,19 +23,22 @@ public:
 
   
   SamiMeasurementSource* 
-  measurementSourcesGetWithCompletion( void (* handler)(SamiMeasurementSource*, SamiError*));
+  v1MeasurementSourcesGetWithCompletion( void (* handler)(SamiMeasurementSource*, SamiError*));
   
   void 
-  measurementSourcesPostWithCompletion(SamiMeasurementSource* name, void(* handler)(SamiError*));
+  v1MeasurementSourcesPostWithCompletion(SamiMeasurementSource* name, void(* handler)(SamiError*));
   
   SamiMeasurement* 
-  measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void (* handler)(SamiMeasurement*, SamiError*));
+  v1MeasurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiMeasurement*, SamiError*));
   
   void 
-  measurementsV2PostWithCompletion(SamiMeasurementSet* measurements, void(* handler)(SamiError*));
+  v1MeasurementsPostWithCompletion(SamiMeasurementSet* measurements, void(* handler)(SamiError*));
+  
+  SamiMeasurement* 
+  v1MeasurementsDailyGetWithCompletion(String* variableName, String* abbreviatedUnitName, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiMeasurement*, SamiError*));
   
   SamiMeasurementRange* 
-  measurementsRangeGetWithCompletion(String* sources, Integer* user, void (* handler)(SamiMeasurementRange*, SamiError*));
+  v1MeasurementsRangeGetWithCompletion(String* sources, Integer* user, void (* handler)(SamiMeasurementRange*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

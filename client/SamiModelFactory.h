@@ -3,7 +3,12 @@
 
 #include "SamiObject.h"
 
+#include "SamiCommonResponse.h"
+#include "SamiHumanTime.h"
+#include "SamiConnectorInstruction.h"
 #include "SamiConnector.h"
+#include "SamiConnectorInfo.h"
+#include "SamiConnectorInfoHistoryItem.h"
 #include "SamiConversionStep.h"
 #include "SamiCorrelation.h"
 #include "SamiJsonErrorResponse.h"
@@ -25,15 +30,30 @@
 #include "SamiValueObject.h"
 #include "SamiVariable.h"
 #include "SamiVariableCategory.h"
-#include "SamiVariableUserSettings.h"
+#include "SamiUserVariables.h"
 #include "SamiVariableNew.h"
 #include "SamiVariablesNew.h"
 
 namespace Swagger {
   void*
   create(String type) {
+    if(type.Equals(L"SamiCommonResponse", true)) {
+      return new SamiCommonResponse();
+    }
+    if(type.Equals(L"SamiHumanTime", true)) {
+      return new SamiHumanTime();
+    }
+    if(type.Equals(L"SamiConnectorInstruction", true)) {
+      return new SamiConnectorInstruction();
+    }
     if(type.Equals(L"SamiConnector", true)) {
       return new SamiConnector();
+    }
+    if(type.Equals(L"SamiConnectorInfo", true)) {
+      return new SamiConnectorInfo();
+    }
+    if(type.Equals(L"SamiConnectorInfoHistoryItem", true)) {
+      return new SamiConnectorInfoHistoryItem();
     }
     if(type.Equals(L"SamiConversionStep", true)) {
       return new SamiConversionStep();
@@ -98,8 +118,8 @@ namespace Swagger {
     if(type.Equals(L"SamiVariableCategory", true)) {
       return new SamiVariableCategory();
     }
-    if(type.Equals(L"SamiVariableUserSettings", true)) {
-      return new SamiVariableUserSettings();
+    if(type.Equals(L"SamiUserVariables", true)) {
+      return new SamiUserVariables();
     }
     if(type.Equals(L"SamiVariableNew", true)) {
       return new SamiVariableNew();

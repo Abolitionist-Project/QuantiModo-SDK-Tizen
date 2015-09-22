@@ -20,10 +20,13 @@ public:
 
   
   SamiUnitCategory* 
-  unitCategoriesGetWithCompletion( void (* handler)(SamiUnitCategory*, SamiError*));
+  v1UnitCategoriesGetWithCompletion( void (* handler)(SamiUnitCategory*, SamiError*));
   
   IList* 
-  unitsGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, void (* handler)(IList*, SamiError*));
+  v1UnitsGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, void (* handler)(IList*, SamiError*));
+  
+  IList* 
+  v1UnitsVariableGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, String* variable, void (* handler)(IList*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

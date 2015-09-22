@@ -17,6 +17,7 @@
 using namespace Tizen::Web::Json;
 
 
+using Tizen::Base::Integer;
 using Tizen::Base::Long;
 using Tizen::Base::String;
 using Tizen::Base::Double;
@@ -49,8 +50,14 @@ public:
     String* getPCause();
     void setPCause(String* pCause);
     
+    String* getPOriginalCause();
+    void setPOriginalCause(String* pOriginalCause);
+    
     String* getPEffect();
     void setPEffect(String* pEffect);
+    
+    String* getPOriginalEffect();
+    void setPOriginalEffect(String* pOriginalEffect);
     
     Double* getPOnsetDelay();
     void setPOnsetDelay(Double* pOnsetDelay);
@@ -82,11 +89,34 @@ public:
     String* getPEffectCategory();
     void setPEffectCategory(String* pEffectCategory);
     
+    Long* getPValuePredictingHighOutcome();
+    void setPValuePredictingHighOutcome(Long* pValuePredictingHighOutcome);
+    
+    Long* getPValuePredictingLowOutcome();
+    void setPValuePredictingLowOutcome(Long* pValuePredictingLowOutcome);
+    
+    Long* getPOptimalPearsonProduct();
+    void setPOptimalPearsonProduct(Long* pOptimalPearsonProduct);
+    
+    Long* getPAverageVote();
+    void setPAverageVote(Long* pAverageVote);
+    
+    Long* getPUserVote();
+    void setPUserVote(Long* pUserVote);
+    
+    String* getPCauseUnit();
+    void setPCauseUnit(String* pCauseUnit);
+    
+    Integer* getPCauseUnitId();
+    void setPCauseUnitId(Integer* pCauseUnitId);
+    
 
 private:
     Long* pCorrelationCoefficient;
     String* pCause;
+    String* pOriginalCause;
     String* pEffect;
+    String* pOriginalEffect;
     Double* pOnsetDelay;
     Long* pDurationOfAction;
     Long* pNumberOfPairs;
@@ -97,6 +127,13 @@ private:
     Long* pCausalityFactor;
     String* pCauseCategory;
     String* pEffectCategory;
+    Long* pValuePredictingHighOutcome;
+    Long* pValuePredictingLowOutcome;
+    Long* pOptimalPearsonProduct;
+    Long* pAverageVote;
+    Long* pUserVote;
+    String* pCauseUnit;
+    Integer* pCauseUnitId;
     
 };
 

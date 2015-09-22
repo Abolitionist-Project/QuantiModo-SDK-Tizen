@@ -25,10 +25,16 @@ SamiMeasurement::init() {
     pVariable = null;
     pSource = null;
     pTimestamp = null;
+    pStartTime = null;
+    pHumanTime = null;
     pValue = null;
     pUnit = null;
+    pOriginalValue = null;
     pStoredValue = null;
-    pStoredUnit = null;
+    pStoredAbbreviatedUnitName = null;
+    pOriginalAbbreviatedUnitName = null;
+    pAbbreviatedUnitName = null;
+    pNote = null;
     
 }
 
@@ -49,6 +55,16 @@ SamiMeasurement::cleanup() {
         delete pTimestamp;
         pTimestamp = null;
     }
+    if(pStartTime != null) {
+        
+        delete pStartTime;
+        pStartTime = null;
+    }
+    if(pHumanTime != null) {
+        
+        delete pHumanTime;
+        pHumanTime = null;
+    }
     if(pValue != null) {
         
         delete pValue;
@@ -59,15 +75,35 @@ SamiMeasurement::cleanup() {
         delete pUnit;
         pUnit = null;
     }
+    if(pOriginalValue != null) {
+        
+        delete pOriginalValue;
+        pOriginalValue = null;
+    }
     if(pStoredValue != null) {
         
         delete pStoredValue;
         pStoredValue = null;
     }
-    if(pStoredUnit != null) {
+    if(pStoredAbbreviatedUnitName != null) {
         
-        delete pStoredUnit;
-        pStoredUnit = null;
+        delete pStoredAbbreviatedUnitName;
+        pStoredAbbreviatedUnitName = null;
+    }
+    if(pOriginalAbbreviatedUnitName != null) {
+        
+        delete pOriginalAbbreviatedUnitName;
+        pOriginalAbbreviatedUnitName = null;
+    }
+    if(pAbbreviatedUnitName != null) {
+        
+        delete pAbbreviatedUnitName;
+        pAbbreviatedUnitName = null;
+    }
+    if(pNote != null) {
+        
+        delete pNote;
+        pNote = null;
     }
     
 }
@@ -134,6 +170,24 @@ SamiMeasurement::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pTimestamp, pTimestampVal, L"Long", L"Long");
         }
         delete pTimestampKey;
+        JsonString* pStartTimeKey = new JsonString(L"startTime");
+        IJsonValue* pStartTimeVal = null;
+        pJsonObject->GetValue(pStartTimeKey, pStartTimeVal);
+        if(pStartTimeVal != null) {
+            
+            pStartTime = new String();
+            jsonToValue(pStartTime, pStartTimeVal, L"String", L"String");
+        }
+        delete pStartTimeKey;
+        JsonString* pHumanTimeKey = new JsonString(L"humanTime");
+        IJsonValue* pHumanTimeVal = null;
+        pJsonObject->GetValue(pHumanTimeKey, pHumanTimeVal);
+        if(pHumanTimeVal != null) {
+            
+            pHumanTime = new SamiHumanTime();
+            jsonToValue(pHumanTime, pHumanTimeVal, L"SamiHumanTime", L"SamiHumanTime");
+        }
+        delete pHumanTimeKey;
         JsonString* pValueKey = new JsonString(L"value");
         IJsonValue* pValueVal = null;
         pJsonObject->GetValue(pValueKey, pValueVal);
@@ -152,6 +206,15 @@ SamiMeasurement::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUnit, pUnitVal, L"String", L"String");
         }
         delete pUnitKey;
+        JsonString* pOriginalValueKey = new JsonString(L"originalValue");
+        IJsonValue* pOriginalValueVal = null;
+        pJsonObject->GetValue(pOriginalValueKey, pOriginalValueVal);
+        if(pOriginalValueVal != null) {
+            
+            pOriginalValue = null;
+            jsonToValue(pOriginalValue, pOriginalValueVal, L"Integer", L"Integer");
+        }
+        delete pOriginalValueKey;
         JsonString* pStoredValueKey = new JsonString(L"storedValue");
         IJsonValue* pStoredValueVal = null;
         pJsonObject->GetValue(pStoredValueKey, pStoredValueVal);
@@ -161,15 +224,42 @@ SamiMeasurement::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pStoredValue, pStoredValueVal, L"Double", L"Double");
         }
         delete pStoredValueKey;
-        JsonString* pStoredUnitKey = new JsonString(L"storedUnit");
-        IJsonValue* pStoredUnitVal = null;
-        pJsonObject->GetValue(pStoredUnitKey, pStoredUnitVal);
-        if(pStoredUnitVal != null) {
+        JsonString* pStoredAbbreviatedUnitNameKey = new JsonString(L"storedAbbreviatedUnitName");
+        IJsonValue* pStoredAbbreviatedUnitNameVal = null;
+        pJsonObject->GetValue(pStoredAbbreviatedUnitNameKey, pStoredAbbreviatedUnitNameVal);
+        if(pStoredAbbreviatedUnitNameVal != null) {
             
-            pStoredUnit = new String();
-            jsonToValue(pStoredUnit, pStoredUnitVal, L"String", L"String");
+            pStoredAbbreviatedUnitName = new String();
+            jsonToValue(pStoredAbbreviatedUnitName, pStoredAbbreviatedUnitNameVal, L"String", L"String");
         }
-        delete pStoredUnitKey;
+        delete pStoredAbbreviatedUnitNameKey;
+        JsonString* pOriginalAbbreviatedUnitNameKey = new JsonString(L"originalAbbreviatedUnitName");
+        IJsonValue* pOriginalAbbreviatedUnitNameVal = null;
+        pJsonObject->GetValue(pOriginalAbbreviatedUnitNameKey, pOriginalAbbreviatedUnitNameVal);
+        if(pOriginalAbbreviatedUnitNameVal != null) {
+            
+            pOriginalAbbreviatedUnitName = new String();
+            jsonToValue(pOriginalAbbreviatedUnitName, pOriginalAbbreviatedUnitNameVal, L"String", L"String");
+        }
+        delete pOriginalAbbreviatedUnitNameKey;
+        JsonString* pAbbreviatedUnitNameKey = new JsonString(L"abbreviatedUnitName");
+        IJsonValue* pAbbreviatedUnitNameVal = null;
+        pJsonObject->GetValue(pAbbreviatedUnitNameKey, pAbbreviatedUnitNameVal);
+        if(pAbbreviatedUnitNameVal != null) {
+            
+            pAbbreviatedUnitName = new String();
+            jsonToValue(pAbbreviatedUnitName, pAbbreviatedUnitNameVal, L"String", L"String");
+        }
+        delete pAbbreviatedUnitNameKey;
+        JsonString* pNoteKey = new JsonString(L"note");
+        IJsonValue* pNoteVal = null;
+        pJsonObject->GetValue(pNoteKey, pNoteVal);
+        if(pNoteVal != null) {
+            
+            pNote = new String();
+            jsonToValue(pNote, pNoteVal, L"String", L"String");
+        }
+        delete pNoteKey;
         
     }
 }
@@ -234,6 +324,14 @@ SamiMeasurement::asJsonObject() {
     pJsonObject->Add(pTimestampKey, toJson(getPTimestamp(), "Long", ""));
 
     
+    JsonString *pStartTimeKey = new JsonString(L"startTime");
+    pJsonObject->Add(pStartTimeKey, toJson(getPStartTime(), "String", ""));
+
+    
+    JsonString *pHumanTimeKey = new JsonString(L"humanTime");
+    pJsonObject->Add(pHumanTimeKey, toJson(getPHumanTime(), "SamiHumanTime", ""));
+
+    
     JsonString *pValueKey = new JsonString(L"value");
     pJsonObject->Add(pValueKey, toJson(getPValue(), "Double", ""));
 
@@ -242,12 +340,28 @@ SamiMeasurement::asJsonObject() {
     pJsonObject->Add(pUnitKey, toJson(getPUnit(), "String", ""));
 
     
+    JsonString *pOriginalValueKey = new JsonString(L"originalValue");
+    pJsonObject->Add(pOriginalValueKey, toJson(getPOriginalValue(), "Integer", ""));
+
+    
     JsonString *pStoredValueKey = new JsonString(L"storedValue");
     pJsonObject->Add(pStoredValueKey, toJson(getPStoredValue(), "Double", ""));
 
     
-    JsonString *pStoredUnitKey = new JsonString(L"storedUnit");
-    pJsonObject->Add(pStoredUnitKey, toJson(getPStoredUnit(), "String", ""));
+    JsonString *pStoredAbbreviatedUnitNameKey = new JsonString(L"storedAbbreviatedUnitName");
+    pJsonObject->Add(pStoredAbbreviatedUnitNameKey, toJson(getPStoredAbbreviatedUnitName(), "String", ""));
+
+    
+    JsonString *pOriginalAbbreviatedUnitNameKey = new JsonString(L"originalAbbreviatedUnitName");
+    pJsonObject->Add(pOriginalAbbreviatedUnitNameKey, toJson(getPOriginalAbbreviatedUnitName(), "String", ""));
+
+    
+    JsonString *pAbbreviatedUnitNameKey = new JsonString(L"abbreviatedUnitName");
+    pJsonObject->Add(pAbbreviatedUnitNameKey, toJson(getPAbbreviatedUnitName(), "String", ""));
+
+    
+    JsonString *pNoteKey = new JsonString(L"note");
+    pJsonObject->Add(pNoteKey, toJson(getPNote(), "String", ""));
 
     
     return pJsonObject;
@@ -280,6 +394,24 @@ SamiMeasurement::setPTimestamp(Long* pTimestamp) {
     this->pTimestamp = pTimestamp;
 }
 
+String*
+SamiMeasurement::getPStartTime() {
+    return pStartTime;
+}
+void
+SamiMeasurement::setPStartTime(String* pStartTime) {
+    this->pStartTime = pStartTime;
+}
+
+SamiHumanTime*
+SamiMeasurement::getPHumanTime() {
+    return pHumanTime;
+}
+void
+SamiMeasurement::setPHumanTime(SamiHumanTime* pHumanTime) {
+    this->pHumanTime = pHumanTime;
+}
+
 Double*
 SamiMeasurement::getPValue() {
     return pValue;
@@ -298,6 +430,15 @@ SamiMeasurement::setPUnit(String* pUnit) {
     this->pUnit = pUnit;
 }
 
+Integer*
+SamiMeasurement::getPOriginalValue() {
+    return pOriginalValue;
+}
+void
+SamiMeasurement::setPOriginalValue(Integer* pOriginalValue) {
+    this->pOriginalValue = pOriginalValue;
+}
+
 Double*
 SamiMeasurement::getPStoredValue() {
     return pStoredValue;
@@ -308,12 +449,39 @@ SamiMeasurement::setPStoredValue(Double* pStoredValue) {
 }
 
 String*
-SamiMeasurement::getPStoredUnit() {
-    return pStoredUnit;
+SamiMeasurement::getPStoredAbbreviatedUnitName() {
+    return pStoredAbbreviatedUnitName;
 }
 void
-SamiMeasurement::setPStoredUnit(String* pStoredUnit) {
-    this->pStoredUnit = pStoredUnit;
+SamiMeasurement::setPStoredAbbreviatedUnitName(String* pStoredAbbreviatedUnitName) {
+    this->pStoredAbbreviatedUnitName = pStoredAbbreviatedUnitName;
+}
+
+String*
+SamiMeasurement::getPOriginalAbbreviatedUnitName() {
+    return pOriginalAbbreviatedUnitName;
+}
+void
+SamiMeasurement::setPOriginalAbbreviatedUnitName(String* pOriginalAbbreviatedUnitName) {
+    this->pOriginalAbbreviatedUnitName = pOriginalAbbreviatedUnitName;
+}
+
+String*
+SamiMeasurement::getPAbbreviatedUnitName() {
+    return pAbbreviatedUnitName;
+}
+void
+SamiMeasurement::setPAbbreviatedUnitName(String* pAbbreviatedUnitName) {
+    this->pAbbreviatedUnitName = pAbbreviatedUnitName;
+}
+
+String*
+SamiMeasurement::getPNote() {
+    return pNote;
+}
+void
+SamiMeasurement::setPNote(String* pNote) {
+    this->pNote = pNote;
 }
 
 

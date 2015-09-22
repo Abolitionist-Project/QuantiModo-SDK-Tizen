@@ -5,11 +5,11 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
-#include "SamiUser.h"
 using Tizen::Base::Integer;
 #include "SamiUserTokenSuccessfulResponse.h"
 #include "SamiUserTokenFailedResponse.h"
 #include "SamiUserTokenRequest.h"
+#include "SamiUser.h"
 
 using namespace Tizen::Net::Http;
 
@@ -21,11 +21,11 @@ public:
   virtual ~SamiUserApi();
 
   
-  SamiUser* 
-  userMeGetWithCompletion( void (* handler)(SamiUser*, SamiError*));
-  
   SamiUserTokenSuccessfulResponse* 
   v1OrganizationsOrganizationIdUsersPostWithCompletion(Integer* organizationId, SamiUserTokenRequest* body, void (* handler)(SamiUserTokenSuccessfulResponse*, SamiError*));
+  
+  SamiUser* 
+  v1UserMeGetWithCompletion( void (* handler)(SamiUser*, SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

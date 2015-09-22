@@ -17,6 +17,8 @@
 using namespace Tizen::Web::Json;
 
 
+using Tizen::Base::Integer;
+#include "SamiHumanTime.h"
 using Tizen::Base::Long;
 using Tizen::Base::String;
 using Tizen::Base::Double;
@@ -52,27 +54,51 @@ public:
     Long* getPTimestamp();
     void setPTimestamp(Long* pTimestamp);
     
+    String* getPStartTime();
+    void setPStartTime(String* pStartTime);
+    
+    SamiHumanTime* getPHumanTime();
+    void setPHumanTime(SamiHumanTime* pHumanTime);
+    
     Double* getPValue();
     void setPValue(Double* pValue);
     
     String* getPUnit();
     void setPUnit(String* pUnit);
     
+    Integer* getPOriginalValue();
+    void setPOriginalValue(Integer* pOriginalValue);
+    
     Double* getPStoredValue();
     void setPStoredValue(Double* pStoredValue);
     
-    String* getPStoredUnit();
-    void setPStoredUnit(String* pStoredUnit);
+    String* getPStoredAbbreviatedUnitName();
+    void setPStoredAbbreviatedUnitName(String* pStoredAbbreviatedUnitName);
+    
+    String* getPOriginalAbbreviatedUnitName();
+    void setPOriginalAbbreviatedUnitName(String* pOriginalAbbreviatedUnitName);
+    
+    String* getPAbbreviatedUnitName();
+    void setPAbbreviatedUnitName(String* pAbbreviatedUnitName);
+    
+    String* getPNote();
+    void setPNote(String* pNote);
     
 
 private:
     String* pVariable;
     String* pSource;
     Long* pTimestamp;
+    String* pStartTime;
+    SamiHumanTime* pHumanTime;
     Double* pValue;
     String* pUnit;
+    Integer* pOriginalValue;
     Double* pStoredValue;
-    String* pStoredUnit;
+    String* pStoredAbbreviatedUnitName;
+    String* pOriginalAbbreviatedUnitName;
+    String* pAbbreviatedUnitName;
+    String* pNote;
     
 };
 

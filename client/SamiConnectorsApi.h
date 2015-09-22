@@ -5,9 +5,11 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
-#include "SamiConnector.h"
 using Tizen::Base::String;
+#include "SamiConnector.h"
 using Tizen::Base::Boolean;
+#include "SamiConnectorInstruction.h"
+#include "SamiConnectorInfo.h"
 
 using namespace Tizen::Net::Http;
 
@@ -19,26 +21,32 @@ public:
   virtual ~SamiConnectorsApi();
 
   
+  void 
+  v1ConnectJsGetWithCompletion(String* t, void(* handler)(SamiError*));
+  
+  void 
+  v1ConnectMobileGetWithCompletion(String* t, void(* handler)(SamiError*));
+  
   IList* 
-  connectorsListGetWithCompletion( void (* handler)(IList*, SamiError*));
+  v1ConnectorsListGetWithCompletion( void (* handler)(IList*, SamiError*));
   
   void 
-  connectorsConnectorConnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
+  v1ConnectorsConnectorConnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
   
   void 
-  connectorsConnectorConnectInstructionsGetWithCompletion(String* connector, String* url, IList* parameters, Boolean* usePopup, void(* handler)(SamiError*));
+  v1ConnectorsConnectorConnectInstructionsGetWithCompletion(String* connector, String* parameters, String* url, Boolean* usePopup, void(* handler)(SamiError*));
+  
+  SamiConnectorInstruction* 
+  v1ConnectorsConnectorConnectParameterGetWithCompletion(String* connector, String* displayName, String* key, String* placeholder, String* type, Boolean* usePopup, String* defaultValue, void (* handler)(SamiConnectorInstruction*, SamiError*));
   
   void 
-  connectorsConnectorConnectParameterGetWithCompletion(String* connector, String* displayName, String* key, Boolean* usePopup, String* type, String* placeholder, String* defaultValue, void(* handler)(SamiError*));
+  v1ConnectorsConnectorDisconnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
+  
+  SamiConnectorInfo* 
+  v1ConnectorsConnectorInfoGetWithCompletion(String* connector, void (* handler)(SamiConnectorInfo*, SamiError*));
   
   void 
-  connectorsConnectorDisconnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
-  
-  void 
-  connectorsConnectorInfoGetWithCompletion(String* connector, void(* handler)(SamiError*));
-  
-  void 
-  connectorsConnectorUpdateGetWithCompletion(String* connector, void(* handler)(SamiError*));
+  v1ConnectorsConnectorUpdateGetWithCompletion(String* connector, void(* handler)(SamiError*));
   
   static String getBasePath() {
     return L"https://localhost/api";

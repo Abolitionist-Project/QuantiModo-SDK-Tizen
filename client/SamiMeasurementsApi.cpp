@@ -17,7 +17,7 @@ SamiMeasurementsApi::~SamiMeasurementsApi() {
 }
 
 void
-measurementSourcesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1MeasurementSourcesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -52,10 +52,10 @@ measurementSourcesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(voi
 }
 
 SamiMeasurementSource* 
-SamiMeasurementsApi::measurementSourcesGetWithCompletion( void (* success)(SamiMeasurementSource*, SamiError*)) {
+SamiMeasurementsApi::v1MeasurementSourcesGetWithCompletion( void (* success)(SamiMeasurementSource*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&measurementSourcesGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1MeasurementSourcesGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -70,7 +70,7 @@ SamiMeasurementsApi::measurementSourcesGetWithCompletion( void (* success)(SamiM
 
   
 
-  String url(L"/measurementSources");
+  String url(L"/v1/measurementSources");
 
   
 
@@ -79,7 +79,7 @@ SamiMeasurementsApi::measurementSourcesGetWithCompletion( void (* success)(SamiM
 }
 
 void
-measurementSourcesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1MeasurementSourcesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -93,10 +93,10 @@ measurementSourcesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(vo
 }
 
 void 
-SamiMeasurementsApi::measurementSourcesPostWithCompletion(SamiMeasurementSource* name, void(*success)(SamiError*)) {
+SamiMeasurementsApi::v1MeasurementSourcesPostWithCompletion(SamiMeasurementSource* name, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&measurementSourcesPostProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1MeasurementSourcesPostProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -119,7 +119,7 @@ SamiMeasurementsApi::measurementSourcesPostWithCompletion(SamiMeasurementSource*
   
   
 
-  String url(L"/measurementSources");
+  String url(L"/v1/measurementSources");
 
   
 
@@ -128,7 +128,7 @@ SamiMeasurementsApi::measurementSourcesPostWithCompletion(SamiMeasurementSource*
 }
 
 void
-measurementsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1MeasurementsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -163,10 +163,10 @@ measurementsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, Sa
 }
 
 SamiMeasurement* 
-SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, void (* success)(SamiMeasurement*, SamiError*)) {
+SamiMeasurementsApi::v1MeasurementsGetWithCompletion(String* variableName, String* unit, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiMeasurement*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&measurementsGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1MeasurementsGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -194,12 +194,21 @@ SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String*
     queryParams->Add(new String("groupingTimezone"), groupingTimezone);
   
   
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
+  
+  
 
   String* mBody = null;
 
   
 
-  String url(L"/measurements");
+  String url(L"/v1/measurements");
 
   
 
@@ -208,7 +217,7 @@ SamiMeasurementsApi::measurementsGetWithCompletion(String* variableName, String*
 }
 
 void
-measurementsV2PostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1MeasurementsPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -222,10 +231,10 @@ measurementsV2PostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*,
 }
 
 void 
-SamiMeasurementsApi::measurementsV2PostWithCompletion(SamiMeasurementSet* measurements, void(*success)(SamiError*)) {
+SamiMeasurementsApi::v1MeasurementsPostWithCompletion(SamiMeasurementSet* measurements, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&measurementsV2PostProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1MeasurementsPostProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -248,7 +257,7 @@ SamiMeasurementsApi::measurementsV2PostWithCompletion(SamiMeasurementSet* measur
   
   
 
-  String url(L"/measurements/v2");
+  String url(L"/v1/measurements");
 
   
 
@@ -257,7 +266,96 @@ SamiMeasurementsApi::measurementsV2PostWithCompletion(SamiMeasurementSet* measur
 }
 
 void
-measurementsRangeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1MeasurementsDailyGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+  int code = pHttpResponse->GetHttpStatusCode();
+
+  if(code >= 200 && code < 300) {
+    ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
+    IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
+
+    SamiMeasurement* out = new SamiMeasurement();
+    jsonToValue(out, pJson, L"SamiMeasurement*", L"SamiMeasurement");
+
+    if (pJson) {
+      if (pJson->GetType() == JSON_TYPE_OBJECT) {
+         JsonObject* pObject = static_cast< JsonObject* >(pJson);
+         pObject->RemoveAll(true);
+      }
+      else if (pJson->GetType() == JSON_TYPE_ARRAY) {
+         JsonArray* pArray = static_cast< JsonArray* >(pJson);
+         pArray->RemoveAll(true);
+      }
+      handler(out, null);
+    }
+    else {
+      SamiError* error = new SamiError(0, new String(L"No parsable response received"));
+      handler(null, error);
+    }
+    
+  }
+  else {
+    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    handler(null, error);
+    
+  }
+}
+
+SamiMeasurement* 
+SamiMeasurementsApi::v1MeasurementsDailyGetWithCompletion(String* variableName, String* abbreviatedUnitName, String* startTime, String* endTime, Integer* groupingWidth, String* groupingTimezone, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiMeasurement*, SamiError*)) {
+  client = new SamiApiClient();
+
+  client->success(&v1MeasurementsDailyGetProcessor, (void(*)(void*, SamiError*))success);
+  HashMap* headerParams = new HashMap(SingleObjectDeleter);
+  headerParams->Construct();
+
+  
+
+  HashMap* queryParams = new HashMap(SingleObjectDeleter);
+  queryParams->Construct();
+
+  
+    queryParams->Add(new String("variableName"), variableName);
+  
+  
+    queryParams->Add(new String("abbreviatedUnitName"), abbreviatedUnitName);
+  
+  
+    queryParams->Add(new String("startTime"), startTime);
+  
+  
+    queryParams->Add(new String("endTime"), endTime);
+  
+  
+    queryParams->Add(new String("groupingWidth"), groupingWidth);
+  
+  
+    queryParams->Add(new String("groupingTimezone"), groupingTimezone);
+  
+  
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
+  
+  
+
+  String* mBody = null;
+
+  
+
+  String url(L"/v1/measurements/daily");
+
+  
+
+  client->execute(SamiMeasurementsApi::getBasePath(), url, "GET", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
+  return null;
+}
+
+void
+v1MeasurementsRangeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -292,10 +390,10 @@ measurementsRangeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void
 }
 
 SamiMeasurementRange* 
-SamiMeasurementsApi::measurementsRangeGetWithCompletion(String* sources, Integer* user, void (* success)(SamiMeasurementRange*, SamiError*)) {
+SamiMeasurementsApi::v1MeasurementsRangeGetWithCompletion(String* sources, Integer* user, void (* success)(SamiMeasurementRange*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&measurementsRangeGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1MeasurementsRangeGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -316,7 +414,7 @@ SamiMeasurementsApi::measurementsRangeGetWithCompletion(String* sources, Integer
 
   
 
-  String url(L"/measurementsRange");
+  String url(L"/v1/measurementsRange");
 
   
 

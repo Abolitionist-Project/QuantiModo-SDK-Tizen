@@ -30,7 +30,7 @@ SamiConnector::init() {
     pConnected = null;
     pConnectInstructions = null;
     pLastUpdate = null;
-    pLatestData = null;
+    pTotalMeasurementsInLastUpdate = null;
     pNoDataYet = null;
     
 }
@@ -77,10 +77,10 @@ SamiConnector::cleanup() {
         delete pLastUpdate;
         pLastUpdate = null;
     }
-    if(pLatestData != null) {
+    if(pTotalMeasurementsInLastUpdate != null) {
         
-        delete pLatestData;
-        pLatestData = null;
+        delete pTotalMeasurementsInLastUpdate;
+        pTotalMeasurementsInLastUpdate = null;
     }
     if(pNoDataYet != null) {
         
@@ -130,7 +130,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pIdKey, pIdVal);
         if(pIdVal != null) {
             
-            pId = new Integer();
+            pId = null;
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
@@ -193,19 +193,19 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pLastUpdateKey, pLastUpdateVal);
         if(pLastUpdateVal != null) {
             
-            pLastUpdate = new Integer();
+            pLastUpdate = null;
             jsonToValue(pLastUpdate, pLastUpdateVal, L"Integer", L"Integer");
         }
         delete pLastUpdateKey;
-        JsonString* pLatestDataKey = new JsonString(L"latestData");
-        IJsonValue* pLatestDataVal = null;
-        pJsonObject->GetValue(pLatestDataKey, pLatestDataVal);
-        if(pLatestDataVal != null) {
+        JsonString* pTotalMeasurementsInLastUpdateKey = new JsonString(L"totalMeasurementsInLastUpdate");
+        IJsonValue* pTotalMeasurementsInLastUpdateVal = null;
+        pJsonObject->GetValue(pTotalMeasurementsInLastUpdateKey, pTotalMeasurementsInLastUpdateVal);
+        if(pTotalMeasurementsInLastUpdateVal != null) {
             
-            pLatestData = new Integer();
-            jsonToValue(pLatestData, pLatestDataVal, L"Integer", L"Integer");
+            pTotalMeasurementsInLastUpdate = null;
+            jsonToValue(pTotalMeasurementsInLastUpdate, pTotalMeasurementsInLastUpdateVal, L"Integer", L"Integer");
         }
-        delete pLatestDataKey;
+        delete pTotalMeasurementsInLastUpdateKey;
         JsonString* pNoDataYetKey = new JsonString(L"noDataYet");
         IJsonValue* pNoDataYetVal = null;
         pJsonObject->GetValue(pNoDataYetKey, pNoDataYetVal);
@@ -299,8 +299,8 @@ SamiConnector::asJsonObject() {
     pJsonObject->Add(pLastUpdateKey, toJson(getPLastUpdate(), "Integer", ""));
 
     
-    JsonString *pLatestDataKey = new JsonString(L"latestData");
-    pJsonObject->Add(pLatestDataKey, toJson(getPLatestData(), "Integer", ""));
+    JsonString *pTotalMeasurementsInLastUpdateKey = new JsonString(L"totalMeasurementsInLastUpdate");
+    pJsonObject->Add(pTotalMeasurementsInLastUpdateKey, toJson(getPTotalMeasurementsInLastUpdate(), "Integer", ""));
 
     
     JsonString *pNoDataYetKey = new JsonString(L"noDataYet");
@@ -383,12 +383,12 @@ SamiConnector::setPLastUpdate(Integer* pLastUpdate) {
 }
 
 Integer*
-SamiConnector::getPLatestData() {
-    return pLatestData;
+SamiConnector::getPTotalMeasurementsInLastUpdate() {
+    return pTotalMeasurementsInLastUpdate;
 }
 void
-SamiConnector::setPLatestData(Integer* pLatestData) {
-    this->pLatestData = pLatestData;
+SamiConnector::setPTotalMeasurementsInLastUpdate(Integer* pTotalMeasurementsInLastUpdate) {
+    this->pTotalMeasurementsInLastUpdate = pTotalMeasurementsInLastUpdate;
 }
 
 Boolean*

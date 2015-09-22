@@ -82,7 +82,7 @@ SamiMeasurementRange::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pLowerLimitKey, pLowerLimitVal);
         if(pLowerLimitVal != null) {
             
-            pLowerLimit = new Integer();
+            pLowerLimit = null;
             jsonToValue(pLowerLimit, pLowerLimitVal, L"Integer", L"Integer");
         }
         delete pLowerLimitKey;
@@ -91,7 +91,7 @@ SamiMeasurementRange::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pUpperLimitKey, pUpperLimitVal);
         if(pUpperLimitVal != null) {
             
-            pUpperLimit = new Integer();
+            pUpperLimit = null;
             jsonToValue(pUpperLimit, pUpperLimitVal, L"Integer", L"Integer");
         }
         delete pUpperLimitKey;

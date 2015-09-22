@@ -76,7 +76,7 @@ SamiUserTokenRequestInnerUserField::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(p_idKey, p_idVal);
         if(p_idVal != null) {
             
-            p_id = new Integer();
+            p_id = null;
             jsonToValue(p_id, p_idVal, L"Integer", L"Integer");
         }
         delete p_idKey;

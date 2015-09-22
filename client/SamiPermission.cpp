@@ -112,7 +112,7 @@ SamiPermission::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pTargetKey, pTargetVal);
         if(pTargetVal != null) {
             
-            pTarget = new Integer();
+            pTarget = null;
             jsonToValue(pTarget, pTargetVal, L"Integer", L"Integer");
         }
         delete pTargetKey;
@@ -130,7 +130,7 @@ SamiPermission::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pMin_timestampKey, pMin_timestampVal);
         if(pMin_timestampVal != null) {
             
-            pMin_timestamp = new Integer();
+            pMin_timestamp = null;
             jsonToValue(pMin_timestamp, pMin_timestampVal, L"Integer", L"Integer");
         }
         delete pMin_timestampKey;
@@ -139,7 +139,7 @@ SamiPermission::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pMax_timestampKey, pMax_timestampVal);
         if(pMax_timestampVal != null) {
             
-            pMax_timestamp = new Integer();
+            pMax_timestamp = null;
             jsonToValue(pMax_timestamp, pMax_timestampVal, L"Integer", L"Integer");
         }
         delete pMax_timestampKey;
@@ -148,7 +148,7 @@ SamiPermission::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pMin_time_of_dayKey, pMin_time_of_dayVal);
         if(pMin_time_of_dayVal != null) {
             
-            pMin_time_of_day = new Integer();
+            pMin_time_of_day = null;
             jsonToValue(pMin_time_of_day, pMin_time_of_dayVal, L"Integer", L"Integer");
         }
         delete pMin_time_of_dayKey;
@@ -157,7 +157,7 @@ SamiPermission::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pMax_time_of_dayKey, pMax_time_of_dayVal);
         if(pMax_time_of_dayVal != null) {
             
-            pMax_time_of_day = new Integer();
+            pMax_time_of_day = null;
             jsonToValue(pMax_time_of_day, pMax_time_of_dayVal, L"Integer", L"Integer");
         }
         delete pMax_time_of_dayKey;

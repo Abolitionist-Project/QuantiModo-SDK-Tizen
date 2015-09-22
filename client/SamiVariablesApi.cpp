@@ -17,60 +17,7 @@ SamiVariablesApi::~SamiVariablesApi() {
 }
 
 void
-correlationsPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
-  int code = pHttpResponse->GetHttpStatusCode();
-
-  if(code >= 200 && code < 300) {
-    handler(null, null);
-  }
-  else {
-    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
-    
-    handler(error, null);
-  }
-}
-
-void 
-SamiVariablesApi::correlationsPostWithCompletion(String* cause, String* effect, String* correlationcoefficient, String* vote, void(*success)(SamiError*)) {
-  client = new SamiApiClient();
-
-  client->success(&correlationsPostProcessor, (void(*)(void*, SamiError*))success);
-  HashMap* headerParams = new HashMap(SingleObjectDeleter);
-  headerParams->Construct();
-
-  
-
-  HashMap* queryParams = new HashMap(SingleObjectDeleter);
-  queryParams->Construct();
-
-  
-    queryParams->Add(new String("cause"), cause);
-  
-  
-    queryParams->Add(new String("effect"), effect);
-  
-  
-    queryParams->Add(new String("correlationcoefficient"), correlationcoefficient);
-  
-  
-    queryParams->Add(new String("vote"), vote);
-  
-  
-
-  String* mBody = null;
-
-  
-
-  String url(L"/correlations");
-
-  
-
-  client->execute(SamiVariablesApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
-}
-
-void
-publicVariablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1PublicVariablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -105,10 +52,10 @@ publicVariablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*,
 }
 
 SamiVariable* 
-SamiVariablesApi::publicVariablesGetWithCompletion( void (* success)(SamiVariable*, SamiError*)) {
+SamiVariablesApi::v1PublicVariablesGetWithCompletion( void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&publicVariablesGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1PublicVariablesGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -123,7 +70,7 @@ SamiVariablesApi::publicVariablesGetWithCompletion( void (* success)(SamiVariabl
 
   
 
-  String url(L"/public/variables");
+  String url(L"/v1/public/variables");
 
   
 
@@ -132,7 +79,7 @@ SamiVariablesApi::publicVariablesGetWithCompletion( void (* success)(SamiVariabl
 }
 
 void
-publicVariablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1PublicVariablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -167,10 +114,10 @@ publicVariablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* han
 }
 
 SamiVariable* 
-SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, void (* success)(SamiVariable*, SamiError*)) {
+SamiVariablesApi::v1PublicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&publicVariablesSearchSearchGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1PublicVariablesSearchSearchGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -183,12 +130,21 @@ SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, S
     queryParams->Add(new String("effectOrCause"), effectOrCause);
   
   
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
+  
+  
 
   String* mBody = null;
 
   
 
-  String url(L"/public/variables/search/{search}");
+  String url(L"/v1/public/variables/search/{search}");
 
   
   String s_search(L"{");
@@ -202,7 +158,56 @@ SamiVariablesApi::publicVariablesSearchSearchGetWithCompletion(String* search, S
 }
 
 void
-variableCategoriesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1UserVariablesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+  int code = pHttpResponse->GetHttpStatusCode();
+
+  if(code >= 200 && code < 300) {
+    handler(null, null);
+  }
+  else {
+    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
+    
+    handler(error, null);
+  }
+}
+
+void 
+SamiVariablesApi::v1UserVariablesPostWithCompletion(SamiUserVariables* sharingData, void(*success)(SamiError*)) {
+  client = new SamiApiClient();
+
+  client->success(&v1UserVariablesPostProcessor, (void(*)(void*, SamiError*))success);
+  HashMap* headerParams = new HashMap(SingleObjectDeleter);
+  headerParams->Construct();
+
+  
+
+  HashMap* queryParams = new HashMap(SingleObjectDeleter);
+  queryParams->Construct();
+
+  
+
+  String* mBody = null;
+
+  
+  
+  
+  if(sharingData != null) {
+    mBody = new String(sharingData->asJson());
+    headerParams->Add(new String("Content-Type"), new String("application/json"));
+  }
+  
+  
+
+  String url(L"/v1/userVariables");
+
+  
+
+  client->execute(SamiVariablesApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
+  
+}
+
+void
+v1VariableCategoriesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -237,10 +242,10 @@ variableCategoriesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(voi
 }
 
 IList* 
-SamiVariablesApi::variableCategoriesGetWithCompletion( void (* success)(IList*, SamiError*)) {
+SamiVariablesApi::v1VariableCategoriesGetWithCompletion( void (* success)(IList*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&variableCategoriesGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1VariableCategoriesGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -255,7 +260,7 @@ SamiVariablesApi::variableCategoriesGetWithCompletion( void (* success)(IList*, 
 
   
 
-  String url(L"/variableCategories");
+  String url(L"/v1/variableCategories");
 
   
 
@@ -264,56 +269,7 @@ SamiVariablesApi::variableCategoriesGetWithCompletion( void (* success)(IList*, 
 }
 
 void
-variableUserSettingsPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
-  int code = pHttpResponse->GetHttpStatusCode();
-
-  if(code >= 200 && code < 300) {
-    handler(null, null);
-  }
-  else {
-    SamiError* error = new SamiError(code, new String(pHttpResponse->GetStatusText()));
-    
-    handler(error, null);
-  }
-}
-
-void 
-SamiVariablesApi::variableUserSettingsPostWithCompletion(SamiVariableUserSettings* sharingData, void(*success)(SamiError*)) {
-  client = new SamiApiClient();
-
-  client->success(&variableUserSettingsPostProcessor, (void(*)(void*, SamiError*))success);
-  HashMap* headerParams = new HashMap(SingleObjectDeleter);
-  headerParams->Construct();
-
-  
-
-  HashMap* queryParams = new HashMap(SingleObjectDeleter);
-  queryParams->Construct();
-
-  
-
-  String* mBody = null;
-
-  
-  
-  
-  if(sharingData != null) {
-    mBody = new String(sharingData->asJson());
-    headerParams->Add(new String("Content-Type"), new String("application/json"));
-  }
-  
-  
-
-  String url(L"/variableUserSettings");
-
-  
-
-  client->execute(SamiVariablesApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
-  
-}
-
-void
-variablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1VariablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -348,10 +304,10 @@ variablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiE
 }
 
 SamiVariable* 
-SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryName, void (* success)(SamiVariable*, SamiError*)) {
+SamiVariablesApi::v1VariablesGetWithCompletion(Integer* userId, String* category, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&variablesGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1VariablesGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -364,7 +320,16 @@ SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryNa
     queryParams->Add(new String("userId"), userId);
   
   
-    queryParams->Add(new String("categoryName"), categoryName);
+    queryParams->Add(new String("category"), category);
+  
+  
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
   
   
 
@@ -372,7 +337,7 @@ SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryNa
 
   
 
-  String url(L"/variables");
+  String url(L"/v1/variables");
 
   
 
@@ -381,7 +346,7 @@ SamiVariablesApi::variablesGetWithCompletion(Integer* userId, String* categoryNa
 }
 
 void
-variablesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1VariablesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -395,10 +360,10 @@ variablesPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, Sami
 }
 
 void 
-SamiVariablesApi::variablesPostWithCompletion(SamiVariablesNew* variableName, void(*success)(SamiError*)) {
+SamiVariablesApi::v1VariablesPostWithCompletion(SamiVariablesNew* variableName, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&variablesPostProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1VariablesPostProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -421,7 +386,7 @@ SamiVariablesApi::variablesPostWithCompletion(SamiVariablesNew* variableName, vo
   
   
 
-  String url(L"/variables");
+  String url(L"/v1/variables");
 
   
 
@@ -430,7 +395,7 @@ SamiVariablesApi::variablesPostWithCompletion(SamiVariablesNew* variableName, vo
 }
 
 void
-variablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1VariablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -465,10 +430,10 @@ variablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* handler)(
 }
 
 IList* 
-SamiVariablesApi::variablesSearchSearchGetWithCompletion(String* search, String* categoryName, String* source, Integer* limit, Integer* offset, void (* success)(IList*, SamiError*)) {
+SamiVariablesApi::v1VariablesSearchSearchGetWithCompletion(String* search, String* categoryName, String* source, Integer* limit, Integer* offset, void (* success)(IList*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&variablesSearchSearchGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1VariablesSearchSearchGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -495,7 +460,7 @@ SamiVariablesApi::variablesSearchSearchGetWithCompletion(String* search, String*
 
   
 
-  String url(L"/variables/search/{search}");
+  String url(L"/v1/variables/search/{search}");
 
   
   String s_search(L"{");
@@ -509,7 +474,7 @@ SamiVariablesApi::variablesSearchSearchGetWithCompletion(String* search, String*
 }
 
 void
-variablesVariableNameGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1VariablesVariableNameGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -544,10 +509,10 @@ variablesVariableNameGetProcessor(HttpResponse* pHttpResponse, void (* handler)(
 }
 
 SamiVariable* 
-SamiVariablesApi::variablesVariableNameGetWithCompletion(String* variableName, void (* success)(SamiVariable*, SamiError*)) {
+SamiVariablesApi::v1VariablesVariableNameGetWithCompletion(String* variableName, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&variablesVariableNameGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1VariablesVariableNameGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -562,7 +527,7 @@ SamiVariablesApi::variablesVariableNameGetWithCompletion(String* variableName, v
 
   
 
-  String url(L"/variables/{variableName}");
+  String url(L"/v1/variables/{variableName}");
 
   
   String s_variableName(L"{");

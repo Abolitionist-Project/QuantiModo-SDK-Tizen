@@ -121,7 +121,7 @@ SamiPostCorrelation::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pVoteKey, pVoteVal);
         if(pVoteVal != null) {
             
-            pVote = new Integer();
+            pVote = null;
             jsonToValue(pVote, pVoteVal, L"Integer", L"Integer");
         }
         delete pVoteKey;

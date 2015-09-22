@@ -24,7 +24,9 @@ void
 SamiCorrelation::init() {
     pCorrelationCoefficient = null;
     pCause = null;
+    pOriginalCause = null;
     pEffect = null;
+    pOriginalEffect = null;
     pOnsetDelay = null;
     pDurationOfAction = null;
     pNumberOfPairs = null;
@@ -35,6 +37,13 @@ SamiCorrelation::init() {
     pCausalityFactor = null;
     pCauseCategory = null;
     pEffectCategory = null;
+    pValuePredictingHighOutcome = null;
+    pValuePredictingLowOutcome = null;
+    pOptimalPearsonProduct = null;
+    pAverageVote = null;
+    pUserVote = null;
+    pCauseUnit = null;
+    pCauseUnitId = null;
     
 }
 
@@ -50,10 +59,20 @@ SamiCorrelation::cleanup() {
         delete pCause;
         pCause = null;
     }
+    if(pOriginalCause != null) {
+        
+        delete pOriginalCause;
+        pOriginalCause = null;
+    }
     if(pEffect != null) {
         
         delete pEffect;
         pEffect = null;
+    }
+    if(pOriginalEffect != null) {
+        
+        delete pOriginalEffect;
+        pOriginalEffect = null;
     }
     if(pOnsetDelay != null) {
         
@@ -104,6 +123,41 @@ SamiCorrelation::cleanup() {
         
         delete pEffectCategory;
         pEffectCategory = null;
+    }
+    if(pValuePredictingHighOutcome != null) {
+        
+        delete pValuePredictingHighOutcome;
+        pValuePredictingHighOutcome = null;
+    }
+    if(pValuePredictingLowOutcome != null) {
+        
+        delete pValuePredictingLowOutcome;
+        pValuePredictingLowOutcome = null;
+    }
+    if(pOptimalPearsonProduct != null) {
+        
+        delete pOptimalPearsonProduct;
+        pOptimalPearsonProduct = null;
+    }
+    if(pAverageVote != null) {
+        
+        delete pAverageVote;
+        pAverageVote = null;
+    }
+    if(pUserVote != null) {
+        
+        delete pUserVote;
+        pUserVote = null;
+    }
+    if(pCauseUnit != null) {
+        
+        delete pCauseUnit;
+        pCauseUnit = null;
+    }
+    if(pCauseUnitId != null) {
+        
+        delete pCauseUnitId;
+        pCauseUnitId = null;
     }
     
 }
@@ -161,6 +215,15 @@ SamiCorrelation::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCause, pCauseVal, L"String", L"String");
         }
         delete pCauseKey;
+        JsonString* pOriginalCauseKey = new JsonString(L"originalCause");
+        IJsonValue* pOriginalCauseVal = null;
+        pJsonObject->GetValue(pOriginalCauseKey, pOriginalCauseVal);
+        if(pOriginalCauseVal != null) {
+            
+            pOriginalCause = new String();
+            jsonToValue(pOriginalCause, pOriginalCauseVal, L"String", L"String");
+        }
+        delete pOriginalCauseKey;
         JsonString* pEffectKey = new JsonString(L"effect");
         IJsonValue* pEffectVal = null;
         pJsonObject->GetValue(pEffectKey, pEffectVal);
@@ -170,6 +233,15 @@ SamiCorrelation::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pEffect, pEffectVal, L"String", L"String");
         }
         delete pEffectKey;
+        JsonString* pOriginalEffectKey = new JsonString(L"originalEffect");
+        IJsonValue* pOriginalEffectVal = null;
+        pJsonObject->GetValue(pOriginalEffectKey, pOriginalEffectVal);
+        if(pOriginalEffectVal != null) {
+            
+            pOriginalEffect = new String();
+            jsonToValue(pOriginalEffect, pOriginalEffectVal, L"String", L"String");
+        }
+        delete pOriginalEffectKey;
         JsonString* pOnsetDelayKey = new JsonString(L"onsetDelay");
         IJsonValue* pOnsetDelayVal = null;
         pJsonObject->GetValue(pOnsetDelayKey, pOnsetDelayVal);
@@ -260,6 +332,69 @@ SamiCorrelation::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pEffectCategory, pEffectCategoryVal, L"String", L"String");
         }
         delete pEffectCategoryKey;
+        JsonString* pValuePredictingHighOutcomeKey = new JsonString(L"valuePredictingHighOutcome");
+        IJsonValue* pValuePredictingHighOutcomeVal = null;
+        pJsonObject->GetValue(pValuePredictingHighOutcomeKey, pValuePredictingHighOutcomeVal);
+        if(pValuePredictingHighOutcomeVal != null) {
+            
+            pValuePredictingHighOutcome = new Long();
+            jsonToValue(pValuePredictingHighOutcome, pValuePredictingHighOutcomeVal, L"Long", L"Long");
+        }
+        delete pValuePredictingHighOutcomeKey;
+        JsonString* pValuePredictingLowOutcomeKey = new JsonString(L"valuePredictingLowOutcome");
+        IJsonValue* pValuePredictingLowOutcomeVal = null;
+        pJsonObject->GetValue(pValuePredictingLowOutcomeKey, pValuePredictingLowOutcomeVal);
+        if(pValuePredictingLowOutcomeVal != null) {
+            
+            pValuePredictingLowOutcome = new Long();
+            jsonToValue(pValuePredictingLowOutcome, pValuePredictingLowOutcomeVal, L"Long", L"Long");
+        }
+        delete pValuePredictingLowOutcomeKey;
+        JsonString* pOptimalPearsonProductKey = new JsonString(L"optimalPearsonProduct");
+        IJsonValue* pOptimalPearsonProductVal = null;
+        pJsonObject->GetValue(pOptimalPearsonProductKey, pOptimalPearsonProductVal);
+        if(pOptimalPearsonProductVal != null) {
+            
+            pOptimalPearsonProduct = new Long();
+            jsonToValue(pOptimalPearsonProduct, pOptimalPearsonProductVal, L"Long", L"Long");
+        }
+        delete pOptimalPearsonProductKey;
+        JsonString* pAverageVoteKey = new JsonString(L"averageVote");
+        IJsonValue* pAverageVoteVal = null;
+        pJsonObject->GetValue(pAverageVoteKey, pAverageVoteVal);
+        if(pAverageVoteVal != null) {
+            
+            pAverageVote = new Long();
+            jsonToValue(pAverageVote, pAverageVoteVal, L"Long", L"Long");
+        }
+        delete pAverageVoteKey;
+        JsonString* pUserVoteKey = new JsonString(L"userVote");
+        IJsonValue* pUserVoteVal = null;
+        pJsonObject->GetValue(pUserVoteKey, pUserVoteVal);
+        if(pUserVoteVal != null) {
+            
+            pUserVote = new Long();
+            jsonToValue(pUserVote, pUserVoteVal, L"Long", L"Long");
+        }
+        delete pUserVoteKey;
+        JsonString* pCauseUnitKey = new JsonString(L"causeUnit");
+        IJsonValue* pCauseUnitVal = null;
+        pJsonObject->GetValue(pCauseUnitKey, pCauseUnitVal);
+        if(pCauseUnitVal != null) {
+            
+            pCauseUnit = new String();
+            jsonToValue(pCauseUnit, pCauseUnitVal, L"String", L"String");
+        }
+        delete pCauseUnitKey;
+        JsonString* pCauseUnitIdKey = new JsonString(L"causeUnitId");
+        IJsonValue* pCauseUnitIdVal = null;
+        pJsonObject->GetValue(pCauseUnitIdKey, pCauseUnitIdVal);
+        if(pCauseUnitIdVal != null) {
+            
+            pCauseUnitId = null;
+            jsonToValue(pCauseUnitId, pCauseUnitIdVal, L"Integer", L"Integer");
+        }
+        delete pCauseUnitIdKey;
         
     }
 }
@@ -320,8 +455,16 @@ SamiCorrelation::asJsonObject() {
     pJsonObject->Add(pCauseKey, toJson(getPCause(), "String", ""));
 
     
+    JsonString *pOriginalCauseKey = new JsonString(L"originalCause");
+    pJsonObject->Add(pOriginalCauseKey, toJson(getPOriginalCause(), "String", ""));
+
+    
     JsonString *pEffectKey = new JsonString(L"effect");
     pJsonObject->Add(pEffectKey, toJson(getPEffect(), "String", ""));
+
+    
+    JsonString *pOriginalEffectKey = new JsonString(L"originalEffect");
+    pJsonObject->Add(pOriginalEffectKey, toJson(getPOriginalEffect(), "String", ""));
 
     
     JsonString *pOnsetDelayKey = new JsonString(L"onsetDelay");
@@ -364,6 +507,34 @@ SamiCorrelation::asJsonObject() {
     pJsonObject->Add(pEffectCategoryKey, toJson(getPEffectCategory(), "String", ""));
 
     
+    JsonString *pValuePredictingHighOutcomeKey = new JsonString(L"valuePredictingHighOutcome");
+    pJsonObject->Add(pValuePredictingHighOutcomeKey, toJson(getPValuePredictingHighOutcome(), "Long", ""));
+
+    
+    JsonString *pValuePredictingLowOutcomeKey = new JsonString(L"valuePredictingLowOutcome");
+    pJsonObject->Add(pValuePredictingLowOutcomeKey, toJson(getPValuePredictingLowOutcome(), "Long", ""));
+
+    
+    JsonString *pOptimalPearsonProductKey = new JsonString(L"optimalPearsonProduct");
+    pJsonObject->Add(pOptimalPearsonProductKey, toJson(getPOptimalPearsonProduct(), "Long", ""));
+
+    
+    JsonString *pAverageVoteKey = new JsonString(L"averageVote");
+    pJsonObject->Add(pAverageVoteKey, toJson(getPAverageVote(), "Long", ""));
+
+    
+    JsonString *pUserVoteKey = new JsonString(L"userVote");
+    pJsonObject->Add(pUserVoteKey, toJson(getPUserVote(), "Long", ""));
+
+    
+    JsonString *pCauseUnitKey = new JsonString(L"causeUnit");
+    pJsonObject->Add(pCauseUnitKey, toJson(getPCauseUnit(), "String", ""));
+
+    
+    JsonString *pCauseUnitIdKey = new JsonString(L"causeUnitId");
+    pJsonObject->Add(pCauseUnitIdKey, toJson(getPCauseUnitId(), "Integer", ""));
+
+    
     return pJsonObject;
 }
 
@@ -386,12 +557,30 @@ SamiCorrelation::setPCause(String* pCause) {
 }
 
 String*
+SamiCorrelation::getPOriginalCause() {
+    return pOriginalCause;
+}
+void
+SamiCorrelation::setPOriginalCause(String* pOriginalCause) {
+    this->pOriginalCause = pOriginalCause;
+}
+
+String*
 SamiCorrelation::getPEffect() {
     return pEffect;
 }
 void
 SamiCorrelation::setPEffect(String* pEffect) {
     this->pEffect = pEffect;
+}
+
+String*
+SamiCorrelation::getPOriginalEffect() {
+    return pOriginalEffect;
+}
+void
+SamiCorrelation::setPOriginalEffect(String* pOriginalEffect) {
+    this->pOriginalEffect = pOriginalEffect;
 }
 
 Double*
@@ -482,6 +671,69 @@ SamiCorrelation::getPEffectCategory() {
 void
 SamiCorrelation::setPEffectCategory(String* pEffectCategory) {
     this->pEffectCategory = pEffectCategory;
+}
+
+Long*
+SamiCorrelation::getPValuePredictingHighOutcome() {
+    return pValuePredictingHighOutcome;
+}
+void
+SamiCorrelation::setPValuePredictingHighOutcome(Long* pValuePredictingHighOutcome) {
+    this->pValuePredictingHighOutcome = pValuePredictingHighOutcome;
+}
+
+Long*
+SamiCorrelation::getPValuePredictingLowOutcome() {
+    return pValuePredictingLowOutcome;
+}
+void
+SamiCorrelation::setPValuePredictingLowOutcome(Long* pValuePredictingLowOutcome) {
+    this->pValuePredictingLowOutcome = pValuePredictingLowOutcome;
+}
+
+Long*
+SamiCorrelation::getPOptimalPearsonProduct() {
+    return pOptimalPearsonProduct;
+}
+void
+SamiCorrelation::setPOptimalPearsonProduct(Long* pOptimalPearsonProduct) {
+    this->pOptimalPearsonProduct = pOptimalPearsonProduct;
+}
+
+Long*
+SamiCorrelation::getPAverageVote() {
+    return pAverageVote;
+}
+void
+SamiCorrelation::setPAverageVote(Long* pAverageVote) {
+    this->pAverageVote = pAverageVote;
+}
+
+Long*
+SamiCorrelation::getPUserVote() {
+    return pUserVote;
+}
+void
+SamiCorrelation::setPUserVote(Long* pUserVote) {
+    this->pUserVote = pUserVote;
+}
+
+String*
+SamiCorrelation::getPCauseUnit() {
+    return pCauseUnit;
+}
+void
+SamiCorrelation::setPCauseUnit(String* pCauseUnit) {
+    this->pCauseUnit = pCauseUnit;
+}
+
+Integer*
+SamiCorrelation::getPCauseUnitId() {
+    return pCauseUnitId;
+}
+void
+SamiCorrelation::setPCauseUnitId(Integer* pCauseUnitId) {
+    this->pCauseUnitId = pCauseUnitId;
 }
 
 

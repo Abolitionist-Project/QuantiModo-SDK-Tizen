@@ -1,5 +1,5 @@
 
-#include "SamiUserTokenFailedResponse.h"
+#include "SamiCommonResponse.h"
 #include <FLocales.h>
 
 using namespace Tizen::Base;
@@ -12,28 +12,28 @@ using namespace Tizen::Locales;
 
 namespace Swagger {
 
-SamiUserTokenFailedResponse::SamiUserTokenFailedResponse() {
+SamiCommonResponse::SamiCommonResponse() {
     init();
 }
 
-SamiUserTokenFailedResponse::~SamiUserTokenFailedResponse() {
+SamiCommonResponse::~SamiCommonResponse() {
     this->cleanup();
 }
 
 void
-SamiUserTokenFailedResponse::init() {
-    pCode = null;
+SamiCommonResponse::init() {
+    pStatus = null;
     pMessage = null;
     pSuccess = null;
     
 }
 
 void
-SamiUserTokenFailedResponse::cleanup() {
-    if(pCode != null) {
+SamiCommonResponse::cleanup() {
+    if(pStatus != null) {
         
-        delete pCode;
-        pCode = null;
+        delete pStatus;
+        pStatus = null;
     }
     if(pMessage != null) {
         
@@ -49,8 +49,8 @@ SamiUserTokenFailedResponse::cleanup() {
 }
 
 
-SamiUserTokenFailedResponse*
-SamiUserTokenFailedResponse::fromJson(String* json) {
+SamiCommonResponse*
+SamiCommonResponse::fromJson(String* json) {
     this->cleanup();
     String str(json->GetPointer());
     int length = str.GetLength();
@@ -79,19 +79,19 @@ SamiUserTokenFailedResponse::fromJson(String* json) {
 
 
 void
-SamiUserTokenFailedResponse::fromJsonObject(IJsonValue* pJson) {
+SamiCommonResponse::fromJsonObject(IJsonValue* pJson) {
     JsonObject* pJsonObject = static_cast< JsonObject* >(pJson);
 
     if(pJsonObject != null) {
-        JsonString* pCodeKey = new JsonString(L"code");
-        IJsonValue* pCodeVal = null;
-        pJsonObject->GetValue(pCodeKey, pCodeVal);
-        if(pCodeVal != null) {
+        JsonString* pStatusKey = new JsonString(L"status");
+        IJsonValue* pStatusVal = null;
+        pJsonObject->GetValue(pStatusKey, pStatusVal);
+        if(pStatusVal != null) {
             
-            pCode = null;
-            jsonToValue(pCode, pCodeVal, L"Integer", L"Integer");
+            pStatus = null;
+            jsonToValue(pStatus, pStatusVal, L"Integer", L"Integer");
         }
-        delete pCodeKey;
+        delete pStatusKey;
         JsonString* pMessageKey = new JsonString(L"message");
         IJsonValue* pMessageVal = null;
         pJsonObject->GetValue(pMessageKey, pMessageVal);
@@ -114,7 +114,7 @@ SamiUserTokenFailedResponse::fromJsonObject(IJsonValue* pJson) {
     }
 }
 
-SamiUserTokenFailedResponse::SamiUserTokenFailedResponse(String* json) {
+SamiCommonResponse::SamiCommonResponse(String* json) {
     init();
     String str(json->GetPointer());
     int length = str.GetLength();
@@ -141,7 +141,7 @@ SamiUserTokenFailedResponse::SamiUserTokenFailedResponse(String* json) {
 }
 
 String
-SamiUserTokenFailedResponse::asJson ()
+SamiCommonResponse::asJson ()
 {
     JsonObject* pJsonObject = asJsonObject();
 
@@ -157,13 +157,13 @@ SamiUserTokenFailedResponse::asJson ()
 }
 
 JsonObject*
-SamiUserTokenFailedResponse::asJsonObject() {
+SamiCommonResponse::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
     
-    JsonString *pCodeKey = new JsonString(L"code");
-    pJsonObject->Add(pCodeKey, toJson(getPCode(), "Integer", ""));
+    JsonString *pStatusKey = new JsonString(L"status");
+    pJsonObject->Add(pStatusKey, toJson(getPStatus(), "Integer", ""));
 
     
     JsonString *pMessageKey = new JsonString(L"message");
@@ -178,29 +178,29 @@ SamiUserTokenFailedResponse::asJsonObject() {
 }
 
 Integer*
-SamiUserTokenFailedResponse::getPCode() {
-    return pCode;
+SamiCommonResponse::getPStatus() {
+    return pStatus;
 }
 void
-SamiUserTokenFailedResponse::setPCode(Integer* pCode) {
-    this->pCode = pCode;
+SamiCommonResponse::setPStatus(Integer* pStatus) {
+    this->pStatus = pStatus;
 }
 
 String*
-SamiUserTokenFailedResponse::getPMessage() {
+SamiCommonResponse::getPMessage() {
     return pMessage;
 }
 void
-SamiUserTokenFailedResponse::setPMessage(String* pMessage) {
+SamiCommonResponse::setPMessage(String* pMessage) {
     this->pMessage = pMessage;
 }
 
 Boolean*
-SamiUserTokenFailedResponse::getPSuccess() {
+SamiCommonResponse::getPSuccess() {
     return pSuccess;
 }
 void
-SamiUserTokenFailedResponse::setPSuccess(Boolean* pSuccess) {
+SamiCommonResponse::setPSuccess(Boolean* pSuccess) {
     this->pSuccess = pSuccess;
 }
 

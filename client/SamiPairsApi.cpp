@@ -17,7 +17,7 @@ SamiPairsApi::~SamiPairsApi() {
 }
 
 void
-pairsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
+v1PairsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError*)) {
   int code = pHttpResponse->GetHttpStatusCode();
 
   if(code >= 200 && code < 300) {
@@ -52,10 +52,10 @@ pairsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError
 }
 
 IList* 
-SamiPairsApi::pairsGetWithCompletion(String* cause, String* causeSource, String* causeUnit, String* delay, String* duration, String* effect, String* effectSource, String* effectUnit, String* endTime, String* startTime, void (* success)(IList*, SamiError*)) {
+SamiPairsApi::v1PairsGetWithCompletion(String* cause, String* effect, String* causeSource, String* causeUnit, String* delay, String* duration, String* effectSource, String* effectUnit, String* endTime, String* startTime, Integer* limit, Integer* offset, Integer* sort, void (* success)(IList*, SamiError*)) {
   client = new SamiApiClient();
 
-  client->success(&pairsGetProcessor, (void(*)(void*, SamiError*))success);
+  client->success(&v1PairsGetProcessor, (void(*)(void*, SamiError*))success);
   HashMap* headerParams = new HashMap(SingleObjectDeleter);
   headerParams->Construct();
 
@@ -95,12 +95,21 @@ SamiPairsApi::pairsGetWithCompletion(String* cause, String* causeSource, String*
     queryParams->Add(new String("startTime"), startTime);
   
   
+    queryParams->Add(new String("limit"), limit);
+  
+  
+    queryParams->Add(new String("offset"), offset);
+  
+  
+    queryParams->Add(new String("sort"), sort);
+  
+  
 
   String* mBody = null;
 
   
 
-  String url(L"/pairs");
+  String url(L"/v1/pairs");
 
   
 
