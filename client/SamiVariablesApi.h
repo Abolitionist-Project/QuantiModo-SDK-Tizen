@@ -26,7 +26,7 @@ public:
   v1PublicVariablesGetWithCompletion( void (* handler)(SamiVariable*, SamiError*));
   
   SamiVariable* 
-  v1PublicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
+  v1PublicVariablesSearchSearchGetWithCompletion(String* search, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
   
   void 
   v1UserVariablesPostWithCompletion(SamiUserVariables* sharingData, void(* handler)(SamiError*));
@@ -35,7 +35,7 @@ public:
   v1VariableCategoriesGetWithCompletion( void (* handler)(IList*, SamiError*));
   
   SamiVariable* 
-  v1VariablesGetWithCompletion(Integer* userId, String* category, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
+  v1VariablesGetWithCompletion(Integer* userId, String* category, String* name, String* lastUpdated, String* source, String* latestMeasurementTime, String* numberOfMeasurements, String* lastSource, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
   
   void 
   v1VariablesPostWithCompletion(SamiVariablesNew* variableName, void(* handler)(SamiError*));

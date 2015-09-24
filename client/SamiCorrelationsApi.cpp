@@ -52,7 +52,7 @@ v1CorrelationsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, 
 }
 
 IList* 
-SamiCorrelationsApi::v1CorrelationsGetWithCompletion(String* effect, String* cause, Integer* limit, Integer* offset, Integer* sort, void (* success)(IList*, SamiError*)) {
+SamiCorrelationsApi::v1CorrelationsGetWithCompletion(String* effect, String* cause, String* correlationCoefficient, String* onsetDelay, String* durationOfAction, String* lastUpdated, Integer* limit, Integer* offset, Integer* sort, void (* success)(IList*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&v1CorrelationsGetProcessor, (void(*)(void*, SamiError*))success);
@@ -69,6 +69,18 @@ SamiCorrelationsApi::v1CorrelationsGetWithCompletion(String* effect, String* cau
   
   
     queryParams->Add(new String("cause"), cause);
+  
+  
+    queryParams->Add(new String("correlationCoefficient"), correlationCoefficient);
+  
+  
+    queryParams->Add(new String("onsetDelay"), onsetDelay);
+  
+  
+    queryParams->Add(new String("durationOfAction"), durationOfAction);
+  
+  
+    queryParams->Add(new String("lastUpdated"), lastUpdated);
   
   
     queryParams->Add(new String("limit"), limit);

@@ -25,7 +25,7 @@ public:
 
   
   IList* 
-  v1CorrelationsGetWithCompletion(String* effect, String* cause, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
+  v1CorrelationsGetWithCompletion(String* effect, String* cause, String* correlationCoefficient, String* onsetDelay, String* durationOfAction, String* lastUpdated, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
   
   void 
   v1CorrelationsPostWithCompletion(SamiPostCorrelation* body, void(* handler)(SamiError*));

@@ -114,7 +114,7 @@ v1PublicVariablesSearchSearchGetProcessor(HttpResponse* pHttpResponse, void (* h
 }
 
 SamiVariable* 
-SamiVariablesApi::v1PublicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiVariable*, SamiError*)) {
+SamiVariablesApi::v1PublicVariablesSearchSearchGetWithCompletion(String* search, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&v1PublicVariablesSearchSearchGetProcessor, (void(*)(void*, SamiError*))success);
@@ -126,9 +126,6 @@ SamiVariablesApi::v1PublicVariablesSearchSearchGetWithCompletion(String* search,
   HashMap* queryParams = new HashMap(SingleObjectDeleter);
   queryParams->Construct();
 
-  
-    queryParams->Add(new String("effectOrCause"), effectOrCause);
-  
   
     queryParams->Add(new String("limit"), limit);
   
@@ -304,7 +301,7 @@ v1VariablesGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, Sam
 }
 
 SamiVariable* 
-SamiVariablesApi::v1VariablesGetWithCompletion(Integer* userId, String* category, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiVariable*, SamiError*)) {
+SamiVariablesApi::v1VariablesGetWithCompletion(Integer* userId, String* category, String* name, String* lastUpdated, String* source, String* latestMeasurementTime, String* numberOfMeasurements, String* lastSource, Integer* limit, Integer* offset, Integer* sort, void (* success)(SamiVariable*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&v1VariablesGetProcessor, (void(*)(void*, SamiError*))success);
@@ -321,6 +318,24 @@ SamiVariablesApi::v1VariablesGetWithCompletion(Integer* userId, String* category
   
   
     queryParams->Add(new String("category"), category);
+  
+  
+    queryParams->Add(new String("name"), name);
+  
+  
+    queryParams->Add(new String("lastUpdated"), lastUpdated);
+  
+  
+    queryParams->Add(new String("source"), source);
+  
+  
+    queryParams->Add(new String("latestMeasurementTime"), latestMeasurementTime);
+  
+  
+    queryParams->Add(new String("numberOfMeasurements"), numberOfMeasurements);
+  
+  
+    queryParams->Add(new String("lastSource"), lastSource);
   
   
     queryParams->Add(new String("limit"), limit);

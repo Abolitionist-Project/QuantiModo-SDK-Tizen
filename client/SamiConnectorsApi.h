@@ -22,7 +22,7 @@ public:
 
   
   void 
-  v1ConnectJsGetWithCompletion(String* t, void(* handler)(SamiError*));
+  v1ConnectJsGetWithCompletion(String* access token, String* mashape key, void(* handler)(SamiError*));
   
   void 
   v1ConnectMobileGetWithCompletion(String* t, void(* handler)(SamiError*));

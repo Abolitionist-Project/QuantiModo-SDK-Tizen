@@ -31,7 +31,7 @@ v1ConnectJsGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, Sam
 }
 
 void 
-SamiConnectorsApi::v1ConnectJsGetWithCompletion(String* t, void(*success)(SamiError*)) {
+SamiConnectorsApi::v1ConnectJsGetWithCompletion(String* access token, String* mashape key, void(*success)(SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&v1ConnectJsGetProcessor, (void(*)(void*, SamiError*))success);
@@ -44,7 +44,10 @@ SamiConnectorsApi::v1ConnectJsGetWithCompletion(String* t, void(*success)(SamiEr
   queryParams->Construct();
 
   
-    queryParams->Add(new String("t"), t);
+    queryParams->Add(new String("access token"), access token);
+  
+  
+    queryParams->Add(new String("mashape key"), mashape key);
   
   
 
