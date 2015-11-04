@@ -17,10 +17,10 @@
 using namespace Tizen::Web::Json;
 
 
-#include "SamiConversionStep.h"
+using Tizen::Base::Float;
+using Tizen::Base::DateTime;
 using Tizen::Base::String;
-using Tizen::Base::Double;
-using Tizen::Base::Collection::IList;
+using Tizen::Base::Integer;
 
 
 namespace Swagger {
@@ -44,32 +44,60 @@ public:
     SamiUnit* fromJson(String* obj);
 
     
+    Integer* getPId();
+    void setPId(Integer* pId);
+    
+    String* getPClientId();
+    void setPClientId(String* pClient_id);
+    
     String* getPName();
     void setPName(String* pName);
     
     String* getPAbbreviatedName();
-    void setPAbbreviatedName(String* pAbbreviatedName);
+    void setPAbbreviatedName(String* pAbbreviated_name);
     
-    String* getPCategory();
-    void setPCategory(String* pCategory);
+    Integer* getPCategoryId();
+    void setPCategoryId(Integer* pCategory_id);
     
-    Double* getPMinimum();
-    void setPMinimum(Double* pMinimum);
+    Float* getPMinimumValue();
+    void setPMinimumValue(Float* pMinimum_value);
     
-    Double* getPMaximum();
-    void setPMaximum(Double* pMaximum);
+    Float* getPMaximumValue();
+    void setPMaximumValue(Float* pMaximum_value);
     
-    IList* getPConversionSteps();
-    void setPConversionSteps(IList* pConversionSteps);
+    Integer* getPUpdated();
+    void setPUpdated(Integer* pUpdated);
+    
+    Integer* getPDefaultUnitId();
+    void setPDefaultUnitId(Integer* pDefault_unit_id);
+    
+    Float* getPMultiply();
+    void setPMultiply(Float* pMultiply);
+    
+    Float* getPAdd();
+    void setPAdd(Float* pAdd);
+    
+    DateTime* getPCreatedAt();
+    void setPCreatedAt(DateTime* pCreated_at);
+    
+    DateTime* getPUpdatedAt();
+    void setPUpdatedAt(DateTime* pUpdated_at);
     
 
 private:
+    Integer* pId;
+    String* pClient_id;
     String* pName;
-    String* pAbbreviatedName;
-    String* pCategory;
-    Double* pMinimum;
-    Double* pMaximum;
-    IList* pConversionSteps;
+    String* pAbbreviated_name;
+    Integer* pCategory_id;
+    Float* pMinimum_value;
+    Float* pMaximum_value;
+    Integer* pUpdated;
+    Integer* pDefault_unit_id;
+    Float* pMultiply;
+    Float* pAdd;
+    DateTime* pCreated_at;
+    DateTime* pUpdated_at;
     
 };
 

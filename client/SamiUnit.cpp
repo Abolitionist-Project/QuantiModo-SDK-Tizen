@@ -22,46 +22,88 @@ SamiUnit::~SamiUnit() {
 
 void
 SamiUnit::init() {
+    pId = null;
+    pClient_id = null;
     pName = null;
-    pAbbreviatedName = null;
-    pCategory = null;
-    pMinimum = null;
-    pMaximum = null;
-    pConversionSteps = null;
+    pAbbreviated_name = null;
+    pCategory_id = null;
+    pMinimum_value = null;
+    pMaximum_value = null;
+    pUpdated = null;
+    pDefault_unit_id = null;
+    pMultiply = null;
+    pAdd = null;
+    pCreated_at = null;
+    pUpdated_at = null;
     
 }
 
 void
 SamiUnit::cleanup() {
+    if(pId != null) {
+        
+        delete pId;
+        pId = null;
+    }
+    if(pClient_id != null) {
+        
+        delete pClient_id;
+        pClient_id = null;
+    }
     if(pName != null) {
         
         delete pName;
         pName = null;
     }
-    if(pAbbreviatedName != null) {
+    if(pAbbreviated_name != null) {
         
-        delete pAbbreviatedName;
-        pAbbreviatedName = null;
+        delete pAbbreviated_name;
+        pAbbreviated_name = null;
     }
-    if(pCategory != null) {
+    if(pCategory_id != null) {
         
-        delete pCategory;
-        pCategory = null;
+        delete pCategory_id;
+        pCategory_id = null;
     }
-    if(pMinimum != null) {
+    if(pMinimum_value != null) {
         
-        delete pMinimum;
-        pMinimum = null;
+        delete pMinimum_value;
+        pMinimum_value = null;
     }
-    if(pMaximum != null) {
+    if(pMaximum_value != null) {
         
-        delete pMaximum;
-        pMaximum = null;
+        delete pMaximum_value;
+        pMaximum_value = null;
     }
-    if(pConversionSteps != null) {
-        pConversionSteps->RemoveAll(true);
-        delete pConversionSteps;
-        pConversionSteps = null;
+    if(pUpdated != null) {
+        
+        delete pUpdated;
+        pUpdated = null;
+    }
+    if(pDefault_unit_id != null) {
+        
+        delete pDefault_unit_id;
+        pDefault_unit_id = null;
+    }
+    if(pMultiply != null) {
+        
+        delete pMultiply;
+        pMultiply = null;
+    }
+    if(pAdd != null) {
+        
+        delete pAdd;
+        pAdd = null;
+    }
+    if(pCreated_at != null) {
+        
+        delete pCreated_at;
+        pCreated_at = null;
+    }
+    if(pUpdated_at != null) {
+        
+        delete pUpdated_at;
+        pUpdated_at = null;
     }
     
 }
@@ -101,6 +143,24 @@ SamiUnit::fromJsonObject(IJsonValue* pJson) {
     JsonObject* pJsonObject = static_cast< JsonObject* >(pJson);
 
     if(pJsonObject != null) {
+        JsonString* pIdKey = new JsonString(L"id");
+        IJsonValue* pIdVal = null;
+        pJsonObject->GetValue(pIdKey, pIdVal);
+        if(pIdVal != null) {
+            
+            pId = new Integer();
+            jsonToValue(pId, pIdVal, L"Integer", L"Integer");
+        }
+        delete pIdKey;
+        JsonString* pClient_idKey = new JsonString(L"client_id");
+        IJsonValue* pClient_idVal = null;
+        pJsonObject->GetValue(pClient_idKey, pClient_idVal);
+        if(pClient_idVal != null) {
+            
+            pClient_id = new String();
+            jsonToValue(pClient_id, pClient_idVal, L"String", L"String");
+        }
+        delete pClient_idKey;
         JsonString* pNameKey = new JsonString(L"name");
         IJsonValue* pNameVal = null;
         pJsonObject->GetValue(pNameKey, pNameVal);
@@ -110,51 +170,96 @@ SamiUnit::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
-        JsonString* pAbbreviatedNameKey = new JsonString(L"abbreviatedName");
-        IJsonValue* pAbbreviatedNameVal = null;
-        pJsonObject->GetValue(pAbbreviatedNameKey, pAbbreviatedNameVal);
-        if(pAbbreviatedNameVal != null) {
+        JsonString* pAbbreviated_nameKey = new JsonString(L"abbreviated_name");
+        IJsonValue* pAbbreviated_nameVal = null;
+        pJsonObject->GetValue(pAbbreviated_nameKey, pAbbreviated_nameVal);
+        if(pAbbreviated_nameVal != null) {
             
-            pAbbreviatedName = new String();
-            jsonToValue(pAbbreviatedName, pAbbreviatedNameVal, L"String", L"String");
+            pAbbreviated_name = new String();
+            jsonToValue(pAbbreviated_name, pAbbreviated_nameVal, L"String", L"String");
         }
-        delete pAbbreviatedNameKey;
-        JsonString* pCategoryKey = new JsonString(L"category");
-        IJsonValue* pCategoryVal = null;
-        pJsonObject->GetValue(pCategoryKey, pCategoryVal);
-        if(pCategoryVal != null) {
+        delete pAbbreviated_nameKey;
+        JsonString* pCategory_idKey = new JsonString(L"category_id");
+        IJsonValue* pCategory_idVal = null;
+        pJsonObject->GetValue(pCategory_idKey, pCategory_idVal);
+        if(pCategory_idVal != null) {
             
-            pCategory = new String();
-            jsonToValue(pCategory, pCategoryVal, L"String", L"String");
+            pCategory_id = null;
+            jsonToValue(pCategory_id, pCategory_idVal, L"Integer", L"Integer");
         }
-        delete pCategoryKey;
-        JsonString* pMinimumKey = new JsonString(L"minimum");
-        IJsonValue* pMinimumVal = null;
-        pJsonObject->GetValue(pMinimumKey, pMinimumVal);
-        if(pMinimumVal != null) {
+        delete pCategory_idKey;
+        JsonString* pMinimum_valueKey = new JsonString(L"minimum_value");
+        IJsonValue* pMinimum_valueVal = null;
+        pJsonObject->GetValue(pMinimum_valueKey, pMinimum_valueVal);
+        if(pMinimum_valueVal != null) {
             
-            pMinimum = new Double();
-            jsonToValue(pMinimum, pMinimumVal, L"Double", L"Double");
+            pMinimum_value = new Float();
+            jsonToValue(pMinimum_value, pMinimum_valueVal, L"Float", L"Float");
         }
-        delete pMinimumKey;
-        JsonString* pMaximumKey = new JsonString(L"maximum");
-        IJsonValue* pMaximumVal = null;
-        pJsonObject->GetValue(pMaximumKey, pMaximumVal);
-        if(pMaximumVal != null) {
+        delete pMinimum_valueKey;
+        JsonString* pMaximum_valueKey = new JsonString(L"maximum_value");
+        IJsonValue* pMaximum_valueVal = null;
+        pJsonObject->GetValue(pMaximum_valueKey, pMaximum_valueVal);
+        if(pMaximum_valueVal != null) {
             
-            pMaximum = new Double();
-            jsonToValue(pMaximum, pMaximumVal, L"Double", L"Double");
+            pMaximum_value = new Float();
+            jsonToValue(pMaximum_value, pMaximum_valueVal, L"Float", L"Float");
         }
-        delete pMaximumKey;
-        JsonString* pConversionStepsKey = new JsonString(L"conversionSteps");
-        IJsonValue* pConversionStepsVal = null;
-        pJsonObject->GetValue(pConversionStepsKey, pConversionStepsVal);
-        if(pConversionStepsVal != null) {
-            pConversionSteps = new ArrayList();
+        delete pMaximum_valueKey;
+        JsonString* pUpdatedKey = new JsonString(L"updated");
+        IJsonValue* pUpdatedVal = null;
+        pJsonObject->GetValue(pUpdatedKey, pUpdatedVal);
+        if(pUpdatedVal != null) {
             
-            jsonToValue(pConversionSteps, pConversionStepsVal, L"IList", L"SamiConversionStep");
+            pUpdated = new Integer();
+            jsonToValue(pUpdated, pUpdatedVal, L"Integer", L"Integer");
         }
-        delete pConversionStepsKey;
+        delete pUpdatedKey;
+        JsonString* pDefault_unit_idKey = new JsonString(L"default_unit_id");
+        IJsonValue* pDefault_unit_idVal = null;
+        pJsonObject->GetValue(pDefault_unit_idKey, pDefault_unit_idVal);
+        if(pDefault_unit_idVal != null) {
+            
+            pDefault_unit_id = new Integer();
+            jsonToValue(pDefault_unit_id, pDefault_unit_idVal, L"Integer", L"Integer");
+        }
+        delete pDefault_unit_idKey;
+        JsonString* pMultiplyKey = new JsonString(L"multiply");
+        IJsonValue* pMultiplyVal = null;
+        pJsonObject->GetValue(pMultiplyKey, pMultiplyVal);
+        if(pMultiplyVal != null) {
+            
+            pMultiply = new Float();
+            jsonToValue(pMultiply, pMultiplyVal, L"Float", L"Float");
+        }
+        delete pMultiplyKey;
+        JsonString* pAddKey = new JsonString(L"add");
+        IJsonValue* pAddVal = null;
+        pJsonObject->GetValue(pAddKey, pAddVal);
+        if(pAddVal != null) {
+            
+            pAdd = new Float();
+            jsonToValue(pAdd, pAddVal, L"Float", L"Float");
+        }
+        delete pAddKey;
+        JsonString* pCreated_atKey = new JsonString(L"created_at");
+        IJsonValue* pCreated_atVal = null;
+        pJsonObject->GetValue(pCreated_atKey, pCreated_atVal);
+        if(pCreated_atVal != null) {
+            
+            pCreated_at = new DateTime();
+            jsonToValue(pCreated_at, pCreated_atVal, L"DateTime", L"DateTime");
+        }
+        delete pCreated_atKey;
+        JsonString* pUpdated_atKey = new JsonString(L"updated_at");
+        IJsonValue* pUpdated_atVal = null;
+        pJsonObject->GetValue(pUpdated_atKey, pUpdated_atVal);
+        if(pUpdated_atVal != null) {
+            
+            pUpdated_at = new DateTime();
+            jsonToValue(pUpdated_at, pUpdated_atVal, L"DateTime", L"DateTime");
+        }
+        delete pUpdated_atKey;
         
     }
 }
@@ -207,31 +312,77 @@ SamiUnit::asJsonObject() {
     pJsonObject->Construct();
 
     
+    JsonString *pIdKey = new JsonString(L"id");
+    pJsonObject->Add(pIdKey, toJson(getPId(), "Integer", ""));
+
+    
+    JsonString *pClient_idKey = new JsonString(L"client_id");
+    pJsonObject->Add(pClient_idKey, toJson(getPClientId(), "String", ""));
+
+    
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
     
-    JsonString *pAbbreviatedNameKey = new JsonString(L"abbreviatedName");
-    pJsonObject->Add(pAbbreviatedNameKey, toJson(getPAbbreviatedName(), "String", ""));
+    JsonString *pAbbreviated_nameKey = new JsonString(L"abbreviated_name");
+    pJsonObject->Add(pAbbreviated_nameKey, toJson(getPAbbreviatedName(), "String", ""));
 
     
-    JsonString *pCategoryKey = new JsonString(L"category");
-    pJsonObject->Add(pCategoryKey, toJson(getPCategory(), "String", ""));
+    JsonString *pCategory_idKey = new JsonString(L"category_id");
+    pJsonObject->Add(pCategory_idKey, toJson(getPCategoryId(), "Integer", ""));
 
     
-    JsonString *pMinimumKey = new JsonString(L"minimum");
-    pJsonObject->Add(pMinimumKey, toJson(getPMinimum(), "Double", ""));
+    JsonString *pMinimum_valueKey = new JsonString(L"minimum_value");
+    pJsonObject->Add(pMinimum_valueKey, toJson(getPMinimumValue(), "Float", ""));
 
     
-    JsonString *pMaximumKey = new JsonString(L"maximum");
-    pJsonObject->Add(pMaximumKey, toJson(getPMaximum(), "Double", ""));
+    JsonString *pMaximum_valueKey = new JsonString(L"maximum_value");
+    pJsonObject->Add(pMaximum_valueKey, toJson(getPMaximumValue(), "Float", ""));
 
     
-    JsonString *pConversionStepsKey = new JsonString(L"conversionSteps");
-    pJsonObject->Add(pConversionStepsKey, toJson(getPConversionSteps(), "SamiConversionStep", "array"));
+    JsonString *pUpdatedKey = new JsonString(L"updated");
+    pJsonObject->Add(pUpdatedKey, toJson(getPUpdated(), "Integer", ""));
+
+    
+    JsonString *pDefault_unit_idKey = new JsonString(L"default_unit_id");
+    pJsonObject->Add(pDefault_unit_idKey, toJson(getPDefaultUnitId(), "Integer", ""));
+
+    
+    JsonString *pMultiplyKey = new JsonString(L"multiply");
+    pJsonObject->Add(pMultiplyKey, toJson(getPMultiply(), "Float", ""));
+
+    
+    JsonString *pAddKey = new JsonString(L"add");
+    pJsonObject->Add(pAddKey, toJson(getPAdd(), "Float", ""));
+
+    
+    JsonString *pCreated_atKey = new JsonString(L"created_at");
+    pJsonObject->Add(pCreated_atKey, toJson(getPCreatedAt(), "DateTime", ""));
+
+    
+    JsonString *pUpdated_atKey = new JsonString(L"updated_at");
+    pJsonObject->Add(pUpdated_atKey, toJson(getPUpdatedAt(), "DateTime", ""));
 
     
     return pJsonObject;
+}
+
+Integer*
+SamiUnit::getPId() {
+    return pId;
+}
+void
+SamiUnit::setPId(Integer* pId) {
+    this->pId = pId;
+}
+
+String*
+SamiUnit::getPClientId() {
+    return pClient_id;
+}
+void
+SamiUnit::setPClientId(String* pClient_id) {
+    this->pClient_id = pClient_id;
 }
 
 String*
@@ -245,47 +396,92 @@ SamiUnit::setPName(String* pName) {
 
 String*
 SamiUnit::getPAbbreviatedName() {
-    return pAbbreviatedName;
+    return pAbbreviated_name;
 }
 void
-SamiUnit::setPAbbreviatedName(String* pAbbreviatedName) {
-    this->pAbbreviatedName = pAbbreviatedName;
+SamiUnit::setPAbbreviatedName(String* pAbbreviated_name) {
+    this->pAbbreviated_name = pAbbreviated_name;
 }
 
-String*
-SamiUnit::getPCategory() {
-    return pCategory;
+Integer*
+SamiUnit::getPCategoryId() {
+    return pCategory_id;
 }
 void
-SamiUnit::setPCategory(String* pCategory) {
-    this->pCategory = pCategory;
+SamiUnit::setPCategoryId(Integer* pCategory_id) {
+    this->pCategory_id = pCategory_id;
 }
 
-Double*
-SamiUnit::getPMinimum() {
-    return pMinimum;
+Float*
+SamiUnit::getPMinimumValue() {
+    return pMinimum_value;
 }
 void
-SamiUnit::setPMinimum(Double* pMinimum) {
-    this->pMinimum = pMinimum;
+SamiUnit::setPMinimumValue(Float* pMinimum_value) {
+    this->pMinimum_value = pMinimum_value;
 }
 
-Double*
-SamiUnit::getPMaximum() {
-    return pMaximum;
+Float*
+SamiUnit::getPMaximumValue() {
+    return pMaximum_value;
 }
 void
-SamiUnit::setPMaximum(Double* pMaximum) {
-    this->pMaximum = pMaximum;
+SamiUnit::setPMaximumValue(Float* pMaximum_value) {
+    this->pMaximum_value = pMaximum_value;
 }
 
-IList*
-SamiUnit::getPConversionSteps() {
-    return pConversionSteps;
+Integer*
+SamiUnit::getPUpdated() {
+    return pUpdated;
 }
 void
-SamiUnit::setPConversionSteps(IList* pConversionSteps) {
-    this->pConversionSteps = pConversionSteps;
+SamiUnit::setPUpdated(Integer* pUpdated) {
+    this->pUpdated = pUpdated;
+}
+
+Integer*
+SamiUnit::getPDefaultUnitId() {
+    return pDefault_unit_id;
+}
+void
+SamiUnit::setPDefaultUnitId(Integer* pDefault_unit_id) {
+    this->pDefault_unit_id = pDefault_unit_id;
+}
+
+Float*
+SamiUnit::getPMultiply() {
+    return pMultiply;
+}
+void
+SamiUnit::setPMultiply(Float* pMultiply) {
+    this->pMultiply = pMultiply;
+}
+
+Float*
+SamiUnit::getPAdd() {
+    return pAdd;
+}
+void
+SamiUnit::setPAdd(Float* pAdd) {
+    this->pAdd = pAdd;
+}
+
+DateTime*
+SamiUnit::getPCreatedAt() {
+    return pCreated_at;
+}
+void
+SamiUnit::setPCreatedAt(DateTime* pCreated_at) {
+    this->pCreated_at = pCreated_at;
+}
+
+DateTime*
+SamiUnit::getPUpdatedAt() {
+    return pUpdated_at;
+}
+void
+SamiUnit::setPUpdatedAt(DateTime* pUpdated_at) {
+    this->pUpdated_at = pUpdated_at;
 }
 
 

@@ -23,35 +23,41 @@ SamiVariable::~SamiVariable() {
 void
 SamiVariable::init() {
     pId = null;
+    pClient_id = null;
+    pParent_id = null;
     pName = null;
-    pOriginalName = null;
-    pCategory = null;
-    pAbbreviatedUnitName = null;
-    pAbbreviatedUnitId = null;
-    pSources = null;
-    pMinimumValue = null;
-    pMaximumValue = null;
-    pCombinationOperation = null;
-    pFillingValue = null;
-    pJoinWith = null;
-    pJoinedVariables = null;
-    pParent = null;
-    pSubVariables = null;
-    pOnsetDelay = null;
-    pDurationOfAction = null;
-    pEarliestMeasurementTime = null;
-    pLatestMeasurementTime = null;
-    pUpdated = null;
-    pCauseOnly = null;
-    pNumberOfCorrelations = null;
+    pVariable_category_id = null;
+    pDefault_unit_id = null;
+    pCombination_operation = null;
+    pFilling_value = null;
+    pMaximum_allowed_value = null;
+    pMinimum_allowed_value = null;
+    pOnset_delay = null;
+    pDuration_of_action = null;
+    pPublic = null;
+    pCause_only = null;
+    pMost_common_value = null;
+    pMost_common_unit_id = null;
+    pStandard_deviation = null;
+    pVariance = null;
+    pMean = null;
+    pMedian = null;
+    pNumber_of_measurements = null;
+    pNumber_of_unique_values = null;
+    pSkewness = null;
+    pKurtosis = null;
+    pStatus = null;
+    pError_message = null;
+    pLast_successful_update_time = null;
+    pCreated_at = null;
+    pUpdated_at = null;
+    pProduct_url = null;
+    pImage_url = null;
+    pPrice = null;
+    pNumber_of_user_variables = null;
     pOutcome = null;
-    pMeasurementsAtLastAnalysis = null;
-    pNumberOfMeasurements = null;
-    pLastUnit = null;
-    pLastValue = null;
-    pMostCommonValue = null;
-    pMostCommonUnit = null;
-    pLastSource = null;
+    pMinimum_recorded_value = null;
+    pMaximum_recorded_value = null;
     
 }
 
@@ -62,150 +68,180 @@ SamiVariable::cleanup() {
         delete pId;
         pId = null;
     }
+    if(pClient_id != null) {
+        
+        delete pClient_id;
+        pClient_id = null;
+    }
+    if(pParent_id != null) {
+        
+        delete pParent_id;
+        pParent_id = null;
+    }
     if(pName != null) {
         
         delete pName;
         pName = null;
     }
-    if(pOriginalName != null) {
+    if(pVariable_category_id != null) {
         
-        delete pOriginalName;
-        pOriginalName = null;
+        delete pVariable_category_id;
+        pVariable_category_id = null;
     }
-    if(pCategory != null) {
+    if(pDefault_unit_id != null) {
         
-        delete pCategory;
-        pCategory = null;
+        delete pDefault_unit_id;
+        pDefault_unit_id = null;
     }
-    if(pAbbreviatedUnitName != null) {
+    if(pCombination_operation != null) {
         
-        delete pAbbreviatedUnitName;
-        pAbbreviatedUnitName = null;
+        delete pCombination_operation;
+        pCombination_operation = null;
     }
-    if(pAbbreviatedUnitId != null) {
+    if(pFilling_value != null) {
         
-        delete pAbbreviatedUnitId;
-        pAbbreviatedUnitId = null;
+        delete pFilling_value;
+        pFilling_value = null;
     }
-    if(pSources != null) {
+    if(pMaximum_allowed_value != null) {
         
-        delete pSources;
-        pSources = null;
+        delete pMaximum_allowed_value;
+        pMaximum_allowed_value = null;
     }
-    if(pMinimumValue != null) {
+    if(pMinimum_allowed_value != null) {
         
-        delete pMinimumValue;
-        pMinimumValue = null;
+        delete pMinimum_allowed_value;
+        pMinimum_allowed_value = null;
     }
-    if(pMaximumValue != null) {
+    if(pOnset_delay != null) {
         
-        delete pMaximumValue;
-        pMaximumValue = null;
+        delete pOnset_delay;
+        pOnset_delay = null;
     }
-    if(pCombinationOperation != null) {
+    if(pDuration_of_action != null) {
         
-        delete pCombinationOperation;
-        pCombinationOperation = null;
+        delete pDuration_of_action;
+        pDuration_of_action = null;
     }
-    if(pFillingValue != null) {
+    if(pPublic != null) {
         
-        delete pFillingValue;
-        pFillingValue = null;
+        delete pPublic;
+        pPublic = null;
     }
-    if(pJoinWith != null) {
+    if(pCause_only != null) {
         
-        delete pJoinWith;
-        pJoinWith = null;
+        delete pCause_only;
+        pCause_only = null;
     }
-    if(pJoinedVariables != null) {
-        pJoinedVariables->RemoveAll(true);
-        delete pJoinedVariables;
-        pJoinedVariables = null;
-    }
-    if(pParent != null) {
+    if(pMost_common_value != null) {
         
-        delete pParent;
-        pParent = null;
+        delete pMost_common_value;
+        pMost_common_value = null;
     }
-    if(pSubVariables != null) {
-        pSubVariables->RemoveAll(true);
-        delete pSubVariables;
-        pSubVariables = null;
-    }
-    if(pOnsetDelay != null) {
+    if(pMost_common_unit_id != null) {
         
-        delete pOnsetDelay;
-        pOnsetDelay = null;
+        delete pMost_common_unit_id;
+        pMost_common_unit_id = null;
     }
-    if(pDurationOfAction != null) {
+    if(pStandard_deviation != null) {
         
-        delete pDurationOfAction;
-        pDurationOfAction = null;
+        delete pStandard_deviation;
+        pStandard_deviation = null;
     }
-    if(pEarliestMeasurementTime != null) {
+    if(pVariance != null) {
         
-        delete pEarliestMeasurementTime;
-        pEarliestMeasurementTime = null;
+        delete pVariance;
+        pVariance = null;
     }
-    if(pLatestMeasurementTime != null) {
+    if(pMean != null) {
         
-        delete pLatestMeasurementTime;
-        pLatestMeasurementTime = null;
+        delete pMean;
+        pMean = null;
     }
-    if(pUpdated != null) {
+    if(pMedian != null) {
         
-        delete pUpdated;
-        pUpdated = null;
+        delete pMedian;
+        pMedian = null;
     }
-    if(pCauseOnly != null) {
+    if(pNumber_of_measurements != null) {
         
-        delete pCauseOnly;
-        pCauseOnly = null;
+        delete pNumber_of_measurements;
+        pNumber_of_measurements = null;
     }
-    if(pNumberOfCorrelations != null) {
+    if(pNumber_of_unique_values != null) {
         
-        delete pNumberOfCorrelations;
-        pNumberOfCorrelations = null;
+        delete pNumber_of_unique_values;
+        pNumber_of_unique_values = null;
+    }
+    if(pSkewness != null) {
+        
+        delete pSkewness;
+        pSkewness = null;
+    }
+    if(pKurtosis != null) {
+        
+        delete pKurtosis;
+        pKurtosis = null;
+    }
+    if(pStatus != null) {
+        
+        delete pStatus;
+        pStatus = null;
+    }
+    if(pError_message != null) {
+        
+        delete pError_message;
+        pError_message = null;
+    }
+    if(pLast_successful_update_time != null) {
+        
+        delete pLast_successful_update_time;
+        pLast_successful_update_time = null;
+    }
+    if(pCreated_at != null) {
+        
+        delete pCreated_at;
+        pCreated_at = null;
+    }
+    if(pUpdated_at != null) {
+        
+        delete pUpdated_at;
+        pUpdated_at = null;
+    }
+    if(pProduct_url != null) {
+        
+        delete pProduct_url;
+        pProduct_url = null;
+    }
+    if(pImage_url != null) {
+        
+        delete pImage_url;
+        pImage_url = null;
+    }
+    if(pPrice != null) {
+        
+        delete pPrice;
+        pPrice = null;
+    }
+    if(pNumber_of_user_variables != null) {
+        
+        delete pNumber_of_user_variables;
+        pNumber_of_user_variables = null;
     }
     if(pOutcome != null) {
         
         delete pOutcome;
         pOutcome = null;
     }
-    if(pMeasurementsAtLastAnalysis != null) {
+    if(pMinimum_recorded_value != null) {
         
-        delete pMeasurementsAtLastAnalysis;
-        pMeasurementsAtLastAnalysis = null;
+        delete pMinimum_recorded_value;
+        pMinimum_recorded_value = null;
     }
-    if(pNumberOfMeasurements != null) {
+    if(pMaximum_recorded_value != null) {
         
-        delete pNumberOfMeasurements;
-        pNumberOfMeasurements = null;
-    }
-    if(pLastUnit != null) {
-        
-        delete pLastUnit;
-        pLastUnit = null;
-    }
-    if(pLastValue != null) {
-        
-        delete pLastValue;
-        pLastValue = null;
-    }
-    if(pMostCommonValue != null) {
-        
-        delete pMostCommonValue;
-        pMostCommonValue = null;
-    }
-    if(pMostCommonUnit != null) {
-        
-        delete pMostCommonUnit;
-        pMostCommonUnit = null;
-    }
-    if(pLastSource != null) {
-        
-        delete pLastSource;
-        pLastSource = null;
+        delete pMaximum_recorded_value;
+        pMaximum_recorded_value = null;
     }
     
 }
@@ -250,10 +286,28 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pIdKey, pIdVal);
         if(pIdVal != null) {
             
-            pId = null;
+            pId = new Integer();
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
+        JsonString* pClient_idKey = new JsonString(L"client_id");
+        IJsonValue* pClient_idVal = null;
+        pJsonObject->GetValue(pClient_idKey, pClient_idVal);
+        if(pClient_idVal != null) {
+            
+            pClient_id = new String();
+            jsonToValue(pClient_id, pClient_idVal, L"String", L"String");
+        }
+        delete pClient_idKey;
+        JsonString* pParent_idKey = new JsonString(L"parent_id");
+        IJsonValue* pParent_idVal = null;
+        pJsonObject->GetValue(pParent_idKey, pParent_idVal);
+        if(pParent_idVal != null) {
+            
+            pParent_id = new Integer();
+            jsonToValue(pParent_id, pParent_idVal, L"Integer", L"Integer");
+        }
+        delete pParent_idKey;
         JsonString* pNameKey = new JsonString(L"name");
         IJsonValue* pNameVal = null;
         pJsonObject->GetValue(pNameKey, pNameVal);
@@ -263,258 +317,294 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
-        JsonString* pOriginalNameKey = new JsonString(L"originalName");
-        IJsonValue* pOriginalNameVal = null;
-        pJsonObject->GetValue(pOriginalNameKey, pOriginalNameVal);
-        if(pOriginalNameVal != null) {
+        JsonString* pVariable_category_idKey = new JsonString(L"variable_category_id");
+        IJsonValue* pVariable_category_idVal = null;
+        pJsonObject->GetValue(pVariable_category_idKey, pVariable_category_idVal);
+        if(pVariable_category_idVal != null) {
             
-            pOriginalName = new String();
-            jsonToValue(pOriginalName, pOriginalNameVal, L"String", L"String");
+            pVariable_category_id = new Integer();
+            jsonToValue(pVariable_category_id, pVariable_category_idVal, L"Integer", L"Integer");
         }
-        delete pOriginalNameKey;
-        JsonString* pCategoryKey = new JsonString(L"category");
-        IJsonValue* pCategoryVal = null;
-        pJsonObject->GetValue(pCategoryKey, pCategoryVal);
-        if(pCategoryVal != null) {
+        delete pVariable_category_idKey;
+        JsonString* pDefault_unit_idKey = new JsonString(L"default_unit_id");
+        IJsonValue* pDefault_unit_idVal = null;
+        pJsonObject->GetValue(pDefault_unit_idKey, pDefault_unit_idVal);
+        if(pDefault_unit_idVal != null) {
             
-            pCategory = new String();
-            jsonToValue(pCategory, pCategoryVal, L"String", L"String");
+            pDefault_unit_id = new Integer();
+            jsonToValue(pDefault_unit_id, pDefault_unit_idVal, L"Integer", L"Integer");
         }
-        delete pCategoryKey;
-        JsonString* pAbbreviatedUnitNameKey = new JsonString(L"abbreviatedUnitName");
-        IJsonValue* pAbbreviatedUnitNameVal = null;
-        pJsonObject->GetValue(pAbbreviatedUnitNameKey, pAbbreviatedUnitNameVal);
-        if(pAbbreviatedUnitNameVal != null) {
+        delete pDefault_unit_idKey;
+        JsonString* pCombination_operationKey = new JsonString(L"combination_operation");
+        IJsonValue* pCombination_operationVal = null;
+        pJsonObject->GetValue(pCombination_operationKey, pCombination_operationVal);
+        if(pCombination_operationVal != null) {
             
-            pAbbreviatedUnitName = new String();
-            jsonToValue(pAbbreviatedUnitName, pAbbreviatedUnitNameVal, L"String", L"String");
+            pCombination_operation = new String();
+            jsonToValue(pCombination_operation, pCombination_operationVal, L"String", L"String");
         }
-        delete pAbbreviatedUnitNameKey;
-        JsonString* pAbbreviatedUnitIdKey = new JsonString(L"abbreviatedUnitId");
-        IJsonValue* pAbbreviatedUnitIdVal = null;
-        pJsonObject->GetValue(pAbbreviatedUnitIdKey, pAbbreviatedUnitIdVal);
-        if(pAbbreviatedUnitIdVal != null) {
+        delete pCombination_operationKey;
+        JsonString* pFilling_valueKey = new JsonString(L"filling_value");
+        IJsonValue* pFilling_valueVal = null;
+        pJsonObject->GetValue(pFilling_valueKey, pFilling_valueVal);
+        if(pFilling_valueVal != null) {
             
-            pAbbreviatedUnitId = null;
-            jsonToValue(pAbbreviatedUnitId, pAbbreviatedUnitIdVal, L"Integer", L"Integer");
+            pFilling_value = new Float();
+            jsonToValue(pFilling_value, pFilling_valueVal, L"Float", L"Float");
         }
-        delete pAbbreviatedUnitIdKey;
-        JsonString* pSourcesKey = new JsonString(L"sources");
-        IJsonValue* pSourcesVal = null;
-        pJsonObject->GetValue(pSourcesKey, pSourcesVal);
-        if(pSourcesVal != null) {
+        delete pFilling_valueKey;
+        JsonString* pMaximum_allowed_valueKey = new JsonString(L"maximum_allowed_value");
+        IJsonValue* pMaximum_allowed_valueVal = null;
+        pJsonObject->GetValue(pMaximum_allowed_valueKey, pMaximum_allowed_valueVal);
+        if(pMaximum_allowed_valueVal != null) {
             
-            pSources = new String();
-            jsonToValue(pSources, pSourcesVal, L"String", L"String");
+            pMaximum_allowed_value = new Float();
+            jsonToValue(pMaximum_allowed_value, pMaximum_allowed_valueVal, L"Float", L"Float");
         }
-        delete pSourcesKey;
-        JsonString* pMinimumValueKey = new JsonString(L"minimumValue");
-        IJsonValue* pMinimumValueVal = null;
-        pJsonObject->GetValue(pMinimumValueKey, pMinimumValueVal);
-        if(pMinimumValueVal != null) {
+        delete pMaximum_allowed_valueKey;
+        JsonString* pMinimum_allowed_valueKey = new JsonString(L"minimum_allowed_value");
+        IJsonValue* pMinimum_allowed_valueVal = null;
+        pJsonObject->GetValue(pMinimum_allowed_valueKey, pMinimum_allowed_valueVal);
+        if(pMinimum_allowed_valueVal != null) {
             
-            pMinimumValue = new Double();
-            jsonToValue(pMinimumValue, pMinimumValueVal, L"Double", L"Double");
+            pMinimum_allowed_value = new Float();
+            jsonToValue(pMinimum_allowed_value, pMinimum_allowed_valueVal, L"Float", L"Float");
         }
-        delete pMinimumValueKey;
-        JsonString* pMaximumValueKey = new JsonString(L"maximumValue");
-        IJsonValue* pMaximumValueVal = null;
-        pJsonObject->GetValue(pMaximumValueKey, pMaximumValueVal);
-        if(pMaximumValueVal != null) {
+        delete pMinimum_allowed_valueKey;
+        JsonString* pOnset_delayKey = new JsonString(L"onset_delay");
+        IJsonValue* pOnset_delayVal = null;
+        pJsonObject->GetValue(pOnset_delayKey, pOnset_delayVal);
+        if(pOnset_delayVal != null) {
             
-            pMaximumValue = new Double();
-            jsonToValue(pMaximumValue, pMaximumValueVal, L"Double", L"Double");
+            pOnset_delay = new Integer();
+            jsonToValue(pOnset_delay, pOnset_delayVal, L"Integer", L"Integer");
         }
-        delete pMaximumValueKey;
-        JsonString* pCombinationOperationKey = new JsonString(L"combinationOperation");
-        IJsonValue* pCombinationOperationVal = null;
-        pJsonObject->GetValue(pCombinationOperationKey, pCombinationOperationVal);
-        if(pCombinationOperationVal != null) {
+        delete pOnset_delayKey;
+        JsonString* pDuration_of_actionKey = new JsonString(L"duration_of_action");
+        IJsonValue* pDuration_of_actionVal = null;
+        pJsonObject->GetValue(pDuration_of_actionKey, pDuration_of_actionVal);
+        if(pDuration_of_actionVal != null) {
             
-            pCombinationOperation = new String();
-            jsonToValue(pCombinationOperation, pCombinationOperationVal, L"String", L"String");
+            pDuration_of_action = new Integer();
+            jsonToValue(pDuration_of_action, pDuration_of_actionVal, L"Integer", L"Integer");
         }
-        delete pCombinationOperationKey;
-        JsonString* pFillingValueKey = new JsonString(L"fillingValue");
-        IJsonValue* pFillingValueVal = null;
-        pJsonObject->GetValue(pFillingValueKey, pFillingValueVal);
-        if(pFillingValueVal != null) {
+        delete pDuration_of_actionKey;
+        JsonString* pPublicKey = new JsonString(L"public");
+        IJsonValue* pPublicVal = null;
+        pJsonObject->GetValue(pPublicKey, pPublicVal);
+        if(pPublicVal != null) {
             
-            pFillingValue = new Double();
-            jsonToValue(pFillingValue, pFillingValueVal, L"Double", L"Double");
+            pPublic = new Integer();
+            jsonToValue(pPublic, pPublicVal, L"Integer", L"Integer");
         }
-        delete pFillingValueKey;
-        JsonString* pJoinWithKey = new JsonString(L"joinWith");
-        IJsonValue* pJoinWithVal = null;
-        pJsonObject->GetValue(pJoinWithKey, pJoinWithVal);
-        if(pJoinWithVal != null) {
+        delete pPublicKey;
+        JsonString* pCause_onlyKey = new JsonString(L"cause_only");
+        IJsonValue* pCause_onlyVal = null;
+        pJsonObject->GetValue(pCause_onlyKey, pCause_onlyVal);
+        if(pCause_onlyVal != null) {
             
-            pJoinWith = new String();
-            jsonToValue(pJoinWith, pJoinWithVal, L"String", L"String");
+            pCause_only = new Boolean(false);
+            jsonToValue(pCause_only, pCause_onlyVal, L"Boolean", L"Boolean");
         }
-        delete pJoinWithKey;
-        JsonString* pJoinedVariablesKey = new JsonString(L"joinedVariables");
-        IJsonValue* pJoinedVariablesVal = null;
-        pJsonObject->GetValue(pJoinedVariablesKey, pJoinedVariablesVal);
-        if(pJoinedVariablesVal != null) {
-            pJoinedVariables = new ArrayList();
+        delete pCause_onlyKey;
+        JsonString* pMost_common_valueKey = new JsonString(L"most_common_value");
+        IJsonValue* pMost_common_valueVal = null;
+        pJsonObject->GetValue(pMost_common_valueKey, pMost_common_valueVal);
+        if(pMost_common_valueVal != null) {
             
-            jsonToValue(pJoinedVariables, pJoinedVariablesVal, L"IList", L"SamiVariable");
+            pMost_common_value = new Float();
+            jsonToValue(pMost_common_value, pMost_common_valueVal, L"Float", L"Float");
         }
-        delete pJoinedVariablesKey;
-        JsonString* pParentKey = new JsonString(L"parent");
-        IJsonValue* pParentVal = null;
-        pJsonObject->GetValue(pParentKey, pParentVal);
-        if(pParentVal != null) {
+        delete pMost_common_valueKey;
+        JsonString* pMost_common_unit_idKey = new JsonString(L"most_common_unit_id");
+        IJsonValue* pMost_common_unit_idVal = null;
+        pJsonObject->GetValue(pMost_common_unit_idKey, pMost_common_unit_idVal);
+        if(pMost_common_unit_idVal != null) {
             
-            pParent = null;
-            jsonToValue(pParent, pParentVal, L"Integer", L"Integer");
+            pMost_common_unit_id = new Integer();
+            jsonToValue(pMost_common_unit_id, pMost_common_unit_idVal, L"Integer", L"Integer");
         }
-        delete pParentKey;
-        JsonString* pSubVariablesKey = new JsonString(L"subVariables");
-        IJsonValue* pSubVariablesVal = null;
-        pJsonObject->GetValue(pSubVariablesKey, pSubVariablesVal);
-        if(pSubVariablesVal != null) {
-            pSubVariables = new ArrayList();
+        delete pMost_common_unit_idKey;
+        JsonString* pStandard_deviationKey = new JsonString(L"standard_deviation");
+        IJsonValue* pStandard_deviationVal = null;
+        pJsonObject->GetValue(pStandard_deviationKey, pStandard_deviationVal);
+        if(pStandard_deviationVal != null) {
             
-            jsonToValue(pSubVariables, pSubVariablesVal, L"IList", L"SamiVariable");
+            pStandard_deviation = new Float();
+            jsonToValue(pStandard_deviation, pStandard_deviationVal, L"Float", L"Float");
         }
-        delete pSubVariablesKey;
-        JsonString* pOnsetDelayKey = new JsonString(L"onsetDelay");
-        IJsonValue* pOnsetDelayVal = null;
-        pJsonObject->GetValue(pOnsetDelayKey, pOnsetDelayVal);
-        if(pOnsetDelayVal != null) {
+        delete pStandard_deviationKey;
+        JsonString* pVarianceKey = new JsonString(L"variance");
+        IJsonValue* pVarianceVal = null;
+        pJsonObject->GetValue(pVarianceKey, pVarianceVal);
+        if(pVarianceVal != null) {
             
-            pOnsetDelay = null;
-            jsonToValue(pOnsetDelay, pOnsetDelayVal, L"Integer", L"Integer");
+            pVariance = new Float();
+            jsonToValue(pVariance, pVarianceVal, L"Float", L"Float");
         }
-        delete pOnsetDelayKey;
-        JsonString* pDurationOfActionKey = new JsonString(L"durationOfAction");
-        IJsonValue* pDurationOfActionVal = null;
-        pJsonObject->GetValue(pDurationOfActionKey, pDurationOfActionVal);
-        if(pDurationOfActionVal != null) {
+        delete pVarianceKey;
+        JsonString* pMeanKey = new JsonString(L"mean");
+        IJsonValue* pMeanVal = null;
+        pJsonObject->GetValue(pMeanKey, pMeanVal);
+        if(pMeanVal != null) {
             
-            pDurationOfAction = null;
-            jsonToValue(pDurationOfAction, pDurationOfActionVal, L"Integer", L"Integer");
+            pMean = new Float();
+            jsonToValue(pMean, pMeanVal, L"Float", L"Float");
         }
-        delete pDurationOfActionKey;
-        JsonString* pEarliestMeasurementTimeKey = new JsonString(L"earliestMeasurementTime");
-        IJsonValue* pEarliestMeasurementTimeVal = null;
-        pJsonObject->GetValue(pEarliestMeasurementTimeKey, pEarliestMeasurementTimeVal);
-        if(pEarliestMeasurementTimeVal != null) {
+        delete pMeanKey;
+        JsonString* pMedianKey = new JsonString(L"median");
+        IJsonValue* pMedianVal = null;
+        pJsonObject->GetValue(pMedianKey, pMedianVal);
+        if(pMedianVal != null) {
             
-            pEarliestMeasurementTime = null;
-            jsonToValue(pEarliestMeasurementTime, pEarliestMeasurementTimeVal, L"Integer", L"Integer");
+            pMedian = new Float();
+            jsonToValue(pMedian, pMedianVal, L"Float", L"Float");
         }
-        delete pEarliestMeasurementTimeKey;
-        JsonString* pLatestMeasurementTimeKey = new JsonString(L"latestMeasurementTime");
-        IJsonValue* pLatestMeasurementTimeVal = null;
-        pJsonObject->GetValue(pLatestMeasurementTimeKey, pLatestMeasurementTimeVal);
-        if(pLatestMeasurementTimeVal != null) {
+        delete pMedianKey;
+        JsonString* pNumber_of_measurementsKey = new JsonString(L"number_of_measurements");
+        IJsonValue* pNumber_of_measurementsVal = null;
+        pJsonObject->GetValue(pNumber_of_measurementsKey, pNumber_of_measurementsVal);
+        if(pNumber_of_measurementsVal != null) {
             
-            pLatestMeasurementTime = null;
-            jsonToValue(pLatestMeasurementTime, pLatestMeasurementTimeVal, L"Integer", L"Integer");
+            pNumber_of_measurements = new Float();
+            jsonToValue(pNumber_of_measurements, pNumber_of_measurementsVal, L"Float", L"Float");
         }
-        delete pLatestMeasurementTimeKey;
-        JsonString* pUpdatedKey = new JsonString(L"updated");
-        IJsonValue* pUpdatedVal = null;
-        pJsonObject->GetValue(pUpdatedKey, pUpdatedVal);
-        if(pUpdatedVal != null) {
+        delete pNumber_of_measurementsKey;
+        JsonString* pNumber_of_unique_valuesKey = new JsonString(L"number_of_unique_values");
+        IJsonValue* pNumber_of_unique_valuesVal = null;
+        pJsonObject->GetValue(pNumber_of_unique_valuesKey, pNumber_of_unique_valuesVal);
+        if(pNumber_of_unique_valuesVal != null) {
             
-            pUpdated = null;
-            jsonToValue(pUpdated, pUpdatedVal, L"Integer", L"Integer");
+            pNumber_of_unique_values = new Float();
+            jsonToValue(pNumber_of_unique_values, pNumber_of_unique_valuesVal, L"Float", L"Float");
         }
-        delete pUpdatedKey;
-        JsonString* pCauseOnlyKey = new JsonString(L"causeOnly");
-        IJsonValue* pCauseOnlyVal = null;
-        pJsonObject->GetValue(pCauseOnlyKey, pCauseOnlyVal);
-        if(pCauseOnlyVal != null) {
+        delete pNumber_of_unique_valuesKey;
+        JsonString* pSkewnessKey = new JsonString(L"skewness");
+        IJsonValue* pSkewnessVal = null;
+        pJsonObject->GetValue(pSkewnessKey, pSkewnessVal);
+        if(pSkewnessVal != null) {
             
-            pCauseOnly = null;
-            jsonToValue(pCauseOnly, pCauseOnlyVal, L"Integer", L"Integer");
+            pSkewness = new Float();
+            jsonToValue(pSkewness, pSkewnessVal, L"Float", L"Float");
         }
-        delete pCauseOnlyKey;
-        JsonString* pNumberOfCorrelationsKey = new JsonString(L"numberOfCorrelations");
-        IJsonValue* pNumberOfCorrelationsVal = null;
-        pJsonObject->GetValue(pNumberOfCorrelationsKey, pNumberOfCorrelationsVal);
-        if(pNumberOfCorrelationsVal != null) {
+        delete pSkewnessKey;
+        JsonString* pKurtosisKey = new JsonString(L"kurtosis");
+        IJsonValue* pKurtosisVal = null;
+        pJsonObject->GetValue(pKurtosisKey, pKurtosisVal);
+        if(pKurtosisVal != null) {
             
-            pNumberOfCorrelations = null;
-            jsonToValue(pNumberOfCorrelations, pNumberOfCorrelationsVal, L"Integer", L"Integer");
+            pKurtosis = new Float();
+            jsonToValue(pKurtosis, pKurtosisVal, L"Float", L"Float");
         }
-        delete pNumberOfCorrelationsKey;
+        delete pKurtosisKey;
+        JsonString* pStatusKey = new JsonString(L"status");
+        IJsonValue* pStatusVal = null;
+        pJsonObject->GetValue(pStatusKey, pStatusVal);
+        if(pStatusVal != null) {
+            
+            pStatus = new String();
+            jsonToValue(pStatus, pStatusVal, L"String", L"String");
+        }
+        delete pStatusKey;
+        JsonString* pError_messageKey = new JsonString(L"error_message");
+        IJsonValue* pError_messageVal = null;
+        pJsonObject->GetValue(pError_messageKey, pError_messageVal);
+        if(pError_messageVal != null) {
+            
+            pError_message = new String();
+            jsonToValue(pError_message, pError_messageVal, L"String", L"String");
+        }
+        delete pError_messageKey;
+        JsonString* pLast_successful_update_timeKey = new JsonString(L"last_successful_update_time");
+        IJsonValue* pLast_successful_update_timeVal = null;
+        pJsonObject->GetValue(pLast_successful_update_timeKey, pLast_successful_update_timeVal);
+        if(pLast_successful_update_timeVal != null) {
+            
+            pLast_successful_update_time = new DateTime();
+            jsonToValue(pLast_successful_update_time, pLast_successful_update_timeVal, L"DateTime", L"DateTime");
+        }
+        delete pLast_successful_update_timeKey;
+        JsonString* pCreated_atKey = new JsonString(L"created_at");
+        IJsonValue* pCreated_atVal = null;
+        pJsonObject->GetValue(pCreated_atKey, pCreated_atVal);
+        if(pCreated_atVal != null) {
+            
+            pCreated_at = new DateTime();
+            jsonToValue(pCreated_at, pCreated_atVal, L"DateTime", L"DateTime");
+        }
+        delete pCreated_atKey;
+        JsonString* pUpdated_atKey = new JsonString(L"updated_at");
+        IJsonValue* pUpdated_atVal = null;
+        pJsonObject->GetValue(pUpdated_atKey, pUpdated_atVal);
+        if(pUpdated_atVal != null) {
+            
+            pUpdated_at = new DateTime();
+            jsonToValue(pUpdated_at, pUpdated_atVal, L"DateTime", L"DateTime");
+        }
+        delete pUpdated_atKey;
+        JsonString* pProduct_urlKey = new JsonString(L"product_url");
+        IJsonValue* pProduct_urlVal = null;
+        pJsonObject->GetValue(pProduct_urlKey, pProduct_urlVal);
+        if(pProduct_urlVal != null) {
+            
+            pProduct_url = new String();
+            jsonToValue(pProduct_url, pProduct_urlVal, L"String", L"String");
+        }
+        delete pProduct_urlKey;
+        JsonString* pImage_urlKey = new JsonString(L"image_url");
+        IJsonValue* pImage_urlVal = null;
+        pJsonObject->GetValue(pImage_urlKey, pImage_urlVal);
+        if(pImage_urlVal != null) {
+            
+            pImage_url = new String();
+            jsonToValue(pImage_url, pImage_urlVal, L"String", L"String");
+        }
+        delete pImage_urlKey;
+        JsonString* pPriceKey = new JsonString(L"price");
+        IJsonValue* pPriceVal = null;
+        pJsonObject->GetValue(pPriceKey, pPriceVal);
+        if(pPriceVal != null) {
+            
+            pPrice = new Float();
+            jsonToValue(pPrice, pPriceVal, L"Float", L"Float");
+        }
+        delete pPriceKey;
+        JsonString* pNumber_of_user_variablesKey = new JsonString(L"number_of_user_variables");
+        IJsonValue* pNumber_of_user_variablesVal = null;
+        pJsonObject->GetValue(pNumber_of_user_variablesKey, pNumber_of_user_variablesVal);
+        if(pNumber_of_user_variablesVal != null) {
+            
+            pNumber_of_user_variables = new Integer();
+            jsonToValue(pNumber_of_user_variables, pNumber_of_user_variablesVal, L"Integer", L"Integer");
+        }
+        delete pNumber_of_user_variablesKey;
         JsonString* pOutcomeKey = new JsonString(L"outcome");
         IJsonValue* pOutcomeVal = null;
         pJsonObject->GetValue(pOutcomeKey, pOutcomeVal);
         if(pOutcomeVal != null) {
             
-            pOutcome = null;
-            jsonToValue(pOutcome, pOutcomeVal, L"Integer", L"Integer");
+            pOutcome = new Boolean(false);
+            jsonToValue(pOutcome, pOutcomeVal, L"Boolean", L"Boolean");
         }
         delete pOutcomeKey;
-        JsonString* pMeasurementsAtLastAnalysisKey = new JsonString(L"measurementsAtLastAnalysis");
-        IJsonValue* pMeasurementsAtLastAnalysisVal = null;
-        pJsonObject->GetValue(pMeasurementsAtLastAnalysisKey, pMeasurementsAtLastAnalysisVal);
-        if(pMeasurementsAtLastAnalysisVal != null) {
+        JsonString* pMinimum_recorded_valueKey = new JsonString(L"minimum_recorded_value");
+        IJsonValue* pMinimum_recorded_valueVal = null;
+        pJsonObject->GetValue(pMinimum_recorded_valueKey, pMinimum_recorded_valueVal);
+        if(pMinimum_recorded_valueVal != null) {
             
-            pMeasurementsAtLastAnalysis = null;
-            jsonToValue(pMeasurementsAtLastAnalysis, pMeasurementsAtLastAnalysisVal, L"Integer", L"Integer");
+            pMinimum_recorded_value = new Float();
+            jsonToValue(pMinimum_recorded_value, pMinimum_recorded_valueVal, L"Float", L"Float");
         }
-        delete pMeasurementsAtLastAnalysisKey;
-        JsonString* pNumberOfMeasurementsKey = new JsonString(L"numberOfMeasurements");
-        IJsonValue* pNumberOfMeasurementsVal = null;
-        pJsonObject->GetValue(pNumberOfMeasurementsKey, pNumberOfMeasurementsVal);
-        if(pNumberOfMeasurementsVal != null) {
+        delete pMinimum_recorded_valueKey;
+        JsonString* pMaximum_recorded_valueKey = new JsonString(L"maximum_recorded_value");
+        IJsonValue* pMaximum_recorded_valueVal = null;
+        pJsonObject->GetValue(pMaximum_recorded_valueKey, pMaximum_recorded_valueVal);
+        if(pMaximum_recorded_valueVal != null) {
             
-            pNumberOfMeasurements = null;
-            jsonToValue(pNumberOfMeasurements, pNumberOfMeasurementsVal, L"Integer", L"Integer");
+            pMaximum_recorded_value = new Float();
+            jsonToValue(pMaximum_recorded_value, pMaximum_recorded_valueVal, L"Float", L"Float");
         }
-        delete pNumberOfMeasurementsKey;
-        JsonString* pLastUnitKey = new JsonString(L"lastUnit");
-        IJsonValue* pLastUnitVal = null;
-        pJsonObject->GetValue(pLastUnitKey, pLastUnitVal);
-        if(pLastUnitVal != null) {
-            
-            pLastUnit = new String();
-            jsonToValue(pLastUnit, pLastUnitVal, L"String", L"String");
-        }
-        delete pLastUnitKey;
-        JsonString* pLastValueKey = new JsonString(L"lastValue");
-        IJsonValue* pLastValueVal = null;
-        pJsonObject->GetValue(pLastValueKey, pLastValueVal);
-        if(pLastValueVal != null) {
-            
-            pLastValue = null;
-            jsonToValue(pLastValue, pLastValueVal, L"Integer", L"Integer");
-        }
-        delete pLastValueKey;
-        JsonString* pMostCommonValueKey = new JsonString(L"mostCommonValue");
-        IJsonValue* pMostCommonValueVal = null;
-        pJsonObject->GetValue(pMostCommonValueKey, pMostCommonValueVal);
-        if(pMostCommonValueVal != null) {
-            
-            pMostCommonValue = null;
-            jsonToValue(pMostCommonValue, pMostCommonValueVal, L"Integer", L"Integer");
-        }
-        delete pMostCommonValueKey;
-        JsonString* pMostCommonUnitKey = new JsonString(L"mostCommonUnit");
-        IJsonValue* pMostCommonUnitVal = null;
-        pJsonObject->GetValue(pMostCommonUnitKey, pMostCommonUnitVal);
-        if(pMostCommonUnitVal != null) {
-            
-            pMostCommonUnit = new String();
-            jsonToValue(pMostCommonUnit, pMostCommonUnitVal, L"String", L"String");
-        }
-        delete pMostCommonUnitKey;
-        JsonString* pLastSourceKey = new JsonString(L"lastSource");
-        IJsonValue* pLastSourceVal = null;
-        pJsonObject->GetValue(pLastSourceKey, pLastSourceVal);
-        if(pLastSourceVal != null) {
-            
-            pLastSource = null;
-            jsonToValue(pLastSource, pLastSourceVal, L"Integer", L"Integer");
-        }
-        delete pLastSourceKey;
+        delete pMaximum_recorded_valueKey;
         
     }
 }
@@ -571,120 +661,144 @@ SamiVariable::asJsonObject() {
     pJsonObject->Add(pIdKey, toJson(getPId(), "Integer", ""));
 
     
+    JsonString *pClient_idKey = new JsonString(L"client_id");
+    pJsonObject->Add(pClient_idKey, toJson(getPClientId(), "String", ""));
+
+    
+    JsonString *pParent_idKey = new JsonString(L"parent_id");
+    pJsonObject->Add(pParent_idKey, toJson(getPParentId(), "Integer", ""));
+
+    
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
     
-    JsonString *pOriginalNameKey = new JsonString(L"originalName");
-    pJsonObject->Add(pOriginalNameKey, toJson(getPOriginalName(), "String", ""));
+    JsonString *pVariable_category_idKey = new JsonString(L"variable_category_id");
+    pJsonObject->Add(pVariable_category_idKey, toJson(getPVariableCategoryId(), "Integer", ""));
 
     
-    JsonString *pCategoryKey = new JsonString(L"category");
-    pJsonObject->Add(pCategoryKey, toJson(getPCategory(), "String", ""));
+    JsonString *pDefault_unit_idKey = new JsonString(L"default_unit_id");
+    pJsonObject->Add(pDefault_unit_idKey, toJson(getPDefaultUnitId(), "Integer", ""));
 
     
-    JsonString *pAbbreviatedUnitNameKey = new JsonString(L"abbreviatedUnitName");
-    pJsonObject->Add(pAbbreviatedUnitNameKey, toJson(getPAbbreviatedUnitName(), "String", ""));
+    JsonString *pCombination_operationKey = new JsonString(L"combination_operation");
+    pJsonObject->Add(pCombination_operationKey, toJson(getPCombinationOperation(), "String", ""));
 
     
-    JsonString *pAbbreviatedUnitIdKey = new JsonString(L"abbreviatedUnitId");
-    pJsonObject->Add(pAbbreviatedUnitIdKey, toJson(getPAbbreviatedUnitId(), "Integer", ""));
+    JsonString *pFilling_valueKey = new JsonString(L"filling_value");
+    pJsonObject->Add(pFilling_valueKey, toJson(getPFillingValue(), "Float", ""));
 
     
-    JsonString *pSourcesKey = new JsonString(L"sources");
-    pJsonObject->Add(pSourcesKey, toJson(getPSources(), "String", ""));
+    JsonString *pMaximum_allowed_valueKey = new JsonString(L"maximum_allowed_value");
+    pJsonObject->Add(pMaximum_allowed_valueKey, toJson(getPMaximumAllowedValue(), "Float", ""));
 
     
-    JsonString *pMinimumValueKey = new JsonString(L"minimumValue");
-    pJsonObject->Add(pMinimumValueKey, toJson(getPMinimumValue(), "Double", ""));
+    JsonString *pMinimum_allowed_valueKey = new JsonString(L"minimum_allowed_value");
+    pJsonObject->Add(pMinimum_allowed_valueKey, toJson(getPMinimumAllowedValue(), "Float", ""));
 
     
-    JsonString *pMaximumValueKey = new JsonString(L"maximumValue");
-    pJsonObject->Add(pMaximumValueKey, toJson(getPMaximumValue(), "Double", ""));
+    JsonString *pOnset_delayKey = new JsonString(L"onset_delay");
+    pJsonObject->Add(pOnset_delayKey, toJson(getPOnsetDelay(), "Integer", ""));
 
     
-    JsonString *pCombinationOperationKey = new JsonString(L"combinationOperation");
-    pJsonObject->Add(pCombinationOperationKey, toJson(getPCombinationOperation(), "String", ""));
+    JsonString *pDuration_of_actionKey = new JsonString(L"duration_of_action");
+    pJsonObject->Add(pDuration_of_actionKey, toJson(getPDurationOfAction(), "Integer", ""));
 
     
-    JsonString *pFillingValueKey = new JsonString(L"fillingValue");
-    pJsonObject->Add(pFillingValueKey, toJson(getPFillingValue(), "Double", ""));
+    JsonString *pPublicKey = new JsonString(L"public");
+    pJsonObject->Add(pPublicKey, toJson(getPPublic(), "Integer", ""));
 
     
-    JsonString *pJoinWithKey = new JsonString(L"joinWith");
-    pJsonObject->Add(pJoinWithKey, toJson(getPJoinWith(), "String", ""));
+    JsonString *pCause_onlyKey = new JsonString(L"cause_only");
+    pJsonObject->Add(pCause_onlyKey, toJson(getPCauseOnly(), "Boolean", ""));
 
     
-    JsonString *pJoinedVariablesKey = new JsonString(L"joinedVariables");
-    pJsonObject->Add(pJoinedVariablesKey, toJson(getPJoinedVariables(), "SamiVariable", "array"));
+    JsonString *pMost_common_valueKey = new JsonString(L"most_common_value");
+    pJsonObject->Add(pMost_common_valueKey, toJson(getPMostCommonValue(), "Float", ""));
 
     
-    JsonString *pParentKey = new JsonString(L"parent");
-    pJsonObject->Add(pParentKey, toJson(getPParent(), "Integer", ""));
+    JsonString *pMost_common_unit_idKey = new JsonString(L"most_common_unit_id");
+    pJsonObject->Add(pMost_common_unit_idKey, toJson(getPMostCommonUnitId(), "Integer", ""));
 
     
-    JsonString *pSubVariablesKey = new JsonString(L"subVariables");
-    pJsonObject->Add(pSubVariablesKey, toJson(getPSubVariables(), "SamiVariable", "array"));
+    JsonString *pStandard_deviationKey = new JsonString(L"standard_deviation");
+    pJsonObject->Add(pStandard_deviationKey, toJson(getPStandardDeviation(), "Float", ""));
 
     
-    JsonString *pOnsetDelayKey = new JsonString(L"onsetDelay");
-    pJsonObject->Add(pOnsetDelayKey, toJson(getPOnsetDelay(), "Integer", ""));
+    JsonString *pVarianceKey = new JsonString(L"variance");
+    pJsonObject->Add(pVarianceKey, toJson(getPVariance(), "Float", ""));
 
     
-    JsonString *pDurationOfActionKey = new JsonString(L"durationOfAction");
-    pJsonObject->Add(pDurationOfActionKey, toJson(getPDurationOfAction(), "Integer", ""));
+    JsonString *pMeanKey = new JsonString(L"mean");
+    pJsonObject->Add(pMeanKey, toJson(getPMean(), "Float", ""));
 
     
-    JsonString *pEarliestMeasurementTimeKey = new JsonString(L"earliestMeasurementTime");
-    pJsonObject->Add(pEarliestMeasurementTimeKey, toJson(getPEarliestMeasurementTime(), "Integer", ""));
+    JsonString *pMedianKey = new JsonString(L"median");
+    pJsonObject->Add(pMedianKey, toJson(getPMedian(), "Float", ""));
 
     
-    JsonString *pLatestMeasurementTimeKey = new JsonString(L"latestMeasurementTime");
-    pJsonObject->Add(pLatestMeasurementTimeKey, toJson(getPLatestMeasurementTime(), "Integer", ""));
+    JsonString *pNumber_of_measurementsKey = new JsonString(L"number_of_measurements");
+    pJsonObject->Add(pNumber_of_measurementsKey, toJson(getPNumberOfMeasurements(), "Float", ""));
 
     
-    JsonString *pUpdatedKey = new JsonString(L"updated");
-    pJsonObject->Add(pUpdatedKey, toJson(getPUpdated(), "Integer", ""));
+    JsonString *pNumber_of_unique_valuesKey = new JsonString(L"number_of_unique_values");
+    pJsonObject->Add(pNumber_of_unique_valuesKey, toJson(getPNumberOfUniqueValues(), "Float", ""));
 
     
-    JsonString *pCauseOnlyKey = new JsonString(L"causeOnly");
-    pJsonObject->Add(pCauseOnlyKey, toJson(getPCauseOnly(), "Integer", ""));
+    JsonString *pSkewnessKey = new JsonString(L"skewness");
+    pJsonObject->Add(pSkewnessKey, toJson(getPSkewness(), "Float", ""));
 
     
-    JsonString *pNumberOfCorrelationsKey = new JsonString(L"numberOfCorrelations");
-    pJsonObject->Add(pNumberOfCorrelationsKey, toJson(getPNumberOfCorrelations(), "Integer", ""));
+    JsonString *pKurtosisKey = new JsonString(L"kurtosis");
+    pJsonObject->Add(pKurtosisKey, toJson(getPKurtosis(), "Float", ""));
+
+    
+    JsonString *pStatusKey = new JsonString(L"status");
+    pJsonObject->Add(pStatusKey, toJson(getPStatus(), "String", ""));
+
+    
+    JsonString *pError_messageKey = new JsonString(L"error_message");
+    pJsonObject->Add(pError_messageKey, toJson(getPErrorMessage(), "String", ""));
+
+    
+    JsonString *pLast_successful_update_timeKey = new JsonString(L"last_successful_update_time");
+    pJsonObject->Add(pLast_successful_update_timeKey, toJson(getPLastSuccessfulUpdateTime(), "DateTime", ""));
+
+    
+    JsonString *pCreated_atKey = new JsonString(L"created_at");
+    pJsonObject->Add(pCreated_atKey, toJson(getPCreatedAt(), "DateTime", ""));
+
+    
+    JsonString *pUpdated_atKey = new JsonString(L"updated_at");
+    pJsonObject->Add(pUpdated_atKey, toJson(getPUpdatedAt(), "DateTime", ""));
+
+    
+    JsonString *pProduct_urlKey = new JsonString(L"product_url");
+    pJsonObject->Add(pProduct_urlKey, toJson(getPProductUrl(), "String", ""));
+
+    
+    JsonString *pImage_urlKey = new JsonString(L"image_url");
+    pJsonObject->Add(pImage_urlKey, toJson(getPImageUrl(), "String", ""));
+
+    
+    JsonString *pPriceKey = new JsonString(L"price");
+    pJsonObject->Add(pPriceKey, toJson(getPPrice(), "Float", ""));
+
+    
+    JsonString *pNumber_of_user_variablesKey = new JsonString(L"number_of_user_variables");
+    pJsonObject->Add(pNumber_of_user_variablesKey, toJson(getPNumberOfUserVariables(), "Integer", ""));
 
     
     JsonString *pOutcomeKey = new JsonString(L"outcome");
-    pJsonObject->Add(pOutcomeKey, toJson(getPOutcome(), "Integer", ""));
+    pJsonObject->Add(pOutcomeKey, toJson(getPOutcome(), "Boolean", ""));
 
     
-    JsonString *pMeasurementsAtLastAnalysisKey = new JsonString(L"measurementsAtLastAnalysis");
-    pJsonObject->Add(pMeasurementsAtLastAnalysisKey, toJson(getPMeasurementsAtLastAnalysis(), "Integer", ""));
+    JsonString *pMinimum_recorded_valueKey = new JsonString(L"minimum_recorded_value");
+    pJsonObject->Add(pMinimum_recorded_valueKey, toJson(getPMinimumRecordedValue(), "Float", ""));
 
     
-    JsonString *pNumberOfMeasurementsKey = new JsonString(L"numberOfMeasurements");
-    pJsonObject->Add(pNumberOfMeasurementsKey, toJson(getPNumberOfMeasurements(), "Integer", ""));
-
-    
-    JsonString *pLastUnitKey = new JsonString(L"lastUnit");
-    pJsonObject->Add(pLastUnitKey, toJson(getPLastUnit(), "String", ""));
-
-    
-    JsonString *pLastValueKey = new JsonString(L"lastValue");
-    pJsonObject->Add(pLastValueKey, toJson(getPLastValue(), "Integer", ""));
-
-    
-    JsonString *pMostCommonValueKey = new JsonString(L"mostCommonValue");
-    pJsonObject->Add(pMostCommonValueKey, toJson(getPMostCommonValue(), "Integer", ""));
-
-    
-    JsonString *pMostCommonUnitKey = new JsonString(L"mostCommonUnit");
-    pJsonObject->Add(pMostCommonUnitKey, toJson(getPMostCommonUnit(), "String", ""));
-
-    
-    JsonString *pLastSourceKey = new JsonString(L"lastSource");
-    pJsonObject->Add(pLastSourceKey, toJson(getPLastSource(), "Integer", ""));
+    JsonString *pMaximum_recorded_valueKey = new JsonString(L"maximum_recorded_value");
+    pJsonObject->Add(pMaximum_recorded_valueKey, toJson(getPMaximumRecordedValue(), "Float", ""));
 
     
     return pJsonObject;
@@ -700,6 +814,24 @@ SamiVariable::setPId(Integer* pId) {
 }
 
 String*
+SamiVariable::getPClientId() {
+    return pClient_id;
+}
+void
+SamiVariable::setPClientId(String* pClient_id) {
+    this->pClient_id = pClient_id;
+}
+
+Integer*
+SamiVariable::getPParentId() {
+    return pParent_id;
+}
+void
+SamiVariable::setPParentId(Integer* pParent_id) {
+    this->pParent_id = pParent_id;
+}
+
+String*
 SamiVariable::getPName() {
     return pName;
 }
@@ -708,256 +840,292 @@ SamiVariable::setPName(String* pName) {
     this->pName = pName;
 }
 
-String*
-SamiVariable::getPOriginalName() {
-    return pOriginalName;
+Integer*
+SamiVariable::getPVariableCategoryId() {
+    return pVariable_category_id;
 }
 void
-SamiVariable::setPOriginalName(String* pOriginalName) {
-    this->pOriginalName = pOriginalName;
-}
-
-String*
-SamiVariable::getPCategory() {
-    return pCategory;
-}
-void
-SamiVariable::setPCategory(String* pCategory) {
-    this->pCategory = pCategory;
-}
-
-String*
-SamiVariable::getPAbbreviatedUnitName() {
-    return pAbbreviatedUnitName;
-}
-void
-SamiVariable::setPAbbreviatedUnitName(String* pAbbreviatedUnitName) {
-    this->pAbbreviatedUnitName = pAbbreviatedUnitName;
+SamiVariable::setPVariableCategoryId(Integer* pVariable_category_id) {
+    this->pVariable_category_id = pVariable_category_id;
 }
 
 Integer*
-SamiVariable::getPAbbreviatedUnitId() {
-    return pAbbreviatedUnitId;
+SamiVariable::getPDefaultUnitId() {
+    return pDefault_unit_id;
 }
 void
-SamiVariable::setPAbbreviatedUnitId(Integer* pAbbreviatedUnitId) {
-    this->pAbbreviatedUnitId = pAbbreviatedUnitId;
-}
-
-String*
-SamiVariable::getPSources() {
-    return pSources;
-}
-void
-SamiVariable::setPSources(String* pSources) {
-    this->pSources = pSources;
-}
-
-Double*
-SamiVariable::getPMinimumValue() {
-    return pMinimumValue;
-}
-void
-SamiVariable::setPMinimumValue(Double* pMinimumValue) {
-    this->pMinimumValue = pMinimumValue;
-}
-
-Double*
-SamiVariable::getPMaximumValue() {
-    return pMaximumValue;
-}
-void
-SamiVariable::setPMaximumValue(Double* pMaximumValue) {
-    this->pMaximumValue = pMaximumValue;
+SamiVariable::setPDefaultUnitId(Integer* pDefault_unit_id) {
+    this->pDefault_unit_id = pDefault_unit_id;
 }
 
 String*
 SamiVariable::getPCombinationOperation() {
-    return pCombinationOperation;
+    return pCombination_operation;
 }
 void
-SamiVariable::setPCombinationOperation(String* pCombinationOperation) {
-    this->pCombinationOperation = pCombinationOperation;
+SamiVariable::setPCombinationOperation(String* pCombination_operation) {
+    this->pCombination_operation = pCombination_operation;
 }
 
-Double*
+Float*
 SamiVariable::getPFillingValue() {
-    return pFillingValue;
+    return pFilling_value;
 }
 void
-SamiVariable::setPFillingValue(Double* pFillingValue) {
-    this->pFillingValue = pFillingValue;
+SamiVariable::setPFillingValue(Float* pFilling_value) {
+    this->pFilling_value = pFilling_value;
 }
 
-String*
-SamiVariable::getPJoinWith() {
-    return pJoinWith;
+Float*
+SamiVariable::getPMaximumAllowedValue() {
+    return pMaximum_allowed_value;
 }
 void
-SamiVariable::setPJoinWith(String* pJoinWith) {
-    this->pJoinWith = pJoinWith;
+SamiVariable::setPMaximumAllowedValue(Float* pMaximum_allowed_value) {
+    this->pMaximum_allowed_value = pMaximum_allowed_value;
 }
 
-IList*
-SamiVariable::getPJoinedVariables() {
-    return pJoinedVariables;
+Float*
+SamiVariable::getPMinimumAllowedValue() {
+    return pMinimum_allowed_value;
 }
 void
-SamiVariable::setPJoinedVariables(IList* pJoinedVariables) {
-    this->pJoinedVariables = pJoinedVariables;
-}
-
-Integer*
-SamiVariable::getPParent() {
-    return pParent;
-}
-void
-SamiVariable::setPParent(Integer* pParent) {
-    this->pParent = pParent;
-}
-
-IList*
-SamiVariable::getPSubVariables() {
-    return pSubVariables;
-}
-void
-SamiVariable::setPSubVariables(IList* pSubVariables) {
-    this->pSubVariables = pSubVariables;
+SamiVariable::setPMinimumAllowedValue(Float* pMinimum_allowed_value) {
+    this->pMinimum_allowed_value = pMinimum_allowed_value;
 }
 
 Integer*
 SamiVariable::getPOnsetDelay() {
-    return pOnsetDelay;
+    return pOnset_delay;
 }
 void
-SamiVariable::setPOnsetDelay(Integer* pOnsetDelay) {
-    this->pOnsetDelay = pOnsetDelay;
+SamiVariable::setPOnsetDelay(Integer* pOnset_delay) {
+    this->pOnset_delay = pOnset_delay;
 }
 
 Integer*
 SamiVariable::getPDurationOfAction() {
-    return pDurationOfAction;
+    return pDuration_of_action;
 }
 void
-SamiVariable::setPDurationOfAction(Integer* pDurationOfAction) {
-    this->pDurationOfAction = pDurationOfAction;
+SamiVariable::setPDurationOfAction(Integer* pDuration_of_action) {
+    this->pDuration_of_action = pDuration_of_action;
 }
 
 Integer*
-SamiVariable::getPEarliestMeasurementTime() {
-    return pEarliestMeasurementTime;
+SamiVariable::getPPublic() {
+    return pPublic;
 }
 void
-SamiVariable::setPEarliestMeasurementTime(Integer* pEarliestMeasurementTime) {
-    this->pEarliestMeasurementTime = pEarliestMeasurementTime;
+SamiVariable::setPPublic(Integer* pPublic) {
+    this->pPublic = pPublic;
 }
 
-Integer*
-SamiVariable::getPLatestMeasurementTime() {
-    return pLatestMeasurementTime;
-}
-void
-SamiVariable::setPLatestMeasurementTime(Integer* pLatestMeasurementTime) {
-    this->pLatestMeasurementTime = pLatestMeasurementTime;
-}
-
-Integer*
-SamiVariable::getPUpdated() {
-    return pUpdated;
-}
-void
-SamiVariable::setPUpdated(Integer* pUpdated) {
-    this->pUpdated = pUpdated;
-}
-
-Integer*
+Boolean*
 SamiVariable::getPCauseOnly() {
-    return pCauseOnly;
+    return pCause_only;
 }
 void
-SamiVariable::setPCauseOnly(Integer* pCauseOnly) {
-    this->pCauseOnly = pCauseOnly;
+SamiVariable::setPCauseOnly(Boolean* pCause_only) {
+    this->pCause_only = pCause_only;
+}
+
+Float*
+SamiVariable::getPMostCommonValue() {
+    return pMost_common_value;
+}
+void
+SamiVariable::setPMostCommonValue(Float* pMost_common_value) {
+    this->pMost_common_value = pMost_common_value;
 }
 
 Integer*
-SamiVariable::getPNumberOfCorrelations() {
-    return pNumberOfCorrelations;
+SamiVariable::getPMostCommonUnitId() {
+    return pMost_common_unit_id;
 }
 void
-SamiVariable::setPNumberOfCorrelations(Integer* pNumberOfCorrelations) {
-    this->pNumberOfCorrelations = pNumberOfCorrelations;
+SamiVariable::setPMostCommonUnitId(Integer* pMost_common_unit_id) {
+    this->pMost_common_unit_id = pMost_common_unit_id;
+}
+
+Float*
+SamiVariable::getPStandardDeviation() {
+    return pStandard_deviation;
+}
+void
+SamiVariable::setPStandardDeviation(Float* pStandard_deviation) {
+    this->pStandard_deviation = pStandard_deviation;
+}
+
+Float*
+SamiVariable::getPVariance() {
+    return pVariance;
+}
+void
+SamiVariable::setPVariance(Float* pVariance) {
+    this->pVariance = pVariance;
+}
+
+Float*
+SamiVariable::getPMean() {
+    return pMean;
+}
+void
+SamiVariable::setPMean(Float* pMean) {
+    this->pMean = pMean;
+}
+
+Float*
+SamiVariable::getPMedian() {
+    return pMedian;
+}
+void
+SamiVariable::setPMedian(Float* pMedian) {
+    this->pMedian = pMedian;
+}
+
+Float*
+SamiVariable::getPNumberOfMeasurements() {
+    return pNumber_of_measurements;
+}
+void
+SamiVariable::setPNumberOfMeasurements(Float* pNumber_of_measurements) {
+    this->pNumber_of_measurements = pNumber_of_measurements;
+}
+
+Float*
+SamiVariable::getPNumberOfUniqueValues() {
+    return pNumber_of_unique_values;
+}
+void
+SamiVariable::setPNumberOfUniqueValues(Float* pNumber_of_unique_values) {
+    this->pNumber_of_unique_values = pNumber_of_unique_values;
+}
+
+Float*
+SamiVariable::getPSkewness() {
+    return pSkewness;
+}
+void
+SamiVariable::setPSkewness(Float* pSkewness) {
+    this->pSkewness = pSkewness;
+}
+
+Float*
+SamiVariable::getPKurtosis() {
+    return pKurtosis;
+}
+void
+SamiVariable::setPKurtosis(Float* pKurtosis) {
+    this->pKurtosis = pKurtosis;
+}
+
+String*
+SamiVariable::getPStatus() {
+    return pStatus;
+}
+void
+SamiVariable::setPStatus(String* pStatus) {
+    this->pStatus = pStatus;
+}
+
+String*
+SamiVariable::getPErrorMessage() {
+    return pError_message;
+}
+void
+SamiVariable::setPErrorMessage(String* pError_message) {
+    this->pError_message = pError_message;
+}
+
+DateTime*
+SamiVariable::getPLastSuccessfulUpdateTime() {
+    return pLast_successful_update_time;
+}
+void
+SamiVariable::setPLastSuccessfulUpdateTime(DateTime* pLast_successful_update_time) {
+    this->pLast_successful_update_time = pLast_successful_update_time;
+}
+
+DateTime*
+SamiVariable::getPCreatedAt() {
+    return pCreated_at;
+}
+void
+SamiVariable::setPCreatedAt(DateTime* pCreated_at) {
+    this->pCreated_at = pCreated_at;
+}
+
+DateTime*
+SamiVariable::getPUpdatedAt() {
+    return pUpdated_at;
+}
+void
+SamiVariable::setPUpdatedAt(DateTime* pUpdated_at) {
+    this->pUpdated_at = pUpdated_at;
+}
+
+String*
+SamiVariable::getPProductUrl() {
+    return pProduct_url;
+}
+void
+SamiVariable::setPProductUrl(String* pProduct_url) {
+    this->pProduct_url = pProduct_url;
+}
+
+String*
+SamiVariable::getPImageUrl() {
+    return pImage_url;
+}
+void
+SamiVariable::setPImageUrl(String* pImage_url) {
+    this->pImage_url = pImage_url;
+}
+
+Float*
+SamiVariable::getPPrice() {
+    return pPrice;
+}
+void
+SamiVariable::setPPrice(Float* pPrice) {
+    this->pPrice = pPrice;
 }
 
 Integer*
+SamiVariable::getPNumberOfUserVariables() {
+    return pNumber_of_user_variables;
+}
+void
+SamiVariable::setPNumberOfUserVariables(Integer* pNumber_of_user_variables) {
+    this->pNumber_of_user_variables = pNumber_of_user_variables;
+}
+
+Boolean*
 SamiVariable::getPOutcome() {
     return pOutcome;
 }
 void
-SamiVariable::setPOutcome(Integer* pOutcome) {
+SamiVariable::setPOutcome(Boolean* pOutcome) {
     this->pOutcome = pOutcome;
 }
 
-Integer*
-SamiVariable::getPMeasurementsAtLastAnalysis() {
-    return pMeasurementsAtLastAnalysis;
+Float*
+SamiVariable::getPMinimumRecordedValue() {
+    return pMinimum_recorded_value;
 }
 void
-SamiVariable::setPMeasurementsAtLastAnalysis(Integer* pMeasurementsAtLastAnalysis) {
-    this->pMeasurementsAtLastAnalysis = pMeasurementsAtLastAnalysis;
+SamiVariable::setPMinimumRecordedValue(Float* pMinimum_recorded_value) {
+    this->pMinimum_recorded_value = pMinimum_recorded_value;
 }
 
-Integer*
-SamiVariable::getPNumberOfMeasurements() {
-    return pNumberOfMeasurements;
+Float*
+SamiVariable::getPMaximumRecordedValue() {
+    return pMaximum_recorded_value;
 }
 void
-SamiVariable::setPNumberOfMeasurements(Integer* pNumberOfMeasurements) {
-    this->pNumberOfMeasurements = pNumberOfMeasurements;
-}
-
-String*
-SamiVariable::getPLastUnit() {
-    return pLastUnit;
-}
-void
-SamiVariable::setPLastUnit(String* pLastUnit) {
-    this->pLastUnit = pLastUnit;
-}
-
-Integer*
-SamiVariable::getPLastValue() {
-    return pLastValue;
-}
-void
-SamiVariable::setPLastValue(Integer* pLastValue) {
-    this->pLastValue = pLastValue;
-}
-
-Integer*
-SamiVariable::getPMostCommonValue() {
-    return pMostCommonValue;
-}
-void
-SamiVariable::setPMostCommonValue(Integer* pMostCommonValue) {
-    this->pMostCommonValue = pMostCommonValue;
-}
-
-String*
-SamiVariable::getPMostCommonUnit() {
-    return pMostCommonUnit;
-}
-void
-SamiVariable::setPMostCommonUnit(String* pMostCommonUnit) {
-    this->pMostCommonUnit = pMostCommonUnit;
-}
-
-Integer*
-SamiVariable::getPLastSource() {
-    return pLastSource;
-}
-void
-SamiVariable::setPLastSource(Integer* pLastSource) {
-    this->pLastSource = pLastSource;
+SamiVariable::setPMaximumRecordedValue(Float* pMaximum_recorded_value) {
+    this->pMaximum_recorded_value = pMaximum_recorded_value;
 }
 
 
