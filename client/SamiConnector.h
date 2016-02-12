@@ -17,9 +17,10 @@
 using namespace Tizen::Web::Json;
 
 
+using Tizen::Base::Boolean;
+using Tizen::Base::DateTime;
 using Tizen::Base::Integer;
 using Tizen::Base::String;
-using Tizen::Base::Boolean;
 
 
 namespace Swagger {
@@ -50,41 +51,45 @@ public:
     void setPName(String* pName);
     
     String* getPDisplayName();
-    void setPDisplayName(String* pDisplayName);
+    void setPDisplayName(String* pDisplay_name);
     
     String* getPImage();
     void setPImage(String* pImage);
     
     String* getPGetItUrl();
-    void setPGetItUrl(String* pGetItUrl);
+    void setPGetItUrl(String* pGet_it_url);
     
-    String* getPConnected();
-    void setPConnected(String* pConnected);
+    String* getPShortDescription();
+    void setPShortDescription(String* pShort_description);
     
-    String* getPConnectInstructions();
-    void setPConnectInstructions(String* pConnectInstructions);
+    String* getPLongDescription();
+    void setPLongDescription(String* pLong_description);
     
-    Integer* getPLastUpdate();
-    void setPLastUpdate(Integer* pLastUpdate);
+    Boolean* getPEnabled();
+    void setPEnabled(Boolean* pEnabled);
     
-    Integer* getPTotalMeasurementsInLastUpdate();
-    void setPTotalMeasurementsInLastUpdate(Integer* pTotalMeasurementsInLastUpdate);
+    Boolean* getPOauth();
+    void setPOauth(Boolean* pOauth);
     
-    Boolean* getPNoDataYet();
-    void setPNoDataYet(Boolean* pNoDataYet);
+    DateTime* getPCreatedAt();
+    void setPCreatedAt(DateTime* pCreated_at);
+    
+    DateTime* getPUpdatedAt();
+    void setPUpdatedAt(DateTime* pUpdated_at);
     
 
 private:
     Integer* pId;
     String* pName;
-    String* pDisplayName;
+    String* pDisplay_name;
     String* pImage;
-    String* pGetItUrl;
-    String* pConnected;
-    String* pConnectInstructions;
-    Integer* pLastUpdate;
-    Integer* pTotalMeasurementsInLastUpdate;
-    Boolean* pNoDataYet;
+    String* pGet_it_url;
+    String* pShort_description;
+    String* pLong_description;
+    Boolean* pEnabled;
+    Boolean* pOauth;
+    DateTime* pCreated_at;
+    DateTime* pUpdated_at;
     
 };
 

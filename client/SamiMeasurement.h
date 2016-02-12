@@ -17,9 +17,10 @@
 using namespace Tizen::Web::Json;
 
 
-using Tizen::Base::Long;
+using Tizen::Base::DateTime;
+using Tizen::Base::Float;
+using Tizen::Base::Integer;
 using Tizen::Base::String;
-using Tizen::Base::Double;
 
 
 namespace Swagger {
@@ -43,36 +44,84 @@ public:
     SamiMeasurement* fromJson(String* obj);
 
     
-    String* getPVariable();
-    void setPVariable(String* pVariable);
+    Integer* getPId();
+    void setPId(Integer* pId);
     
-    String* getPSource();
-    void setPSource(String* pSource);
+    Integer* getPUserId();
+    void setPUserId(Integer* pUser_id);
     
-    Long* getPTimestamp();
-    void setPTimestamp(Long* pTimestamp);
+    String* getPClientId();
+    void setPClientId(String* pClient_id);
     
-    Double* getPValue();
-    void setPValue(Double* pValue);
+    Integer* getPConnectorId();
+    void setPConnectorId(Integer* pConnector_id);
     
-    String* getPUnit();
-    void setPUnit(String* pUnit);
+    Integer* getPVariableId();
+    void setPVariableId(Integer* pVariable_id);
     
-    Double* getPStoredValue();
-    void setPStoredValue(Double* pStoredValue);
+    Integer* getPSourceId();
+    void setPSourceId(Integer* pSource_id);
     
-    String* getPStoredAbbreviatedUnitName();
-    void setPStoredAbbreviatedUnitName(String* pStoredAbbreviatedUnitName);
+    String* getPStartTime();
+    void setPStartTime(String* pStart_time);
+    
+    Float* getPValue();
+    void setPValue(Float* pValue);
+    
+    Integer* getPUnitId();
+    void setPUnitId(Integer* pUnit_id);
+    
+    Float* getPOriginalValue();
+    void setPOriginalValue(Float* pOriginal_value);
+    
+    Integer* getPOriginalUnitId();
+    void setPOriginalUnitId(Integer* pOriginal_unit_id);
+    
+    Integer* getPDuration();
+    void setPDuration(Integer* pDuration);
+    
+    String* getPNote();
+    void setPNote(String* pNote);
+    
+    Float* getPLatitude();
+    void setPLatitude(Float* pLatitude);
+    
+    Float* getPLongitude();
+    void setPLongitude(Float* pLongitude);
+    
+    String* getPLocation();
+    void setPLocation(String* pLocation);
+    
+    DateTime* getPCreatedAt();
+    void setPCreatedAt(DateTime* pCreated_at);
+    
+    DateTime* getPUpdatedAt();
+    void setPUpdatedAt(DateTime* pUpdated_at);
+    
+    String* getPError();
+    void setPError(String* pError);
     
 
 private:
-    String* pVariable;
-    String* pSource;
-    Long* pTimestamp;
-    Double* pValue;
-    String* pUnit;
-    Double* pStoredValue;
-    String* pStoredAbbreviatedUnitName;
+    Integer* pId;
+    Integer* pUser_id;
+    String* pClient_id;
+    Integer* pConnector_id;
+    Integer* pVariable_id;
+    Integer* pSource_id;
+    String* pStart_time;
+    Float* pValue;
+    Integer* pUnit_id;
+    Float* pOriginal_value;
+    Integer* pOriginal_unit_id;
+    Integer* pDuration;
+    String* pNote;
+    Float* pLatitude;
+    Float* pLongitude;
+    String* pLocation;
+    DateTime* pCreated_at;
+    DateTime* pUpdated_at;
+    String* pError;
     
 };
 

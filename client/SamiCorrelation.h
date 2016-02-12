@@ -17,9 +17,10 @@
 using namespace Tizen::Web::Json;
 
 
-using Tizen::Base::Long;
+using Tizen::Base::DateTime;
+using Tizen::Base::Float;
+using Tizen::Base::Integer;
 using Tizen::Base::String;
-using Tizen::Base::Double;
 
 
 namespace Swagger {
@@ -43,60 +44,104 @@ public:
     SamiCorrelation* fromJson(String* obj);
 
     
-    Long* getPCorrelationCoefficient();
-    void setPCorrelationCoefficient(Long* pCorrelationCoefficient);
+    Integer* getPId();
+    void setPId(Integer* pId);
     
-    String* getPCause();
-    void setPCause(String* pCause);
+    Integer* getPTimestamp();
+    void setPTimestamp(Integer* pTimestamp);
     
-    String* getPEffect();
-    void setPEffect(String* pEffect);
+    Integer* getPUserId();
+    void setPUserId(Integer* pUser_id);
     
-    Double* getPOnsetDelay();
-    void setPOnsetDelay(Double* pOnsetDelay);
+    Float* getPCorrelation();
+    void setPCorrelation(Float* pCorrelation);
     
-    Long* getPDurationOfAction();
-    void setPDurationOfAction(Long* pDurationOfAction);
+    Integer* getPCauseId();
+    void setPCauseId(Integer* pCause_id);
     
-    Long* getPNumberOfPairs();
-    void setPNumberOfPairs(Long* pNumberOfPairs);
+    Integer* getPEffectId();
+    void setPEffectId(Integer* pEffect_id);
     
-    String* getPEffectSize();
-    void setPEffectSize(String* pEffectSize);
+    Integer* getPOnsetDelay();
+    void setPOnsetDelay(Integer* pOnset_delay);
     
-    String* getPStatisticalSignificance();
-    void setPStatisticalSignificance(String* pStatisticalSignificance);
+    Integer* getPDurationOfAction();
+    void setPDurationOfAction(Integer* pDuration_of_action);
     
-    Long* getPTimestamp();
-    void setPTimestamp(Long* pTimestamp);
+    Integer* getPNumberOfPairs();
+    void setPNumberOfPairs(Integer* pNumber_of_pairs);
     
-    Long* getPReverseCorrelation();
-    void setPReverseCorrelation(Long* pReverseCorrelation);
+    Float* getPValuePredictingHighOutcome();
+    void setPValuePredictingHighOutcome(Float* pValue_predicting_high_outcome);
     
-    Long* getPCausalityFactor();
-    void setPCausalityFactor(Long* pCausalityFactor);
+    Float* getPValuePredictingLowOutcome();
+    void setPValuePredictingLowOutcome(Float* pValue_predicting_low_outcome);
     
-    String* getPCauseCategory();
-    void setPCauseCategory(String* pCauseCategory);
+    Float* getPOptimalPearsonProduct();
+    void setPOptimalPearsonProduct(Float* pOptimal_pearson_product);
     
-    String* getPEffectCategory();
-    void setPEffectCategory(String* pEffectCategory);
+    Float* getPVote();
+    void setPVote(Float* pVote);
+    
+    Float* getPStatisticalSignificance();
+    void setPStatisticalSignificance(Float* pStatistical_significance);
+    
+    String* getPCauseUnit();
+    void setPCauseUnit(String* pCause_unit);
+    
+    Integer* getPCauseUnitId();
+    void setPCauseUnitId(Integer* pCause_unit_id);
+    
+    Integer* getPCauseChanges();
+    void setPCauseChanges(Integer* pCause_changes);
+    
+    Integer* getPEffectChanges();
+    void setPEffectChanges(Integer* pEffect_changes);
+    
+    Float* getPQmScore();
+    void setPQmScore(Float* pQm_score);
+    
+    String* getPError();
+    void setPError(String* pError);
+    
+    DateTime* getPCreatedAt();
+    void setPCreatedAt(DateTime* pCreated_at);
+    
+    DateTime* getPUpdatedAt();
+    void setPUpdatedAt(DateTime* pUpdated_at);
+    
+    Float* getPReversePearsonCorrelationCoefficient();
+    void setPReversePearsonCorrelationCoefficient(Float* pReverse_pearson_correlation_coefficient);
+    
+    Float* getPPredictivePearsonCorrelationCoefficient();
+    void setPPredictivePearsonCorrelationCoefficient(Float* pPredictive_pearson_correlation_coefficient);
     
 
 private:
-    Long* pCorrelationCoefficient;
-    String* pCause;
-    String* pEffect;
-    Double* pOnsetDelay;
-    Long* pDurationOfAction;
-    Long* pNumberOfPairs;
-    String* pEffectSize;
-    String* pStatisticalSignificance;
-    Long* pTimestamp;
-    Long* pReverseCorrelation;
-    Long* pCausalityFactor;
-    String* pCauseCategory;
-    String* pEffectCategory;
+    Integer* pId;
+    Integer* pTimestamp;
+    Integer* pUser_id;
+    Float* pCorrelation;
+    Integer* pCause_id;
+    Integer* pEffect_id;
+    Integer* pOnset_delay;
+    Integer* pDuration_of_action;
+    Integer* pNumber_of_pairs;
+    Float* pValue_predicting_high_outcome;
+    Float* pValue_predicting_low_outcome;
+    Float* pOptimal_pearson_product;
+    Float* pVote;
+    Float* pStatistical_significance;
+    String* pCause_unit;
+    Integer* pCause_unit_id;
+    Integer* pCause_changes;
+    Integer* pEffect_changes;
+    Float* pQm_score;
+    String* pError;
+    DateTime* pCreated_at;
+    DateTime* pUpdated_at;
+    Float* pReverse_pearson_correlation_coefficient;
+    Float* pPredictive_pearson_correlation_coefficient;
     
 };
 

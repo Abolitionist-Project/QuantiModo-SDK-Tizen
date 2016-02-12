@@ -3,79 +3,104 @@
 
 #include "SamiObject.h"
 
-#include "SamiCommonResponse.h"
+#include "SamiMeasurementValue.h"
+#include "SamiMeasurementPost.h"
+#include "SamiAggregatedCorrelation.h"
+#include "SamiCommonVariableRelationship.h"
+#include "SamiConnection.h"
 #include "SamiConnector.h"
-#include "SamiConnectorInfo.h"
-#include "SamiConnectorInfoHistoryItem.h"
-#include "SamiConversionStep.h"
 #include "SamiCorrelation.h"
-#include "SamiJsonErrorResponse.h"
-#include "SamiMeasurementSet.h"
+#include "SamiCredential.h"
 #include "SamiMeasurement.h"
-#include "SamiMeasurementRange.h"
-#include "SamiMeasurementSource.h"
-#include "SamiPairs.h"
-#include "SamiPermission.h"
-#include "SamiPostCorrelation.h"
+#include "SamiMeasurementExport.h"
+#include "SamiSource.h"
+#include "SamiTrackingReminder.h"
 #include "SamiUnit.h"
 #include "SamiUnitCategory.h"
-#include "SamiUser.h"
-#include "SamiUserTokenRequest.h"
-#include "SamiUserTokenSuccessfulResponse.h"
-#include "SamiUserTokenFailedResponse.h"
-#include "SamiUserTokenRequestInnerUserField.h"
-#include "SamiUserTokenSuccessfulResponseInnerUserField.h"
-#include "SamiValueObject.h"
+#include "SamiUnitConversion.h"
+#include "SamiUpdate.h"
+#include "SamiUserVariable.h"
+#include "SamiUserVariableRelationship.h"
 #include "SamiVariable.h"
 #include "SamiVariableCategory.h"
-#include "SamiUserVariables.h"
-#include "SamiVariableNew.h"
-#include "SamiVariablesNew.h"
+#include "SamiVariableUserSource.h"
+#include "SamiVote.h"
+#include "SamiInline_response_200.h"
+#include "SamiInline_response_200_1.h"
+#include "SamiInline_response_200_2.h"
+#include "SamiInline_response_200_3.h"
+#include "SamiInline_response_200_4.h"
+#include "SamiInline_response_200_5.h"
+#include "SamiInline_response_200_6.h"
+#include "SamiInline_response_200_7.h"
+#include "SamiInline_response_200_8.h"
+#include "SamiInline_response_200_9.h"
+#include "SamiInline_response_200_10.h"
+#include "SamiInline_response_200_11.h"
+#include "SamiInline_response_200_12.h"
+#include "SamiInline_response_200_13.h"
+#include "SamiInline_response_200_14.h"
+#include "SamiInline_response_200_15.h"
+#include "SamiInline_response_200_16.h"
+#include "SamiInline_response_200_17.h"
+#include "SamiInline_response_200_18.h"
+#include "SamiInline_response_200_19.h"
+#include "SamiInline_response_200_20.h"
+#include "SamiInline_response_200_21.h"
+#include "SamiInline_response_200_22.h"
+#include "SamiInline_response_200_23.h"
+#include "SamiInline_response_200_24.h"
+#include "SamiInline_response_200_25.h"
+#include "SamiInline_response_200_26.h"
+#include "SamiInline_response_200_27.h"
+#include "SamiInline_response_200_28.h"
+#include "SamiInline_response_200_29.h"
+#include "SamiInline_response_200_30.h"
+#include "SamiInline_response_200_31.h"
+#include "SamiInline_response_200_32.h"
+#include "SamiInline_response_200_33.h"
+#include "SamiInline_response_200_34.h"
+#include "SamiInline_response_200_35.h"
+#include "SamiInline_response_200_36.h"
 
 namespace Swagger {
   void*
   create(String type) {
-    if(type.Equals(L"SamiCommonResponse", true)) {
-      return new SamiCommonResponse();
+    if(type.Equals(L"SamiMeasurementValue", true)) {
+      return new SamiMeasurementValue();
+    }
+    if(type.Equals(L"SamiMeasurementPost", true)) {
+      return new SamiMeasurementPost();
+    }
+    if(type.Equals(L"SamiAggregatedCorrelation", true)) {
+      return new SamiAggregatedCorrelation();
+    }
+    if(type.Equals(L"SamiCommonVariableRelationship", true)) {
+      return new SamiCommonVariableRelationship();
+    }
+    if(type.Equals(L"SamiConnection", true)) {
+      return new SamiConnection();
     }
     if(type.Equals(L"SamiConnector", true)) {
       return new SamiConnector();
     }
-    if(type.Equals(L"SamiConnectorInfo", true)) {
-      return new SamiConnectorInfo();
-    }
-    if(type.Equals(L"SamiConnectorInfoHistoryItem", true)) {
-      return new SamiConnectorInfoHistoryItem();
-    }
-    if(type.Equals(L"SamiConversionStep", true)) {
-      return new SamiConversionStep();
-    }
     if(type.Equals(L"SamiCorrelation", true)) {
       return new SamiCorrelation();
     }
-    if(type.Equals(L"SamiJsonErrorResponse", true)) {
-      return new SamiJsonErrorResponse();
-    }
-    if(type.Equals(L"SamiMeasurementSet", true)) {
-      return new SamiMeasurementSet();
+    if(type.Equals(L"SamiCredential", true)) {
+      return new SamiCredential();
     }
     if(type.Equals(L"SamiMeasurement", true)) {
       return new SamiMeasurement();
     }
-    if(type.Equals(L"SamiMeasurementRange", true)) {
-      return new SamiMeasurementRange();
+    if(type.Equals(L"SamiMeasurementExport", true)) {
+      return new SamiMeasurementExport();
     }
-    if(type.Equals(L"SamiMeasurementSource", true)) {
-      return new SamiMeasurementSource();
+    if(type.Equals(L"SamiSource", true)) {
+      return new SamiSource();
     }
-    if(type.Equals(L"SamiPairs", true)) {
-      return new SamiPairs();
-    }
-    if(type.Equals(L"SamiPermission", true)) {
-      return new SamiPermission();
-    }
-    if(type.Equals(L"SamiPostCorrelation", true)) {
-      return new SamiPostCorrelation();
+    if(type.Equals(L"SamiTrackingReminder", true)) {
+      return new SamiTrackingReminder();
     }
     if(type.Equals(L"SamiUnit", true)) {
       return new SamiUnit();
@@ -83,26 +108,17 @@ namespace Swagger {
     if(type.Equals(L"SamiUnitCategory", true)) {
       return new SamiUnitCategory();
     }
-    if(type.Equals(L"SamiUser", true)) {
-      return new SamiUser();
+    if(type.Equals(L"SamiUnitConversion", true)) {
+      return new SamiUnitConversion();
     }
-    if(type.Equals(L"SamiUserTokenRequest", true)) {
-      return new SamiUserTokenRequest();
+    if(type.Equals(L"SamiUpdate", true)) {
+      return new SamiUpdate();
     }
-    if(type.Equals(L"SamiUserTokenSuccessfulResponse", true)) {
-      return new SamiUserTokenSuccessfulResponse();
+    if(type.Equals(L"SamiUserVariable", true)) {
+      return new SamiUserVariable();
     }
-    if(type.Equals(L"SamiUserTokenFailedResponse", true)) {
-      return new SamiUserTokenFailedResponse();
-    }
-    if(type.Equals(L"SamiUserTokenRequestInnerUserField", true)) {
-      return new SamiUserTokenRequestInnerUserField();
-    }
-    if(type.Equals(L"SamiUserTokenSuccessfulResponseInnerUserField", true)) {
-      return new SamiUserTokenSuccessfulResponseInnerUserField();
-    }
-    if(type.Equals(L"SamiValueObject", true)) {
-      return new SamiValueObject();
+    if(type.Equals(L"SamiUserVariableRelationship", true)) {
+      return new SamiUserVariableRelationship();
     }
     if(type.Equals(L"SamiVariable", true)) {
       return new SamiVariable();
@@ -110,14 +126,122 @@ namespace Swagger {
     if(type.Equals(L"SamiVariableCategory", true)) {
       return new SamiVariableCategory();
     }
-    if(type.Equals(L"SamiUserVariables", true)) {
-      return new SamiUserVariables();
+    if(type.Equals(L"SamiVariableUserSource", true)) {
+      return new SamiVariableUserSource();
     }
-    if(type.Equals(L"SamiVariableNew", true)) {
-      return new SamiVariableNew();
+    if(type.Equals(L"SamiVote", true)) {
+      return new SamiVote();
     }
-    if(type.Equals(L"SamiVariablesNew", true)) {
-      return new SamiVariablesNew();
+    if(type.Equals(L"SamiInline_response_200", true)) {
+      return new SamiInline_response_200();
+    }
+    if(type.Equals(L"SamiInline_response_200_1", true)) {
+      return new SamiInline_response_200_1();
+    }
+    if(type.Equals(L"SamiInline_response_200_2", true)) {
+      return new SamiInline_response_200_2();
+    }
+    if(type.Equals(L"SamiInline_response_200_3", true)) {
+      return new SamiInline_response_200_3();
+    }
+    if(type.Equals(L"SamiInline_response_200_4", true)) {
+      return new SamiInline_response_200_4();
+    }
+    if(type.Equals(L"SamiInline_response_200_5", true)) {
+      return new SamiInline_response_200_5();
+    }
+    if(type.Equals(L"SamiInline_response_200_6", true)) {
+      return new SamiInline_response_200_6();
+    }
+    if(type.Equals(L"SamiInline_response_200_7", true)) {
+      return new SamiInline_response_200_7();
+    }
+    if(type.Equals(L"SamiInline_response_200_8", true)) {
+      return new SamiInline_response_200_8();
+    }
+    if(type.Equals(L"SamiInline_response_200_9", true)) {
+      return new SamiInline_response_200_9();
+    }
+    if(type.Equals(L"SamiInline_response_200_10", true)) {
+      return new SamiInline_response_200_10();
+    }
+    if(type.Equals(L"SamiInline_response_200_11", true)) {
+      return new SamiInline_response_200_11();
+    }
+    if(type.Equals(L"SamiInline_response_200_12", true)) {
+      return new SamiInline_response_200_12();
+    }
+    if(type.Equals(L"SamiInline_response_200_13", true)) {
+      return new SamiInline_response_200_13();
+    }
+    if(type.Equals(L"SamiInline_response_200_14", true)) {
+      return new SamiInline_response_200_14();
+    }
+    if(type.Equals(L"SamiInline_response_200_15", true)) {
+      return new SamiInline_response_200_15();
+    }
+    if(type.Equals(L"SamiInline_response_200_16", true)) {
+      return new SamiInline_response_200_16();
+    }
+    if(type.Equals(L"SamiInline_response_200_17", true)) {
+      return new SamiInline_response_200_17();
+    }
+    if(type.Equals(L"SamiInline_response_200_18", true)) {
+      return new SamiInline_response_200_18();
+    }
+    if(type.Equals(L"SamiInline_response_200_19", true)) {
+      return new SamiInline_response_200_19();
+    }
+    if(type.Equals(L"SamiInline_response_200_20", true)) {
+      return new SamiInline_response_200_20();
+    }
+    if(type.Equals(L"SamiInline_response_200_21", true)) {
+      return new SamiInline_response_200_21();
+    }
+    if(type.Equals(L"SamiInline_response_200_22", true)) {
+      return new SamiInline_response_200_22();
+    }
+    if(type.Equals(L"SamiInline_response_200_23", true)) {
+      return new SamiInline_response_200_23();
+    }
+    if(type.Equals(L"SamiInline_response_200_24", true)) {
+      return new SamiInline_response_200_24();
+    }
+    if(type.Equals(L"SamiInline_response_200_25", true)) {
+      return new SamiInline_response_200_25();
+    }
+    if(type.Equals(L"SamiInline_response_200_26", true)) {
+      return new SamiInline_response_200_26();
+    }
+    if(type.Equals(L"SamiInline_response_200_27", true)) {
+      return new SamiInline_response_200_27();
+    }
+    if(type.Equals(L"SamiInline_response_200_28", true)) {
+      return new SamiInline_response_200_28();
+    }
+    if(type.Equals(L"SamiInline_response_200_29", true)) {
+      return new SamiInline_response_200_29();
+    }
+    if(type.Equals(L"SamiInline_response_200_30", true)) {
+      return new SamiInline_response_200_30();
+    }
+    if(type.Equals(L"SamiInline_response_200_31", true)) {
+      return new SamiInline_response_200_31();
+    }
+    if(type.Equals(L"SamiInline_response_200_32", true)) {
+      return new SamiInline_response_200_32();
+    }
+    if(type.Equals(L"SamiInline_response_200_33", true)) {
+      return new SamiInline_response_200_33();
+    }
+    if(type.Equals(L"SamiInline_response_200_34", true)) {
+      return new SamiInline_response_200_34();
+    }
+    if(type.Equals(L"SamiInline_response_200_35", true)) {
+      return new SamiInline_response_200_35();
+    }
+    if(type.Equals(L"SamiInline_response_200_36", true)) {
+      return new SamiInline_response_200_36();
     }
     
     if(type.Equals(L"String", true)) {

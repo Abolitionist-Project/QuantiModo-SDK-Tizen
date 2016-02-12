@@ -24,14 +24,15 @@ void
 SamiConnector::init() {
     pId = null;
     pName = null;
-    pDisplayName = null;
+    pDisplay_name = null;
     pImage = null;
-    pGetItUrl = null;
-    pConnected = null;
-    pConnectInstructions = null;
-    pLastUpdate = null;
-    pTotalMeasurementsInLastUpdate = null;
-    pNoDataYet = null;
+    pGet_it_url = null;
+    pShort_description = null;
+    pLong_description = null;
+    pEnabled = null;
+    pOauth = null;
+    pCreated_at = null;
+    pUpdated_at = null;
     
 }
 
@@ -47,45 +48,50 @@ SamiConnector::cleanup() {
         delete pName;
         pName = null;
     }
-    if(pDisplayName != null) {
+    if(pDisplay_name != null) {
         
-        delete pDisplayName;
-        pDisplayName = null;
+        delete pDisplay_name;
+        pDisplay_name = null;
     }
     if(pImage != null) {
         
         delete pImage;
         pImage = null;
     }
-    if(pGetItUrl != null) {
+    if(pGet_it_url != null) {
         
-        delete pGetItUrl;
-        pGetItUrl = null;
+        delete pGet_it_url;
+        pGet_it_url = null;
     }
-    if(pConnected != null) {
+    if(pShort_description != null) {
         
-        delete pConnected;
-        pConnected = null;
+        delete pShort_description;
+        pShort_description = null;
     }
-    if(pConnectInstructions != null) {
+    if(pLong_description != null) {
         
-        delete pConnectInstructions;
-        pConnectInstructions = null;
+        delete pLong_description;
+        pLong_description = null;
     }
-    if(pLastUpdate != null) {
+    if(pEnabled != null) {
         
-        delete pLastUpdate;
-        pLastUpdate = null;
+        delete pEnabled;
+        pEnabled = null;
     }
-    if(pTotalMeasurementsInLastUpdate != null) {
+    if(pOauth != null) {
         
-        delete pTotalMeasurementsInLastUpdate;
-        pTotalMeasurementsInLastUpdate = null;
+        delete pOauth;
+        pOauth = null;
     }
-    if(pNoDataYet != null) {
+    if(pCreated_at != null) {
         
-        delete pNoDataYet;
-        pNoDataYet = null;
+        delete pCreated_at;
+        pCreated_at = null;
+    }
+    if(pUpdated_at != null) {
+        
+        delete pUpdated_at;
+        pUpdated_at = null;
     }
     
 }
@@ -130,7 +136,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
         pJsonObject->GetValue(pIdKey, pIdVal);
         if(pIdVal != null) {
             
-            pId = null;
+            pId = new Integer();
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
@@ -143,15 +149,15 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
-        JsonString* pDisplayNameKey = new JsonString(L"displayName");
-        IJsonValue* pDisplayNameVal = null;
-        pJsonObject->GetValue(pDisplayNameKey, pDisplayNameVal);
-        if(pDisplayNameVal != null) {
+        JsonString* pDisplay_nameKey = new JsonString(L"display_name");
+        IJsonValue* pDisplay_nameVal = null;
+        pJsonObject->GetValue(pDisplay_nameKey, pDisplay_nameVal);
+        if(pDisplay_nameVal != null) {
             
-            pDisplayName = new String();
-            jsonToValue(pDisplayName, pDisplayNameVal, L"String", L"String");
+            pDisplay_name = new String();
+            jsonToValue(pDisplay_name, pDisplay_nameVal, L"String", L"String");
         }
-        delete pDisplayNameKey;
+        delete pDisplay_nameKey;
         JsonString* pImageKey = new JsonString(L"image");
         IJsonValue* pImageVal = null;
         pJsonObject->GetValue(pImageKey, pImageVal);
@@ -161,60 +167,69 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pImage, pImageVal, L"String", L"String");
         }
         delete pImageKey;
-        JsonString* pGetItUrlKey = new JsonString(L"getItUrl");
-        IJsonValue* pGetItUrlVal = null;
-        pJsonObject->GetValue(pGetItUrlKey, pGetItUrlVal);
-        if(pGetItUrlVal != null) {
+        JsonString* pGet_it_urlKey = new JsonString(L"get_it_url");
+        IJsonValue* pGet_it_urlVal = null;
+        pJsonObject->GetValue(pGet_it_urlKey, pGet_it_urlVal);
+        if(pGet_it_urlVal != null) {
             
-            pGetItUrl = new String();
-            jsonToValue(pGetItUrl, pGetItUrlVal, L"String", L"String");
+            pGet_it_url = new String();
+            jsonToValue(pGet_it_url, pGet_it_urlVal, L"String", L"String");
         }
-        delete pGetItUrlKey;
-        JsonString* pConnectedKey = new JsonString(L"connected");
-        IJsonValue* pConnectedVal = null;
-        pJsonObject->GetValue(pConnectedKey, pConnectedVal);
-        if(pConnectedVal != null) {
+        delete pGet_it_urlKey;
+        JsonString* pShort_descriptionKey = new JsonString(L"short_description");
+        IJsonValue* pShort_descriptionVal = null;
+        pJsonObject->GetValue(pShort_descriptionKey, pShort_descriptionVal);
+        if(pShort_descriptionVal != null) {
             
-            pConnected = new String();
-            jsonToValue(pConnected, pConnectedVal, L"String", L"String");
+            pShort_description = new String();
+            jsonToValue(pShort_description, pShort_descriptionVal, L"String", L"String");
         }
-        delete pConnectedKey;
-        JsonString* pConnectInstructionsKey = new JsonString(L"connectInstructions");
-        IJsonValue* pConnectInstructionsVal = null;
-        pJsonObject->GetValue(pConnectInstructionsKey, pConnectInstructionsVal);
-        if(pConnectInstructionsVal != null) {
+        delete pShort_descriptionKey;
+        JsonString* pLong_descriptionKey = new JsonString(L"long_description");
+        IJsonValue* pLong_descriptionVal = null;
+        pJsonObject->GetValue(pLong_descriptionKey, pLong_descriptionVal);
+        if(pLong_descriptionVal != null) {
             
-            pConnectInstructions = new String();
-            jsonToValue(pConnectInstructions, pConnectInstructionsVal, L"String", L"String");
+            pLong_description = new String();
+            jsonToValue(pLong_description, pLong_descriptionVal, L"String", L"String");
         }
-        delete pConnectInstructionsKey;
-        JsonString* pLastUpdateKey = new JsonString(L"lastUpdate");
-        IJsonValue* pLastUpdateVal = null;
-        pJsonObject->GetValue(pLastUpdateKey, pLastUpdateVal);
-        if(pLastUpdateVal != null) {
+        delete pLong_descriptionKey;
+        JsonString* pEnabledKey = new JsonString(L"enabled");
+        IJsonValue* pEnabledVal = null;
+        pJsonObject->GetValue(pEnabledKey, pEnabledVal);
+        if(pEnabledVal != null) {
             
-            pLastUpdate = null;
-            jsonToValue(pLastUpdate, pLastUpdateVal, L"Integer", L"Integer");
+            pEnabled = new Boolean(false);
+            jsonToValue(pEnabled, pEnabledVal, L"Boolean", L"Boolean");
         }
-        delete pLastUpdateKey;
-        JsonString* pTotalMeasurementsInLastUpdateKey = new JsonString(L"totalMeasurementsInLastUpdate");
-        IJsonValue* pTotalMeasurementsInLastUpdateVal = null;
-        pJsonObject->GetValue(pTotalMeasurementsInLastUpdateKey, pTotalMeasurementsInLastUpdateVal);
-        if(pTotalMeasurementsInLastUpdateVal != null) {
+        delete pEnabledKey;
+        JsonString* pOauthKey = new JsonString(L"oauth");
+        IJsonValue* pOauthVal = null;
+        pJsonObject->GetValue(pOauthKey, pOauthVal);
+        if(pOauthVal != null) {
             
-            pTotalMeasurementsInLastUpdate = null;
-            jsonToValue(pTotalMeasurementsInLastUpdate, pTotalMeasurementsInLastUpdateVal, L"Integer", L"Integer");
+            pOauth = new Boolean(false);
+            jsonToValue(pOauth, pOauthVal, L"Boolean", L"Boolean");
         }
-        delete pTotalMeasurementsInLastUpdateKey;
-        JsonString* pNoDataYetKey = new JsonString(L"noDataYet");
-        IJsonValue* pNoDataYetVal = null;
-        pJsonObject->GetValue(pNoDataYetKey, pNoDataYetVal);
-        if(pNoDataYetVal != null) {
+        delete pOauthKey;
+        JsonString* pCreated_atKey = new JsonString(L"created_at");
+        IJsonValue* pCreated_atVal = null;
+        pJsonObject->GetValue(pCreated_atKey, pCreated_atVal);
+        if(pCreated_atVal != null) {
             
-            pNoDataYet = new Boolean(false);
-            jsonToValue(pNoDataYet, pNoDataYetVal, L"Boolean", L"Boolean");
+            pCreated_at = new DateTime();
+            jsonToValue(pCreated_at, pCreated_atVal, L"DateTime", L"DateTime");
         }
-        delete pNoDataYetKey;
+        delete pCreated_atKey;
+        JsonString* pUpdated_atKey = new JsonString(L"updated_at");
+        IJsonValue* pUpdated_atVal = null;
+        pJsonObject->GetValue(pUpdated_atKey, pUpdated_atVal);
+        if(pUpdated_atVal != null) {
+            
+            pUpdated_at = new DateTime();
+            jsonToValue(pUpdated_at, pUpdated_atVal, L"DateTime", L"DateTime");
+        }
+        delete pUpdated_atKey;
         
     }
 }
@@ -275,36 +290,40 @@ SamiConnector::asJsonObject() {
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
     
-    JsonString *pDisplayNameKey = new JsonString(L"displayName");
-    pJsonObject->Add(pDisplayNameKey, toJson(getPDisplayName(), "String", ""));
+    JsonString *pDisplay_nameKey = new JsonString(L"display_name");
+    pJsonObject->Add(pDisplay_nameKey, toJson(getPDisplayName(), "String", ""));
 
     
     JsonString *pImageKey = new JsonString(L"image");
     pJsonObject->Add(pImageKey, toJson(getPImage(), "String", ""));
 
     
-    JsonString *pGetItUrlKey = new JsonString(L"getItUrl");
-    pJsonObject->Add(pGetItUrlKey, toJson(getPGetItUrl(), "String", ""));
+    JsonString *pGet_it_urlKey = new JsonString(L"get_it_url");
+    pJsonObject->Add(pGet_it_urlKey, toJson(getPGetItUrl(), "String", ""));
 
     
-    JsonString *pConnectedKey = new JsonString(L"connected");
-    pJsonObject->Add(pConnectedKey, toJson(getPConnected(), "String", ""));
+    JsonString *pShort_descriptionKey = new JsonString(L"short_description");
+    pJsonObject->Add(pShort_descriptionKey, toJson(getPShortDescription(), "String", ""));
 
     
-    JsonString *pConnectInstructionsKey = new JsonString(L"connectInstructions");
-    pJsonObject->Add(pConnectInstructionsKey, toJson(getPConnectInstructions(), "String", ""));
+    JsonString *pLong_descriptionKey = new JsonString(L"long_description");
+    pJsonObject->Add(pLong_descriptionKey, toJson(getPLongDescription(), "String", ""));
 
     
-    JsonString *pLastUpdateKey = new JsonString(L"lastUpdate");
-    pJsonObject->Add(pLastUpdateKey, toJson(getPLastUpdate(), "Integer", ""));
+    JsonString *pEnabledKey = new JsonString(L"enabled");
+    pJsonObject->Add(pEnabledKey, toJson(getPEnabled(), "Boolean", ""));
 
     
-    JsonString *pTotalMeasurementsInLastUpdateKey = new JsonString(L"totalMeasurementsInLastUpdate");
-    pJsonObject->Add(pTotalMeasurementsInLastUpdateKey, toJson(getPTotalMeasurementsInLastUpdate(), "Integer", ""));
+    JsonString *pOauthKey = new JsonString(L"oauth");
+    pJsonObject->Add(pOauthKey, toJson(getPOauth(), "Boolean", ""));
 
     
-    JsonString *pNoDataYetKey = new JsonString(L"noDataYet");
-    pJsonObject->Add(pNoDataYetKey, toJson(getPNoDataYet(), "Boolean", ""));
+    JsonString *pCreated_atKey = new JsonString(L"created_at");
+    pJsonObject->Add(pCreated_atKey, toJson(getPCreatedAt(), "DateTime", ""));
+
+    
+    JsonString *pUpdated_atKey = new JsonString(L"updated_at");
+    pJsonObject->Add(pUpdated_atKey, toJson(getPUpdatedAt(), "DateTime", ""));
 
     
     return pJsonObject;
@@ -330,11 +349,11 @@ SamiConnector::setPName(String* pName) {
 
 String*
 SamiConnector::getPDisplayName() {
-    return pDisplayName;
+    return pDisplay_name;
 }
 void
-SamiConnector::setPDisplayName(String* pDisplayName) {
-    this->pDisplayName = pDisplayName;
+SamiConnector::setPDisplayName(String* pDisplay_name) {
+    this->pDisplay_name = pDisplay_name;
 }
 
 String*
@@ -348,56 +367,65 @@ SamiConnector::setPImage(String* pImage) {
 
 String*
 SamiConnector::getPGetItUrl() {
-    return pGetItUrl;
+    return pGet_it_url;
 }
 void
-SamiConnector::setPGetItUrl(String* pGetItUrl) {
-    this->pGetItUrl = pGetItUrl;
+SamiConnector::setPGetItUrl(String* pGet_it_url) {
+    this->pGet_it_url = pGet_it_url;
 }
 
 String*
-SamiConnector::getPConnected() {
-    return pConnected;
+SamiConnector::getPShortDescription() {
+    return pShort_description;
 }
 void
-SamiConnector::setPConnected(String* pConnected) {
-    this->pConnected = pConnected;
+SamiConnector::setPShortDescription(String* pShort_description) {
+    this->pShort_description = pShort_description;
 }
 
 String*
-SamiConnector::getPConnectInstructions() {
-    return pConnectInstructions;
+SamiConnector::getPLongDescription() {
+    return pLong_description;
 }
 void
-SamiConnector::setPConnectInstructions(String* pConnectInstructions) {
-    this->pConnectInstructions = pConnectInstructions;
-}
-
-Integer*
-SamiConnector::getPLastUpdate() {
-    return pLastUpdate;
-}
-void
-SamiConnector::setPLastUpdate(Integer* pLastUpdate) {
-    this->pLastUpdate = pLastUpdate;
-}
-
-Integer*
-SamiConnector::getPTotalMeasurementsInLastUpdate() {
-    return pTotalMeasurementsInLastUpdate;
-}
-void
-SamiConnector::setPTotalMeasurementsInLastUpdate(Integer* pTotalMeasurementsInLastUpdate) {
-    this->pTotalMeasurementsInLastUpdate = pTotalMeasurementsInLastUpdate;
+SamiConnector::setPLongDescription(String* pLong_description) {
+    this->pLong_description = pLong_description;
 }
 
 Boolean*
-SamiConnector::getPNoDataYet() {
-    return pNoDataYet;
+SamiConnector::getPEnabled() {
+    return pEnabled;
 }
 void
-SamiConnector::setPNoDataYet(Boolean* pNoDataYet) {
-    this->pNoDataYet = pNoDataYet;
+SamiConnector::setPEnabled(Boolean* pEnabled) {
+    this->pEnabled = pEnabled;
+}
+
+Boolean*
+SamiConnector::getPOauth() {
+    return pOauth;
+}
+void
+SamiConnector::setPOauth(Boolean* pOauth) {
+    this->pOauth = pOauth;
+}
+
+DateTime*
+SamiConnector::getPCreatedAt() {
+    return pCreated_at;
+}
+void
+SamiConnector::setPCreatedAt(DateTime* pCreated_at) {
+    this->pCreated_at = pCreated_at;
+}
+
+DateTime*
+SamiConnector::getPUpdatedAt() {
+    return pUpdated_at;
+}
+void
+SamiConnector::setPUpdatedAt(DateTime* pUpdated_at) {
+    this->pUpdated_at = pUpdated_at;
 }
 
 
