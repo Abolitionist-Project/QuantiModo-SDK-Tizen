@@ -23,9 +23,8 @@ SamiUserTokenSuccessfulResponse::~SamiUserTokenSuccessfulResponse() {
 void
 SamiUserTokenSuccessfulResponse::init() {
     pCode = null;
-    pMessage = null;
-    pUser = null;
-    
+pMessage = null;
+pUser = null;
 }
 
 void
@@ -35,17 +34,16 @@ SamiUserTokenSuccessfulResponse::cleanup() {
         delete pCode;
         pCode = null;
     }
-    if(pMessage != null) {
+if(pMessage != null) {
         
         delete pMessage;
         pMessage = null;
     }
-    if(pUser != null) {
+if(pUser != null) {
         
         delete pUser;
         pUser = null;
     }
-    
 }
 
 
@@ -92,7 +90,7 @@ SamiUserTokenSuccessfulResponse::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCode, pCodeVal, L"Integer", L"Integer");
         }
         delete pCodeKey;
-        JsonString* pMessageKey = new JsonString(L"message");
+JsonString* pMessageKey = new JsonString(L"message");
         IJsonValue* pMessageVal = null;
         pJsonObject->GetValue(pMessageKey, pMessageVal);
         if(pMessageVal != null) {
@@ -101,7 +99,7 @@ SamiUserTokenSuccessfulResponse::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMessage, pMessageVal, L"String", L"String");
         }
         delete pMessageKey;
-        JsonString* pUserKey = new JsonString(L"user");
+JsonString* pUserKey = new JsonString(L"user");
         IJsonValue* pUserVal = null;
         pJsonObject->GetValue(pUserKey, pUserVal);
         if(pUserVal != null) {
@@ -110,7 +108,6 @@ SamiUserTokenSuccessfulResponse::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUser, pUserVal, L"SamiUserTokenSuccessfulResponseInnerUserField", L"SamiUserTokenSuccessfulResponseInnerUserField");
         }
         delete pUserKey;
-        
     }
 }
 
@@ -161,19 +158,15 @@ SamiUserTokenSuccessfulResponse::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pCodeKey = new JsonString(L"code");
     pJsonObject->Add(pCodeKey, toJson(getPCode(), "Integer", ""));
 
-    
     JsonString *pMessageKey = new JsonString(L"message");
     pJsonObject->Add(pMessageKey, toJson(getPMessage(), "String", ""));
 
-    
     JsonString *pUserKey = new JsonString(L"user");
     pJsonObject->Add(pUserKey, toJson(getPUser(), "SamiUserTokenSuccessfulResponseInnerUserField", ""));
 
-    
     return pJsonObject;
 }
 

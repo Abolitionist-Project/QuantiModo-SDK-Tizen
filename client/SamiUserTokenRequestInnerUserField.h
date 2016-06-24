@@ -40,14 +40,11 @@ public:
 
     SamiUserTokenRequestInnerUserField* fromJson(String* obj);
 
-    
     Integer* getPId();
-    void setPId(Integer* p_id);
-    
+    void setPId(Integer* pId);
 
 private:
-    Integer* p_id;
-    
+    Integer* pId;
 };
 
 } /* namespace Swagger */

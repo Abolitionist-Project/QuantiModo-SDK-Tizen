@@ -7,7 +7,8 @@
 
 #include "SamiCommonResponse.h"
 using Tizen::Base::String;
-using Tizen::Base::Boolean;
+#include "SamiVoteDelete.h"
+#include "SamiPostVote.h"
 
 using namespace Tizen::Net::Http;
 
@@ -18,15 +19,12 @@ public:
   SamiVotesApi();
   virtual ~SamiVotesApi();
 
-  
   SamiCommonResponse* 
-  v1VotesPostWithCompletion(String* cause, String* effect, Boolean* vote, void (* handler)(SamiCommonResponse*, SamiError*));
-  
+  v1VotesDeletePostWithCompletion(SamiVoteDelete* body, String* accessToken, void (* handler)(SamiCommonResponse*, SamiError*));
   SamiCommonResponse* 
-  v1VotesDeletePostWithCompletion(String* cause, String* effect, void (* handler)(SamiCommonResponse*, SamiError*));
-  
+  v1VotesPostWithCompletion(SamiPostVote* body, String* accessToken, void (* handler)(SamiCommonResponse*, SamiError*));
   static String getBasePath() {
-    return L"https://localhost/api";
+    return L"https://app.quantimo.do/api";
   }
 
 private:

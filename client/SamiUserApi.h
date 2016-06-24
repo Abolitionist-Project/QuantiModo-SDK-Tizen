@@ -5,11 +5,12 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
-#include "SamiUser.h"
-using Tizen::Base::Integer;
-#include "SamiUserTokenSuccessfulResponse.h"
 #include "SamiUserTokenFailedResponse.h"
 #include "SamiUserTokenRequest.h"
+using Tizen::Base::String;
+#include "SamiUserTokenSuccessfulResponse.h"
+using Tizen::Base::Integer;
+#include "SamiUser.h"
 
 using namespace Tizen::Net::Http;
 
@@ -20,15 +21,12 @@ public:
   SamiUserApi();
   virtual ~SamiUserApi();
 
-  
-  SamiUser* 
-  userMeGetWithCompletion( void (* handler)(SamiUser*, SamiError*));
-  
   SamiUserTokenSuccessfulResponse* 
-  v1OrganizationsOrganizationIdUsersPostWithCompletion(Integer* organizationId, SamiUserTokenRequest* body, void (* handler)(SamiUserTokenSuccessfulResponse*, SamiError*));
-  
+  v1OrganizationsOrganizationIdUsersPostWithCompletion(Integer* organizationId, SamiUserTokenRequest* body, String* accessToken, void (* handler)(SamiUserTokenSuccessfulResponse*, SamiError*));
+  SamiUser* 
+  v1UserMeGetWithCompletion( void (* handler)(SamiUser*, SamiError*));
   static String getBasePath() {
-    return L"https://localhost/api";
+    return L"https://app.quantimo.do/api";
   }
 
 private:

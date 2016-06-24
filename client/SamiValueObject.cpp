@@ -23,9 +23,8 @@ SamiValueObject::~SamiValueObject() {
 void
 SamiValueObject::init() {
     pTimestamp = null;
-    pValue = null;
-    pNote = null;
-    
+pValue = null;
+pNote = null;
 }
 
 void
@@ -35,17 +34,16 @@ SamiValueObject::cleanup() {
         delete pTimestamp;
         pTimestamp = null;
     }
-    if(pValue != null) {
+if(pValue != null) {
         
         delete pValue;
         pValue = null;
     }
-    if(pNote != null) {
+if(pNote != null) {
         
         delete pNote;
         pNote = null;
     }
-    
 }
 
 
@@ -92,7 +90,7 @@ SamiValueObject::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pTimestamp, pTimestampVal, L"Long", L"Long");
         }
         delete pTimestampKey;
-        JsonString* pValueKey = new JsonString(L"value");
+JsonString* pValueKey = new JsonString(L"value");
         IJsonValue* pValueVal = null;
         pJsonObject->GetValue(pValueKey, pValueVal);
         if(pValueVal != null) {
@@ -101,7 +99,7 @@ SamiValueObject::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pValue, pValueVal, L"Double", L"Double");
         }
         delete pValueKey;
-        JsonString* pNoteKey = new JsonString(L"note");
+JsonString* pNoteKey = new JsonString(L"note");
         IJsonValue* pNoteVal = null;
         pJsonObject->GetValue(pNoteKey, pNoteVal);
         if(pNoteVal != null) {
@@ -110,7 +108,6 @@ SamiValueObject::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pNote, pNoteVal, L"String", L"String");
         }
         delete pNoteKey;
-        
     }
 }
 
@@ -161,19 +158,15 @@ SamiValueObject::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pTimestampKey = new JsonString(L"timestamp");
     pJsonObject->Add(pTimestampKey, toJson(getPTimestamp(), "Long", ""));
 
-    
     JsonString *pValueKey = new JsonString(L"value");
     pJsonObject->Add(pValueKey, toJson(getPValue(), "Double", ""));
 
-    
     JsonString *pNoteKey = new JsonString(L"note");
     pJsonObject->Add(pNoteKey, toJson(getPNote(), "String", ""));
 
-    
     return pJsonObject;
 }
 

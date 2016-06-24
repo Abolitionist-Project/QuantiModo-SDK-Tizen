@@ -41,18 +41,14 @@ public:
 
     SamiUserTokenSuccessfulResponseInnerUserField* fromJson(String* obj);
 
-    
     Integer* getPId();
-    void setPId(Integer* p_id);
-    
+    void setPId(Integer* pId);
     String* getPAccessToken();
     void setPAccessToken(String* pAccess_token);
-    
 
 private:
-    Integer* p_id;
-    String* pAccess_token;
-    
+    Integer* pId;
+String* pAccess_token;
 };
 
 } /* namespace Swagger */

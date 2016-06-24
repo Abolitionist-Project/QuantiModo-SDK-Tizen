@@ -23,16 +23,15 @@ SamiConnector::~SamiConnector() {
 void
 SamiConnector::init() {
     pId = null;
-    pName = null;
-    pDisplayName = null;
-    pImage = null;
-    pGetItUrl = null;
-    pConnected = null;
-    pConnectInstructions = null;
-    pLastUpdate = null;
-    pTotalMeasurementsInLastUpdate = null;
-    pNoDataYet = null;
-    
+pName = null;
+pDisplayName = null;
+pImage = null;
+pGetItUrl = null;
+pConnected = null;
+pConnectInstructions = null;
+pLastUpdate = null;
+pTotalMeasurementsInLastUpdate = null;
+pNoDataYet = null;
 }
 
 void
@@ -42,52 +41,51 @@ SamiConnector::cleanup() {
         delete pId;
         pId = null;
     }
-    if(pName != null) {
+if(pName != null) {
         
         delete pName;
         pName = null;
     }
-    if(pDisplayName != null) {
+if(pDisplayName != null) {
         
         delete pDisplayName;
         pDisplayName = null;
     }
-    if(pImage != null) {
+if(pImage != null) {
         
         delete pImage;
         pImage = null;
     }
-    if(pGetItUrl != null) {
+if(pGetItUrl != null) {
         
         delete pGetItUrl;
         pGetItUrl = null;
     }
-    if(pConnected != null) {
+if(pConnected != null) {
         
         delete pConnected;
         pConnected = null;
     }
-    if(pConnectInstructions != null) {
+if(pConnectInstructions != null) {
         
         delete pConnectInstructions;
         pConnectInstructions = null;
     }
-    if(pLastUpdate != null) {
+if(pLastUpdate != null) {
         
         delete pLastUpdate;
         pLastUpdate = null;
     }
-    if(pTotalMeasurementsInLastUpdate != null) {
+if(pTotalMeasurementsInLastUpdate != null) {
         
         delete pTotalMeasurementsInLastUpdate;
         pTotalMeasurementsInLastUpdate = null;
     }
-    if(pNoDataYet != null) {
+if(pNoDataYet != null) {
         
         delete pNoDataYet;
         pNoDataYet = null;
     }
-    
 }
 
 
@@ -134,7 +132,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
-        JsonString* pNameKey = new JsonString(L"name");
+JsonString* pNameKey = new JsonString(L"name");
         IJsonValue* pNameVal = null;
         pJsonObject->GetValue(pNameKey, pNameVal);
         if(pNameVal != null) {
@@ -143,7 +141,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
-        JsonString* pDisplayNameKey = new JsonString(L"displayName");
+JsonString* pDisplayNameKey = new JsonString(L"displayName");
         IJsonValue* pDisplayNameVal = null;
         pJsonObject->GetValue(pDisplayNameKey, pDisplayNameVal);
         if(pDisplayNameVal != null) {
@@ -152,7 +150,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pDisplayName, pDisplayNameVal, L"String", L"String");
         }
         delete pDisplayNameKey;
-        JsonString* pImageKey = new JsonString(L"image");
+JsonString* pImageKey = new JsonString(L"image");
         IJsonValue* pImageVal = null;
         pJsonObject->GetValue(pImageKey, pImageVal);
         if(pImageVal != null) {
@@ -161,7 +159,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pImage, pImageVal, L"String", L"String");
         }
         delete pImageKey;
-        JsonString* pGetItUrlKey = new JsonString(L"getItUrl");
+JsonString* pGetItUrlKey = new JsonString(L"getItUrl");
         IJsonValue* pGetItUrlVal = null;
         pJsonObject->GetValue(pGetItUrlKey, pGetItUrlVal);
         if(pGetItUrlVal != null) {
@@ -170,7 +168,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pGetItUrl, pGetItUrlVal, L"String", L"String");
         }
         delete pGetItUrlKey;
-        JsonString* pConnectedKey = new JsonString(L"connected");
+JsonString* pConnectedKey = new JsonString(L"connected");
         IJsonValue* pConnectedVal = null;
         pJsonObject->GetValue(pConnectedKey, pConnectedVal);
         if(pConnectedVal != null) {
@@ -179,7 +177,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pConnected, pConnectedVal, L"String", L"String");
         }
         delete pConnectedKey;
-        JsonString* pConnectInstructionsKey = new JsonString(L"connectInstructions");
+JsonString* pConnectInstructionsKey = new JsonString(L"connectInstructions");
         IJsonValue* pConnectInstructionsVal = null;
         pJsonObject->GetValue(pConnectInstructionsKey, pConnectInstructionsVal);
         if(pConnectInstructionsVal != null) {
@@ -188,7 +186,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pConnectInstructions, pConnectInstructionsVal, L"String", L"String");
         }
         delete pConnectInstructionsKey;
-        JsonString* pLastUpdateKey = new JsonString(L"lastUpdate");
+JsonString* pLastUpdateKey = new JsonString(L"lastUpdate");
         IJsonValue* pLastUpdateVal = null;
         pJsonObject->GetValue(pLastUpdateKey, pLastUpdateVal);
         if(pLastUpdateVal != null) {
@@ -197,7 +195,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pLastUpdate, pLastUpdateVal, L"Integer", L"Integer");
         }
         delete pLastUpdateKey;
-        JsonString* pTotalMeasurementsInLastUpdateKey = new JsonString(L"totalMeasurementsInLastUpdate");
+JsonString* pTotalMeasurementsInLastUpdateKey = new JsonString(L"totalMeasurementsInLastUpdate");
         IJsonValue* pTotalMeasurementsInLastUpdateVal = null;
         pJsonObject->GetValue(pTotalMeasurementsInLastUpdateKey, pTotalMeasurementsInLastUpdateVal);
         if(pTotalMeasurementsInLastUpdateVal != null) {
@@ -206,7 +204,7 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pTotalMeasurementsInLastUpdate, pTotalMeasurementsInLastUpdateVal, L"Integer", L"Integer");
         }
         delete pTotalMeasurementsInLastUpdateKey;
-        JsonString* pNoDataYetKey = new JsonString(L"noDataYet");
+JsonString* pNoDataYetKey = new JsonString(L"noDataYet");
         IJsonValue* pNoDataYetVal = null;
         pJsonObject->GetValue(pNoDataYetKey, pNoDataYetVal);
         if(pNoDataYetVal != null) {
@@ -215,7 +213,6 @@ SamiConnector::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pNoDataYet, pNoDataYetVal, L"Boolean", L"Boolean");
         }
         delete pNoDataYetKey;
-        
     }
 }
 
@@ -266,47 +263,36 @@ SamiConnector::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pIdKey = new JsonString(L"id");
     pJsonObject->Add(pIdKey, toJson(getPId(), "Integer", ""));
 
-    
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
-    
     JsonString *pDisplayNameKey = new JsonString(L"displayName");
     pJsonObject->Add(pDisplayNameKey, toJson(getPDisplayName(), "String", ""));
 
-    
     JsonString *pImageKey = new JsonString(L"image");
     pJsonObject->Add(pImageKey, toJson(getPImage(), "String", ""));
 
-    
     JsonString *pGetItUrlKey = new JsonString(L"getItUrl");
     pJsonObject->Add(pGetItUrlKey, toJson(getPGetItUrl(), "String", ""));
 
-    
     JsonString *pConnectedKey = new JsonString(L"connected");
     pJsonObject->Add(pConnectedKey, toJson(getPConnected(), "String", ""));
 
-    
     JsonString *pConnectInstructionsKey = new JsonString(L"connectInstructions");
     pJsonObject->Add(pConnectInstructionsKey, toJson(getPConnectInstructions(), "String", ""));
 
-    
     JsonString *pLastUpdateKey = new JsonString(L"lastUpdate");
     pJsonObject->Add(pLastUpdateKey, toJson(getPLastUpdate(), "Integer", ""));
 
-    
     JsonString *pTotalMeasurementsInLastUpdateKey = new JsonString(L"totalMeasurementsInLastUpdate");
     pJsonObject->Add(pTotalMeasurementsInLastUpdateKey, toJson(getPTotalMeasurementsInLastUpdate(), "Integer", ""));
 
-    
     JsonString *pNoDataYetKey = new JsonString(L"noDataYet");
     pJsonObject->Add(pNoDataYetKey, toJson(getPNoDataYet(), "Boolean", ""));
 
-    
     return pJsonObject;
 }
 

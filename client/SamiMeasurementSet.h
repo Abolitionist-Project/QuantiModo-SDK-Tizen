@@ -18,8 +18,8 @@ using namespace Tizen::Web::Json;
 
 
 #include "SamiValueObject.h"
-using Tizen::Base::String;
 using Tizen::Base::Collection::IList;
+using Tizen::Base::String;
 
 
 namespace Swagger {
@@ -42,34 +42,26 @@ public:
 
     SamiMeasurementSet* fromJson(String* obj);
 
-    
     IList* getPMeasurements();
     void setPMeasurements(IList* pMeasurements);
-    
-    String* getPName();
-    void setPName(String* pName);
-    
-    String* getPSource();
-    void setPSource(String* pSource);
-    
-    String* getPCategory();
-    void setPCategory(String* pCategory);
-    
+    String* getPVariableName();
+    void setPVariableName(String* pVariableName);
+    String* getPSourceName();
+    void setPSourceName(String* pSourceName);
+    String* getPVariableCategoryName();
+    void setPVariableCategoryName(String* pVariableCategoryName);
     String* getPCombinationOperation();
     void setPCombinationOperation(String* pCombinationOperation);
-    
-    String* getPUnit();
-    void setPUnit(String* pUnit);
-    
+    String* getPAbbreviatedUnitName();
+    void setPAbbreviatedUnitName(String* pAbbreviatedUnitName);
 
 private:
     IList* pMeasurements;
-    String* pName;
-    String* pSource;
-    String* pCategory;
-    String* pCombinationOperation;
-    String* pUnit;
-    
+String* pVariableName;
+String* pSourceName;
+String* pVariableCategoryName;
+String* pCombinationOperation;
+String* pAbbreviatedUnitName;
 };
 
 } /* namespace Swagger */

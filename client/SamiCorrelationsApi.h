@@ -5,13 +5,14 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
-using Tizen::Base::Integer;
-#include "SamiCorrelation.h"
 using Tizen::Base::String;
-#include "SamiJsonErrorResponse.h"
+#include "SamiCorrelation.h"
+using Tizen::Base::Integer;
 #include "SamiPostCorrelation.h"
+#include "SamiJsonErrorResponse.h"
 #include "SamiCommonResponse.h"
-using Tizen::Base::Boolean;
+#include "SamiVoteDelete.h"
+#include "SamiPostVote.h"
 
 using namespace Tizen::Net::Http;
 
@@ -22,42 +23,32 @@ public:
   SamiCorrelationsApi();
   virtual ~SamiCorrelationsApi();
 
-  
   IList* 
-  correlationsGetWithCompletion(String* effect, String* cause, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
-  
-  IList* 
-  publicCorrelationsSearchSearchGetWithCompletion(String* search, String* effectOrCause, void (* handler)(IList*, SamiError*));
-  
+  v1AggregatedCorrelationsGetWithCompletion(String* accessToken, String* effect, String* cause, String* correlationCoefficient, String* onsetDelay, String* durationOfAction, String* lastUpdated, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
   void 
-  v1CorrelationsPostWithCompletion(SamiPostCorrelation* body, void(* handler)(SamiError*));
-  
+  v1AggregatedCorrelationsPostWithCompletion(SamiPostCorrelation* body, String* accessToken, void(* handler)(SamiError*));
   IList* 
-  v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithCompletion(Integer* organizationId, Integer* userId, String* variableName, String* organizationToken, String* includePublic, void (* handler)(IList*, SamiError*));
-  
+  v1CorrelationsGetWithCompletion(String* accessToken, String* effect, String* cause, String* correlationCoefficient, String* onsetDelay, String* durationOfAction, String* lastUpdated, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
   IList* 
-  v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithCompletion(Integer* organizationId, Integer* userId, String* variableName, String* organizationToken, String* includePublic, void (* handler)(IList*, SamiError*));
-  
+  v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameCausesGetWithCompletion(Integer* organizationId, Integer* userId, String* variableName, String* organizationToken, String* accessToken, String* includePublic, void (* handler)(IList*, SamiError*));
+  IList* 
+  v1OrganizationsOrganizationIdUsersUserIdVariablesVariableNameEffectsGetWithCompletion(Integer* organizationId, Integer* userId, String* variableName, String* organizationToken, String* accessToken, String* includePublic, void (* handler)(IList*, SamiError*));
+  IList* 
+  v1PublicCorrelationsSearchSearchGetWithCompletion(String* search, String* effectOrCause, String* accessToken, void (* handler)(IList*, SamiError*));
   IList* 
   v1VariablesVariableNameCausesGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
-  
   IList* 
-  v1VariablesVariableNameEffectsGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
-  
+  v1VariablesVariableNameEffectsGetWithCompletion(String* variableName, String* accessToken, void (* handler)(IList*, SamiError*));
   IList* 
-  v1VariablesVariableNamePublicCausesGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
-  
+  v1VariablesVariableNamePublicCausesGetWithCompletion(String* variableName, String* accessToken, void (* handler)(IList*, SamiError*));
   IList* 
-  v1VariablesVariableNamePublicEffectsGetWithCompletion(String* variableName, void (* handler)(IList*, SamiError*));
-  
+  v1VariablesVariableNamePublicEffectsGetWithCompletion(String* variableName, String* accessToken, void (* handler)(IList*, SamiError*));
   SamiCommonResponse* 
-  v1VotesPostWithCompletion(String* cause, String* effect, Boolean* vote, void (* handler)(SamiCommonResponse*, SamiError*));
-  
+  v1VotesDeletePostWithCompletion(SamiVoteDelete* body, String* accessToken, void (* handler)(SamiCommonResponse*, SamiError*));
   SamiCommonResponse* 
-  v1VotesDeletePostWithCompletion(String* cause, String* effect, void (* handler)(SamiCommonResponse*, SamiError*));
-  
+  v1VotesPostWithCompletion(SamiPostVote* body, String* accessToken, void (* handler)(SamiCommonResponse*, SamiError*));
   static String getBasePath() {
-    return L"https://localhost/api";
+    return L"https://app.quantimo.do/api";
   }
 
 private:

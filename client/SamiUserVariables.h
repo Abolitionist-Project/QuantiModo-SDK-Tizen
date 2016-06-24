@@ -17,8 +17,8 @@
 using namespace Tizen::Web::Json;
 
 
-using Tizen::Base::Integer;
 using Tizen::Base::Float;
+using Tizen::Base::Integer;
 using Tizen::Base::String;
 
 
@@ -42,50 +42,38 @@ public:
 
     SamiUserVariables* fromJson(String* obj);
 
-    
     Integer* getPUser();
     void setPUser(Integer* pUser);
-    
-    String* getPVariable();
-    void setPVariable(String* pVariable);
-    
+    Integer* getPVariableId();
+    void setPVariableId(Integer* pVariableId);
     Integer* getPDurationOfAction();
     void setPDurationOfAction(Integer* pDurationOfAction);
-    
     Integer* getPFillingValue();
     void setPFillingValue(Integer* pFillingValue);
-    
     String* getPJoinWith();
     void setPJoinWith(String* pJoinWith);
-    
-    Float* getPMaximumValue();
-    void setPMaximumValue(Float* pMaximumValue);
-    
-    Float* getPMinimumValue();
-    void setPMinimumValue(Float* pMinimumValue);
-    
-    String* getPName();
-    void setPName(String* pName);
-    
+    Float* getPMaximumAllowedValue();
+    void setPMaximumAllowedValue(Float* pMaximumAllowedValue);
+    Float* getPMinimumAllowedValue();
+    void setPMinimumAllowedValue(Float* pMinimumAllowedValue);
     Integer* getPOnsetDelay();
     void setPOnsetDelay(Integer* pOnsetDelay);
-    
-    String* getPUnit();
-    void setPUnit(String* pUnit);
-    
+    String* getPExperimentStartTime();
+    void setPExperimentStartTime(String* pExperimentStartTime);
+    String* getPExperimentEndTime();
+    void setPExperimentEndTime(String* pExperimentEndTime);
 
 private:
     Integer* pUser;
-    String* pVariable;
-    Integer* pDurationOfAction;
-    Integer* pFillingValue;
-    String* pJoinWith;
-    Float* pMaximumValue;
-    Float* pMinimumValue;
-    String* pName;
-    Integer* pOnsetDelay;
-    String* pUnit;
-    
+Integer* pVariableId;
+Integer* pDurationOfAction;
+Integer* pFillingValue;
+String* pJoinWith;
+Float* pMaximumAllowedValue;
+Float* pMinimumAllowedValue;
+Integer* pOnsetDelay;
+String* pExperimentStartTime;
+String* pExperimentEndTime;
 };
 
 } /* namespace Swagger */

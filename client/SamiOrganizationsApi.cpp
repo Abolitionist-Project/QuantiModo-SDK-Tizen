@@ -52,7 +52,7 @@ v1OrganizationsOrganizationIdUsersPostProcessor(HttpResponse* pHttpResponse, voi
 }
 
 SamiUserTokenSuccessfulResponse* 
-SamiOrganizationsApi::v1OrganizationsOrganizationIdUsersPostWithCompletion(Integer* organizationId, SamiUserTokenRequest* body, void (* success)(SamiUserTokenSuccessfulResponse*, SamiError*)) {
+SamiOrganizationsApi::v1OrganizationsOrganizationIdUsersPostWithCompletion(Integer* organizationId, SamiUserTokenRequest* body, String* accessToken, void (* success)(SamiUserTokenSuccessfulResponse*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&v1OrganizationsOrganizationIdUsersPostProcessor, (void(*)(void*, SamiError*))success);
@@ -60,32 +60,25 @@ SamiOrganizationsApi::v1OrganizationsOrganizationIdUsersPostWithCompletion(Integ
   headerParams->Construct();
 
   
-
   HashMap* queryParams = new HashMap(SingleObjectDeleter);
   queryParams->Construct();
 
   
+    queryParams->Add(new String("access_token"), accessToken);
 
   String* mBody = null;
 
-  
-  
-  
   if(body != null) {
     mBody = new String(body->asJson());
     headerParams->Add(new String("Content-Type"), new String("application/json"));
   }
-  
-  
 
   String url(L"/v1/organizations/{organizationId}/users");
 
-  
   String s_organizationId(L"{");
   s_organizationId.Append(L"organizationId");
   s_organizationId.Append(L"}");
   url.Replace(s_organizationId, stringify(organizationId, L"Integer*"));
-  
 
   client->execute(SamiOrganizationsApi::getBasePath(), url, "POST", (IMap*)queryParams, mBody, (IMap*)headerParams, null, L"application/json");
   return null;

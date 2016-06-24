@@ -22,36 +22,34 @@ SamiConnectorInfoHistoryItem::~SamiConnectorInfoHistoryItem() {
 
 void
 SamiConnectorInfoHistoryItem::init() {
-    pNumber_of_measurements = null;
-    pSuccess = null;
-    pMessage = null;
-    pCreated_at = null;
-    
+    pNumberOfMeasurements = null;
+pSuccess = null;
+pMessage = null;
+pCreatedAt = null;
 }
 
 void
 SamiConnectorInfoHistoryItem::cleanup() {
-    if(pNumber_of_measurements != null) {
+    if(pNumberOfMeasurements != null) {
         
-        delete pNumber_of_measurements;
-        pNumber_of_measurements = null;
+        delete pNumberOfMeasurements;
+        pNumberOfMeasurements = null;
     }
-    if(pSuccess != null) {
+if(pSuccess != null) {
         
         delete pSuccess;
         pSuccess = null;
     }
-    if(pMessage != null) {
+if(pMessage != null) {
         
         delete pMessage;
         pMessage = null;
     }
-    if(pCreated_at != null) {
+if(pCreatedAt != null) {
         
-        delete pCreated_at;
-        pCreated_at = null;
+        delete pCreatedAt;
+        pCreatedAt = null;
     }
-    
 }
 
 
@@ -89,16 +87,16 @@ SamiConnectorInfoHistoryItem::fromJsonObject(IJsonValue* pJson) {
     JsonObject* pJsonObject = static_cast< JsonObject* >(pJson);
 
     if(pJsonObject != null) {
-        JsonString* pNumber_of_measurementsKey = new JsonString(L"number_of_measurements");
-        IJsonValue* pNumber_of_measurementsVal = null;
-        pJsonObject->GetValue(pNumber_of_measurementsKey, pNumber_of_measurementsVal);
-        if(pNumber_of_measurementsVal != null) {
+        JsonString* pNumberOfMeasurementsKey = new JsonString(L"numberOfMeasurements");
+        IJsonValue* pNumberOfMeasurementsVal = null;
+        pJsonObject->GetValue(pNumberOfMeasurementsKey, pNumberOfMeasurementsVal);
+        if(pNumberOfMeasurementsVal != null) {
             
-            pNumber_of_measurements = null;
-            jsonToValue(pNumber_of_measurements, pNumber_of_measurementsVal, L"Integer", L"Integer");
+            pNumberOfMeasurements = null;
+            jsonToValue(pNumberOfMeasurements, pNumberOfMeasurementsVal, L"Integer", L"Integer");
         }
-        delete pNumber_of_measurementsKey;
-        JsonString* pSuccessKey = new JsonString(L"success");
+        delete pNumberOfMeasurementsKey;
+JsonString* pSuccessKey = new JsonString(L"success");
         IJsonValue* pSuccessVal = null;
         pJsonObject->GetValue(pSuccessKey, pSuccessVal);
         if(pSuccessVal != null) {
@@ -107,7 +105,7 @@ SamiConnectorInfoHistoryItem::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pSuccess, pSuccessVal, L"Boolean", L"Boolean");
         }
         delete pSuccessKey;
-        JsonString* pMessageKey = new JsonString(L"message");
+JsonString* pMessageKey = new JsonString(L"message");
         IJsonValue* pMessageVal = null;
         pJsonObject->GetValue(pMessageKey, pMessageVal);
         if(pMessageVal != null) {
@@ -116,16 +114,15 @@ SamiConnectorInfoHistoryItem::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMessage, pMessageVal, L"String", L"String");
         }
         delete pMessageKey;
-        JsonString* pCreated_atKey = new JsonString(L"created_at");
-        IJsonValue* pCreated_atVal = null;
-        pJsonObject->GetValue(pCreated_atKey, pCreated_atVal);
-        if(pCreated_atVal != null) {
+JsonString* pCreatedAtKey = new JsonString(L"createdAt");
+        IJsonValue* pCreatedAtVal = null;
+        pJsonObject->GetValue(pCreatedAtKey, pCreatedAtVal);
+        if(pCreatedAtVal != null) {
             
-            pCreated_at = new String();
-            jsonToValue(pCreated_at, pCreated_atVal, L"String", L"String");
+            pCreatedAt = new String();
+            jsonToValue(pCreatedAt, pCreatedAtVal, L"String", L"String");
         }
-        delete pCreated_atKey;
-        
+        delete pCreatedAtKey;
     }
 }
 
@@ -176,33 +173,28 @@ SamiConnectorInfoHistoryItem::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
-    JsonString *pNumber_of_measurementsKey = new JsonString(L"number_of_measurements");
-    pJsonObject->Add(pNumber_of_measurementsKey, toJson(getPNumberOfMeasurements(), "Integer", ""));
+    JsonString *pNumberOfMeasurementsKey = new JsonString(L"numberOfMeasurements");
+    pJsonObject->Add(pNumberOfMeasurementsKey, toJson(getPNumberOfMeasurements(), "Integer", ""));
 
-    
     JsonString *pSuccessKey = new JsonString(L"success");
     pJsonObject->Add(pSuccessKey, toJson(getPSuccess(), "Boolean", ""));
 
-    
     JsonString *pMessageKey = new JsonString(L"message");
     pJsonObject->Add(pMessageKey, toJson(getPMessage(), "String", ""));
 
-    
-    JsonString *pCreated_atKey = new JsonString(L"created_at");
-    pJsonObject->Add(pCreated_atKey, toJson(getPCreatedAt(), "String", ""));
+    JsonString *pCreatedAtKey = new JsonString(L"createdAt");
+    pJsonObject->Add(pCreatedAtKey, toJson(getPCreatedAt(), "String", ""));
 
-    
     return pJsonObject;
 }
 
 Integer*
 SamiConnectorInfoHistoryItem::getPNumberOfMeasurements() {
-    return pNumber_of_measurements;
+    return pNumberOfMeasurements;
 }
 void
-SamiConnectorInfoHistoryItem::setPNumberOfMeasurements(Integer* pNumber_of_measurements) {
-    this->pNumber_of_measurements = pNumber_of_measurements;
+SamiConnectorInfoHistoryItem::setPNumberOfMeasurements(Integer* pNumberOfMeasurements) {
+    this->pNumberOfMeasurements = pNumberOfMeasurements;
 }
 
 Boolean*
@@ -225,11 +217,11 @@ SamiConnectorInfoHistoryItem::setPMessage(String* pMessage) {
 
 String*
 SamiConnectorInfoHistoryItem::getPCreatedAt() {
-    return pCreated_at;
+    return pCreatedAt;
 }
 void
-SamiConnectorInfoHistoryItem::setPCreatedAt(String* pCreated_at) {
-    this->pCreated_at = pCreated_at;
+SamiConnectorInfoHistoryItem::setPCreatedAt(String* pCreatedAt) {
+    this->pCreatedAt = pCreatedAt;
 }
 
 

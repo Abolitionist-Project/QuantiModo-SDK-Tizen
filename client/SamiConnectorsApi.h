@@ -5,9 +5,11 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
-#include "SamiConnector.h"
 using Tizen::Base::String;
+using Tizen::Base::Boolean;
+#include "SamiConnectorInstruction.h"
 #include "SamiConnectorInfo.h"
+#include "SamiConnector.h"
 
 using namespace Tizen::Net::Http;
 
@@ -18,24 +20,26 @@ public:
   SamiConnectorsApi();
   virtual ~SamiConnectorsApi();
 
-  
-  IList* 
-  v1ConnectorsListGetWithCompletion( void (* handler)(IList*, SamiError*));
-  
   void 
-  v1ConnectorsConnectorConnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
-  
+  v1ConnectJsGetWithCompletion(String* accessToken, void(* handler)(SamiError*));
+  void 
+  v1ConnectMobileGetWithCompletion(String* accessToken, void(* handler)(SamiError*));
+  void 
+  v1ConnectorsConnectorConnectGetWithCompletion(String* connector, String* accessToken, void(* handler)(SamiError*));
+  void 
+  v1ConnectorsConnectorConnectInstructionsGetWithCompletion(String* connector, String* parameters, String* url, Boolean* usePopup, String* accessToken, void(* handler)(SamiError*));
+  SamiConnectorInstruction* 
+  v1ConnectorsConnectorConnectParameterGetWithCompletion(String* connector, String* displayName, String* key, String* placeholder, String* type, Boolean* usePopup, String* accessToken, String* defaultValue, void (* handler)(SamiConnectorInstruction*, SamiError*));
   void 
   v1ConnectorsConnectorDisconnectGetWithCompletion(String* connector, void(* handler)(SamiError*));
-  
   SamiConnectorInfo* 
-  v1ConnectorsConnectorInfoGetWithCompletion(String* connector, void (* handler)(SamiConnectorInfo*, SamiError*));
-  
+  v1ConnectorsConnectorInfoGetWithCompletion(String* connector, String* accessToken, void (* handler)(SamiConnectorInfo*, SamiError*));
   void 
-  v1ConnectorsConnectorUpdateGetWithCompletion(String* connector, void(* handler)(SamiError*));
-  
+  v1ConnectorsConnectorUpdateGetWithCompletion(String* connector, String* accessToken, void(* handler)(SamiError*));
+  IList* 
+  v1ConnectorsListGetWithCompletion( void (* handler)(IList*, SamiError*));
   static String getBasePath() {
-    return L"https://localhost/api";
+    return L"https://app.quantimo.do/api";
   }
 
 private:

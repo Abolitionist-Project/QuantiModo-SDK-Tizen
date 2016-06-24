@@ -17,9 +17,9 @@
 using namespace Tizen::Web::Json;
 
 
+using Tizen::Base::Boolean;
 using Tizen::Base::Integer;
 using Tizen::Base::String;
-using Tizen::Base::Boolean;
 
 
 namespace Swagger {
@@ -42,38 +42,29 @@ public:
 
     SamiUser* fromJson(String* obj);
 
-    
     Integer* getPId();
     void setPId(Integer* pId);
-    
     Integer* getPWpId();
     void setPWpId(Integer* pWpId);
-    
     String* getPDisplayName();
     void setPDisplayName(String* pDisplayName);
-    
     String* getPLoginName();
     void setPLoginName(String* pLoginName);
-    
     String* getPEmail();
     void setPEmail(String* pEmail);
-    
     String* getPToken();
     void setPToken(String* pToken);
-    
     Boolean* getPAdministrator();
     void setPAdministrator(Boolean* pAdministrator);
-    
 
 private:
     Integer* pId;
-    Integer* pWpId;
-    String* pDisplayName;
-    String* pLoginName;
-    String* pEmail;
-    String* pToken;
-    Boolean* pAdministrator;
-    
+Integer* pWpId;
+String* pDisplayName;
+String* pLoginName;
+String* pEmail;
+String* pToken;
+Boolean* pAdministrator;
 };
 
 } /* namespace Swagger */

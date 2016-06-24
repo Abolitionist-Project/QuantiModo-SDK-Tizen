@@ -18,9 +18,9 @@ using namespace Tizen::Web::Json;
 
 
 #include "SamiConversionStep.h"
-using Tizen::Base::String;
-using Tizen::Base::Double;
 using Tizen::Base::Collection::IList;
+using Tizen::Base::Double;
+using Tizen::Base::String;
 
 
 namespace Swagger {
@@ -43,34 +43,26 @@ public:
 
     SamiUnit* fromJson(String* obj);
 
-    
     String* getPName();
     void setPName(String* pName);
-    
     String* getPAbbreviatedName();
     void setPAbbreviatedName(String* pAbbreviatedName);
-    
     String* getPCategory();
     void setPCategory(String* pCategory);
-    
-    Double* getPMinimum();
-    void setPMinimum(Double* pMinimum);
-    
-    Double* getPMaximum();
-    void setPMaximum(Double* pMaximum);
-    
+    Double* getPMinimumValue();
+    void setPMinimumValue(Double* pMinimumValue);
+    Double* getPMaximumValue();
+    void setPMaximumValue(Double* pMaximumValue);
     IList* getPConversionSteps();
     void setPConversionSteps(IList* pConversionSteps);
-    
 
 private:
     String* pName;
-    String* pAbbreviatedName;
-    String* pCategory;
-    Double* pMinimum;
-    Double* pMaximum;
-    IList* pConversionSteps;
-    
+String* pAbbreviatedName;
+String* pCategory;
+Double* pMinimumValue;
+Double* pMaximumValue;
+IList* pConversionSteps;
 };
 
 } /* namespace Swagger */

@@ -23,16 +23,15 @@ SamiUserVariables::~SamiUserVariables() {
 void
 SamiUserVariables::init() {
     pUser = null;
-    pVariable = null;
-    pDurationOfAction = null;
-    pFillingValue = null;
-    pJoinWith = null;
-    pMaximumValue = null;
-    pMinimumValue = null;
-    pName = null;
-    pOnsetDelay = null;
-    pUnit = null;
-    
+pVariableId = null;
+pDurationOfAction = null;
+pFillingValue = null;
+pJoinWith = null;
+pMaximumAllowedValue = null;
+pMinimumAllowedValue = null;
+pOnsetDelay = null;
+pExperimentStartTime = null;
+pExperimentEndTime = null;
 }
 
 void
@@ -42,52 +41,51 @@ SamiUserVariables::cleanup() {
         delete pUser;
         pUser = null;
     }
-    if(pVariable != null) {
+if(pVariableId != null) {
         
-        delete pVariable;
-        pVariable = null;
+        delete pVariableId;
+        pVariableId = null;
     }
-    if(pDurationOfAction != null) {
+if(pDurationOfAction != null) {
         
         delete pDurationOfAction;
         pDurationOfAction = null;
     }
-    if(pFillingValue != null) {
+if(pFillingValue != null) {
         
         delete pFillingValue;
         pFillingValue = null;
     }
-    if(pJoinWith != null) {
+if(pJoinWith != null) {
         
         delete pJoinWith;
         pJoinWith = null;
     }
-    if(pMaximumValue != null) {
+if(pMaximumAllowedValue != null) {
         
-        delete pMaximumValue;
-        pMaximumValue = null;
+        delete pMaximumAllowedValue;
+        pMaximumAllowedValue = null;
     }
-    if(pMinimumValue != null) {
+if(pMinimumAllowedValue != null) {
         
-        delete pMinimumValue;
-        pMinimumValue = null;
+        delete pMinimumAllowedValue;
+        pMinimumAllowedValue = null;
     }
-    if(pName != null) {
-        
-        delete pName;
-        pName = null;
-    }
-    if(pOnsetDelay != null) {
+if(pOnsetDelay != null) {
         
         delete pOnsetDelay;
         pOnsetDelay = null;
     }
-    if(pUnit != null) {
+if(pExperimentStartTime != null) {
         
-        delete pUnit;
-        pUnit = null;
+        delete pExperimentStartTime;
+        pExperimentStartTime = null;
     }
-    
+if(pExperimentEndTime != null) {
+        
+        delete pExperimentEndTime;
+        pExperimentEndTime = null;
+    }
 }
 
 
@@ -134,16 +132,16 @@ SamiUserVariables::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUser, pUserVal, L"Integer", L"Integer");
         }
         delete pUserKey;
-        JsonString* pVariableKey = new JsonString(L"variable");
-        IJsonValue* pVariableVal = null;
-        pJsonObject->GetValue(pVariableKey, pVariableVal);
-        if(pVariableVal != null) {
+JsonString* pVariableIdKey = new JsonString(L"variableId");
+        IJsonValue* pVariableIdVal = null;
+        pJsonObject->GetValue(pVariableIdKey, pVariableIdVal);
+        if(pVariableIdVal != null) {
             
-            pVariable = new String();
-            jsonToValue(pVariable, pVariableVal, L"String", L"String");
+            pVariableId = null;
+            jsonToValue(pVariableId, pVariableIdVal, L"Integer", L"Integer");
         }
-        delete pVariableKey;
-        JsonString* pDurationOfActionKey = new JsonString(L"durationOfAction");
+        delete pVariableIdKey;
+JsonString* pDurationOfActionKey = new JsonString(L"durationOfAction");
         IJsonValue* pDurationOfActionVal = null;
         pJsonObject->GetValue(pDurationOfActionKey, pDurationOfActionVal);
         if(pDurationOfActionVal != null) {
@@ -152,7 +150,7 @@ SamiUserVariables::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pDurationOfAction, pDurationOfActionVal, L"Integer", L"Integer");
         }
         delete pDurationOfActionKey;
-        JsonString* pFillingValueKey = new JsonString(L"fillingValue");
+JsonString* pFillingValueKey = new JsonString(L"fillingValue");
         IJsonValue* pFillingValueVal = null;
         pJsonObject->GetValue(pFillingValueKey, pFillingValueVal);
         if(pFillingValueVal != null) {
@@ -161,7 +159,7 @@ SamiUserVariables::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pFillingValue, pFillingValueVal, L"Integer", L"Integer");
         }
         delete pFillingValueKey;
-        JsonString* pJoinWithKey = new JsonString(L"joinWith");
+JsonString* pJoinWithKey = new JsonString(L"joinWith");
         IJsonValue* pJoinWithVal = null;
         pJsonObject->GetValue(pJoinWithKey, pJoinWithVal);
         if(pJoinWithVal != null) {
@@ -170,34 +168,25 @@ SamiUserVariables::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pJoinWith, pJoinWithVal, L"String", L"String");
         }
         delete pJoinWithKey;
-        JsonString* pMaximumValueKey = new JsonString(L"maximumValue");
-        IJsonValue* pMaximumValueVal = null;
-        pJsonObject->GetValue(pMaximumValueKey, pMaximumValueVal);
-        if(pMaximumValueVal != null) {
+JsonString* pMaximumAllowedValueKey = new JsonString(L"maximumAllowedValue");
+        IJsonValue* pMaximumAllowedValueVal = null;
+        pJsonObject->GetValue(pMaximumAllowedValueKey, pMaximumAllowedValueVal);
+        if(pMaximumAllowedValueVal != null) {
             
-            pMaximumValue = new Float();
-            jsonToValue(pMaximumValue, pMaximumValueVal, L"Float", L"Float");
+            pMaximumAllowedValue = new Float();
+            jsonToValue(pMaximumAllowedValue, pMaximumAllowedValueVal, L"Float", L"Float");
         }
-        delete pMaximumValueKey;
-        JsonString* pMinimumValueKey = new JsonString(L"minimumValue");
-        IJsonValue* pMinimumValueVal = null;
-        pJsonObject->GetValue(pMinimumValueKey, pMinimumValueVal);
-        if(pMinimumValueVal != null) {
+        delete pMaximumAllowedValueKey;
+JsonString* pMinimumAllowedValueKey = new JsonString(L"minimumAllowedValue");
+        IJsonValue* pMinimumAllowedValueVal = null;
+        pJsonObject->GetValue(pMinimumAllowedValueKey, pMinimumAllowedValueVal);
+        if(pMinimumAllowedValueVal != null) {
             
-            pMinimumValue = new Float();
-            jsonToValue(pMinimumValue, pMinimumValueVal, L"Float", L"Float");
+            pMinimumAllowedValue = new Float();
+            jsonToValue(pMinimumAllowedValue, pMinimumAllowedValueVal, L"Float", L"Float");
         }
-        delete pMinimumValueKey;
-        JsonString* pNameKey = new JsonString(L"name");
-        IJsonValue* pNameVal = null;
-        pJsonObject->GetValue(pNameKey, pNameVal);
-        if(pNameVal != null) {
-            
-            pName = new String();
-            jsonToValue(pName, pNameVal, L"String", L"String");
-        }
-        delete pNameKey;
-        JsonString* pOnsetDelayKey = new JsonString(L"onsetDelay");
+        delete pMinimumAllowedValueKey;
+JsonString* pOnsetDelayKey = new JsonString(L"onsetDelay");
         IJsonValue* pOnsetDelayVal = null;
         pJsonObject->GetValue(pOnsetDelayKey, pOnsetDelayVal);
         if(pOnsetDelayVal != null) {
@@ -206,16 +195,24 @@ SamiUserVariables::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pOnsetDelay, pOnsetDelayVal, L"Integer", L"Integer");
         }
         delete pOnsetDelayKey;
-        JsonString* pUnitKey = new JsonString(L"unit");
-        IJsonValue* pUnitVal = null;
-        pJsonObject->GetValue(pUnitKey, pUnitVal);
-        if(pUnitVal != null) {
+JsonString* pExperimentStartTimeKey = new JsonString(L"experimentStartTime");
+        IJsonValue* pExperimentStartTimeVal = null;
+        pJsonObject->GetValue(pExperimentStartTimeKey, pExperimentStartTimeVal);
+        if(pExperimentStartTimeVal != null) {
             
-            pUnit = new String();
-            jsonToValue(pUnit, pUnitVal, L"String", L"String");
+            pExperimentStartTime = new String();
+            jsonToValue(pExperimentStartTime, pExperimentStartTimeVal, L"String", L"String");
         }
-        delete pUnitKey;
-        
+        delete pExperimentStartTimeKey;
+JsonString* pExperimentEndTimeKey = new JsonString(L"experimentEndTime");
+        IJsonValue* pExperimentEndTimeVal = null;
+        pJsonObject->GetValue(pExperimentEndTimeKey, pExperimentEndTimeVal);
+        if(pExperimentEndTimeVal != null) {
+            
+            pExperimentEndTime = new String();
+            jsonToValue(pExperimentEndTime, pExperimentEndTimeVal, L"String", L"String");
+        }
+        delete pExperimentEndTimeKey;
     }
 }
 
@@ -266,47 +263,36 @@ SamiUserVariables::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pUserKey = new JsonString(L"user");
     pJsonObject->Add(pUserKey, toJson(getPUser(), "Integer", ""));
 
-    
-    JsonString *pVariableKey = new JsonString(L"variable");
-    pJsonObject->Add(pVariableKey, toJson(getPVariable(), "String", ""));
+    JsonString *pVariableIdKey = new JsonString(L"variableId");
+    pJsonObject->Add(pVariableIdKey, toJson(getPVariableId(), "Integer", ""));
 
-    
     JsonString *pDurationOfActionKey = new JsonString(L"durationOfAction");
     pJsonObject->Add(pDurationOfActionKey, toJson(getPDurationOfAction(), "Integer", ""));
 
-    
     JsonString *pFillingValueKey = new JsonString(L"fillingValue");
     pJsonObject->Add(pFillingValueKey, toJson(getPFillingValue(), "Integer", ""));
 
-    
     JsonString *pJoinWithKey = new JsonString(L"joinWith");
     pJsonObject->Add(pJoinWithKey, toJson(getPJoinWith(), "String", ""));
 
-    
-    JsonString *pMaximumValueKey = new JsonString(L"maximumValue");
-    pJsonObject->Add(pMaximumValueKey, toJson(getPMaximumValue(), "Float", ""));
+    JsonString *pMaximumAllowedValueKey = new JsonString(L"maximumAllowedValue");
+    pJsonObject->Add(pMaximumAllowedValueKey, toJson(getPMaximumAllowedValue(), "Float", ""));
 
-    
-    JsonString *pMinimumValueKey = new JsonString(L"minimumValue");
-    pJsonObject->Add(pMinimumValueKey, toJson(getPMinimumValue(), "Float", ""));
+    JsonString *pMinimumAllowedValueKey = new JsonString(L"minimumAllowedValue");
+    pJsonObject->Add(pMinimumAllowedValueKey, toJson(getPMinimumAllowedValue(), "Float", ""));
 
-    
-    JsonString *pNameKey = new JsonString(L"name");
-    pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
-
-    
     JsonString *pOnsetDelayKey = new JsonString(L"onsetDelay");
     pJsonObject->Add(pOnsetDelayKey, toJson(getPOnsetDelay(), "Integer", ""));
 
-    
-    JsonString *pUnitKey = new JsonString(L"unit");
-    pJsonObject->Add(pUnitKey, toJson(getPUnit(), "String", ""));
+    JsonString *pExperimentStartTimeKey = new JsonString(L"experimentStartTime");
+    pJsonObject->Add(pExperimentStartTimeKey, toJson(getPExperimentStartTime(), "String", ""));
 
-    
+    JsonString *pExperimentEndTimeKey = new JsonString(L"experimentEndTime");
+    pJsonObject->Add(pExperimentEndTimeKey, toJson(getPExperimentEndTime(), "String", ""));
+
     return pJsonObject;
 }
 
@@ -319,13 +305,13 @@ SamiUserVariables::setPUser(Integer* pUser) {
     this->pUser = pUser;
 }
 
-String*
-SamiUserVariables::getPVariable() {
-    return pVariable;
+Integer*
+SamiUserVariables::getPVariableId() {
+    return pVariableId;
 }
 void
-SamiUserVariables::setPVariable(String* pVariable) {
-    this->pVariable = pVariable;
+SamiUserVariables::setPVariableId(Integer* pVariableId) {
+    this->pVariableId = pVariableId;
 }
 
 Integer*
@@ -356,30 +342,21 @@ SamiUserVariables::setPJoinWith(String* pJoinWith) {
 }
 
 Float*
-SamiUserVariables::getPMaximumValue() {
-    return pMaximumValue;
+SamiUserVariables::getPMaximumAllowedValue() {
+    return pMaximumAllowedValue;
 }
 void
-SamiUserVariables::setPMaximumValue(Float* pMaximumValue) {
-    this->pMaximumValue = pMaximumValue;
+SamiUserVariables::setPMaximumAllowedValue(Float* pMaximumAllowedValue) {
+    this->pMaximumAllowedValue = pMaximumAllowedValue;
 }
 
 Float*
-SamiUserVariables::getPMinimumValue() {
-    return pMinimumValue;
+SamiUserVariables::getPMinimumAllowedValue() {
+    return pMinimumAllowedValue;
 }
 void
-SamiUserVariables::setPMinimumValue(Float* pMinimumValue) {
-    this->pMinimumValue = pMinimumValue;
-}
-
-String*
-SamiUserVariables::getPName() {
-    return pName;
-}
-void
-SamiUserVariables::setPName(String* pName) {
-    this->pName = pName;
+SamiUserVariables::setPMinimumAllowedValue(Float* pMinimumAllowedValue) {
+    this->pMinimumAllowedValue = pMinimumAllowedValue;
 }
 
 Integer*
@@ -392,12 +369,21 @@ SamiUserVariables::setPOnsetDelay(Integer* pOnsetDelay) {
 }
 
 String*
-SamiUserVariables::getPUnit() {
-    return pUnit;
+SamiUserVariables::getPExperimentStartTime() {
+    return pExperimentStartTime;
 }
 void
-SamiUserVariables::setPUnit(String* pUnit) {
-    this->pUnit = pUnit;
+SamiUserVariables::setPExperimentStartTime(String* pExperimentStartTime) {
+    this->pExperimentStartTime = pExperimentStartTime;
+}
+
+String*
+SamiUserVariables::getPExperimentEndTime() {
+    return pExperimentEndTime;
+}
+void
+SamiUserVariables::setPExperimentEndTime(String* pExperimentEndTime) {
+    this->pExperimentEndTime = pExperimentEndTime;
 }
 
 

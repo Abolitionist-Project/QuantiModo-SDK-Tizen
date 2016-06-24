@@ -23,8 +23,7 @@ SamiJsonErrorResponse::~SamiJsonErrorResponse() {
 void
 SamiJsonErrorResponse::init() {
     pStatus = null;
-    pMessage = null;
-    
+pMessage = null;
 }
 
 void
@@ -34,12 +33,11 @@ SamiJsonErrorResponse::cleanup() {
         delete pStatus;
         pStatus = null;
     }
-    if(pMessage != null) {
+if(pMessage != null) {
         
         delete pMessage;
         pMessage = null;
     }
-    
 }
 
 
@@ -86,7 +84,7 @@ SamiJsonErrorResponse::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pStatus, pStatusVal, L"String", L"String");
         }
         delete pStatusKey;
-        JsonString* pMessageKey = new JsonString(L"message");
+JsonString* pMessageKey = new JsonString(L"message");
         IJsonValue* pMessageVal = null;
         pJsonObject->GetValue(pMessageKey, pMessageVal);
         if(pMessageVal != null) {
@@ -95,7 +93,6 @@ SamiJsonErrorResponse::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMessage, pMessageVal, L"String", L"String");
         }
         delete pMessageKey;
-        
     }
 }
 
@@ -146,15 +143,12 @@ SamiJsonErrorResponse::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pStatusKey = new JsonString(L"status");
     pJsonObject->Add(pStatusKey, toJson(getPStatus(), "String", ""));
 
-    
     JsonString *pMessageKey = new JsonString(L"message");
     pJsonObject->Add(pMessageKey, toJson(getPMessage(), "String", ""));
 
-    
     return pJsonObject;
 }
 

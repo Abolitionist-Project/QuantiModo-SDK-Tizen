@@ -41,18 +41,14 @@ public:
 
     SamiUserTokenRequest* fromJson(String* obj);
 
-    
     SamiUserTokenRequestInnerUserField* getPUser();
     void setPUser(SamiUserTokenRequestInnerUserField* pUser);
-    
     String* getPOrganizationAccessToken();
-    void setPOrganizationAccessToken(String* pOrganization_access_token);
-    
+    void setPOrganizationAccessToken(String* pOrganizationAccessToken);
 
 private:
     SamiUserTokenRequestInnerUserField* pUser;
-    String* pOrganization_access_token;
-    
+String* pOrganizationAccessToken;
 };
 
 } /* namespace Swagger */

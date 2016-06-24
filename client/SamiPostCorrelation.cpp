@@ -23,10 +23,9 @@ SamiPostCorrelation::~SamiPostCorrelation() {
 void
 SamiPostCorrelation::init() {
     pCause = null;
-    pEffect = null;
-    pCorrelation = null;
-    pVote = null;
-    
+pEffect = null;
+pCorrelation = null;
+pVote = null;
 }
 
 void
@@ -36,22 +35,21 @@ SamiPostCorrelation::cleanup() {
         delete pCause;
         pCause = null;
     }
-    if(pEffect != null) {
+if(pEffect != null) {
         
         delete pEffect;
         pEffect = null;
     }
-    if(pCorrelation != null) {
+if(pCorrelation != null) {
         
         delete pCorrelation;
         pCorrelation = null;
     }
-    if(pVote != null) {
+if(pVote != null) {
         
         delete pVote;
         pVote = null;
     }
-    
 }
 
 
@@ -98,7 +96,7 @@ SamiPostCorrelation::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCause, pCauseVal, L"String", L"String");
         }
         delete pCauseKey;
-        JsonString* pEffectKey = new JsonString(L"effect");
+JsonString* pEffectKey = new JsonString(L"effect");
         IJsonValue* pEffectVal = null;
         pJsonObject->GetValue(pEffectKey, pEffectVal);
         if(pEffectVal != null) {
@@ -107,7 +105,7 @@ SamiPostCorrelation::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pEffect, pEffectVal, L"String", L"String");
         }
         delete pEffectKey;
-        JsonString* pCorrelationKey = new JsonString(L"correlation");
+JsonString* pCorrelationKey = new JsonString(L"correlation");
         IJsonValue* pCorrelationVal = null;
         pJsonObject->GetValue(pCorrelationKey, pCorrelationVal);
         if(pCorrelationVal != null) {
@@ -116,7 +114,7 @@ SamiPostCorrelation::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCorrelation, pCorrelationVal, L"Double", L"Double");
         }
         delete pCorrelationKey;
-        JsonString* pVoteKey = new JsonString(L"vote");
+JsonString* pVoteKey = new JsonString(L"vote");
         IJsonValue* pVoteVal = null;
         pJsonObject->GetValue(pVoteKey, pVoteVal);
         if(pVoteVal != null) {
@@ -125,7 +123,6 @@ SamiPostCorrelation::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pVote, pVoteVal, L"Integer", L"Integer");
         }
         delete pVoteKey;
-        
     }
 }
 
@@ -176,23 +173,18 @@ SamiPostCorrelation::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pCauseKey = new JsonString(L"cause");
     pJsonObject->Add(pCauseKey, toJson(getPCause(), "String", ""));
 
-    
     JsonString *pEffectKey = new JsonString(L"effect");
     pJsonObject->Add(pEffectKey, toJson(getPEffect(), "String", ""));
 
-    
     JsonString *pCorrelationKey = new JsonString(L"correlation");
     pJsonObject->Add(pCorrelationKey, toJson(getPCorrelation(), "Double", ""));
 
-    
     JsonString *pVoteKey = new JsonString(L"vote");
     pJsonObject->Add(pVoteKey, toJson(getPVote(), "Integer", ""));
 
-    
     return pJsonObject;
 }
 

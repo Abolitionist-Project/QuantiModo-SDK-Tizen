@@ -22,18 +22,16 @@ SamiUserTokenRequestInnerUserField::~SamiUserTokenRequestInnerUserField() {
 
 void
 SamiUserTokenRequestInnerUserField::init() {
-    p_id = null;
-    
+    pId = null;
 }
 
 void
 SamiUserTokenRequestInnerUserField::cleanup() {
-    if(p_id != null) {
+    if(pId != null) {
         
-        delete p_id;
-        p_id = null;
+        delete pId;
+        pId = null;
     }
-    
 }
 
 
@@ -71,16 +69,15 @@ SamiUserTokenRequestInnerUserField::fromJsonObject(IJsonValue* pJson) {
     JsonObject* pJsonObject = static_cast< JsonObject* >(pJson);
 
     if(pJsonObject != null) {
-        JsonString* p_idKey = new JsonString(L"_id");
-        IJsonValue* p_idVal = null;
-        pJsonObject->GetValue(p_idKey, p_idVal);
-        if(p_idVal != null) {
+        JsonString* pIdKey = new JsonString(L"id");
+        IJsonValue* pIdVal = null;
+        pJsonObject->GetValue(pIdKey, pIdVal);
+        if(pIdVal != null) {
             
-            p_id = null;
-            jsonToValue(p_id, p_idVal, L"Integer", L"Integer");
+            pId = null;
+            jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
-        delete p_idKey;
-        
+        delete pIdKey;
     }
 }
 
@@ -131,21 +128,19 @@ SamiUserTokenRequestInnerUserField::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
-    JsonString *p_idKey = new JsonString(L"_id");
-    pJsonObject->Add(p_idKey, toJson(getPId(), "Integer", ""));
+    JsonString *pIdKey = new JsonString(L"id");
+    pJsonObject->Add(pIdKey, toJson(getPId(), "Integer", ""));
 
-    
     return pJsonObject;
 }
 
 Integer*
 SamiUserTokenRequestInnerUserField::getPId() {
-    return p_id;
+    return pId;
 }
 void
-SamiUserTokenRequestInnerUserField::setPId(Integer* p_id) {
-    this->p_id = p_id;
+SamiUserTokenRequestInnerUserField::setPId(Integer* pId) {
+    this->pId = pId;
 }
 
 

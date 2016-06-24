@@ -17,8 +17,8 @@
 using namespace Tizen::Web::Json;
 
 
-using Tizen::Base::Integer;
 #include "SamiUserTokenSuccessfulResponseInnerUserField.h"
+using Tizen::Base::Integer;
 using Tizen::Base::String;
 
 
@@ -42,22 +42,17 @@ public:
 
     SamiUserTokenSuccessfulResponse* fromJson(String* obj);
 
-    
     Integer* getPCode();
     void setPCode(Integer* pCode);
-    
     String* getPMessage();
     void setPMessage(String* pMessage);
-    
     SamiUserTokenSuccessfulResponseInnerUserField* getPUser();
     void setPUser(SamiUserTokenSuccessfulResponseInnerUserField* pUser);
-    
 
 private:
     Integer* pCode;
-    String* pMessage;
-    SamiUserTokenSuccessfulResponseInnerUserField* pUser;
-    
+String* pMessage;
+SamiUserTokenSuccessfulResponseInnerUserField* pUser;
 };
 
 } /* namespace Swagger */

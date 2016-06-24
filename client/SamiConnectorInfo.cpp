@@ -23,10 +23,9 @@ SamiConnectorInfo::~SamiConnectorInfo() {
 void
 SamiConnectorInfo::init() {
     pId = null;
-    pConnected = null;
-    pError = null;
-    pHistory = null;
-    
+pConnected = null;
+pError = null;
+pHistory = null;
 }
 
 void
@@ -36,22 +35,21 @@ SamiConnectorInfo::cleanup() {
         delete pId;
         pId = null;
     }
-    if(pConnected != null) {
+if(pConnected != null) {
         
         delete pConnected;
         pConnected = null;
     }
-    if(pError != null) {
+if(pError != null) {
         
         delete pError;
         pError = null;
     }
-    if(pHistory != null) {
+if(pHistory != null) {
         pHistory->RemoveAll(true);
         delete pHistory;
         pHistory = null;
     }
-    
 }
 
 
@@ -98,7 +96,7 @@ SamiConnectorInfo::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
-        JsonString* pConnectedKey = new JsonString(L"connected");
+JsonString* pConnectedKey = new JsonString(L"connected");
         IJsonValue* pConnectedVal = null;
         pJsonObject->GetValue(pConnectedKey, pConnectedVal);
         if(pConnectedVal != null) {
@@ -107,7 +105,7 @@ SamiConnectorInfo::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pConnected, pConnectedVal, L"Boolean", L"Boolean");
         }
         delete pConnectedKey;
-        JsonString* pErrorKey = new JsonString(L"error");
+JsonString* pErrorKey = new JsonString(L"error");
         IJsonValue* pErrorVal = null;
         pJsonObject->GetValue(pErrorKey, pErrorVal);
         if(pErrorVal != null) {
@@ -116,7 +114,7 @@ SamiConnectorInfo::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pError, pErrorVal, L"String", L"String");
         }
         delete pErrorKey;
-        JsonString* pHistoryKey = new JsonString(L"history");
+JsonString* pHistoryKey = new JsonString(L"history");
         IJsonValue* pHistoryVal = null;
         pJsonObject->GetValue(pHistoryKey, pHistoryVal);
         if(pHistoryVal != null) {
@@ -125,7 +123,6 @@ SamiConnectorInfo::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pHistory, pHistoryVal, L"IList", L"SamiConnectorInfoHistoryItem");
         }
         delete pHistoryKey;
-        
     }
 }
 
@@ -176,23 +173,18 @@ SamiConnectorInfo::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pIdKey = new JsonString(L"id");
     pJsonObject->Add(pIdKey, toJson(getPId(), "Integer", ""));
 
-    
     JsonString *pConnectedKey = new JsonString(L"connected");
     pJsonObject->Add(pConnectedKey, toJson(getPConnected(), "Boolean", ""));
 
-    
     JsonString *pErrorKey = new JsonString(L"error");
     pJsonObject->Add(pErrorKey, toJson(getPError(), "String", ""));
 
-    
     JsonString *pHistoryKey = new JsonString(L"history");
     pJsonObject->Add(pHistoryKey, toJson(getPHistory(), "SamiConnectorInfoHistoryItem", "array"));
 
-    
     return pJsonObject;
 }
 

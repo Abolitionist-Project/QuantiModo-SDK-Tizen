@@ -23,9 +23,8 @@ SamiUserTokenFailedResponse::~SamiUserTokenFailedResponse() {
 void
 SamiUserTokenFailedResponse::init() {
     pCode = null;
-    pMessage = null;
-    pSuccess = null;
-    
+pMessage = null;
+pSuccess = null;
 }
 
 void
@@ -35,17 +34,16 @@ SamiUserTokenFailedResponse::cleanup() {
         delete pCode;
         pCode = null;
     }
-    if(pMessage != null) {
+if(pMessage != null) {
         
         delete pMessage;
         pMessage = null;
     }
-    if(pSuccess != null) {
+if(pSuccess != null) {
         
         delete pSuccess;
         pSuccess = null;
     }
-    
 }
 
 
@@ -92,7 +90,7 @@ SamiUserTokenFailedResponse::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCode, pCodeVal, L"Integer", L"Integer");
         }
         delete pCodeKey;
-        JsonString* pMessageKey = new JsonString(L"message");
+JsonString* pMessageKey = new JsonString(L"message");
         IJsonValue* pMessageVal = null;
         pJsonObject->GetValue(pMessageKey, pMessageVal);
         if(pMessageVal != null) {
@@ -101,7 +99,7 @@ SamiUserTokenFailedResponse::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMessage, pMessageVal, L"String", L"String");
         }
         delete pMessageKey;
-        JsonString* pSuccessKey = new JsonString(L"success");
+JsonString* pSuccessKey = new JsonString(L"success");
         IJsonValue* pSuccessVal = null;
         pJsonObject->GetValue(pSuccessKey, pSuccessVal);
         if(pSuccessVal != null) {
@@ -110,7 +108,6 @@ SamiUserTokenFailedResponse::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pSuccess, pSuccessVal, L"Boolean", L"Boolean");
         }
         delete pSuccessKey;
-        
     }
 }
 
@@ -161,19 +158,15 @@ SamiUserTokenFailedResponse::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pCodeKey = new JsonString(L"code");
     pJsonObject->Add(pCodeKey, toJson(getPCode(), "Integer", ""));
 
-    
     JsonString *pMessageKey = new JsonString(L"message");
     pJsonObject->Add(pMessageKey, toJson(getPMessage(), "String", ""));
 
-    
     JsonString *pSuccessKey = new JsonString(L"success");
     pJsonObject->Add(pSuccessKey, toJson(getPSuccess(), "Boolean", ""));
 
-    
     return pJsonObject;
 }
 

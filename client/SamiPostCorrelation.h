@@ -17,9 +17,9 @@
 using namespace Tizen::Web::Json;
 
 
+using Tizen::Base::Double;
 using Tizen::Base::Integer;
 using Tizen::Base::String;
-using Tizen::Base::Double;
 
 
 namespace Swagger {
@@ -42,26 +42,20 @@ public:
 
     SamiPostCorrelation* fromJson(String* obj);
 
-    
     String* getPCause();
     void setPCause(String* pCause);
-    
     String* getPEffect();
     void setPEffect(String* pEffect);
-    
     Double* getPCorrelation();
     void setPCorrelation(Double* pCorrelation);
-    
     Integer* getPVote();
     void setPVote(Integer* pVote);
-    
 
 private:
     String* pCause;
-    String* pEffect;
-    Double* pCorrelation;
-    Integer* pVote;
-    
+String* pEffect;
+Double* pCorrelation;
+Integer* pVote;
 };
 
 } /* namespace Swagger */

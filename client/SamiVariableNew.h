@@ -40,30 +40,23 @@ public:
 
     SamiVariableNew* fromJson(String* obj);
 
-    
     String* getPName();
     void setPName(String* pName);
-    
     String* getPCategory();
     void setPCategory(String* pCategory);
-    
     String* getPUnit();
     void setPUnit(String* pUnit);
-    
     String* getPCombinationOperation();
     void setPCombinationOperation(String* pCombinationOperation);
-    
     String* getPParent();
     void setPParent(String* pParent);
-    
 
 private:
     String* pName;
-    String* pCategory;
-    String* pUnit;
-    String* pCombinationOperation;
-    String* pParent;
-    
+String* pCategory;
+String* pUnit;
+String* pCombinationOperation;
+String* pParent;
 };
 
 } /* namespace Swagger */
