@@ -6,8 +6,9 @@
 #include "SamiError.h"
 
 #include "SamiUnitCategory.h"
-#include "SamiUnit.h"
 using Tizen::Base::String;
+#include "SamiUnit.h"
+using Tizen::Base::Integer;
 
 using namespace Tizen::Net::Http;
 
@@ -18,18 +19,14 @@ public:
   SamiUnitsApi();
   virtual ~SamiUnitsApi();
 
-  
   SamiUnitCategory* 
-  unitCategoriesGetWithCompletion( void (* handler)(SamiUnitCategory*, SamiError*));
-  
+  v1UnitCategoriesGetWithCompletion( void (* handler)(SamiUnitCategory*, SamiError*));
   IList* 
-  unitsGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, void (* handler)(IList*, SamiError*));
-  
+  v1UnitsGetWithCompletion(String* accessToken, Integer* _id, String* unitName, String* abbreviatedUnitName, String* categoryName, void (* handler)(IList*, SamiError*));
   IList* 
-  unitsVariableGetWithCompletion(String* unitName, String* abbreviatedUnitName, String* categoryName, String* variable, void (* handler)(IList*, SamiError*));
-  
+  v1UnitsVariableGetWithCompletion(String* accessToken, String* unitName, String* abbreviatedUnitName, String* categoryName, String* variable, void (* handler)(IList*, SamiError*));
   static String getBasePath() {
-    return L"https://localhost/api";
+    return L"https://app.quantimo.do/api";
   }
 
 private:

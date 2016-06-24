@@ -22,13 +22,11 @@ SamiVariablesNew::~SamiVariablesNew() {
 
 void
 SamiVariablesNew::init() {
-    
-}
+    }
 
 void
 SamiVariablesNew::cleanup() {
-    
-}
+    }
 
 
 SamiVariablesNew*
@@ -65,8 +63,7 @@ SamiVariablesNew::fromJsonObject(IJsonValue* pJson) {
     JsonObject* pJsonObject = static_cast< JsonObject* >(pJson);
 
     if(pJsonObject != null) {
-        
-    }
+            }
 }
 
 SamiVariablesNew::SamiVariablesNew(String* json) {
@@ -116,7 +113,6 @@ SamiVariablesNew::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     return pJsonObject;
 }
 

@@ -17,9 +17,9 @@
 using namespace Tizen::Web::Json;
 
 
+using Tizen::Base::Double;
 using Tizen::Base::Long;
 using Tizen::Base::String;
-using Tizen::Base::Double;
 
 
 namespace Swagger {
@@ -42,22 +42,17 @@ public:
 
     SamiValueObject* fromJson(String* obj);
 
-    
     Long* getPTimestamp();
     void setPTimestamp(Long* pTimestamp);
-    
     Double* getPValue();
     void setPValue(Double* pValue);
-    
     String* getPNote();
     void setPNote(String* pNote);
-    
 
 private:
     Long* pTimestamp;
-    Double* pValue;
-    String* pNote;
-    
+Double* pValue;
+String* pNote;
 };
 
 } /* namespace Swagger */

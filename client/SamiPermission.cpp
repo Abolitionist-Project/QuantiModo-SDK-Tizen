@@ -23,13 +23,12 @@ SamiPermission::~SamiPermission() {
 void
 SamiPermission::init() {
     pTarget = null;
-    pVariableName = null;
-    pMin_timestamp = null;
-    pMax_timestamp = null;
-    pMin_time_of_day = null;
-    pMax_time_of_day = null;
-    pWeek = null;
-    
+pVariableName = null;
+pMinTimestamp = null;
+pMaxTimestamp = null;
+pMinTimeOfDay = null;
+pMaxTimeOfDay = null;
+pWeek = null;
 }
 
 void
@@ -39,37 +38,36 @@ SamiPermission::cleanup() {
         delete pTarget;
         pTarget = null;
     }
-    if(pVariableName != null) {
+if(pVariableName != null) {
         
         delete pVariableName;
         pVariableName = null;
     }
-    if(pMin_timestamp != null) {
+if(pMinTimestamp != null) {
         
-        delete pMin_timestamp;
-        pMin_timestamp = null;
+        delete pMinTimestamp;
+        pMinTimestamp = null;
     }
-    if(pMax_timestamp != null) {
+if(pMaxTimestamp != null) {
         
-        delete pMax_timestamp;
-        pMax_timestamp = null;
+        delete pMaxTimestamp;
+        pMaxTimestamp = null;
     }
-    if(pMin_time_of_day != null) {
+if(pMinTimeOfDay != null) {
         
-        delete pMin_time_of_day;
-        pMin_time_of_day = null;
+        delete pMinTimeOfDay;
+        pMinTimeOfDay = null;
     }
-    if(pMax_time_of_day != null) {
+if(pMaxTimeOfDay != null) {
         
-        delete pMax_time_of_day;
-        pMax_time_of_day = null;
+        delete pMaxTimeOfDay;
+        pMaxTimeOfDay = null;
     }
-    if(pWeek != null) {
+if(pWeek != null) {
         
         delete pWeek;
         pWeek = null;
     }
-    
 }
 
 
@@ -116,7 +114,7 @@ SamiPermission::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pTarget, pTargetVal, L"Integer", L"Integer");
         }
         delete pTargetKey;
-        JsonString* pVariableNameKey = new JsonString(L"variableName");
+JsonString* pVariableNameKey = new JsonString(L"variableName");
         IJsonValue* pVariableNameVal = null;
         pJsonObject->GetValue(pVariableNameKey, pVariableNameVal);
         if(pVariableNameVal != null) {
@@ -125,43 +123,43 @@ SamiPermission::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pVariableName, pVariableNameVal, L"String", L"String");
         }
         delete pVariableNameKey;
-        JsonString* pMin_timestampKey = new JsonString(L"min_timestamp");
-        IJsonValue* pMin_timestampVal = null;
-        pJsonObject->GetValue(pMin_timestampKey, pMin_timestampVal);
-        if(pMin_timestampVal != null) {
+JsonString* pMinTimestampKey = new JsonString(L"minTimestamp");
+        IJsonValue* pMinTimestampVal = null;
+        pJsonObject->GetValue(pMinTimestampKey, pMinTimestampVal);
+        if(pMinTimestampVal != null) {
             
-            pMin_timestamp = null;
-            jsonToValue(pMin_timestamp, pMin_timestampVal, L"Integer", L"Integer");
+            pMinTimestamp = null;
+            jsonToValue(pMinTimestamp, pMinTimestampVal, L"Integer", L"Integer");
         }
-        delete pMin_timestampKey;
-        JsonString* pMax_timestampKey = new JsonString(L"max_timestamp");
-        IJsonValue* pMax_timestampVal = null;
-        pJsonObject->GetValue(pMax_timestampKey, pMax_timestampVal);
-        if(pMax_timestampVal != null) {
+        delete pMinTimestampKey;
+JsonString* pMaxTimestampKey = new JsonString(L"maxTimestamp");
+        IJsonValue* pMaxTimestampVal = null;
+        pJsonObject->GetValue(pMaxTimestampKey, pMaxTimestampVal);
+        if(pMaxTimestampVal != null) {
             
-            pMax_timestamp = null;
-            jsonToValue(pMax_timestamp, pMax_timestampVal, L"Integer", L"Integer");
+            pMaxTimestamp = null;
+            jsonToValue(pMaxTimestamp, pMaxTimestampVal, L"Integer", L"Integer");
         }
-        delete pMax_timestampKey;
-        JsonString* pMin_time_of_dayKey = new JsonString(L"min_time_of_day");
-        IJsonValue* pMin_time_of_dayVal = null;
-        pJsonObject->GetValue(pMin_time_of_dayKey, pMin_time_of_dayVal);
-        if(pMin_time_of_dayVal != null) {
+        delete pMaxTimestampKey;
+JsonString* pMinTimeOfDayKey = new JsonString(L"minTimeOfDay");
+        IJsonValue* pMinTimeOfDayVal = null;
+        pJsonObject->GetValue(pMinTimeOfDayKey, pMinTimeOfDayVal);
+        if(pMinTimeOfDayVal != null) {
             
-            pMin_time_of_day = null;
-            jsonToValue(pMin_time_of_day, pMin_time_of_dayVal, L"Integer", L"Integer");
+            pMinTimeOfDay = null;
+            jsonToValue(pMinTimeOfDay, pMinTimeOfDayVal, L"Integer", L"Integer");
         }
-        delete pMin_time_of_dayKey;
-        JsonString* pMax_time_of_dayKey = new JsonString(L"max_time_of_day");
-        IJsonValue* pMax_time_of_dayVal = null;
-        pJsonObject->GetValue(pMax_time_of_dayKey, pMax_time_of_dayVal);
-        if(pMax_time_of_dayVal != null) {
+        delete pMinTimeOfDayKey;
+JsonString* pMaxTimeOfDayKey = new JsonString(L"maxTimeOfDay");
+        IJsonValue* pMaxTimeOfDayVal = null;
+        pJsonObject->GetValue(pMaxTimeOfDayKey, pMaxTimeOfDayVal);
+        if(pMaxTimeOfDayVal != null) {
             
-            pMax_time_of_day = null;
-            jsonToValue(pMax_time_of_day, pMax_time_of_dayVal, L"Integer", L"Integer");
+            pMaxTimeOfDay = null;
+            jsonToValue(pMaxTimeOfDay, pMaxTimeOfDayVal, L"Integer", L"Integer");
         }
-        delete pMax_time_of_dayKey;
-        JsonString* pWeekKey = new JsonString(L"week");
+        delete pMaxTimeOfDayKey;
+JsonString* pWeekKey = new JsonString(L"week");
         IJsonValue* pWeekVal = null;
         pJsonObject->GetValue(pWeekKey, pWeekVal);
         if(pWeekVal != null) {
@@ -170,7 +168,6 @@ SamiPermission::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pWeek, pWeekVal, L"String", L"String");
         }
         delete pWeekKey;
-        
     }
 }
 
@@ -221,35 +218,27 @@ SamiPermission::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pTargetKey = new JsonString(L"target");
     pJsonObject->Add(pTargetKey, toJson(getPTarget(), "Integer", ""));
 
-    
     JsonString *pVariableNameKey = new JsonString(L"variableName");
     pJsonObject->Add(pVariableNameKey, toJson(getPVariableName(), "String", ""));
 
-    
-    JsonString *pMin_timestampKey = new JsonString(L"min_timestamp");
-    pJsonObject->Add(pMin_timestampKey, toJson(getPMinTimestamp(), "Integer", ""));
+    JsonString *pMinTimestampKey = new JsonString(L"minTimestamp");
+    pJsonObject->Add(pMinTimestampKey, toJson(getPMinTimestamp(), "Integer", ""));
 
-    
-    JsonString *pMax_timestampKey = new JsonString(L"max_timestamp");
-    pJsonObject->Add(pMax_timestampKey, toJson(getPMaxTimestamp(), "Integer", ""));
+    JsonString *pMaxTimestampKey = new JsonString(L"maxTimestamp");
+    pJsonObject->Add(pMaxTimestampKey, toJson(getPMaxTimestamp(), "Integer", ""));
 
-    
-    JsonString *pMin_time_of_dayKey = new JsonString(L"min_time_of_day");
-    pJsonObject->Add(pMin_time_of_dayKey, toJson(getPMinTimeOfDay(), "Integer", ""));
+    JsonString *pMinTimeOfDayKey = new JsonString(L"minTimeOfDay");
+    pJsonObject->Add(pMinTimeOfDayKey, toJson(getPMinTimeOfDay(), "Integer", ""));
 
-    
-    JsonString *pMax_time_of_dayKey = new JsonString(L"max_time_of_day");
-    pJsonObject->Add(pMax_time_of_dayKey, toJson(getPMaxTimeOfDay(), "Integer", ""));
+    JsonString *pMaxTimeOfDayKey = new JsonString(L"maxTimeOfDay");
+    pJsonObject->Add(pMaxTimeOfDayKey, toJson(getPMaxTimeOfDay(), "Integer", ""));
 
-    
     JsonString *pWeekKey = new JsonString(L"week");
     pJsonObject->Add(pWeekKey, toJson(getPWeek(), "String", ""));
 
-    
     return pJsonObject;
 }
 
@@ -273,38 +262,38 @@ SamiPermission::setPVariableName(String* pVariableName) {
 
 Integer*
 SamiPermission::getPMinTimestamp() {
-    return pMin_timestamp;
+    return pMinTimestamp;
 }
 void
-SamiPermission::setPMinTimestamp(Integer* pMin_timestamp) {
-    this->pMin_timestamp = pMin_timestamp;
+SamiPermission::setPMinTimestamp(Integer* pMinTimestamp) {
+    this->pMinTimestamp = pMinTimestamp;
 }
 
 Integer*
 SamiPermission::getPMaxTimestamp() {
-    return pMax_timestamp;
+    return pMaxTimestamp;
 }
 void
-SamiPermission::setPMaxTimestamp(Integer* pMax_timestamp) {
-    this->pMax_timestamp = pMax_timestamp;
+SamiPermission::setPMaxTimestamp(Integer* pMaxTimestamp) {
+    this->pMaxTimestamp = pMaxTimestamp;
 }
 
 Integer*
 SamiPermission::getPMinTimeOfDay() {
-    return pMin_time_of_day;
+    return pMinTimeOfDay;
 }
 void
-SamiPermission::setPMinTimeOfDay(Integer* pMin_time_of_day) {
-    this->pMin_time_of_day = pMin_time_of_day;
+SamiPermission::setPMinTimeOfDay(Integer* pMinTimeOfDay) {
+    this->pMinTimeOfDay = pMinTimeOfDay;
 }
 
 Integer*
 SamiPermission::getPMaxTimeOfDay() {
-    return pMax_time_of_day;
+    return pMaxTimeOfDay;
 }
 void
-SamiPermission::setPMaxTimeOfDay(Integer* pMax_time_of_day) {
-    this->pMax_time_of_day = pMax_time_of_day;
+SamiPermission::setPMaxTimeOfDay(Integer* pMaxTimeOfDay) {
+    this->pMaxTimeOfDay = pMaxTimeOfDay;
 }
 
 String*

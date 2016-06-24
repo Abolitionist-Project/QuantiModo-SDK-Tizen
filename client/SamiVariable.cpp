@@ -23,35 +23,35 @@ SamiVariable::~SamiVariable() {
 void
 SamiVariable::init() {
     pId = null;
-    pName = null;
-    pOriginalName = null;
-    pCategory = null;
-    pUnit = null;
-    pSources = null;
-    pMinimumValue = null;
-    pMaximumValue = null;
-    pCombinationOperation = null;
-    pFillingValue = null;
-    pJoinWith = null;
-    pJoinedVariables = null;
-    pParent = null;
-    pSubVariables = null;
-    pOnsetDelay = null;
-    pDurationOfAction = null;
-    pEarliestMeasurementTime = null;
-    pLatestMeasurementTime = null;
-    pUpdated = null;
-    pCauseOnly = null;
-    pNumberOfCorrelations = null;
-    pOutcome = null;
-    pMeasurementsAtLastAnalysis = null;
-    pNumberOfMeasurements = null;
-    pLastUnit = null;
-    pLastValue = null;
-    pMostCommonValue = null;
-    pMostCommonUnit = null;
-    pLastSource = null;
-    
+pName = null;
+pOriginalName = null;
+pCategory = null;
+pAbbreviatedUnitName = null;
+pAbbreviatedUnitId = null;
+pSources = null;
+pMinimumValue = null;
+pMaximumValue = null;
+pCombinationOperation = null;
+pFillingValue = null;
+pJoinWith = null;
+pJoinedVariables = null;
+pParent = null;
+pSubVariables = null;
+pOnsetDelay = null;
+pDurationOfAction = null;
+pEarliestMeasurementTime = null;
+pLatestMeasurementTime = null;
+pUpdated = null;
+pCauseOnly = null;
+pNumberOfCorrelations = null;
+pOutcome = null;
+pMeasurementsAtLastAnalysis = null;
+pNumberOfMeasurements = null;
+pLastUnit = null;
+pLastValue = null;
+pMostCommonValue = null;
+pMostCommonUnit = null;
+pLastSource = null;
 }
 
 void
@@ -61,147 +61,151 @@ SamiVariable::cleanup() {
         delete pId;
         pId = null;
     }
-    if(pName != null) {
+if(pName != null) {
         
         delete pName;
         pName = null;
     }
-    if(pOriginalName != null) {
+if(pOriginalName != null) {
         
         delete pOriginalName;
         pOriginalName = null;
     }
-    if(pCategory != null) {
+if(pCategory != null) {
         
         delete pCategory;
         pCategory = null;
     }
-    if(pUnit != null) {
+if(pAbbreviatedUnitName != null) {
         
-        delete pUnit;
-        pUnit = null;
+        delete pAbbreviatedUnitName;
+        pAbbreviatedUnitName = null;
     }
-    if(pSources != null) {
+if(pAbbreviatedUnitId != null) {
+        
+        delete pAbbreviatedUnitId;
+        pAbbreviatedUnitId = null;
+    }
+if(pSources != null) {
         
         delete pSources;
         pSources = null;
     }
-    if(pMinimumValue != null) {
+if(pMinimumValue != null) {
         
         delete pMinimumValue;
         pMinimumValue = null;
     }
-    if(pMaximumValue != null) {
+if(pMaximumValue != null) {
         
         delete pMaximumValue;
         pMaximumValue = null;
     }
-    if(pCombinationOperation != null) {
+if(pCombinationOperation != null) {
         
         delete pCombinationOperation;
         pCombinationOperation = null;
     }
-    if(pFillingValue != null) {
+if(pFillingValue != null) {
         
         delete pFillingValue;
         pFillingValue = null;
     }
-    if(pJoinWith != null) {
+if(pJoinWith != null) {
         
         delete pJoinWith;
         pJoinWith = null;
     }
-    if(pJoinedVariables != null) {
+if(pJoinedVariables != null) {
         pJoinedVariables->RemoveAll(true);
         delete pJoinedVariables;
         pJoinedVariables = null;
     }
-    if(pParent != null) {
+if(pParent != null) {
         
         delete pParent;
         pParent = null;
     }
-    if(pSubVariables != null) {
+if(pSubVariables != null) {
         pSubVariables->RemoveAll(true);
         delete pSubVariables;
         pSubVariables = null;
     }
-    if(pOnsetDelay != null) {
+if(pOnsetDelay != null) {
         
         delete pOnsetDelay;
         pOnsetDelay = null;
     }
-    if(pDurationOfAction != null) {
+if(pDurationOfAction != null) {
         
         delete pDurationOfAction;
         pDurationOfAction = null;
     }
-    if(pEarliestMeasurementTime != null) {
+if(pEarliestMeasurementTime != null) {
         
         delete pEarliestMeasurementTime;
         pEarliestMeasurementTime = null;
     }
-    if(pLatestMeasurementTime != null) {
+if(pLatestMeasurementTime != null) {
         
         delete pLatestMeasurementTime;
         pLatestMeasurementTime = null;
     }
-    if(pUpdated != null) {
+if(pUpdated != null) {
         
         delete pUpdated;
         pUpdated = null;
     }
-    if(pCauseOnly != null) {
+if(pCauseOnly != null) {
         
         delete pCauseOnly;
         pCauseOnly = null;
     }
-    if(pNumberOfCorrelations != null) {
+if(pNumberOfCorrelations != null) {
         
         delete pNumberOfCorrelations;
         pNumberOfCorrelations = null;
     }
-    if(pOutcome != null) {
+if(pOutcome != null) {
         
         delete pOutcome;
         pOutcome = null;
     }
-    if(pMeasurementsAtLastAnalysis != null) {
+if(pMeasurementsAtLastAnalysis != null) {
         
         delete pMeasurementsAtLastAnalysis;
         pMeasurementsAtLastAnalysis = null;
     }
-    if(pNumberOfMeasurements != null) {
+if(pNumberOfMeasurements != null) {
         
         delete pNumberOfMeasurements;
         pNumberOfMeasurements = null;
     }
-    if(pLastUnit != null) {
+if(pLastUnit != null) {
         
         delete pLastUnit;
         pLastUnit = null;
     }
-    if(pLastValue != null) {
+if(pLastValue != null) {
         
         delete pLastValue;
         pLastValue = null;
     }
-    if(pMostCommonValue != null) {
+if(pMostCommonValue != null) {
         
         delete pMostCommonValue;
         pMostCommonValue = null;
     }
-    if(pMostCommonUnit != null) {
+if(pMostCommonUnit != null) {
         
         delete pMostCommonUnit;
         pMostCommonUnit = null;
     }
-    if(pLastSource != null) {
+if(pLastSource != null) {
         
         delete pLastSource;
         pLastSource = null;
     }
-    
 }
 
 
@@ -248,7 +252,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
-        JsonString* pNameKey = new JsonString(L"name");
+JsonString* pNameKey = new JsonString(L"name");
         IJsonValue* pNameVal = null;
         pJsonObject->GetValue(pNameKey, pNameVal);
         if(pNameVal != null) {
@@ -257,7 +261,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
-        JsonString* pOriginalNameKey = new JsonString(L"originalName");
+JsonString* pOriginalNameKey = new JsonString(L"originalName");
         IJsonValue* pOriginalNameVal = null;
         pJsonObject->GetValue(pOriginalNameKey, pOriginalNameVal);
         if(pOriginalNameVal != null) {
@@ -266,7 +270,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pOriginalName, pOriginalNameVal, L"String", L"String");
         }
         delete pOriginalNameKey;
-        JsonString* pCategoryKey = new JsonString(L"category");
+JsonString* pCategoryKey = new JsonString(L"category");
         IJsonValue* pCategoryVal = null;
         pJsonObject->GetValue(pCategoryKey, pCategoryVal);
         if(pCategoryVal != null) {
@@ -275,16 +279,25 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCategory, pCategoryVal, L"String", L"String");
         }
         delete pCategoryKey;
-        JsonString* pUnitKey = new JsonString(L"unit");
-        IJsonValue* pUnitVal = null;
-        pJsonObject->GetValue(pUnitKey, pUnitVal);
-        if(pUnitVal != null) {
+JsonString* pAbbreviatedUnitNameKey = new JsonString(L"abbreviatedUnitName");
+        IJsonValue* pAbbreviatedUnitNameVal = null;
+        pJsonObject->GetValue(pAbbreviatedUnitNameKey, pAbbreviatedUnitNameVal);
+        if(pAbbreviatedUnitNameVal != null) {
             
-            pUnit = new String();
-            jsonToValue(pUnit, pUnitVal, L"String", L"String");
+            pAbbreviatedUnitName = new String();
+            jsonToValue(pAbbreviatedUnitName, pAbbreviatedUnitNameVal, L"String", L"String");
         }
-        delete pUnitKey;
-        JsonString* pSourcesKey = new JsonString(L"sources");
+        delete pAbbreviatedUnitNameKey;
+JsonString* pAbbreviatedUnitIdKey = new JsonString(L"abbreviatedUnitId");
+        IJsonValue* pAbbreviatedUnitIdVal = null;
+        pJsonObject->GetValue(pAbbreviatedUnitIdKey, pAbbreviatedUnitIdVal);
+        if(pAbbreviatedUnitIdVal != null) {
+            
+            pAbbreviatedUnitId = null;
+            jsonToValue(pAbbreviatedUnitId, pAbbreviatedUnitIdVal, L"Integer", L"Integer");
+        }
+        delete pAbbreviatedUnitIdKey;
+JsonString* pSourcesKey = new JsonString(L"sources");
         IJsonValue* pSourcesVal = null;
         pJsonObject->GetValue(pSourcesKey, pSourcesVal);
         if(pSourcesVal != null) {
@@ -293,7 +306,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pSources, pSourcesVal, L"String", L"String");
         }
         delete pSourcesKey;
-        JsonString* pMinimumValueKey = new JsonString(L"minimumValue");
+JsonString* pMinimumValueKey = new JsonString(L"minimumValue");
         IJsonValue* pMinimumValueVal = null;
         pJsonObject->GetValue(pMinimumValueKey, pMinimumValueVal);
         if(pMinimumValueVal != null) {
@@ -302,7 +315,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMinimumValue, pMinimumValueVal, L"Double", L"Double");
         }
         delete pMinimumValueKey;
-        JsonString* pMaximumValueKey = new JsonString(L"maximumValue");
+JsonString* pMaximumValueKey = new JsonString(L"maximumValue");
         IJsonValue* pMaximumValueVal = null;
         pJsonObject->GetValue(pMaximumValueKey, pMaximumValueVal);
         if(pMaximumValueVal != null) {
@@ -311,7 +324,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMaximumValue, pMaximumValueVal, L"Double", L"Double");
         }
         delete pMaximumValueKey;
-        JsonString* pCombinationOperationKey = new JsonString(L"combinationOperation");
+JsonString* pCombinationOperationKey = new JsonString(L"combinationOperation");
         IJsonValue* pCombinationOperationVal = null;
         pJsonObject->GetValue(pCombinationOperationKey, pCombinationOperationVal);
         if(pCombinationOperationVal != null) {
@@ -320,7 +333,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCombinationOperation, pCombinationOperationVal, L"String", L"String");
         }
         delete pCombinationOperationKey;
-        JsonString* pFillingValueKey = new JsonString(L"fillingValue");
+JsonString* pFillingValueKey = new JsonString(L"fillingValue");
         IJsonValue* pFillingValueVal = null;
         pJsonObject->GetValue(pFillingValueKey, pFillingValueVal);
         if(pFillingValueVal != null) {
@@ -329,7 +342,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pFillingValue, pFillingValueVal, L"Double", L"Double");
         }
         delete pFillingValueKey;
-        JsonString* pJoinWithKey = new JsonString(L"joinWith");
+JsonString* pJoinWithKey = new JsonString(L"joinWith");
         IJsonValue* pJoinWithVal = null;
         pJsonObject->GetValue(pJoinWithKey, pJoinWithVal);
         if(pJoinWithVal != null) {
@@ -338,7 +351,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pJoinWith, pJoinWithVal, L"String", L"String");
         }
         delete pJoinWithKey;
-        JsonString* pJoinedVariablesKey = new JsonString(L"joinedVariables");
+JsonString* pJoinedVariablesKey = new JsonString(L"joinedVariables");
         IJsonValue* pJoinedVariablesVal = null;
         pJsonObject->GetValue(pJoinedVariablesKey, pJoinedVariablesVal);
         if(pJoinedVariablesVal != null) {
@@ -347,7 +360,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pJoinedVariables, pJoinedVariablesVal, L"IList", L"SamiVariable");
         }
         delete pJoinedVariablesKey;
-        JsonString* pParentKey = new JsonString(L"parent");
+JsonString* pParentKey = new JsonString(L"parent");
         IJsonValue* pParentVal = null;
         pJsonObject->GetValue(pParentKey, pParentVal);
         if(pParentVal != null) {
@@ -356,7 +369,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pParent, pParentVal, L"Integer", L"Integer");
         }
         delete pParentKey;
-        JsonString* pSubVariablesKey = new JsonString(L"subVariables");
+JsonString* pSubVariablesKey = new JsonString(L"subVariables");
         IJsonValue* pSubVariablesVal = null;
         pJsonObject->GetValue(pSubVariablesKey, pSubVariablesVal);
         if(pSubVariablesVal != null) {
@@ -365,7 +378,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pSubVariables, pSubVariablesVal, L"IList", L"SamiVariable");
         }
         delete pSubVariablesKey;
-        JsonString* pOnsetDelayKey = new JsonString(L"onsetDelay");
+JsonString* pOnsetDelayKey = new JsonString(L"onsetDelay");
         IJsonValue* pOnsetDelayVal = null;
         pJsonObject->GetValue(pOnsetDelayKey, pOnsetDelayVal);
         if(pOnsetDelayVal != null) {
@@ -374,7 +387,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pOnsetDelay, pOnsetDelayVal, L"Integer", L"Integer");
         }
         delete pOnsetDelayKey;
-        JsonString* pDurationOfActionKey = new JsonString(L"durationOfAction");
+JsonString* pDurationOfActionKey = new JsonString(L"durationOfAction");
         IJsonValue* pDurationOfActionVal = null;
         pJsonObject->GetValue(pDurationOfActionKey, pDurationOfActionVal);
         if(pDurationOfActionVal != null) {
@@ -383,7 +396,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pDurationOfAction, pDurationOfActionVal, L"Integer", L"Integer");
         }
         delete pDurationOfActionKey;
-        JsonString* pEarliestMeasurementTimeKey = new JsonString(L"earliestMeasurementTime");
+JsonString* pEarliestMeasurementTimeKey = new JsonString(L"earliestMeasurementTime");
         IJsonValue* pEarliestMeasurementTimeVal = null;
         pJsonObject->GetValue(pEarliestMeasurementTimeKey, pEarliestMeasurementTimeVal);
         if(pEarliestMeasurementTimeVal != null) {
@@ -392,7 +405,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pEarliestMeasurementTime, pEarliestMeasurementTimeVal, L"Integer", L"Integer");
         }
         delete pEarliestMeasurementTimeKey;
-        JsonString* pLatestMeasurementTimeKey = new JsonString(L"latestMeasurementTime");
+JsonString* pLatestMeasurementTimeKey = new JsonString(L"latestMeasurementTime");
         IJsonValue* pLatestMeasurementTimeVal = null;
         pJsonObject->GetValue(pLatestMeasurementTimeKey, pLatestMeasurementTimeVal);
         if(pLatestMeasurementTimeVal != null) {
@@ -401,7 +414,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pLatestMeasurementTime, pLatestMeasurementTimeVal, L"Integer", L"Integer");
         }
         delete pLatestMeasurementTimeKey;
-        JsonString* pUpdatedKey = new JsonString(L"updated");
+JsonString* pUpdatedKey = new JsonString(L"updated");
         IJsonValue* pUpdatedVal = null;
         pJsonObject->GetValue(pUpdatedKey, pUpdatedVal);
         if(pUpdatedVal != null) {
@@ -410,7 +423,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUpdated, pUpdatedVal, L"Integer", L"Integer");
         }
         delete pUpdatedKey;
-        JsonString* pCauseOnlyKey = new JsonString(L"causeOnly");
+JsonString* pCauseOnlyKey = new JsonString(L"causeOnly");
         IJsonValue* pCauseOnlyVal = null;
         pJsonObject->GetValue(pCauseOnlyKey, pCauseOnlyVal);
         if(pCauseOnlyVal != null) {
@@ -419,7 +432,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCauseOnly, pCauseOnlyVal, L"Integer", L"Integer");
         }
         delete pCauseOnlyKey;
-        JsonString* pNumberOfCorrelationsKey = new JsonString(L"numberOfCorrelations");
+JsonString* pNumberOfCorrelationsKey = new JsonString(L"numberOfCorrelations");
         IJsonValue* pNumberOfCorrelationsVal = null;
         pJsonObject->GetValue(pNumberOfCorrelationsKey, pNumberOfCorrelationsVal);
         if(pNumberOfCorrelationsVal != null) {
@@ -428,7 +441,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pNumberOfCorrelations, pNumberOfCorrelationsVal, L"Integer", L"Integer");
         }
         delete pNumberOfCorrelationsKey;
-        JsonString* pOutcomeKey = new JsonString(L"outcome");
+JsonString* pOutcomeKey = new JsonString(L"outcome");
         IJsonValue* pOutcomeVal = null;
         pJsonObject->GetValue(pOutcomeKey, pOutcomeVal);
         if(pOutcomeVal != null) {
@@ -437,7 +450,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pOutcome, pOutcomeVal, L"Integer", L"Integer");
         }
         delete pOutcomeKey;
-        JsonString* pMeasurementsAtLastAnalysisKey = new JsonString(L"measurementsAtLastAnalysis");
+JsonString* pMeasurementsAtLastAnalysisKey = new JsonString(L"measurementsAtLastAnalysis");
         IJsonValue* pMeasurementsAtLastAnalysisVal = null;
         pJsonObject->GetValue(pMeasurementsAtLastAnalysisKey, pMeasurementsAtLastAnalysisVal);
         if(pMeasurementsAtLastAnalysisVal != null) {
@@ -446,7 +459,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMeasurementsAtLastAnalysis, pMeasurementsAtLastAnalysisVal, L"Integer", L"Integer");
         }
         delete pMeasurementsAtLastAnalysisKey;
-        JsonString* pNumberOfMeasurementsKey = new JsonString(L"numberOfMeasurements");
+JsonString* pNumberOfMeasurementsKey = new JsonString(L"numberOfMeasurements");
         IJsonValue* pNumberOfMeasurementsVal = null;
         pJsonObject->GetValue(pNumberOfMeasurementsKey, pNumberOfMeasurementsVal);
         if(pNumberOfMeasurementsVal != null) {
@@ -455,16 +468,16 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pNumberOfMeasurements, pNumberOfMeasurementsVal, L"Integer", L"Integer");
         }
         delete pNumberOfMeasurementsKey;
-        JsonString* pLastUnitKey = new JsonString(L"lastUnit");
+JsonString* pLastUnitKey = new JsonString(L"lastUnit");
         IJsonValue* pLastUnitVal = null;
         pJsonObject->GetValue(pLastUnitKey, pLastUnitVal);
         if(pLastUnitVal != null) {
             
-            pLastUnit = null;
-            jsonToValue(pLastUnit, pLastUnitVal, L"Integer", L"Integer");
+            pLastUnit = new String();
+            jsonToValue(pLastUnit, pLastUnitVal, L"String", L"String");
         }
         delete pLastUnitKey;
-        JsonString* pLastValueKey = new JsonString(L"lastValue");
+JsonString* pLastValueKey = new JsonString(L"lastValue");
         IJsonValue* pLastValueVal = null;
         pJsonObject->GetValue(pLastValueKey, pLastValueVal);
         if(pLastValueVal != null) {
@@ -473,7 +486,7 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pLastValue, pLastValueVal, L"Integer", L"Integer");
         }
         delete pLastValueKey;
-        JsonString* pMostCommonValueKey = new JsonString(L"mostCommonValue");
+JsonString* pMostCommonValueKey = new JsonString(L"mostCommonValue");
         IJsonValue* pMostCommonValueVal = null;
         pJsonObject->GetValue(pMostCommonValueKey, pMostCommonValueVal);
         if(pMostCommonValueVal != null) {
@@ -482,16 +495,16 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMostCommonValue, pMostCommonValueVal, L"Integer", L"Integer");
         }
         delete pMostCommonValueKey;
-        JsonString* pMostCommonUnitKey = new JsonString(L"mostCommonUnit");
+JsonString* pMostCommonUnitKey = new JsonString(L"mostCommonUnit");
         IJsonValue* pMostCommonUnitVal = null;
         pJsonObject->GetValue(pMostCommonUnitKey, pMostCommonUnitVal);
         if(pMostCommonUnitVal != null) {
             
-            pMostCommonUnit = null;
-            jsonToValue(pMostCommonUnit, pMostCommonUnitVal, L"Integer", L"Integer");
+            pMostCommonUnit = new String();
+            jsonToValue(pMostCommonUnit, pMostCommonUnitVal, L"String", L"String");
         }
         delete pMostCommonUnitKey;
-        JsonString* pLastSourceKey = new JsonString(L"lastSource");
+JsonString* pLastSourceKey = new JsonString(L"lastSource");
         IJsonValue* pLastSourceVal = null;
         pJsonObject->GetValue(pLastSourceKey, pLastSourceVal);
         if(pLastSourceVal != null) {
@@ -500,7 +513,6 @@ SamiVariable::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pLastSource, pLastSourceVal, L"Integer", L"Integer");
         }
         delete pLastSourceKey;
-        
     }
 }
 
@@ -551,123 +563,96 @@ SamiVariable::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pIdKey = new JsonString(L"id");
     pJsonObject->Add(pIdKey, toJson(getPId(), "Integer", ""));
 
-    
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
-    
     JsonString *pOriginalNameKey = new JsonString(L"originalName");
     pJsonObject->Add(pOriginalNameKey, toJson(getPOriginalName(), "String", ""));
 
-    
     JsonString *pCategoryKey = new JsonString(L"category");
     pJsonObject->Add(pCategoryKey, toJson(getPCategory(), "String", ""));
 
-    
-    JsonString *pUnitKey = new JsonString(L"unit");
-    pJsonObject->Add(pUnitKey, toJson(getPUnit(), "String", ""));
+    JsonString *pAbbreviatedUnitNameKey = new JsonString(L"abbreviatedUnitName");
+    pJsonObject->Add(pAbbreviatedUnitNameKey, toJson(getPAbbreviatedUnitName(), "String", ""));
 
-    
+    JsonString *pAbbreviatedUnitIdKey = new JsonString(L"abbreviatedUnitId");
+    pJsonObject->Add(pAbbreviatedUnitIdKey, toJson(getPAbbreviatedUnitId(), "Integer", ""));
+
     JsonString *pSourcesKey = new JsonString(L"sources");
     pJsonObject->Add(pSourcesKey, toJson(getPSources(), "String", ""));
 
-    
     JsonString *pMinimumValueKey = new JsonString(L"minimumValue");
     pJsonObject->Add(pMinimumValueKey, toJson(getPMinimumValue(), "Double", ""));
 
-    
     JsonString *pMaximumValueKey = new JsonString(L"maximumValue");
     pJsonObject->Add(pMaximumValueKey, toJson(getPMaximumValue(), "Double", ""));
 
-    
     JsonString *pCombinationOperationKey = new JsonString(L"combinationOperation");
     pJsonObject->Add(pCombinationOperationKey, toJson(getPCombinationOperation(), "String", ""));
 
-    
     JsonString *pFillingValueKey = new JsonString(L"fillingValue");
     pJsonObject->Add(pFillingValueKey, toJson(getPFillingValue(), "Double", ""));
 
-    
     JsonString *pJoinWithKey = new JsonString(L"joinWith");
     pJsonObject->Add(pJoinWithKey, toJson(getPJoinWith(), "String", ""));
 
-    
     JsonString *pJoinedVariablesKey = new JsonString(L"joinedVariables");
     pJsonObject->Add(pJoinedVariablesKey, toJson(getPJoinedVariables(), "SamiVariable", "array"));
 
-    
     JsonString *pParentKey = new JsonString(L"parent");
     pJsonObject->Add(pParentKey, toJson(getPParent(), "Integer", ""));
 
-    
     JsonString *pSubVariablesKey = new JsonString(L"subVariables");
     pJsonObject->Add(pSubVariablesKey, toJson(getPSubVariables(), "SamiVariable", "array"));
 
-    
     JsonString *pOnsetDelayKey = new JsonString(L"onsetDelay");
     pJsonObject->Add(pOnsetDelayKey, toJson(getPOnsetDelay(), "Integer", ""));
 
-    
     JsonString *pDurationOfActionKey = new JsonString(L"durationOfAction");
     pJsonObject->Add(pDurationOfActionKey, toJson(getPDurationOfAction(), "Integer", ""));
 
-    
     JsonString *pEarliestMeasurementTimeKey = new JsonString(L"earliestMeasurementTime");
     pJsonObject->Add(pEarliestMeasurementTimeKey, toJson(getPEarliestMeasurementTime(), "Integer", ""));
 
-    
     JsonString *pLatestMeasurementTimeKey = new JsonString(L"latestMeasurementTime");
     pJsonObject->Add(pLatestMeasurementTimeKey, toJson(getPLatestMeasurementTime(), "Integer", ""));
 
-    
     JsonString *pUpdatedKey = new JsonString(L"updated");
     pJsonObject->Add(pUpdatedKey, toJson(getPUpdated(), "Integer", ""));
 
-    
     JsonString *pCauseOnlyKey = new JsonString(L"causeOnly");
     pJsonObject->Add(pCauseOnlyKey, toJson(getPCauseOnly(), "Integer", ""));
 
-    
     JsonString *pNumberOfCorrelationsKey = new JsonString(L"numberOfCorrelations");
     pJsonObject->Add(pNumberOfCorrelationsKey, toJson(getPNumberOfCorrelations(), "Integer", ""));
 
-    
     JsonString *pOutcomeKey = new JsonString(L"outcome");
     pJsonObject->Add(pOutcomeKey, toJson(getPOutcome(), "Integer", ""));
 
-    
     JsonString *pMeasurementsAtLastAnalysisKey = new JsonString(L"measurementsAtLastAnalysis");
     pJsonObject->Add(pMeasurementsAtLastAnalysisKey, toJson(getPMeasurementsAtLastAnalysis(), "Integer", ""));
 
-    
     JsonString *pNumberOfMeasurementsKey = new JsonString(L"numberOfMeasurements");
     pJsonObject->Add(pNumberOfMeasurementsKey, toJson(getPNumberOfMeasurements(), "Integer", ""));
 
-    
     JsonString *pLastUnitKey = new JsonString(L"lastUnit");
-    pJsonObject->Add(pLastUnitKey, toJson(getPLastUnit(), "Integer", ""));
+    pJsonObject->Add(pLastUnitKey, toJson(getPLastUnit(), "String", ""));
 
-    
     JsonString *pLastValueKey = new JsonString(L"lastValue");
     pJsonObject->Add(pLastValueKey, toJson(getPLastValue(), "Integer", ""));
 
-    
     JsonString *pMostCommonValueKey = new JsonString(L"mostCommonValue");
     pJsonObject->Add(pMostCommonValueKey, toJson(getPMostCommonValue(), "Integer", ""));
 
-    
     JsonString *pMostCommonUnitKey = new JsonString(L"mostCommonUnit");
-    pJsonObject->Add(pMostCommonUnitKey, toJson(getPMostCommonUnit(), "Integer", ""));
+    pJsonObject->Add(pMostCommonUnitKey, toJson(getPMostCommonUnit(), "String", ""));
 
-    
     JsonString *pLastSourceKey = new JsonString(L"lastSource");
     pJsonObject->Add(pLastSourceKey, toJson(getPLastSource(), "Integer", ""));
 
-    
     return pJsonObject;
 }
 
@@ -708,12 +693,21 @@ SamiVariable::setPCategory(String* pCategory) {
 }
 
 String*
-SamiVariable::getPUnit() {
-    return pUnit;
+SamiVariable::getPAbbreviatedUnitName() {
+    return pAbbreviatedUnitName;
 }
 void
-SamiVariable::setPUnit(String* pUnit) {
-    this->pUnit = pUnit;
+SamiVariable::setPAbbreviatedUnitName(String* pAbbreviatedUnitName) {
+    this->pAbbreviatedUnitName = pAbbreviatedUnitName;
+}
+
+Integer*
+SamiVariable::getPAbbreviatedUnitId() {
+    return pAbbreviatedUnitId;
+}
+void
+SamiVariable::setPAbbreviatedUnitId(Integer* pAbbreviatedUnitId) {
+    this->pAbbreviatedUnitId = pAbbreviatedUnitId;
 }
 
 String*
@@ -887,12 +881,12 @@ SamiVariable::setPNumberOfMeasurements(Integer* pNumberOfMeasurements) {
     this->pNumberOfMeasurements = pNumberOfMeasurements;
 }
 
-Integer*
+String*
 SamiVariable::getPLastUnit() {
     return pLastUnit;
 }
 void
-SamiVariable::setPLastUnit(Integer* pLastUnit) {
+SamiVariable::setPLastUnit(String* pLastUnit) {
     this->pLastUnit = pLastUnit;
 }
 
@@ -914,12 +908,12 @@ SamiVariable::setPMostCommonValue(Integer* pMostCommonValue) {
     this->pMostCommonValue = pMostCommonValue;
 }
 
-Integer*
+String*
 SamiVariable::getPMostCommonUnit() {
     return pMostCommonUnit;
 }
 void
-SamiVariable::setPMostCommonUnit(Integer* pMostCommonUnit) {
+SamiVariable::setPMostCommonUnit(String* pMostCommonUnit) {
     this->pMostCommonUnit = pMostCommonUnit;
 }
 

@@ -40,18 +40,14 @@ public:
 
     SamiMeasurementRange* fromJson(String* obj);
 
-    
     Integer* getPLowerLimit();
     void setPLowerLimit(Integer* pLowerLimit);
-    
     Integer* getPUpperLimit();
     void setPUpperLimit(Integer* pUpperLimit);
-    
 
 private:
     Integer* pLowerLimit;
-    Integer* pUpperLimit;
-    
+Integer* pUpperLimit;
 };
 
 } /* namespace Swagger */

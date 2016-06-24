@@ -23,7 +23,6 @@ SamiVariableCategory::~SamiVariableCategory() {
 void
 SamiVariableCategory::init() {
     pName = null;
-    
 }
 
 void
@@ -33,7 +32,6 @@ SamiVariableCategory::cleanup() {
         delete pName;
         pName = null;
     }
-    
 }
 
 
@@ -80,7 +78,6 @@ SamiVariableCategory::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
-        
     }
 }
 
@@ -131,11 +128,9 @@ SamiVariableCategory::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
-    
     return pJsonObject;
 }
 

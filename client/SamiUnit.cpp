@@ -23,12 +23,11 @@ SamiUnit::~SamiUnit() {
 void
 SamiUnit::init() {
     pName = null;
-    pAbbreviatedName = null;
-    pCategory = null;
-    pMinimum = null;
-    pMaximum = null;
-    pConversionSteps = null;
-    
+pAbbreviatedName = null;
+pCategory = null;
+pMinimumValue = null;
+pMaximumValue = null;
+pConversionSteps = null;
 }
 
 void
@@ -38,32 +37,31 @@ SamiUnit::cleanup() {
         delete pName;
         pName = null;
     }
-    if(pAbbreviatedName != null) {
+if(pAbbreviatedName != null) {
         
         delete pAbbreviatedName;
         pAbbreviatedName = null;
     }
-    if(pCategory != null) {
+if(pCategory != null) {
         
         delete pCategory;
         pCategory = null;
     }
-    if(pMinimum != null) {
+if(pMinimumValue != null) {
         
-        delete pMinimum;
-        pMinimum = null;
+        delete pMinimumValue;
+        pMinimumValue = null;
     }
-    if(pMaximum != null) {
+if(pMaximumValue != null) {
         
-        delete pMaximum;
-        pMaximum = null;
+        delete pMaximumValue;
+        pMaximumValue = null;
     }
-    if(pConversionSteps != null) {
+if(pConversionSteps != null) {
         pConversionSteps->RemoveAll(true);
         delete pConversionSteps;
         pConversionSteps = null;
     }
-    
 }
 
 
@@ -110,7 +108,7 @@ SamiUnit::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
-        JsonString* pAbbreviatedNameKey = new JsonString(L"abbreviatedName");
+JsonString* pAbbreviatedNameKey = new JsonString(L"abbreviatedName");
         IJsonValue* pAbbreviatedNameVal = null;
         pJsonObject->GetValue(pAbbreviatedNameKey, pAbbreviatedNameVal);
         if(pAbbreviatedNameVal != null) {
@@ -119,7 +117,7 @@ SamiUnit::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pAbbreviatedName, pAbbreviatedNameVal, L"String", L"String");
         }
         delete pAbbreviatedNameKey;
-        JsonString* pCategoryKey = new JsonString(L"category");
+JsonString* pCategoryKey = new JsonString(L"category");
         IJsonValue* pCategoryVal = null;
         pJsonObject->GetValue(pCategoryKey, pCategoryVal);
         if(pCategoryVal != null) {
@@ -128,25 +126,25 @@ SamiUnit::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCategory, pCategoryVal, L"String", L"String");
         }
         delete pCategoryKey;
-        JsonString* pMinimumKey = new JsonString(L"minimum");
-        IJsonValue* pMinimumVal = null;
-        pJsonObject->GetValue(pMinimumKey, pMinimumVal);
-        if(pMinimumVal != null) {
+JsonString* pMinimumValueKey = new JsonString(L"minimumValue");
+        IJsonValue* pMinimumValueVal = null;
+        pJsonObject->GetValue(pMinimumValueKey, pMinimumValueVal);
+        if(pMinimumValueVal != null) {
             
-            pMinimum = new Double();
-            jsonToValue(pMinimum, pMinimumVal, L"Double", L"Double");
+            pMinimumValue = new Double();
+            jsonToValue(pMinimumValue, pMinimumValueVal, L"Double", L"Double");
         }
-        delete pMinimumKey;
-        JsonString* pMaximumKey = new JsonString(L"maximum");
-        IJsonValue* pMaximumVal = null;
-        pJsonObject->GetValue(pMaximumKey, pMaximumVal);
-        if(pMaximumVal != null) {
+        delete pMinimumValueKey;
+JsonString* pMaximumValueKey = new JsonString(L"maximumValue");
+        IJsonValue* pMaximumValueVal = null;
+        pJsonObject->GetValue(pMaximumValueKey, pMaximumValueVal);
+        if(pMaximumValueVal != null) {
             
-            pMaximum = new Double();
-            jsonToValue(pMaximum, pMaximumVal, L"Double", L"Double");
+            pMaximumValue = new Double();
+            jsonToValue(pMaximumValue, pMaximumValueVal, L"Double", L"Double");
         }
-        delete pMaximumKey;
-        JsonString* pConversionStepsKey = new JsonString(L"conversionSteps");
+        delete pMaximumValueKey;
+JsonString* pConversionStepsKey = new JsonString(L"conversionSteps");
         IJsonValue* pConversionStepsVal = null;
         pJsonObject->GetValue(pConversionStepsKey, pConversionStepsVal);
         if(pConversionStepsVal != null) {
@@ -155,7 +153,6 @@ SamiUnit::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pConversionSteps, pConversionStepsVal, L"IList", L"SamiConversionStep");
         }
         delete pConversionStepsKey;
-        
     }
 }
 
@@ -206,31 +203,24 @@ SamiUnit::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
-    
     JsonString *pAbbreviatedNameKey = new JsonString(L"abbreviatedName");
     pJsonObject->Add(pAbbreviatedNameKey, toJson(getPAbbreviatedName(), "String", ""));
 
-    
     JsonString *pCategoryKey = new JsonString(L"category");
     pJsonObject->Add(pCategoryKey, toJson(getPCategory(), "String", ""));
 
-    
-    JsonString *pMinimumKey = new JsonString(L"minimum");
-    pJsonObject->Add(pMinimumKey, toJson(getPMinimum(), "Double", ""));
+    JsonString *pMinimumValueKey = new JsonString(L"minimumValue");
+    pJsonObject->Add(pMinimumValueKey, toJson(getPMinimumValue(), "Double", ""));
 
-    
-    JsonString *pMaximumKey = new JsonString(L"maximum");
-    pJsonObject->Add(pMaximumKey, toJson(getPMaximum(), "Double", ""));
+    JsonString *pMaximumValueKey = new JsonString(L"maximumValue");
+    pJsonObject->Add(pMaximumValueKey, toJson(getPMaximumValue(), "Double", ""));
 
-    
     JsonString *pConversionStepsKey = new JsonString(L"conversionSteps");
     pJsonObject->Add(pConversionStepsKey, toJson(getPConversionSteps(), "SamiConversionStep", "array"));
 
-    
     return pJsonObject;
 }
 
@@ -262,21 +252,21 @@ SamiUnit::setPCategory(String* pCategory) {
 }
 
 Double*
-SamiUnit::getPMinimum() {
-    return pMinimum;
+SamiUnit::getPMinimumValue() {
+    return pMinimumValue;
 }
 void
-SamiUnit::setPMinimum(Double* pMinimum) {
-    this->pMinimum = pMinimum;
+SamiUnit::setPMinimumValue(Double* pMinimumValue) {
+    this->pMinimumValue = pMinimumValue;
 }
 
 Double*
-SamiUnit::getPMaximum() {
-    return pMaximum;
+SamiUnit::getPMaximumValue() {
+    return pMaximumValue;
 }
 void
-SamiUnit::setPMaximum(Double* pMaximum) {
-    this->pMaximum = pMaximum;
+SamiUnit::setPMaximumValue(Double* pMaximumValue) {
+    this->pMaximumValue = pMaximumValue;
 }
 
 IList*

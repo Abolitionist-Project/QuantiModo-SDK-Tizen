@@ -23,8 +23,7 @@ SamiConversionStep::~SamiConversionStep() {
 void
 SamiConversionStep::init() {
     pOperation = null;
-    pValue = null;
-    
+pValue = null;
 }
 
 void
@@ -34,12 +33,11 @@ SamiConversionStep::cleanup() {
         delete pOperation;
         pOperation = null;
     }
-    if(pValue != null) {
+if(pValue != null) {
         
         delete pValue;
         pValue = null;
     }
-    
 }
 
 
@@ -86,7 +84,7 @@ SamiConversionStep::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pOperation, pOperationVal, L"String", L"String");
         }
         delete pOperationKey;
-        JsonString* pValueKey = new JsonString(L"value");
+JsonString* pValueKey = new JsonString(L"value");
         IJsonValue* pValueVal = null;
         pJsonObject->GetValue(pValueKey, pValueVal);
         if(pValueVal != null) {
@@ -95,7 +93,6 @@ SamiConversionStep::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pValue, pValueVal, L"Double", L"Double");
         }
         delete pValueKey;
-        
     }
 }
 
@@ -146,15 +143,12 @@ SamiConversionStep::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pOperationKey = new JsonString(L"operation");
     pJsonObject->Add(pOperationKey, toJson(getPOperation(), "String", ""));
 
-    
     JsonString *pValueKey = new JsonString(L"value");
     pJsonObject->Add(pValueKey, toJson(getPValue(), "Double", ""));
 
-    
     return pJsonObject;
 }
 

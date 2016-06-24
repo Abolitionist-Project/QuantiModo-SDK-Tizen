@@ -17,11 +17,11 @@
 using namespace Tizen::Web::Json;
 
 
+#include "SamiConnectorInfoHistoryItem.h"
+using Tizen::Base::Boolean;
+using Tizen::Base::Collection::IList;
 using Tizen::Base::Integer;
 using Tizen::Base::String;
-using Tizen::Base::Boolean;
-#include "SamiConnectorInfoHistoryItem.h"
-using Tizen::Base::Collection::IList;
 
 
 namespace Swagger {
@@ -44,26 +44,20 @@ public:
 
     SamiConnectorInfo* fromJson(String* obj);
 
-    
     Integer* getPId();
     void setPId(Integer* pId);
-    
     Boolean* getPConnected();
     void setPConnected(Boolean* pConnected);
-    
     String* getPError();
     void setPError(String* pError);
-    
     IList* getPHistory();
     void setPHistory(IList* pHistory);
-    
 
 private:
     Integer* pId;
-    Boolean* pConnected;
-    String* pError;
-    IList* pHistory;
-    
+Boolean* pConnected;
+String* pError;
+IList* pHistory;
 };
 
 } /* namespace Swagger */

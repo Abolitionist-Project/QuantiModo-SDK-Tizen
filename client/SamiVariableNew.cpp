@@ -23,11 +23,10 @@ SamiVariableNew::~SamiVariableNew() {
 void
 SamiVariableNew::init() {
     pName = null;
-    pCategory = null;
-    pUnit = null;
-    pCombinationOperation = null;
-    pParent = null;
-    
+pCategory = null;
+pUnit = null;
+pCombinationOperation = null;
+pParent = null;
 }
 
 void
@@ -37,27 +36,26 @@ SamiVariableNew::cleanup() {
         delete pName;
         pName = null;
     }
-    if(pCategory != null) {
+if(pCategory != null) {
         
         delete pCategory;
         pCategory = null;
     }
-    if(pUnit != null) {
+if(pUnit != null) {
         
         delete pUnit;
         pUnit = null;
     }
-    if(pCombinationOperation != null) {
+if(pCombinationOperation != null) {
         
         delete pCombinationOperation;
         pCombinationOperation = null;
     }
-    if(pParent != null) {
+if(pParent != null) {
         
         delete pParent;
         pParent = null;
     }
-    
 }
 
 
@@ -104,7 +102,7 @@ SamiVariableNew::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pName, pNameVal, L"String", L"String");
         }
         delete pNameKey;
-        JsonString* pCategoryKey = new JsonString(L"category");
+JsonString* pCategoryKey = new JsonString(L"category");
         IJsonValue* pCategoryVal = null;
         pJsonObject->GetValue(pCategoryKey, pCategoryVal);
         if(pCategoryVal != null) {
@@ -113,7 +111,7 @@ SamiVariableNew::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCategory, pCategoryVal, L"String", L"String");
         }
         delete pCategoryKey;
-        JsonString* pUnitKey = new JsonString(L"unit");
+JsonString* pUnitKey = new JsonString(L"unit");
         IJsonValue* pUnitVal = null;
         pJsonObject->GetValue(pUnitKey, pUnitVal);
         if(pUnitVal != null) {
@@ -122,7 +120,7 @@ SamiVariableNew::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUnit, pUnitVal, L"String", L"String");
         }
         delete pUnitKey;
-        JsonString* pCombinationOperationKey = new JsonString(L"combinationOperation");
+JsonString* pCombinationOperationKey = new JsonString(L"combinationOperation");
         IJsonValue* pCombinationOperationVal = null;
         pJsonObject->GetValue(pCombinationOperationKey, pCombinationOperationVal);
         if(pCombinationOperationVal != null) {
@@ -131,7 +129,7 @@ SamiVariableNew::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCombinationOperation, pCombinationOperationVal, L"String", L"String");
         }
         delete pCombinationOperationKey;
-        JsonString* pParentKey = new JsonString(L"parent");
+JsonString* pParentKey = new JsonString(L"parent");
         IJsonValue* pParentVal = null;
         pJsonObject->GetValue(pParentKey, pParentVal);
         if(pParentVal != null) {
@@ -140,7 +138,6 @@ SamiVariableNew::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pParent, pParentVal, L"String", L"String");
         }
         delete pParentKey;
-        
     }
 }
 
@@ -191,27 +188,21 @@ SamiVariableNew::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
-    
     JsonString *pCategoryKey = new JsonString(L"category");
     pJsonObject->Add(pCategoryKey, toJson(getPCategory(), "String", ""));
 
-    
     JsonString *pUnitKey = new JsonString(L"unit");
     pJsonObject->Add(pUnitKey, toJson(getPUnit(), "String", ""));
 
-    
     JsonString *pCombinationOperationKey = new JsonString(L"combinationOperation");
     pJsonObject->Add(pCombinationOperationKey, toJson(getPCombinationOperation(), "String", ""));
 
-    
     JsonString *pParentKey = new JsonString(L"parent");
     pJsonObject->Add(pParentKey, toJson(getPParent(), "String", ""));
 
-    
     return pJsonObject;
 }
 

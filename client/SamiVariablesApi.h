@@ -5,12 +5,13 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
-using Tizen::Base::String;
 #include "SamiVariable.h"
+using Tizen::Base::String;
 using Tizen::Base::Integer;
 #include "SamiUserVariables.h"
 #include "SamiVariableCategory.h"
 #include "SamiVariablesNew.h"
+using Tizen::Base::Boolean;
 
 using namespace Tizen::Net::Http;
 
@@ -21,36 +22,24 @@ public:
   SamiVariablesApi();
   virtual ~SamiVariablesApi();
 
-  
-  void 
-  correlationsPostWithCompletion(String* cause, String* effect, String* correlationcoefficient, String* vote, void(* handler)(SamiError*));
-  
   SamiVariable* 
-  publicVariablesGetWithCompletion( void (* handler)(SamiVariable*, SamiError*));
-  
+  v1PublicVariablesGetWithCompletion( void (* handler)(SamiVariable*, SamiError*));
   SamiVariable* 
-  publicVariablesSearchSearchGetWithCompletion(String* search, String* effectOrCause, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
-  
+  v1PublicVariablesSearchSearchGetWithCompletion(String* search, String* accessToken, String* categoryName, String* source, String* effectOrCause, String* publicEffectOrCause, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
   void 
-  v1UserVariablesPostWithCompletion(SamiUserVariables* sharingData, void(* handler)(SamiError*));
-  
+  v1UserVariablesPostWithCompletion(SamiUserVariables* userVariables, void(* handler)(SamiError*));
   IList* 
-  variableCategoriesGetWithCompletion( void (* handler)(IList*, SamiError*));
-  
+  v1VariableCategoriesGetWithCompletion( void (* handler)(IList*, SamiError*));
   SamiVariable* 
-  variablesGetWithCompletion(Integer* userId, String* category, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
-  
+  v1VariablesGetWithCompletion(String* accessToken, Integer* _id, Integer* userId, String* category, String* name, String* lastUpdated, String* source, String* latestMeasurementTime, String* numberOfMeasurements, String* lastSource, Integer* limit, Integer* offset, Integer* sort, void (* handler)(SamiVariable*, SamiError*));
   void 
-  variablesPostWithCompletion(SamiVariablesNew* variableName, void(* handler)(SamiError*));
-  
+  v1VariablesPostWithCompletion(SamiVariablesNew* body, String* accessToken, void(* handler)(SamiError*));
   IList* 
-  variablesSearchSearchGetWithCompletion(String* search, String* categoryName, String* source, Integer* limit, Integer* offset, void (* handler)(IList*, SamiError*));
-  
+  v1VariablesSearchSearchGetWithCompletion(String* search, String* accessToken, String* categoryName, Boolean* includePublic, Boolean* manualTracking, String* source, String* effectOrCause, String* publicEffectOrCause, Integer* limit, Integer* offset, void (* handler)(IList*, SamiError*));
   SamiVariable* 
-  variablesVariableNameGetWithCompletion(String* variableName, void (* handler)(SamiVariable*, SamiError*));
-  
+  v1VariablesVariableNameGetWithCompletion(String* variableName, String* accessToken, void (* handler)(SamiVariable*, SamiError*));
   static String getBasePath() {
-    return L"https://localhost/api";
+    return L"https://app.quantimo.do/api";
   }
 
 private:

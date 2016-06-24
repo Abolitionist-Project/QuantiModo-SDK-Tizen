@@ -40,18 +40,14 @@ public:
 
     SamiJsonErrorResponse* fromJson(String* obj);
 
-    
     String* getPStatus();
     void setPStatus(String* pStatus);
-    
     String* getPMessage();
     void setPMessage(String* pMessage);
-    
 
 private:
     String* pStatus;
-    String* pMessage;
-    
+String* pMessage;
 };
 
 } /* namespace Swagger */

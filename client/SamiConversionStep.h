@@ -17,8 +17,8 @@
 using namespace Tizen::Web::Json;
 
 
-using Tizen::Base::String;
 using Tizen::Base::Double;
+using Tizen::Base::String;
 
 
 namespace Swagger {
@@ -41,18 +41,14 @@ public:
 
     SamiConversionStep* fromJson(String* obj);
 
-    
     String* getPOperation();
     void setPOperation(String* pOperation);
-    
     Double* getPValue();
     void setPValue(Double* pValue);
-    
 
 private:
     String* pOperation;
-    Double* pValue;
-    
+Double* pValue;
 };
 
 } /* namespace Swagger */

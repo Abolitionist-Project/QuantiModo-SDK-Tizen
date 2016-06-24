@@ -41,38 +41,29 @@ public:
 
     SamiPermission* fromJson(String* obj);
 
-    
     Integer* getPTarget();
     void setPTarget(Integer* pTarget);
-    
     String* getPVariableName();
     void setPVariableName(String* pVariableName);
-    
     Integer* getPMinTimestamp();
-    void setPMinTimestamp(Integer* pMin_timestamp);
-    
+    void setPMinTimestamp(Integer* pMinTimestamp);
     Integer* getPMaxTimestamp();
-    void setPMaxTimestamp(Integer* pMax_timestamp);
-    
+    void setPMaxTimestamp(Integer* pMaxTimestamp);
     Integer* getPMinTimeOfDay();
-    void setPMinTimeOfDay(Integer* pMin_time_of_day);
-    
+    void setPMinTimeOfDay(Integer* pMinTimeOfDay);
     Integer* getPMaxTimeOfDay();
-    void setPMaxTimeOfDay(Integer* pMax_time_of_day);
-    
+    void setPMaxTimeOfDay(Integer* pMaxTimeOfDay);
     String* getPWeek();
     void setPWeek(String* pWeek);
-    
 
 private:
     Integer* pTarget;
-    String* pVariableName;
-    Integer* pMin_timestamp;
-    Integer* pMax_timestamp;
-    Integer* pMin_time_of_day;
-    Integer* pMax_time_of_day;
-    String* pWeek;
-    
+String* pVariableName;
+Integer* pMinTimestamp;
+Integer* pMaxTimestamp;
+Integer* pMinTimeOfDay;
+Integer* pMaxTimeOfDay;
+String* pWeek;
 };
 
 } /* namespace Swagger */

@@ -17,9 +17,10 @@
 using namespace Tizen::Web::Json;
 
 
-using Tizen::Base::Long;
-using Tizen::Base::String;
+#include "SamiHumanTime.h"
 using Tizen::Base::Double;
+using Tizen::Base::Integer;
+using Tizen::Base::String;
 
 
 namespace Swagger {
@@ -42,38 +43,44 @@ public:
 
     SamiMeasurement* fromJson(String* obj);
 
-    
     String* getPVariable();
     void setPVariable(String* pVariable);
-    
     String* getPSource();
     void setPSource(String* pSource);
-    
-    Long* getPTimestamp();
-    void setPTimestamp(Long* pTimestamp);
-    
+    String* getPStartTime();
+    void setPStartTime(String* pStartTime);
+    SamiHumanTime* getPHumanTime();
+    void setPHumanTime(SamiHumanTime* pHumanTime);
     Double* getPValue();
     void setPValue(Double* pValue);
-    
     String* getPUnit();
     void setPUnit(String* pUnit);
-    
+    Integer* getPOriginalValue();
+    void setPOriginalValue(Integer* pOriginalValue);
     Double* getPStoredValue();
     void setPStoredValue(Double* pStoredValue);
-    
     String* getPStoredAbbreviatedUnitName();
     void setPStoredAbbreviatedUnitName(String* pStoredAbbreviatedUnitName);
-    
+    String* getPOriginalAbbreviatedUnitName();
+    void setPOriginalAbbreviatedUnitName(String* pOriginalAbbreviatedUnitName);
+    String* getPAbbreviatedUnitName();
+    void setPAbbreviatedUnitName(String* pAbbreviatedUnitName);
+    String* getPNote();
+    void setPNote(String* pNote);
 
 private:
     String* pVariable;
-    String* pSource;
-    Long* pTimestamp;
-    Double* pValue;
-    String* pUnit;
-    Double* pStoredValue;
-    String* pStoredAbbreviatedUnitName;
-    
+String* pSource;
+String* pStartTime;
+SamiHumanTime* pHumanTime;
+Double* pValue;
+String* pUnit;
+Integer* pOriginalValue;
+Double* pStoredValue;
+String* pStoredAbbreviatedUnitName;
+String* pOriginalAbbreviatedUnitName;
+String* pAbbreviatedUnitName;
+String* pNote;
 };
 
 } /* namespace Swagger */

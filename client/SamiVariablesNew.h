@@ -41,11 +41,9 @@ public:
 
     SamiVariablesNew* fromJson(String* obj);
 
-    
 
 private:
-    
-};
+    };
 
 } /* namespace Swagger */
 

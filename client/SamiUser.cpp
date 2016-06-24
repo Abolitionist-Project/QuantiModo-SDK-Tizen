@@ -23,13 +23,12 @@ SamiUser::~SamiUser() {
 void
 SamiUser::init() {
     pId = null;
-    pWpId = null;
-    pDisplayName = null;
-    pLoginName = null;
-    pEmail = null;
-    pToken = null;
-    pAdministrator = null;
-    
+pWpId = null;
+pDisplayName = null;
+pLoginName = null;
+pEmail = null;
+pToken = null;
+pAdministrator = null;
 }
 
 void
@@ -39,37 +38,36 @@ SamiUser::cleanup() {
         delete pId;
         pId = null;
     }
-    if(pWpId != null) {
+if(pWpId != null) {
         
         delete pWpId;
         pWpId = null;
     }
-    if(pDisplayName != null) {
+if(pDisplayName != null) {
         
         delete pDisplayName;
         pDisplayName = null;
     }
-    if(pLoginName != null) {
+if(pLoginName != null) {
         
         delete pLoginName;
         pLoginName = null;
     }
-    if(pEmail != null) {
+if(pEmail != null) {
         
         delete pEmail;
         pEmail = null;
     }
-    if(pToken != null) {
+if(pToken != null) {
         
         delete pToken;
         pToken = null;
     }
-    if(pAdministrator != null) {
+if(pAdministrator != null) {
         
         delete pAdministrator;
         pAdministrator = null;
     }
-    
 }
 
 
@@ -116,7 +114,7 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pId, pIdVal, L"Integer", L"Integer");
         }
         delete pIdKey;
-        JsonString* pWpIdKey = new JsonString(L"wpId");
+JsonString* pWpIdKey = new JsonString(L"wpId");
         IJsonValue* pWpIdVal = null;
         pJsonObject->GetValue(pWpIdKey, pWpIdVal);
         if(pWpIdVal != null) {
@@ -125,7 +123,7 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pWpId, pWpIdVal, L"Integer", L"Integer");
         }
         delete pWpIdKey;
-        JsonString* pDisplayNameKey = new JsonString(L"displayName");
+JsonString* pDisplayNameKey = new JsonString(L"displayName");
         IJsonValue* pDisplayNameVal = null;
         pJsonObject->GetValue(pDisplayNameKey, pDisplayNameVal);
         if(pDisplayNameVal != null) {
@@ -134,7 +132,7 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pDisplayName, pDisplayNameVal, L"String", L"String");
         }
         delete pDisplayNameKey;
-        JsonString* pLoginNameKey = new JsonString(L"loginName");
+JsonString* pLoginNameKey = new JsonString(L"loginName");
         IJsonValue* pLoginNameVal = null;
         pJsonObject->GetValue(pLoginNameKey, pLoginNameVal);
         if(pLoginNameVal != null) {
@@ -143,7 +141,7 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pLoginName, pLoginNameVal, L"String", L"String");
         }
         delete pLoginNameKey;
-        JsonString* pEmailKey = new JsonString(L"email");
+JsonString* pEmailKey = new JsonString(L"email");
         IJsonValue* pEmailVal = null;
         pJsonObject->GetValue(pEmailKey, pEmailVal);
         if(pEmailVal != null) {
@@ -152,7 +150,7 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pEmail, pEmailVal, L"String", L"String");
         }
         delete pEmailKey;
-        JsonString* pTokenKey = new JsonString(L"token");
+JsonString* pTokenKey = new JsonString(L"token");
         IJsonValue* pTokenVal = null;
         pJsonObject->GetValue(pTokenKey, pTokenVal);
         if(pTokenVal != null) {
@@ -161,7 +159,7 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pToken, pTokenVal, L"String", L"String");
         }
         delete pTokenKey;
-        JsonString* pAdministratorKey = new JsonString(L"administrator");
+JsonString* pAdministratorKey = new JsonString(L"administrator");
         IJsonValue* pAdministratorVal = null;
         pJsonObject->GetValue(pAdministratorKey, pAdministratorVal);
         if(pAdministratorVal != null) {
@@ -170,7 +168,6 @@ SamiUser::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pAdministrator, pAdministratorVal, L"Boolean", L"Boolean");
         }
         delete pAdministratorKey;
-        
     }
 }
 
@@ -221,35 +218,27 @@ SamiUser::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pIdKey = new JsonString(L"id");
     pJsonObject->Add(pIdKey, toJson(getPId(), "Integer", ""));
 
-    
     JsonString *pWpIdKey = new JsonString(L"wpId");
     pJsonObject->Add(pWpIdKey, toJson(getPWpId(), "Integer", ""));
 
-    
     JsonString *pDisplayNameKey = new JsonString(L"displayName");
     pJsonObject->Add(pDisplayNameKey, toJson(getPDisplayName(), "String", ""));
 
-    
     JsonString *pLoginNameKey = new JsonString(L"loginName");
     pJsonObject->Add(pLoginNameKey, toJson(getPLoginName(), "String", ""));
 
-    
     JsonString *pEmailKey = new JsonString(L"email");
     pJsonObject->Add(pEmailKey, toJson(getPEmail(), "String", ""));
 
-    
     JsonString *pTokenKey = new JsonString(L"token");
     pJsonObject->Add(pTokenKey, toJson(getPToken(), "String", ""));
 
-    
     JsonString *pAdministratorKey = new JsonString(L"administrator");
     pJsonObject->Add(pAdministratorKey, toJson(getPAdministrator(), "Boolean", ""));
 
-    
     return pJsonObject;
 }
 

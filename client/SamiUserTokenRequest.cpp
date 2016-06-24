@@ -23,8 +23,7 @@ SamiUserTokenRequest::~SamiUserTokenRequest() {
 void
 SamiUserTokenRequest::init() {
     pUser = null;
-    pOrganization_access_token = null;
-    
+pOrganizationAccessToken = null;
 }
 
 void
@@ -34,12 +33,11 @@ SamiUserTokenRequest::cleanup() {
         delete pUser;
         pUser = null;
     }
-    if(pOrganization_access_token != null) {
+if(pOrganizationAccessToken != null) {
         
-        delete pOrganization_access_token;
-        pOrganization_access_token = null;
+        delete pOrganizationAccessToken;
+        pOrganizationAccessToken = null;
     }
-    
 }
 
 
@@ -86,16 +84,15 @@ SamiUserTokenRequest::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUser, pUserVal, L"SamiUserTokenRequestInnerUserField", L"SamiUserTokenRequestInnerUserField");
         }
         delete pUserKey;
-        JsonString* pOrganization_access_tokenKey = new JsonString(L"organization_access_token");
-        IJsonValue* pOrganization_access_tokenVal = null;
-        pJsonObject->GetValue(pOrganization_access_tokenKey, pOrganization_access_tokenVal);
-        if(pOrganization_access_tokenVal != null) {
+JsonString* pOrganizationAccessTokenKey = new JsonString(L"organizationAccessToken");
+        IJsonValue* pOrganizationAccessTokenVal = null;
+        pJsonObject->GetValue(pOrganizationAccessTokenKey, pOrganizationAccessTokenVal);
+        if(pOrganizationAccessTokenVal != null) {
             
-            pOrganization_access_token = new String();
-            jsonToValue(pOrganization_access_token, pOrganization_access_tokenVal, L"String", L"String");
+            pOrganizationAccessToken = new String();
+            jsonToValue(pOrganizationAccessToken, pOrganizationAccessTokenVal, L"String", L"String");
         }
-        delete pOrganization_access_tokenKey;
-        
+        delete pOrganizationAccessTokenKey;
     }
 }
 
@@ -146,15 +143,12 @@ SamiUserTokenRequest::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pUserKey = new JsonString(L"user");
     pJsonObject->Add(pUserKey, toJson(getPUser(), "SamiUserTokenRequestInnerUserField", ""));
 
-    
-    JsonString *pOrganization_access_tokenKey = new JsonString(L"organization_access_token");
-    pJsonObject->Add(pOrganization_access_tokenKey, toJson(getPOrganizationAccessToken(), "String", ""));
+    JsonString *pOrganizationAccessTokenKey = new JsonString(L"organizationAccessToken");
+    pJsonObject->Add(pOrganizationAccessTokenKey, toJson(getPOrganizationAccessToken(), "String", ""));
 
-    
     return pJsonObject;
 }
 
@@ -169,11 +163,11 @@ SamiUserTokenRequest::setPUser(SamiUserTokenRequestInnerUserField* pUser) {
 
 String*
 SamiUserTokenRequest::getPOrganizationAccessToken() {
-    return pOrganization_access_token;
+    return pOrganizationAccessToken;
 }
 void
-SamiUserTokenRequest::setPOrganizationAccessToken(String* pOrganization_access_token) {
-    this->pOrganization_access_token = pOrganization_access_token;
+SamiUserTokenRequest::setPOrganizationAccessToken(String* pOrganizationAccessToken) {
+    this->pOrganizationAccessToken = pOrganizationAccessToken;
 }
 
 

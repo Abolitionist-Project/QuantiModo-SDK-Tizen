@@ -17,9 +17,9 @@
 using namespace Tizen::Web::Json;
 
 
+using Tizen::Base::Boolean;
 using Tizen::Base::Integer;
 using Tizen::Base::String;
-using Tizen::Base::Boolean;
 
 
 namespace Swagger {
@@ -42,26 +42,20 @@ public:
 
     SamiConnectorInfoHistoryItem* fromJson(String* obj);
 
-    
     Integer* getPNumberOfMeasurements();
-    void setPNumberOfMeasurements(Integer* pNumber_of_measurements);
-    
+    void setPNumberOfMeasurements(Integer* pNumberOfMeasurements);
     Boolean* getPSuccess();
     void setPSuccess(Boolean* pSuccess);
-    
     String* getPMessage();
     void setPMessage(String* pMessage);
-    
     String* getPCreatedAt();
-    void setPCreatedAt(String* pCreated_at);
-    
+    void setPCreatedAt(String* pCreatedAt);
 
 private:
-    Integer* pNumber_of_measurements;
-    Boolean* pSuccess;
-    String* pMessage;
-    String* pCreated_at;
-    
+    Integer* pNumberOfMeasurements;
+Boolean* pSuccess;
+String* pMessage;
+String* pCreatedAt;
 };
 
 } /* namespace Swagger */

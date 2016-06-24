@@ -23,8 +23,7 @@ SamiMeasurementRange::~SamiMeasurementRange() {
 void
 SamiMeasurementRange::init() {
     pLowerLimit = null;
-    pUpperLimit = null;
-    
+pUpperLimit = null;
 }
 
 void
@@ -34,12 +33,11 @@ SamiMeasurementRange::cleanup() {
         delete pLowerLimit;
         pLowerLimit = null;
     }
-    if(pUpperLimit != null) {
+if(pUpperLimit != null) {
         
         delete pUpperLimit;
         pUpperLimit = null;
     }
-    
 }
 
 
@@ -86,7 +84,7 @@ SamiMeasurementRange::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pLowerLimit, pLowerLimitVal, L"Integer", L"Integer");
         }
         delete pLowerLimitKey;
-        JsonString* pUpperLimitKey = new JsonString(L"upperLimit");
+JsonString* pUpperLimitKey = new JsonString(L"upperLimit");
         IJsonValue* pUpperLimitVal = null;
         pJsonObject->GetValue(pUpperLimitKey, pUpperLimitVal);
         if(pUpperLimitVal != null) {
@@ -95,7 +93,6 @@ SamiMeasurementRange::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pUpperLimit, pUpperLimitVal, L"Integer", L"Integer");
         }
         delete pUpperLimitKey;
-        
     }
 }
 
@@ -146,15 +143,12 @@ SamiMeasurementRange::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pLowerLimitKey = new JsonString(L"lowerLimit");
     pJsonObject->Add(pLowerLimitKey, toJson(getPLowerLimit(), "Integer", ""));
 
-    
     JsonString *pUpperLimitKey = new JsonString(L"upperLimit");
     pJsonObject->Add(pUpperLimitKey, toJson(getPUpperLimit(), "Integer", ""));
 
-    
     return pJsonObject;
 }
 

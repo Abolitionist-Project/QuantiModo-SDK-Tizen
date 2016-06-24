@@ -40,14 +40,11 @@ public:
 
     SamiPairs* fromJson(String* obj);
 
-    
     String* getPName();
     void setPName(String* pName);
-    
 
 private:
     String* pName;
-    
 };
 
 } /* namespace Swagger */

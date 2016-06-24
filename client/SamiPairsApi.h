@@ -5,9 +5,9 @@
 #include "SamiApiClient.h"
 #include "SamiError.h"
 
-using Tizen::Base::Integer;
 #include "SamiPairs.h"
 using Tizen::Base::String;
+using Tizen::Base::Integer;
 
 using namespace Tizen::Net::Http;
 
@@ -18,12 +18,12 @@ public:
   SamiPairsApi();
   virtual ~SamiPairsApi();
 
-  
   IList* 
-  pairsGetWithCompletion(String* cause, String* effect, String* causeSource, String* causeUnit, String* delay, String* duration, String* effectSource, String* effectUnit, String* endTime, String* startTime, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
-  
+  v1PairsCsvGetWithCompletion(String* cause, String* effect, String* accessToken, String* causeSource, String* causeUnit, String* delay, String* duration, String* effectSource, String* effectUnit, String* endTime, String* startTime, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
+  IList* 
+  v1PairsGetWithCompletion(String* cause, String* effect, String* accessToken, String* causeSource, String* causeUnit, String* delay, String* duration, String* effectSource, String* effectUnit, String* endTime, String* startTime, Integer* limit, Integer* offset, Integer* sort, void (* handler)(IList*, SamiError*));
   static String getBasePath() {
-    return L"https://localhost/api";
+    return L"https://app.quantimo.do/api";
   }
 
 private:

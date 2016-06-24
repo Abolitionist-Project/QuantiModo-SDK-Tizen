@@ -23,12 +23,11 @@ SamiMeasurementSet::~SamiMeasurementSet() {
 void
 SamiMeasurementSet::init() {
     pMeasurements = null;
-    pName = null;
-    pSource = null;
-    pCategory = null;
-    pCombinationOperation = null;
-    pUnit = null;
-    
+pVariableName = null;
+pSourceName = null;
+pVariableCategoryName = null;
+pCombinationOperation = null;
+pAbbreviatedUnitName = null;
 }
 
 void
@@ -38,32 +37,31 @@ SamiMeasurementSet::cleanup() {
         delete pMeasurements;
         pMeasurements = null;
     }
-    if(pName != null) {
+if(pVariableName != null) {
         
-        delete pName;
-        pName = null;
+        delete pVariableName;
+        pVariableName = null;
     }
-    if(pSource != null) {
+if(pSourceName != null) {
         
-        delete pSource;
-        pSource = null;
+        delete pSourceName;
+        pSourceName = null;
     }
-    if(pCategory != null) {
+if(pVariableCategoryName != null) {
         
-        delete pCategory;
-        pCategory = null;
+        delete pVariableCategoryName;
+        pVariableCategoryName = null;
     }
-    if(pCombinationOperation != null) {
+if(pCombinationOperation != null) {
         
         delete pCombinationOperation;
         pCombinationOperation = null;
     }
-    if(pUnit != null) {
+if(pAbbreviatedUnitName != null) {
         
-        delete pUnit;
-        pUnit = null;
+        delete pAbbreviatedUnitName;
+        pAbbreviatedUnitName = null;
     }
-    
 }
 
 
@@ -110,34 +108,34 @@ SamiMeasurementSet::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pMeasurements, pMeasurementsVal, L"IList", L"SamiValueObject");
         }
         delete pMeasurementsKey;
-        JsonString* pNameKey = new JsonString(L"name");
-        IJsonValue* pNameVal = null;
-        pJsonObject->GetValue(pNameKey, pNameVal);
-        if(pNameVal != null) {
+JsonString* pVariableNameKey = new JsonString(L"variableName");
+        IJsonValue* pVariableNameVal = null;
+        pJsonObject->GetValue(pVariableNameKey, pVariableNameVal);
+        if(pVariableNameVal != null) {
             
-            pName = new String();
-            jsonToValue(pName, pNameVal, L"String", L"String");
+            pVariableName = new String();
+            jsonToValue(pVariableName, pVariableNameVal, L"String", L"String");
         }
-        delete pNameKey;
-        JsonString* pSourceKey = new JsonString(L"source");
-        IJsonValue* pSourceVal = null;
-        pJsonObject->GetValue(pSourceKey, pSourceVal);
-        if(pSourceVal != null) {
+        delete pVariableNameKey;
+JsonString* pSourceNameKey = new JsonString(L"sourceName");
+        IJsonValue* pSourceNameVal = null;
+        pJsonObject->GetValue(pSourceNameKey, pSourceNameVal);
+        if(pSourceNameVal != null) {
             
-            pSource = new String();
-            jsonToValue(pSource, pSourceVal, L"String", L"String");
+            pSourceName = new String();
+            jsonToValue(pSourceName, pSourceNameVal, L"String", L"String");
         }
-        delete pSourceKey;
-        JsonString* pCategoryKey = new JsonString(L"category");
-        IJsonValue* pCategoryVal = null;
-        pJsonObject->GetValue(pCategoryKey, pCategoryVal);
-        if(pCategoryVal != null) {
+        delete pSourceNameKey;
+JsonString* pVariableCategoryNameKey = new JsonString(L"variableCategoryName");
+        IJsonValue* pVariableCategoryNameVal = null;
+        pJsonObject->GetValue(pVariableCategoryNameKey, pVariableCategoryNameVal);
+        if(pVariableCategoryNameVal != null) {
             
-            pCategory = new String();
-            jsonToValue(pCategory, pCategoryVal, L"String", L"String");
+            pVariableCategoryName = new String();
+            jsonToValue(pVariableCategoryName, pVariableCategoryNameVal, L"String", L"String");
         }
-        delete pCategoryKey;
-        JsonString* pCombinationOperationKey = new JsonString(L"combinationOperation");
+        delete pVariableCategoryNameKey;
+JsonString* pCombinationOperationKey = new JsonString(L"combinationOperation");
         IJsonValue* pCombinationOperationVal = null;
         pJsonObject->GetValue(pCombinationOperationKey, pCombinationOperationVal);
         if(pCombinationOperationVal != null) {
@@ -146,16 +144,15 @@ SamiMeasurementSet::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pCombinationOperation, pCombinationOperationVal, L"String", L"String");
         }
         delete pCombinationOperationKey;
-        JsonString* pUnitKey = new JsonString(L"unit");
-        IJsonValue* pUnitVal = null;
-        pJsonObject->GetValue(pUnitKey, pUnitVal);
-        if(pUnitVal != null) {
+JsonString* pAbbreviatedUnitNameKey = new JsonString(L"abbreviatedUnitName");
+        IJsonValue* pAbbreviatedUnitNameVal = null;
+        pJsonObject->GetValue(pAbbreviatedUnitNameKey, pAbbreviatedUnitNameVal);
+        if(pAbbreviatedUnitNameVal != null) {
             
-            pUnit = new String();
-            jsonToValue(pUnit, pUnitVal, L"String", L"String");
+            pAbbreviatedUnitName = new String();
+            jsonToValue(pAbbreviatedUnitName, pAbbreviatedUnitNameVal, L"String", L"String");
         }
-        delete pUnitKey;
-        
+        delete pAbbreviatedUnitNameKey;
     }
 }
 
@@ -206,31 +203,24 @@ SamiMeasurementSet::asJsonObject() {
     JsonObject *pJsonObject = new JsonObject();
     pJsonObject->Construct();
 
-    
     JsonString *pMeasurementsKey = new JsonString(L"measurements");
     pJsonObject->Add(pMeasurementsKey, toJson(getPMeasurements(), "SamiValueObject", "array"));
 
-    
-    JsonString *pNameKey = new JsonString(L"name");
-    pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
+    JsonString *pVariableNameKey = new JsonString(L"variableName");
+    pJsonObject->Add(pVariableNameKey, toJson(getPVariableName(), "String", ""));
 
-    
-    JsonString *pSourceKey = new JsonString(L"source");
-    pJsonObject->Add(pSourceKey, toJson(getPSource(), "String", ""));
+    JsonString *pSourceNameKey = new JsonString(L"sourceName");
+    pJsonObject->Add(pSourceNameKey, toJson(getPSourceName(), "String", ""));
 
-    
-    JsonString *pCategoryKey = new JsonString(L"category");
-    pJsonObject->Add(pCategoryKey, toJson(getPCategory(), "String", ""));
+    JsonString *pVariableCategoryNameKey = new JsonString(L"variableCategoryName");
+    pJsonObject->Add(pVariableCategoryNameKey, toJson(getPVariableCategoryName(), "String", ""));
 
-    
     JsonString *pCombinationOperationKey = new JsonString(L"combinationOperation");
     pJsonObject->Add(pCombinationOperationKey, toJson(getPCombinationOperation(), "String", ""));
 
-    
-    JsonString *pUnitKey = new JsonString(L"unit");
-    pJsonObject->Add(pUnitKey, toJson(getPUnit(), "String", ""));
+    JsonString *pAbbreviatedUnitNameKey = new JsonString(L"abbreviatedUnitName");
+    pJsonObject->Add(pAbbreviatedUnitNameKey, toJson(getPAbbreviatedUnitName(), "String", ""));
 
-    
     return pJsonObject;
 }
 
@@ -244,30 +234,30 @@ SamiMeasurementSet::setPMeasurements(IList* pMeasurements) {
 }
 
 String*
-SamiMeasurementSet::getPName() {
-    return pName;
+SamiMeasurementSet::getPVariableName() {
+    return pVariableName;
 }
 void
-SamiMeasurementSet::setPName(String* pName) {
-    this->pName = pName;
+SamiMeasurementSet::setPVariableName(String* pVariableName) {
+    this->pVariableName = pVariableName;
 }
 
 String*
-SamiMeasurementSet::getPSource() {
-    return pSource;
+SamiMeasurementSet::getPSourceName() {
+    return pSourceName;
 }
 void
-SamiMeasurementSet::setPSource(String* pSource) {
-    this->pSource = pSource;
+SamiMeasurementSet::setPSourceName(String* pSourceName) {
+    this->pSourceName = pSourceName;
 }
 
 String*
-SamiMeasurementSet::getPCategory() {
-    return pCategory;
+SamiMeasurementSet::getPVariableCategoryName() {
+    return pVariableCategoryName;
 }
 void
-SamiMeasurementSet::setPCategory(String* pCategory) {
-    this->pCategory = pCategory;
+SamiMeasurementSet::setPVariableCategoryName(String* pVariableCategoryName) {
+    this->pVariableCategoryName = pVariableCategoryName;
 }
 
 String*
@@ -280,12 +270,12 @@ SamiMeasurementSet::setPCombinationOperation(String* pCombinationOperation) {
 }
 
 String*
-SamiMeasurementSet::getPUnit() {
-    return pUnit;
+SamiMeasurementSet::getPAbbreviatedUnitName() {
+    return pAbbreviatedUnitName;
 }
 void
-SamiMeasurementSet::setPUnit(String* pUnit) {
-    this->pUnit = pUnit;
+SamiMeasurementSet::setPAbbreviatedUnitName(String* pAbbreviatedUnitName) {
+    this->pAbbreviatedUnitName = pAbbreviatedUnitName;
 }
 
 
